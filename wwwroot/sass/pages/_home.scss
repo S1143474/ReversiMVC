@@ -1,4 +1,5 @@
 @use '../abstracts/colors' as clr;
+@import '../abstracts/mixins';
 
 .home__stats {
     position: absolute;
@@ -10,6 +11,8 @@
     margin: 6.052rem 2.445rem 0 0;
 
     &__card {
+        @include user-select;
+
         position: relative;
         width: 16em;
         height: 24em;

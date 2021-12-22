@@ -1025,6 +1025,10 @@
   display: none;
 }
 .history__list__item__icon {
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+  user-select: none;
   position: absolute;
   width: 1.875em;
   height: 1.875em;
@@ -1051,6 +1055,10 @@
 .history__list__item__footer {
   display: flex;
   justify-content: space-between;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+  user-select: none;
 }
 .history__list__item__footer__label {
   padding: 0.2rem 1rem;
@@ -1083,6 +1091,10 @@
   margin: 6.052rem 2.445rem 0 0;
 }
 .home__stats__card {
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+  user-select: none;
   position: relative;
   width: 16em;
   height: 24em;
