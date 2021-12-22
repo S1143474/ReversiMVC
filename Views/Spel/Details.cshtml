@@ -1,0 +1,179 @@
+﻿@model ReversiMvcApp.Models.Json.SpelJsonModel
+@{
+    ViewData["Title"] = "Game";
+}
+
+<section class="game__page">
+
+    <div class="game__introduction">
+        <div class="game__introduction-left">
+            <h2>@ViewBag.Player1</h2>
+        </div>
+        <div class="game__introduction-vs">
+            <h3>VS</h3>
+        </div>
+        <div class="game__introduction-right">
+            <h2>@ViewBag.Player2</h2>
+        </div>
+    </div>
+
+    <aside class="game__player__info player-1">
+        <div class="game__player__content">
+            <h2 class="game__player__name">@ViewBag.Player1</h2>
+
+            <div class="game__player__score">
+                <svg class="game__player__score__icon" viewBox="0 0 64 64">
+                    <circle cx="58%" cy="33%" r="16%" fill="#DA3D2D"/>
+                    <circle cx="42%" cy="33%" r="16%" fill="#DA702D"/>
+
+                    <circle cx="30%" cy="50%" r="16%" fill="#FDB702"/>	
+                    <circle cx="70%" cy="50%" r="16%" fill="#A279EF"/> 
+
+                    <circle cx="42%" cy="67%" r="16%" fill="#A2E901"/>
+                    <circle cx="58%" cy="67%" r="16%" fill="#01A2E9"/>
+                    
+                    <circle cx="50%" cy="50%" r="8%" fill="white" class="white" />
+                   
+                </svg>
+                <p class="game__player__score__label">10</p>
+            </div>
+
+            <div class="game__player__interaction">
+                <button>Pass</button>
+                <button>Forfeit</button>
+            </div>
+        </div>
+    </aside>
+    <div class="game__container">
+        <div class="game__ownedboardbalance">
+            <span class="game__ownedboardbalance__player-1"></span>
+            <span class="game__ownedboardbalance__player-2"></span>
+        </div>
+        <table class="game__container__board">
+        @foreach (var row in @Model.Bord) {
+            <tr class="game__container__board__row">
+            @foreach (var cell in row) {
+                <td class="game__container__board__col">
+                    @if (@cell == 0) {
+                        <div class="game__container__board__cell fiche fiche-empty"></div>
+                    }
+
+                    @if (@cell == 1) {
+                        <div class="game__container__board__cell fiche fiche-white"></div>
+                    }
+
+                    @if (@cell == 2) {
+                        <div class="game__container__board__cell fiche fiche-black"></div>
+                    }
+                </td>
+            }
+            </tr>
+        }
+        </table>
+    </div>
+    <aside class="game__player__info player-2">
+        <div class="game__player__content">
+            <h2 class="game__player__name game__player__name-highlighted">@ViewBag.Player2</h2>
+
+           <div class="game__player__score">
+                <svg class="game__player__score__icon" viewBox="0 0 64 64">
+                    <circle cx="58%" cy="33%" r="16%" fill="#DA3D2D"/>
+                    <circle cx="42%" cy="33%" r="16%" fill="#DA702D"/>
+
+                    <circle cx="30%" cy="50%" r="16%" fill="#FDB702"/>	
+                    <circle cx="70%" cy="50%" r="16%" fill="#A279EF"/> 
+
+                    <circle cx="42%" cy="67%" r="16%" fill="#A2E901"/>
+                    <circle cx="58%" cy="67%" r="16%" fill="#01A2E9"/>
+                    
+                    <circle cx="50%" cy="50%" r="8%" fill="white" class="white" />
+                   
+                </svg>
+                <p class="game__player__score__label">9</p>
+            </div>
+            <div class="game__player__interaction"></div>
+        </div>
+    </aside>
+</section>
+
+@* <section>
+    <!--class="container"-->
+    <header>
+        <h1 class="line-drawing-demo lines">@Html.DisplayFor(model => model.Omschrijving)</h1>
+    </header>
+
+    <article class="container__game">
+        <table id="game_table" class="game__table">
+            <tbody id="game_table_body">
+            </tbody>
+        </table>
+    </article>
+
+    <article class="container__game__info">
+        <h3>Game Info</h3>
+        <hr />
+
+        <section class="game__info__player">
+            <p class="game__info__player__name"><strong>You: </strong>Bas</p>
+            <p class="game__info__player__score"><strong>Score: </strong>10</p>
+        </section>
+
+        <section class="game__info__player">
+            <p class="game__info__player__name"><strong>Opponent: </strong>Robin</p>
+            <p class="game__info__player__score"><strong>Score: </strong>12</p>
+        </section>
+
+        <h5 id="game_info_current_turn" class="game__info__playersturn">Black's Turn!</h5>
+
+        <section class="game__info__button__holder">
+            <button class="widget__button widget__button-orange p-2">Pass</button>
+            <button class="widget__button widget__button-red p-2">Forfeit...</button>
+        </section>
+
+        <!-- COMING SOON CHAT AVAILABILITY -->
+    </article>
+</section>
+
+<aside id="feedback-success" class="widget" style="display: none">
+    <div class="row">
+        <button id="button_widget_close" class="widget__button widget__button-close col-12">&#10006;</button>
+    </div>
+    <section class="row widget__body">
+        <img src="~/img/reversi-icon.png" class="col-1 widget__body__icon " />
+        <p class="col-11 widget__body__message">Mike wil deelnemen aan jouw spel. Geef akkoord.</p>
+    </section>
+    <div class="row widget__button__holder">
+        <button class="col-1 widget__button widget__button-green  ">Akkoord</button>
+        <button class="col-1 widget__button widget__button-red ml-1">Weigeren</button>
+    </div>
+</aside>
+
+<aside id="feedback-danger" style="display: none">
+    <p>Pas op voor loslopende bits.</p>
+</aside>
+
+<button id="button">Knop</button>
+
+@section Scripts {
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/style.min.css" />
+
+    <script src="~/js/app.js" type="text/javascript"></script>
+}
+
+<script type="text/javascript">
+    $(() => {
+        Game.init("@Model.Speler1Token", afterInit);
+
+        let feedbackWidget = new FeedbackWidget("feedback-success");
+
+        $('#button').on('click', () => feedbackWidget.show("Bijna klaar, tijd voor koffie", 'success'));
+        $('#button_widget_close').on('click', () => feedbackWidget.hide());
+    });
+
+    function afterInit(token) {
+        console.log('Game afterInit, with token - ' + token);
+    };
+
+</script> *@
+

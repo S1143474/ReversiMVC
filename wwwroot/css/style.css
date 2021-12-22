@@ -1,0 +1,157 @@
+body {
+  background-color: rgba(20, 160, 46, 0.5); }
+
+.container {
+  position: relative;
+  width: 80%;
+  background-color: white; }
+
+.container__game {
+  position: relative;
+  display: inline-block;
+  width: 35vw;
+  height: 35vw;
+  margin-left: 4px;
+  margin-bottom: 4px;
+  padding: 0px; }
+
+.container__game__info {
+  position: relative;
+  display: inline-block;
+  width: 37%;
+  height: auto;
+  vertical-align: top;
+  margin-left: 1%;
+  margin-right: 0%;
+  padding-bottom: 2%; }
+
+.game__info__player {
+  position: relative;
+  display: inline-flex;
+  width: 100%; }
+
+.game__info__player__name {
+  width: 50%; }
+
+.game__info__player__score {
+  width: 50%; }
+
+.game__info__playersturn {
+  text-align: center; }
+
+.game__info__button__holder {
+  text-align: right;
+  width: 100%; }
+
+.game__table {
+  width: 100%;
+  height: 100%;
+  margin: 2px;
+  background-color: rgba(20, 160, 46, 0.5);
+  border: 0.5vw solid #067326; }
+
+tr {
+  height: 10%; }
+
+td {
+  border: 2px solid #014615;
+  text-align: center;
+  width: 10%; }
+
+.fiche {
+  display: block;
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+  border-radius: 100%; }
+
+.fiche__white {
+  background-color: white; }
+  .fiche__white-hover {
+    background-color: white;
+    opacity: .6; }
+
+.fiche__black {
+  background-color: black; }
+  .fiche__black-hover {
+    background-color: black;
+    opacity: .6; }
+
+#game_table_body tr td div {
+  pointer-events: none; }
+
+.container {
+  border: 2px solid lightgrey;
+  border-radius: 8px; }
+
+@keyframes rollWhite {
+  0% {
+    transform: rotateX(0); }
+  25% {
+    transform: rotateX(100deg);
+    background-color: black; }
+  50% {
+    transform: rotate(0);
+    background-color: white; }
+  75% {
+    transform: rotateX(100deg);
+    background-color: black; }
+  100% {
+    transform: rotateX(0);
+    background-color: white; } }
+
+@-webkit-keyframes rollWhite {
+  0% {
+    transform: rotateX(0); }
+  25% {
+    transform: rotateX(100deg);
+    background-color: black; }
+  50% {
+    transform: rotate(0);
+    background-color: white; }
+  75% {
+    transform: rotateX(100deg);
+    background-color: black; }
+  100% {
+    transform: rotateX(0);
+    background-color: white; } }
+
+@keyframes rollBlack {
+  0% {
+    transform: rotateX(0); }
+  25% {
+    transform: rotateX(100deg);
+    background-color: white; }
+  50% {
+    transform: rotate(0);
+    background-color: black; }
+  75% {
+    transform: rotateX(100deg);
+    background-color: white; }
+  100% {
+    transform: rotateX(0);
+    background-color: black; } }
+
+@-webkit-keyframes rollBlack {
+  0% {
+    transform: rotateX(0); }
+  25% {
+    transform: rotateX(100deg);
+    background-color: white; }
+  50% {
+    transform: rotate(0);
+    background-color: black; }
+  75% {
+    transform: rotateX(100deg);
+    background-color: white; }
+  100% {
+    transform: rotateX(0);
+    background-color: black; } }
+
+.fiche__animation-white {
+  -webkit-animation: rollWhite 1.5s, fadInAnimation 1.5s;
+  animation: rollWhite 1.5s, fadInAnimation 1.5s; }
+
+.fiche__animation-black {
+  -webkit-animation: rollBlack 2s, fadInAnimation 1.5s;
+  animation: rollBlack 2s, fadInAnimation 1.5s; }

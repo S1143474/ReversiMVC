@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    string[,] letters = new string[7, 7] {
+        { "", "L", "P", "", "", "", "R" },
+        { "W", "E", "L", "C", "O", "M", "E" },
+        { "", "T", "A", "", "", "", "V" },
+        { "", "`", "Y", "", "", "", "E" },
+        { "", "S", "", "", "", "", "R" },
+        { "", "", "", "", "", "", "S" },
+        { "", "", "", "", "", "", "I" },
+    };
+
+}
+
+<aside class="home__stats">
+    <div class="home__stats__card">
+        <span data-title="Stats"></span>
+
+        <ul class="home__stats__list">
+            <li class="home__stats__list__item"><span class="material-icons">emoji_events</span>Wins:<span>@ViewBag.Wins</span></li>
+            <li class="home__stats__list__item"><span class="material-icons">trending_down</span>Losses:<span>@ViewBag.Losses</span></li>
+            <li class="home__stats__list__item"><span class="material-icons">handshake</span>Draws:<span>@ViewBag.Draws</span></li>
+            @* <li class="home__stats__list__item"><svg class="game__player__score__icon" viewBox="0 0 64 64">
+                    <circle cx="58%" cy="33%" r="16%" fill="#DA3D2D"/>
+                    <circle cx="42%" cy="33%" r="16%" fill="#DA702D"/>
+
+                    <circle cx="30%" cy="50%" r="16%" fill="#FDB702"/>	
+                    <circle cx="70%" cy="50%" r="16%" fill="#A279EF"/> 
+
+                    <circle cx="42%" cy="67%" r="16%" fill="#A2E901"/>
+                    <circle cx="58%" cy="67%" r="16%" fill="#01A2E9"/>
+                    
+                    <circle cx="50%" cy="50%" r="8%" fill="white" class="white" />
+                   
+                </svg>Flipped Fiches:<span>@ViewBag.FichesFlipped</span></li> *@
+        </ul>
+
+    </div>
+</aside>
+
+<div class="board">
+    <div class="home__board">
+        @for (int i = 0; i < letters.GetLength(0); i++)
+        {
+            @for (int j = 0; j < letters.GetLength(1); j++)
+            {
+        <div>
+            <a>
+                @if (letters[i, j] != "")
+                {
+                    if (i == 1)
+                    {
+                        <span class="home__board-animation delay-1"></span>
+                        <span class="home__board-animation delay-1"></span>
+                        <span class="home__board-animation delay-1"></span>
+                        <span class="home__board-animation delay-1"></span>
+                        <span class="home__board-animation delay-1">@letters[i, j]</span>
+                    }
+                    else if (i < 5 && j == 1)
+                    {
+                        <span class="home__board-animation delay-2"></span>
+                        <span class="home__board-animation delay-2"></span>
+                        <span class="home__board-animation delay-2"></span>
+                        <span class="home__board-animation delay-2"></span>
+                        <span class="home__board-animation delay-2">@letters[i, j]</span>
+                    }
+                    else if (i < 4 && j == 2)
+                    {
+                        <span class="home__board-animation delay-3"></span>
+                        <span class="home__board-animation delay-3"></span>
+                        <span class="home__board-animation delay-3"></span>
+                        <span class="home__board-animation delay-3"></span>
+                        <span class="home__board-animation delay-3">@letters[i, j]</span>
+                    }
+                    else if (j == 6)
+                    {
+                        <span class="home__board-animation delay-4"></span>
+                        <span class="home__board-animation delay-4"></span>
+                        <span class="home__board-animation delay-4"></span>
+                        <span class="home__board-animation delay-4"></span>
+                        <span class="home__board-animation delay-4">@letters[i, j]</span>
+                    }
+                }
+                else
+                {
+                    <span>@letters[i, j]</span>
+                }
+            </a>
+        </div>
+            }
+        }
+    </div>
+</div>

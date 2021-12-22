@@ -1,0 +1,26 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="manage__account__list">
+    <li class="account__nav-item "><a title="Home" class="account__nav-link" asp-controller="Home" asp-action="Index"><i class="material-icons">home</i><span class="account__nav-title">Home</span></a></li>
+    <li class="account__nav-item "><a title="Profile" class="account__nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index"><i class="material-icons">account_circle</i><span class="account__nav-title">Profile</span></a></li>
+    <li class="account__nav-item "><a title="Email" class="account__nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email"><i class="material-icons">mail_outline</i><span class="account__nav-title">Email</span></a></li>
+    <li class="account__nav-item "><a title="Change Password" class="account__nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword"><i class="material-icons">password</i><span class="account__nav-title">Password</span></a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="account__nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+    }
+    <li class="account__nav-item "><a title="Add 2FA" class="account__nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication"><i class="material-icons">enhanced_encryption</i><span class="account__nav-title">2FA</span></a></li>
+    <li class="account__nav-item "><a title="Personal Data" class="account__nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData"><i class="material-icons">folder</i><span class="account__nav-title">Personal Data</span></a></li>
+    <li class="account__nav-item ">
+        <form method="post" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button class="manage__account__logout" type="submit">
+                Logout
+                <span class="material-icons">
+                    logout
+                </span>
+            </button>
+        </form>
+    </li>
+</ul>

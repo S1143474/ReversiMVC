@@ -1,0 +1,23 @@
+﻿@charset 'utf-8';
+
+@use './base/font-face';
+@use './abstracts';
+@use './components/card';
+@use './components/input';
+@use './components/input-button';
+@use './components/button';
+@use './components/lobby-card';
+@use './components/scroll-bar';
+@use './pages/account/register';
+@use './pages/account/login';
+@use './pages/spel/index';
+@use './pages/spel/details';
+@use './pages/spel/options';
+@use './pages/spel/create';
+@use './pages/spel/history';
+@use './pages/home';
+// @import 'base/all';
+// @import 'components/all';
+// @import 'layout/all';
+// @import 'pages/all';
+// @import 'utilities/all';
