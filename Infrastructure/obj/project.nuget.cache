@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "gmnQiSdAH+pqx0btDTxuI09Alkc16+kSZdmN6h/7esat7sSMClqQXTOkUKwWbaIu9I8qX2u8QWXEMIoOeBnKAg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bassc\\source\\repos\\ReversiMvcApp\\Infrastructure\\Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
