@@ -53,6 +53,33 @@
 .card__content {
   transition: height 1.3s ease;
 }
+.card__progress {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.card__progress__icon {
+  position: relative;
+  width: 1.9884em;
+  height: 1.9884em;
+  border-radius: 50%;
+  background-color: #171613;
+  padding: 1.5em;
+  box-shadow: inset 0 0 0.3em rgba(0, 0, 0, 0.4), 0 0 0.3em rgba(0, 0, 0, 0.4);
+}
+.card__progress__icon svg {
+  position: absolute;
+  width: 65%;
+  height: 65%;
+  transform: translate(-50%, -50%);
+}
+.card__progress .line {
+  width: 25%;
+  height: 0.1em;
+  align-self: center;
+  background-color: #eee;
+}
 .card__footer-center {
   border-top: 0.1em solid #01A2E9;
   margin-top: 2.441rem;
@@ -110,6 +137,7 @@
 }
 .input-group label .material-icons,
 .input-group label .material-svg {
+  font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,7 +158,10 @@
 }
 .input-group input:valid + .material-svg,
 .input-group input:not(:placeholder-shown):not(:focus):invalid + .material-svg,
-.input-group input:focus + .material-svg {
+.input-group input:focus + .material-svg,
+.input-group input:valid + .material-icons,
+.input-group input:not(:placeholder-shown):not(:focus):invalid + .material-icons,
+.input-group input:focus + .material-icons {
   position: absolute;
   width: 1.875rem;
   height: 1.875rem;
@@ -463,11 +494,22 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border: 0.1em solid #A279EF;
+  background-color: transparent;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #A279EF;
+  background-color: #A279EF;
+}
+
+#register__container {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
 }
 
 #login__container {
@@ -982,6 +1024,14 @@
   position: relative;
   display: flex;
   width: 100%;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.history__list__item.show {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s, transform 0.3s;
 }
 .history__list__item.left {
   justify-content: flex-start;

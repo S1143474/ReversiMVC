@@ -47,6 +47,7 @@
 
         .material-icons,
         .material-svg {
+            font-size: 24px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -70,7 +71,10 @@
 
     input:valid + .material-svg,
     input:not(:placeholder-shown):not(:focus):invalid + .material-svg,
-    input:focus + .material-svg {
+    input:focus + .material-svg,
+    input:valid + .material-icons,
+    input:not(:placeholder-shown):not(:focus):invalid + .material-icons,
+    input:focus + .material-icons {
         position: absolute;
         width: 1.875rem;
         height: 1.875rem;

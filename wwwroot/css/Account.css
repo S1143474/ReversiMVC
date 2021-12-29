@@ -685,28 +685,7 @@
         margin: 0 1.6rem 1.6rem 1.6rem; */
 
     /* REGISTER User */
-    #register__container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        border: 1px solid white;
-    }
-
-    #register__container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-        border: 1px solid white;
-    }
-
-    #register__user > form {
-        position: absolute;
-        height: auto;
-    }
+    
 }
 
 @media only screen and (min-width: 1025px) {
