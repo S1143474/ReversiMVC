@@ -1,0 +1,4 @@
+C:\Users\bassc\source\repos\ReversiMvcApp\Application\obj\Debug\netcoreapp3.1\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bassc\source\repos\ReversiMvcApp\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfoInputs.cache
+C:\Users\bassc\source\repos\ReversiMvcApp\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfo.cs
+C:\Users\bassc\source\repos\ReversiMvcApp\Application\obj\Debug\netcoreapp3.1\Application.csproj.CoreCompileInputs.cache

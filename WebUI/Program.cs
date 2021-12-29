@@ -1,4 +1,32 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+
+namespace MyNamespace
+{
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateWebHostBuilder(args).Build().Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseUrls("https://192.168.2.19:3000")
+                .UseStartup<Startup>();
+
+        /*public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });*/
+    }
+}
+
+
+
+/*var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -23,3 +51,4 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+*/

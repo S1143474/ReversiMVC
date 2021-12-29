@@ -1,0 +1,119 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"] - ReversiMvcApp</title>
+
+    <meta charset="utf-8" />
+
+    <meta name="author" content="Bas Schimmel" />
+    <meta name="keywords" content="Reversi, Multiplayer, Game, Games" />
+    <meta name="revised" content="Bas Schimmel, 9/8/2021" />
+
+    <meta property="og:site_name" content="Reversi" />
+    <meta property="og:url" content="https://192.168.2.19:3000" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Reversi Multiplayer Game" />
+    <meta property="og:description" content="Let's Play Reversi!" />
+
+    @*<meta property="og:image" content="~/img/reversi-icon.png" />
+        <meta property="og:image:width" content="200" />
+        <meta property="og:image:height" content="140" />*@
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="Icon" href="~/img/reversi.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/Home.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/Spel.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/Account.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/stylesheet.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+    <header class="header__container">
+        <nav class="header">
+            <a class="header__title" asp-controller="Home" asp-action="Index">Reversi</a>
+            <ul>
+                <li>
+                    <a asp-controller="Home" asp-action="Index">
+                        <i class="material-icons">home</i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Spel" asp-action="Options" class="header__game__join">
+                        <i class="material-icons">sports_esports</i>
+                        <span>Spellen</span>
+                    </a>
+                </li>
+                <li class="privacy__link">
+                    <a asp-controller="Home" asp-action="Privacy">
+                        <i class="material-icons">lock</i>
+                        <span>Privacy</span>
+                    </a>
+                </li>
+                <li class="account__link">
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage Account">
+                        <i class="material-icons">person</i>
+                        <span>Account</span>
+                    </a>
+                </li>
+                <li class="account__link">
+                    <span>@User.Identity.Name</span>
+                </li>
+            </ul>
+
+            <form class="action__form" method="post" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+
+                <ul class="account__settings">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+
+                        @*<li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                            </li>*@
+                        <li class="nav-item">
+                            <a class="material-icons" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage Account">
+                                person
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="material-icons logout__btn" title="Logout" type="submit">
+                                logout
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <a class="material-icons reorder-btn" title="re-order">
+                                reorder
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </form>
+
+
+        </nav>
+    </header>
+    <main role="main">
+        @RenderBody()
+        @if (TempData.ContainsKey("PlayerState") && (int)TempData["PlayerState"] != 0)
+        {
+            <script>
+                window.onload = () => {
+                    alert("Je bent nog bezig met een andere game, deze moet eerst afgemaakt worden voordat je door kunt naar de volgende.");
+                };
+            </script>
+        }
+    </main>
+    <footer class="footer">
+        &copy; 2021 - Reversi
+    </footer>
+    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/site.js"></script>
+    <script type="text/javascript" src="~/js/Hub.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
