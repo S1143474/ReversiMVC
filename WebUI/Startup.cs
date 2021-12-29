@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Infrastructure;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +16,9 @@ internal class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddMvc();
+        services.AddInfrastructure(Configuration);
+
+        /*services.AddMvc();*/
 
         services.AddSession();
 

@@ -2,8 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	<LangVersion>10.0</LangVersion>
+	  <LangVersion>10.0</LangVersion>
 	
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\img\reversi.png" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\img\reversi.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  
+	
 </Project>

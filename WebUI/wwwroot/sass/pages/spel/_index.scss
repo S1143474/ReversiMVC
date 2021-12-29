@@ -1,0 +1,23 @@
+@use '../../abstracts/colors' as clr;
+
+#page__content {
+    position: relative;
+    margin: 2% 10% 5% 10%;
+    //padding-right: 5%;
+    height: 100vh;
+    width: 80%;
+}
+
+.open__game__list {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 30%;
+    grid-auto-flow: dense;
+    grid-gap: 1.225em;
+
+    height: 80%;
+    padding: 0 3%;
+    overflow-y: scroll;
+}

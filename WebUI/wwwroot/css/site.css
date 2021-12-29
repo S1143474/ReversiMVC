@@ -1,18 +1,262 @@
-html {
-  font-size: 14px;
+﻿@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+:root {
+    --primary-text: #ABA7A7;
+    --primary-background: #171613;
+    --secondary-background: #262421;
+    --highlight: rgba(162, 121, 239, 0.9);
+    --highlight-red: #DA3D2D;
+    --highlight-orange: #DA702D;
+    --highlight-yellow: #FDB702;
+    --highlight-green: #A2E901;
+    --highlight-blue: #01A2E9;
+    --highlight-purple: #A279EF;
+    --disabled-color: #51576E;
+    --text-color: #eee;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin-bottom: 60px;
+    overflow: hidden;
+    min-height: 100vh;
+    font-family: "Poppins", "Ubuntu", sans-serif;
+    color: var(--primary-text);
+    background: var(--primary-background);
 }
+
+/* TODO FIX THAT ON MOBILE PHONE THE KEYBOARD W*/
+.footer {
+    position: fixed;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    body {
+        margin-bottom: 64px;
+    }
+
+    .header__container {
+        position: relative;
+    }
+
+    .header {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 64px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        background-color: var(--secondary-background);
+        display: flex;
+        
+        -webkit-user-select: none;
+        user-select: none;
+
+        z-index: 100;
+    }
+
+    .header__title {
+        display: none;
+    }
+
+    .header ul {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header ul li {
+        list-style: none;
+        flex-grow: 1;
+        padding: 0;
+    }
+
+    .header ul li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 64px;
+        overflow: hidden;
+        text-decoration: none;
+        color: white;
+        font-size: 13px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .header ul li:hover {
+        background-color: var(--highlight);
+        clip-path: circle(50% at 50%);
+    }
+
+    .privacy__link {
+        display: none;
+    }
+
+    .action__form {
+        display: none;
+    }
+
+    .reorder-btn {
+        display: none;        
+    }
+
+    .footer {
+        bottom: 9em;
+        left: 50%;
+        transform: translate(-50%, 0);
+        font-size: 8px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .header {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background: var(--secondary-background);
+        box-shadow: 0 1em .5em var(--primary-background);
+        margin-bottom: 1em;
+        z-index: 100;
+
+        user-select:none;
+    }
+
+    .header__title {
+        margin-left: 1em;
+        margin-block: .2em;
+        color: white;
+        font-weight: 700;
+        font-size: 2em;
+        text-decoration: none;
+    }
+
+    .action__form {
+        position: absolute;
+        right: 0;
+    }
+
+    .action__form ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header ul li {
+        list-style: none;
+        margin-left: 20px;
+        display: inline-flex;
+    }
+
+    .header ul li:nth-child(4) {
+        display: none;
+    } 
+
+    .header ul li a {
+        position: relative;
+        color: white;
+        text-decoration: none;
+        padding: 6px 15px;
+        border-radius: 20px;
+    }
+
+    .account__settings li button {
+        position: relative;
+        color: white;
+        text-decoration: none;
+        margin: 0;
+        padding: 6px 15px;
+        width: inherit;
+        height: inherit;
+    }
+
+    .header ul li:hover a {
+        transition: .9s;
+    }
+
+    .account__settings li button {
+        transition: .9s;
+    }
+
+    .account__settings li button:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%) scaleX(0);
+        -webkit-transform: translateX(-50%) scaleX(0);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        width: 100%;
+        height: .15em;
+        background-color: var(--highlight);
+        -webkit-transition: transform 250ms;
+        transition: transform 250ms;
+    }
+
+    .header ul li a:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%) scaleX(0);
+        -webkit-transform: translateX(-50%) scaleX(0);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        width: 100%;
+        height: .15em;
+        background-color: var(--highlight);
+        -webkit-transition: transform 250ms;
+        transition: transform 250ms;
+    }
+
+    .header ul li a:hover:after {
+        -webkit-transform: translateX(-50%) scaleX(1);
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    .account__settings li button:hover:after {
+        -webkit-transform: translateX(-50%) scaleX(1);
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    .header ul li a i {
+        display: none;
+    }
+
+    .account__settings {
+        position: relative;
+        right: 0;
+        margin-right: 16px;
+        font-size: 48px;
+    }
+
+    .logout__btn {
+        border: none;
+        background: none;
+    }
+
+    .footer {
+        bottom: 1em;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    .hide-from-desktop {
+        display: none;
+    }
+}
+
+
+

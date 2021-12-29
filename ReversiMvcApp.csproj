@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\**" />
+    <Content Remove="Views\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="Views\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20210225153247_InitialCreate.cs" />
     <Compile Remove="Migrations\20210225153247_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20211216162922_AantalFicheFlipped.cs" />

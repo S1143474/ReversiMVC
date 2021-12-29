@@ -2,3 +2,8 @@ C:\Users\bassc\source\repos\ReversiMvcApp\Domain\obj\Debug\netcoreapp3.1\Domain.
 C:\Users\bassc\source\repos\ReversiMvcApp\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
 C:\Users\bassc\source\repos\ReversiMvcApp\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
 C:\Users\bassc\source\repos\ReversiMvcApp\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache
+C:\Users\bassc\source\repos\ReversiMvcApp\Domain\bin\Debug\netcoreapp3.1\Domain.deps.json
+C:\Users\bassc\source\repos\ReversiMvcApp\Domain\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\Domain\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\bassc\source\repos\ReversiMvcApp\Domain\obj\Debug\netcoreapp3.1\Domain.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\Domain\obj\Debug\netcoreapp3.1\Domain.pdb

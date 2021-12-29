@@ -1,4 +1,20 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const lobbycards = document.querySelectorAll(".game__card");
+const historyListItems = document.querySelectorAll(".history__list__item");
 
-// Write your JavaScript code.
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+        // if(entry.isIntersecting) observer.unobserve(entry.target);
+    });
+}, {
+    threshold: 0.45,
+});
+
+lobbycards.forEach(card => {
+    observer.observe(card);
+});
+
+historyListItems.forEach(item => {
+    observer.observe(item);
+});
+
