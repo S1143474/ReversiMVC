@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+	<LangVersion>10.0</LangVersion>
     <UserSecretsId>aspnet-ReversiMvcApp-F0260F5B-111B-4C2E-BB29-06250604DEE2</UserSecretsId>
   </PropertyGroup>
 
