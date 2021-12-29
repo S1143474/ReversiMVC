@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReversiMvcApp", "ReversiMvcApp.csproj", "{CE0A51C1-31FE-4110-8522-A1DB1B5DB6BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReversiMvcApp", "ReversiMvcApp.csproj", "{CE0A51C1-31FE-4110-8522-A1DB1B5DB6BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A54B502E-2859-432B-ACAE-784078E318C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{F0AF31F0-0604-4C48-9428-62874A8637A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{CE0A51C1-31FE-4110-8522-A1DB1B5DB6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE0A51C1-31FE-4110-8522-A1DB1B5DB6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE0A51C1-31FE-4110-8522-A1DB1B5DB6BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0AF31F0-0604-4C48-9428-62874A8637A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0AF31F0-0604-4C48-9428-62874A8637A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0AF31F0-0604-4C48-9428-62874A8637A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0AF31F0-0604-4C48-9428-62874A8637A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F0AF31F0-0604-4C48-9428-62874A8637A8} = {A54B502E-2859-432B-ACAE-784078E318C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BF66063-48A8-48F7-AD54-6B3933A9D305}
