@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class SpelerModel
+    public class Speler
     {
         [Key]
         public string Guid { get; set; }
@@ -23,7 +23,7 @@ namespace Domain.Entities
         /// </summary>
         /// <param name="guid"></param>
         /// <param name="naam"></param>
-        public SpelerModel(string guid, string naam)
+        public Speler(string guid, string naam)
         {
             Guid = guid;
             Naam = naam;

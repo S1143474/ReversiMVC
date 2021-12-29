@@ -46,9 +46,7 @@ C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsof
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
@@ -100,3 +98,9 @@ C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Vi
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Spel\Menu.cshtml.g.cs
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Http.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Http.Polly.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Polly.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Polly.Extensions.Http.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\MediatR.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\MediatR.Extensions.Microsoft.DependencyInjection.dll

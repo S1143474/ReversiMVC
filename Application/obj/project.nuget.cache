@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "So/QdKjq3gb2B4qOlydx7jT+4uZK+an3D2HR0KkNrEkoGrLpPHbP7eZgcCIJWrXv2SD1LQpbwQAyBBHvGnyJeA==",
+  "dgSpecHash": "GKhEcM9JakxaD0bYc8fbYfLVFFTizTxr+m5tHxh9YHCTC/4rM4nJUr4VUpsnYwl/haPfea5KNxVyLs+LrQVP9g==",
   "success": true,
   "projectFilePath": "C:\\Users\\bassc\\source\\repos\\ReversiMvcApp\\Application\\Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\bassc\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.10\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.10.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

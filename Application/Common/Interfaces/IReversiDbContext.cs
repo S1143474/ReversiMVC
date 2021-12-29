@@ -5,6 +5,6 @@ namespace Application.Common.Interfaces
 {
     public interface IReversiDbContext
     {
-        DbSet<SpelerModel> Spelers { get; set; }
+        DbSet<Speler> Spelers { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Infrastructure.Persistence
 {
     public class ReversiDbContext : DbContext, IReversiDbContext
     {
-        public DbSet<SpelerModel> Spelers { get; set; }
+        public DbSet<Speler> Spelers { get; set; }
 
         public ReversiDbContext(DbContextOptions<ReversiDbContext> options)
             : base(options)
