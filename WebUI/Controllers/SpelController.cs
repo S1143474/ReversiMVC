@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Spellen.Commands.CreateSpel;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -56,6 +57,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult> Menu()
         {
             return View();

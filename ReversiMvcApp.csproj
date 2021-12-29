@@ -6,9 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\**" />
     <Compile Remove="Views\**" />
+    <Content Remove="Areas\**" />
     <Content Remove="Views\**" />
+    <EmbeddedResource Remove="Areas\**" />
     <EmbeddedResource Remove="Views\**" />
+    <None Remove="Areas\**" />
     <None Remove="Views\**" />
   </ItemGroup>
 
@@ -28,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />

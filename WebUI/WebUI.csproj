@@ -6,12 +6,20 @@
 	
   </PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
+	</ItemGroup>
+
   <ItemGroup>
     <Content Remove="wwwroot\img\reversi.png" />
   </ItemGroup>
     
   <ItemGroup>
     <EmbeddedResource Include="wwwroot\img\reversi.png" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <None Include="Views\Shared\Components\RegisterUE\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
