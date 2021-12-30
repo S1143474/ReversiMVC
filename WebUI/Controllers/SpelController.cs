@@ -12,6 +12,7 @@ using WebUI.Filters;
 
 namespace WebUI.Controllers
 {
+    [Authorize]
     [ServiceFilter(typeof(StillPlayingFilter))]
     [Route("[controller]/{action=AvailableGames}")]
     public class SpelController : ControllerBase
@@ -60,7 +61,6 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult> Menu()
         {
             return View();

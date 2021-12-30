@@ -38,7 +38,7 @@ namespace Infrastructure
 
             services.AddHttpClient("SpelRestAPI", client =>
             {
-                client.BaseAddress = new Uri("https://localhost:44339/api/");
+                client.BaseAddress = new Uri(configuration.GetValue<string>("ReversiRestAPI"));
             }).AddTransientHttpErrorPolicy(policy => 
                 policy.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(300)));
 
