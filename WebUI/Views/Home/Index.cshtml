@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Application.Spelers.Queries.GetSpeler.SpelerDTO
+
+@{
     ViewData["Title"] = "Home Page";
     string[,] letters = new string[7, 7] {
         { "", "L", "P", "", "", "", "R" },
@@ -17,9 +19,9 @@
         <span data-title="Stats"></span>
 
         <ul class="home__stats__list">
-            <li class="home__stats__list__item"><span class="material-icons">emoji_events</span>Wins:<span>@ViewBag.Wins</span></li>
-            <li class="home__stats__list__item"><span class="material-icons">trending_down</span>Losses:<span>@ViewBag.Losses</span></li>
-            <li class="home__stats__list__item"><span class="material-icons">handshake</span>Draws:<span>@ViewBag.Draws</span></li>
+            <li class="home__stats__list__item"><span class="material-icons">emoji_events</span>Wins:<span>@Model.Wins</span></li>
+            <li class="home__stats__list__item"><span class="material-icons">trending_down</span>Losses:<span>@Model.Losses</span></li>
+            <li class="home__stats__list__item"><span class="material-icons">handshake</span>Draws:<span>@Model.Draws</span></li>
             @* <li class="home__stats__list__item"><svg class="game__player__score__icon" viewBox="0 0 64 64">
                     <circle cx="58%" cy="33%" r="16%" fill="#DA3D2D"/>
                     <circle cx="42%" cy="33%" r="16%" fill="#DA702D"/>

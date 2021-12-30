@@ -1,13 +1,32 @@
 ﻿using System.Diagnostics;
+using System.Threading.Tasks;
+using Application.Spelers.Queries.GetSpeler;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor accessor) : base(accessor)
         {
-            return View();
+            _logger = logger;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var query = new GetSpelerQuery()
+            {
+                UserId = UserId,
+                Naam = UserName
+            };
+
+            var result = await Mediator.Send(query);
+
+            return View(result);
         }
 
         public IActionResult Privacy()
