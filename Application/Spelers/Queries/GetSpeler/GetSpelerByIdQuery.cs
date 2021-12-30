@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Spelers.Queries.GetSpeler
 {
-    public class GetSpelerQuery : IRequest<SpelerDTO>
+    public class GetSpelerByIdQuery : IRequest<SpelerDTO>
     {
         public string UserId { get; set; }
         public string Naam { get; set; }
 
     }
 
-    public class GetSpelerQueryHandler : IRequestHandler<GetSpelerQuery, SpelerDTO>
+    public class GetSpelerQueryHandler : IRequestHandler<GetSpelerByIdQuery, SpelerDTO>
     {
         private readonly IReversiDbContext _context;
 
@@ -26,7 +26,7 @@ namespace Application.Spelers.Queries.GetSpeler
             _context = context;
         }
 
-        public async Task<SpelerDTO> Handle(GetSpelerQuery request, CancellationToken cancellationToken)
+        public async Task<SpelerDTO> Handle(GetSpelerByIdQuery request, CancellationToken cancellationToken)
         {
 
             var speler =  await _context.Spelers.FirstOrDefaultAsync(s => s.Guid.Equals(request.UserId), cancellationToken);

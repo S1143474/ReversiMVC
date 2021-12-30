@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
-namespace WebUI.Areas.Identity.Pages.Account
+namespace Infrastructure.Identity
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -80,6 +81,7 @@ namespace WebUI.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.UserName, Email = Input.Email };
+                user.EmailConfirmed = false;
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

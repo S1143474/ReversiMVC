@@ -20,9 +20,22 @@ namespace Infrastructure.Services
             HttpClientFactory = httpClientFactory;
         }
 
-        public Task<List<Spel>> ReturnListOfSpellen()
+        public async Task<List<Spel>> ReturnListOfSpellen()
         {
-            throw new NotImplementedException();
+            var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
+
+            var response = await httpClient.GetAsync("Spel");
+
+            if (response == null || response.StatusCode == HttpStatusCode.NoContent)
+                return null;
+
+            string json;
+            using (var content = response.Content)
+            {
+                json = await content.ReadAsStringAsync();
+            }
+
+            return JsonSerializer.Deserialize<List<Spel>>(json);
         }
 
         public async Task<bool> CreateSpel(CreateSpelCommand spelCommand)

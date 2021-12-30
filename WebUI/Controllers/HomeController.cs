@@ -18,7 +18,7 @@ namespace WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var query = new GetSpelerQuery()
+            var query = new GetSpelerByIdQuery()
             {
                 UserId = UserId,
                 Naam = UserName

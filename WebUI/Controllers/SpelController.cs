@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Spelers.Queries.GetSpellen;
 using Application.Spellen.Commands.CreateSpel;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -27,7 +28,9 @@ namespace WebUI.Controllers
         [HttpGet]
         public async Task<ActionResult> AvailableGames()
         {
-            return View();
+            var result = await Mediator.Send(new GetAvailableSpellenListQuery());
+
+            return View(result);
         }
 
         [HttpGet]

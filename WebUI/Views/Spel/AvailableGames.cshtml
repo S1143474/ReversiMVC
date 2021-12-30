@@ -1,10 +1,10 @@
-﻿@*@model IEnumerable<ReversiMvcApp.Models.Json.SpelJsonModel>
+﻿@model IEnumerable<Domain.Entities.Spel>
 @{
     ViewData["Title"] = "Reversi";
-}*@
+}
 
-@*@if (Model != null)
-{*@
+@if (Model != null && Model.Count() != 0)
+{
     <div id="page__content">
         <div class="open__game__list">
             @*@foreach (var item in Model)
@@ -29,9 +29,8 @@
 
                 Random random = new Random();
             }
-
-            @* @foreach (var item in Model) *@
-            @for (int i = 0; i < 128; i++)
+            @*@for (int i = 0; i < 128; i++)*@
+            @foreach (var item in Model)
             {
                 int num = random.Next(0, 8);
                 string newSize = sizes[num % sizes.Length];
@@ -47,7 +46,8 @@
                     </div>
                     <div class="game__card__game__info">
                         <h2 class="game__card__player__name">John Doe</h2>
-                        <p class="game__card__game__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        @*                        <p class="game__card__game__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+*@                      <p class="game__card__game__description">@item.Omschrijving</p>
                         <div class="game__card__game__achievements">
                             <div>
                                 <h6>Wins</h6>
@@ -69,176 +69,15 @@
                     @* <span class="game__card__from">asdf</span> *@
                 </a>
             }
-            @*<a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card tall">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card medium">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card tall">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card tall">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card tall">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-             <a class="game__card tall">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card tall">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card tall">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-             <a class="game__card tall">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card wide">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card tall">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>
-            <a class="game__card small">
-                <h2 class="card__action__title">Play</h2>
-                <p class="game__card__description">Lorem ipsum</p>
-                <span class="game__card__from">asdf</span>
-            </a>*@
         </div>
     </div>
-@*}
+}
 else
-{*@
+{
     <div class="nothingfound">
         <h1 class="nothingfound__message">Geen openstaande reversi spellen gevonden.</h1>
     </div>
-@*}*@
+}
 
 @*<h1>Openstaande Spellen</h1>
     <hr />
