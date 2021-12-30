@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebUI.Filters;
 
 internal class Startup
 {
@@ -19,6 +20,12 @@ internal class Startup
     {
         services.AddApplication();
         services.AddInfrastructure(Configuration);
+
+        services.AddScoped<StillPlayingFilter>();
+        /* services.AddMvc().AddMvcOptions(options =>
+         {
+             options.Filters.Add(typeof(StillPlayingFilter));
+         });*/
 
         /*services.AddMvc();*/
 

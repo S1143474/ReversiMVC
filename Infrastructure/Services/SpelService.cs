@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Spellen.Commands.CreateSpel;
 using Domain.Entities;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Infrastructure.Services
 {
@@ -28,11 +29,11 @@ namespace Infrastructure.Services
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
-            string json = JsonConvert.SerializeObject(spelCommand);
+            string json = JsonSerializer.Serialize(spelCommand); 
             StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var result = await httpClient.PostAsync("Spel", data);
-            return result.IsSuccessStatusCode;
+            var response = await httpClient.PostAsync("Spel", data);
+            return response.IsSuccessStatusCode;
         }
 
         public Task<Spel> RetrieveSpelOverToken(string token)
@@ -40,9 +41,22 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public Task<Spel> RetrieveSpelOverSpelerToken(string spelerToken)
+        public async Task<Spel> RetrieveSpelOverSpelerToken(string spelerToken)
         {
-            throw new NotImplementedException();
+            var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
+
+            var response = await httpClient.GetAsync($"SpelSpeler/{spelerToken}");
+
+            if (response == null || response.StatusCode == HttpStatusCode.NoContent)
+                return null;
+
+            string json;
+            using (var content = response.Content)
+            {
+                json = await content.ReadAsStringAsync();
+            }
+
+            return JsonSerializer.Deserialize<Spel>(json);
         }
 
         public Task JoinSpelReversi(string spelToken, string speler2Token)
