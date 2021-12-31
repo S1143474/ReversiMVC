@@ -8,6 +8,9 @@ using Application.Common.Interfaces;
 using Application.Spellen.Commands.CreateSpel;
 using Domain.Entities;
 using System.Text.Json;
+using Application.Spelers.Queries.GetSpeler;
+using Application.Spelers.Queries.GetSpellen;
+using Application.Spellen.Queries.GetSpellen;
 
 namespace Infrastructure.Services
 {
@@ -20,7 +23,7 @@ namespace Infrastructure.Services
             HttpClientFactory = httpClientFactory;
         }
 
-        public async Task<List<Spel>> ReturnListOfSpellen()
+        public async Task<List<SpelDTO>> ReturnListOfSpellen()
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
@@ -34,8 +37,9 @@ namespace Infrastructure.Services
             {
                 json = await content.ReadAsStringAsync();
             }
-
-            return JsonSerializer.Deserialize<List<Spel>>(json);
+            
+            var result = JsonSerializer.Deserialize<List<SpelDTO>>(json);
+            return result;
         }
 
         public async Task<bool> CreateSpel(CreateSpelCommand spelCommand)

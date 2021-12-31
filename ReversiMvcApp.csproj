@@ -17,13 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20210225153247_InitialCreate.cs" />
-    <Compile Remove="Migrations\20210225153247_InitialCreate.Designer.cs" />
-    <Compile Remove="Migrations\20211216162922_AantalFicheFlipped.cs" />
-    <Compile Remove="Migrations\20211216162922_AantalFicheFlipped.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="wwwroot\img\reversi.png" />
   </ItemGroup>
 

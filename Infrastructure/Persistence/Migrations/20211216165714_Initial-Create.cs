@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ReversiMvcApp.Migrations
+namespace Infrastructure.Persistence.Migrations
 {
     public partial class InitialCreate : Migration
     {

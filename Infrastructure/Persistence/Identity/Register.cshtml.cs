@@ -81,7 +81,7 @@ namespace Infrastructure.Identity
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.UserName, Email = Input.Email };
-                user.EmailConfirmed = false;
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

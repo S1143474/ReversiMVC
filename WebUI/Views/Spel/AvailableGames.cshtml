@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Entities.Spel>
+﻿@model IEnumerable<Application.Spellen.Queries.GetSpellen.SpelDTO>
 @{
     ViewData["Title"] = "Reversi";
 }
@@ -47,7 +47,7 @@
                     <div class="game__card__game__info">
                         <h2 class="game__card__player__name">John Doe</h2>
                         @*                        <p class="game__card__game__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-*@                      <p class="game__card__game__description">@item.Omschrijving</p>
+*@                      <p class="game__card__game__description">@item.omschrijving</p>
                         <div class="game__card__game__achievements">
                             <div>
                                 <h6>Wins</h6>
