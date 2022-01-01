@@ -17,7 +17,7 @@ namespace Application.Common.Interfaces
 
         Task<bool> CreateSpel(CreateSpelCommand spelCommand);
 
-        Task<Spel> RetrieveSpelOverToken(string token);
+        Task<SpelDTO> RetrieveSpelOverToken(string token);
 
         Task<Spel> RetrieveSpelOverSpelerToken(string spelerToken);
 

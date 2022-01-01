@@ -53,9 +53,19 @@ namespace Infrastructure.Services
             return response.IsSuccessStatusCode;
         }
 
-        public Task<Spel> RetrieveSpelOverToken(string token)
+        public async Task<SpelDTO> RetrieveSpelOverToken(string token)
         {
-            throw new NotImplementedException();
+            var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
+
+            var response = await httpClient.GetAsync($"Spel/{token}");
+
+            string json;
+            using (var content = response.Content)
+            {
+                json = await content.ReadAsStringAsync();
+            }
+
+            return JsonSerializer.Deserialize<SpelDTO>(json);
         }
 
         public async Task<Spel> RetrieveSpelOverSpelerToken(string spelerToken)

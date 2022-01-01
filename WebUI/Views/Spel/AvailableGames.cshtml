@@ -3,18 +3,18 @@
     ViewData["Title"] = "Reversi";
 }
 
-@if (Model != null && Model.Count() != 0)
+@*@if (Model != null && Model.Count() != 0)
 {
     <div id="page__content">
         <div class="open__game__list">
-            @*@foreach (var item in Model)
+            @foreach (var item in Model)
             {
                 <a asp-controller="Spel" asp-action="Details" asp-route-id="@item.Token" class="game__card">
                     <h2 class="card__action__title">Play</h2>
                     <p class="game__card__description">@item.Omschrijving</p>
                     <span class="game__card__from">@item.Speler1Token</span>
                 </a>
-            }*@
+            }
             @{
                 @* string[] sizes =
                 {
@@ -22,14 +22,14 @@
                     "small", "tall", "small",
                     "tall", "small", "wide", "small",
                     "small", "wide", "wide"
-                }; *@
+                }; 
                 string[] sizes = {
                     "wide", "medium", "small", "tall"
                 };
 
                 Random random = new Random();
             }
-            @*@for (int i = 0; i < 128; i++)*@
+            @for (int i = 0; i < 128; i++)
             @foreach (var item in Model)
             {
                 int num = random.Next(0, 8);
@@ -47,7 +47,7 @@
                     <div class="game__card__game__info">
                         <h2 class="game__card__player__name">John Doe</h2>
                         @*                        <p class="game__card__game__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-*@                      <p class="game__card__game__description">@item.omschrijving</p>
+                     <p class="game__card__game__description">@item.omschrijving</p>
                         <div class="game__card__game__achievements">
                             <div>
                                 <h6>Wins</h6>
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                    @* <span class="game__card__from">asdf</span> *@
+                    @* <span class="game__card__from">asdf</span> 
                 </a>
             }
         </div>
@@ -77,9 +77,9 @@ else
     <div class="nothingfound">
         <h1 class="nothingfound__message">Geen openstaande reversi spellen gevonden.</h1>
     </div>
-}
+}*@
 
-@*<h1>Openstaande Spellen</h1>
+<h1>Openstaande Spellen</h1>
     <hr />
 
     <p>
@@ -93,13 +93,13 @@ else
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Omschrijving)
+                        @Html.DisplayNameFor(model => model.omschrijving)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Token)
+                        @Html.DisplayNameFor(model => model.token)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Speler1Token)
+                        @Html.DisplayNameFor(model => model.speler1Token)
                     </th>
                 </tr>
             </thead>
@@ -108,16 +108,16 @@ else
         {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Omschrijving)
+                        @Html.DisplayFor(modelItem => item.omschrijving)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Token)
+                        @Html.DisplayFor(modelItem => item.token)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Speler1Token)
+                        @Html.DisplayFor(modelItem => item.speler1Token)
                     </td>
                     <td>
-                        <a asp-action="Details" asp-route-id="@item.Token" class="btn btn-outline-primary ml-2">Join</a>
+                        <a asp-action="Reversi" asp-route-id="@item.token" class="btn btn-outline-primary ml-2">Join</a>
                     </td>
                 </tr>
         }
@@ -126,4 +126,4 @@ else
     } else
     {
         <h1>Geen spellen gevonden</h1>
-    }*@
+    }

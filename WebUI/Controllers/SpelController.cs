@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Spelers.Queries.GetSpellen;
 using Application.Spellen.Commands.CreateSpel;
+using Application.Spellen.Queries.GetSpel;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -36,7 +37,13 @@ namespace WebUI.Controllers
         [HttpGet]
         public async Task<ActionResult> Reversi(string id)
         {
-            return View(null);
+            var result = await Mediator.Send(new GetSpelQuery()
+            {
+                Id = id,
+                UserId = UserId
+            });
+
+            return View(result);
         }
 
         [HttpGet]

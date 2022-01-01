@@ -1,4 +1,4 @@
-﻿@*@model ReversiMvcApp.Models.Json.SpelJsonModel*@
+﻿@model Application.Spellen.Queries.GetSpel.GetSpelDTO
 @{
     ViewData["Title"] = "Game";
 }
@@ -7,19 +7,19 @@
 
     <div class="game__introduction">
         <div class="game__introduction-left">
-            <h2>@ViewBag.Player1</h2>
+            <h2>@Model.Speler1Naam</h2>
         </div>
         <div class="game__introduction-vs">
             <h3>VS</h3>
         </div>
         <div class="game__introduction-right">
-            <h2>@ViewBag.Player2</h2>
+            <h2>@Model.Speler2Naam</h2>
         </div>
     </div>
 
     <aside class="game__player__info player-1">
         <div class="game__player__content">
-            <h2 class="game__player__name">@ViewBag.Player1</h2>
+            <h2 class="game__player__name">@Model.Speler1Naam</h2>
 
             <div class="game__player__score">
                 <svg class="game__player__score__icon" viewBox="0 0 64 64">
@@ -73,7 +73,7 @@
     </div>
     <aside class="game__player__info player-2">
         <div class="game__player__content">
-            <h2 class="game__player__name game__player__name-highlighted">@ViewBag.Player2</h2>
+            <h2 class="game__player__name game__player__name-highlighted">@Model.Speler2Naam</h2>
 
            <div class="game__player__score">
                 <svg class="game__player__score__icon" viewBox="0 0 64 64">
