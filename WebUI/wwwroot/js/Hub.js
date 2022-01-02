@@ -11,8 +11,9 @@ if (Notification.permission === "granted") {
     });
 }
 
-connection.on("Start", (token, text) => {
-    console.log(token, text);
+connection.on("StartGame", (token) => {
+    debugger;
+    console.log(token);
 
     if (Notification.permission === "granted") {
         var notification = new Notification("New message!",
@@ -27,6 +28,7 @@ connection.on("Start", (token, text) => {
 });
 
 connection.start().then(function () {
+    console.log("Start Conenction");
     //document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {
     console.error(err.toString());

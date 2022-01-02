@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Spelers.Queries.GetSpellen;
 using Application.Spellen.Commands.CreateSpel;
+using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpellen;
 using Domain.Entities;
 
@@ -19,8 +20,8 @@ namespace Application.Common.Interfaces
 
         Task<SpelDTO> RetrieveSpelOverToken(string token);
 
-        Task<Spel> RetrieveSpelOverSpelerToken(string spelerToken);
+        Task<SpelDTO> RetrieveSpelOverSpelerToken(string spelerToken);
 
-        Task JoinSpelReversi(string spelToken, string speler2Token);
+        Task<bool> JoinSpelReversi(StartSpelCommand startSpelCommand);
     }
 }

@@ -4,6 +4,7 @@ using System.Text;
 using Application.Common.Interfaces;
 using Infrastructure.Persistence;
 using Infrastructure.Services;
+using Infrastructure.SocketHub;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -48,9 +49,13 @@ namespace Infrastructure
                     {
                         builder.WithOrigins("https://localhost:44339/api/Spel");
                     });
+
+                options.AddDefaultPolicy(builder => builder.WithOrigins("https://localhost:44339").AllowCredentials());
             });
 
             services.AddSingleton<ISpelService, SpelService>();
+
+            services.AddSignalR();
 
             return services;
         }

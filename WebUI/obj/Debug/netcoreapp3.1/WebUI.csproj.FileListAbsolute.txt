@@ -143,3 +143,4 @@ C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Domain.p
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\WebUI.Views.pdb
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\WebUI.csproj.CopyComplete
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\WebUI.genruntimeconfig.cache
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Spel\Waiting.cshtml.g.cs

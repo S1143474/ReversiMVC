@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Spelers.Queries.GetSpellen;
 using Application.Spellen.Commands.CreateSpel;
+using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpel;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -16,7 +17,6 @@ namespace WebUI.Controllers
 {
     [Authorize]
     [ServiceFilter(typeof(StillPlayingFilter))]
-    [Route("[controller]/{action=AvailableGames}")]
     public class SpelController : ControllerBase
     {   
         private readonly ILogger<SpelController> _logger;
@@ -35,6 +35,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
+        [Route("[controller]/[action]/{id}")]
         public async Task<ActionResult> Reversi(string id)
         {
             var result = await Mediator.Send(new GetSpelQuery()
@@ -44,6 +45,18 @@ namespace WebUI.Controllers
             });
 
             return View(result);
+        }
+
+        [HttpGet]
+        [Route("[controller]/[action]/{id}")]
+        public async Task<ActionResult> Waiting(string id)
+        {
+            await Mediator.Send(new StartSpelCommand()
+            {
+                Speler2Token = UserId,
+                SpelToken = id
+            });
+            return View();
         }
 
         [HttpGet]
@@ -71,6 +84,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
+        [Route("spel")]
         public async Task<ActionResult> Menu()
         {
             return View();

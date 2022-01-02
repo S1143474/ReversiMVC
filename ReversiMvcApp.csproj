@@ -17,11 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\img\reversi.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="wwwroot\img\reversi.png" />
+    <None Include="Application\Application.csproj" />
+    <None Include="Domain\Domain.csproj" />
+    <None Include="Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +35,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\bin\Debug\net6.0\ref\" />
+    <Folder Include="Application\obj\Debug\net6.0\ref\" />
+    <Folder Include="Domain\bin\Debug\net6.0\ref\" />
+    <Folder Include="Domain\Enums\" />
+    <Folder Include="Domain\obj\Debug\net6.0\ref\" />
+    <Folder Include="Domain\obj\Debug\net6.0\staticwebassets\" />
+    <Folder Include="Infrastructure\bin\Debug\net6.0\ref\" />
+    <Folder Include="Infrastructure\obj\Debug\net6.0\ref\" />
   </ItemGroup>
 
 </Project>

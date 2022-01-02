@@ -10,6 +10,7 @@ using Domain.Entities;
 using System.Text.Json;
 using Application.Spelers.Queries.GetSpeler;
 using Application.Spelers.Queries.GetSpellen;
+using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpellen;
 
 namespace Infrastructure.Services
@@ -68,7 +69,7 @@ namespace Infrastructure.Services
             return JsonSerializer.Deserialize<SpelDTO>(json);
         }
 
-        public async Task<Spel> RetrieveSpelOverSpelerToken(string spelerToken)
+        public async Task<SpelDTO> RetrieveSpelOverSpelerToken(string spelerToken)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
@@ -83,12 +84,18 @@ namespace Infrastructure.Services
                 json = await content.ReadAsStringAsync();
             }
 
-            return JsonSerializer.Deserialize<Spel>(json);
+            return JsonSerializer.Deserialize<SpelDTO>(json);
         }
 
-        public Task JoinSpelReversi(string spelToken, string speler2Token)
+        public async Task<bool> JoinSpelReversi(StartSpelCommand startSpelCommand)
         {
-            throw new NotImplementedException();
+            var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
+
+            string json = JsonSerializer.Serialize(startSpelCommand);
+            StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PutAsync($"spel/join", data);
+            return response.IsSuccessStatusCode;
         }
     }
 }

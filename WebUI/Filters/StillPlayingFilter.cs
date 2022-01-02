@@ -65,9 +65,9 @@ namespace WebUI.Filters
              
             if (claim != null)
             {
-                Spel _spel = await _spelService.RetrieveSpelOverSpelerToken(claim.Value);
+                var spel = await _spelService.RetrieveSpelOverSpelerToken(claim.Value);
 
-                if (_spel != null)
+                if (spel != null)
                 {
                     var routeData = context.RouteData.Values;
 
@@ -75,20 +75,34 @@ namespace WebUI.Filters
                         routeData.TryGetValue("action", out var action))
                     {
 
-                        if (controller.Equals("Spel") && action.Equals("Reversi"))
+                        if (controller.Equals("Spel") && action.Equals("Waiting"))
                         {
                             await next();
                             return;
                         }
 
-                        context.Result = new RedirectResult($"/Spel/Reversi/{_spel.Token}");
+                        if (IsSpeler1Waiting(spel.speler2Token))
+                        {
+                            context.Result = new RedirectResult($"spel/Waiting/{spel.token}");
+                            await next();
+                            return;
+                        }
+                        /*context.HttpContext.Response.Redirect($"/Spel/Reversi/{_spel.token}");*/
+                        context.Result = new RedirectResult($"/Spel/Reversi/{spel.token}");
 
                     }
-
+                      
                 }
             }
 
             await next();
         }
+
+        /// <summary>
+        /// Check if Speler 1 is waiting on a Speler 1
+        /// </summary>
+        /// <param name="speler2Token"></param>
+        /// <returns></returns>
+        private bool IsSpeler1Waiting(string speler2Token) => speler2Token is null;
     }
 }

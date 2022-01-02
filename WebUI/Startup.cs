@@ -1,5 +1,7 @@
 ﻿using Application;
+using Application.Common.Interfaces;
 using Infrastructure;
+using Infrastructure.SocketHub;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -65,6 +67,12 @@ internal class Startup
             endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Spel}/{action=AvailableGames}/{id?}");
+
+            endpoints.MapHub<ReversiHub>("/reversiHub");
 
             /*endpoints.MapHub<ReversiHub>("/reversiHub");*/
             endpoints.MapRazorPages();
