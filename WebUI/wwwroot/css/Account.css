@@ -1,0 +1,815 @@
+﻿/* .login__container header span {
+    font-weight: 700;
+    color: #555;
+} */
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .login__container {
+        
+    }
+
+    .login__container header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        margin-top: 1em;
+    }
+
+     .login__container header h4 {
+         font-weight: 500;
+         font-size: 24px;
+         color: var(--text-color);
+         letter-spacing: 1px;
+     }
+
+    .login__container header span {
+        font-weight: 700;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .login__container section {
+        margin-top: 1.5em;
+    }
+
+    .login__container section {
+        width: 90%;
+        text-transform: uppercase;
+        
+        font-weight: 800;
+        font-size: 12px;
+    }
+
+    .login__container section form {
+        margin-top: .7em;
+    }
+
+    .form-control {
+        width: 100%;
+
+        padding: .9em 0;
+        padding-left: .4em;
+        
+        margin: 0 0 .6em;
+
+        background: var(--secondary-background);
+        outline: 0;
+        border: none;
+        border-radius: .3em;
+
+        font-size: 20px;
+        color: var(--text-color);
+        box-shadow: inset 0 0 15px rgba(0, 0, 0, .3);
+    }
+
+    .form__remember label {
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .form__remember label input {
+        margin-right: .25em;
+        width: .9rem;
+        height: .9rem;
+    }
+    
+    .form__remember label input:checked {
+        background: red;
+    }
+
+    .form__submit {
+        margin-top: .9em;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* .btn {
+        width: 100%;
+        max-width: 320px;
+        height: 3em;
+        outline: 0;
+        border: none;
+        border-radius: .2em;
+        font-family: "Poppins", "Ubuntu", sans-serif;
+        font-weight: 700;
+        letter-spacing: .1em;
+        -webkit-user-select: none;
+        user-select: none;
+    } */
+
+    /* .btn:hover {
+        opacity: .5;
+    } */
+
+    .btn-primary {
+        color: var(--text-color);
+        background: var(--highlight-blue);
+    }
+
+    .error-message {
+        margin-top: .9em;
+        display: flex;
+        justify-content: center;
+    }
+
+    .error-message ul {
+        color: var(--highlight-red);
+        list-style: none;
+        text-align: center;
+    }
+
+    .form__other {
+        font-size: 16px;
+    }
+
+    /* ----- _Layout.cshtml ----- */
+
+    .manage__account__container {
+        position: relative;
+        width: 100%;
+        padding: .5em .7em;
+    }
+
+    .manage__account__title {
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+    }
+
+    .manage__account__list {
+        position: absolute;
+        list-style: none;
+
+        left: 0;
+        right: 0;
+
+        margin: .8em .8em 0 .8em;
+    }
+
+    .manage__account__list li {
+        text-align: center;
+        width: 100%;
+
+        margin-block: .8em;
+        padding-block: .6em;
+
+        transition: 0.5s;
+        
+        background: var(--secondary-background);
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+    }
+
+    .manage__account__list li:hover {
+        transform: scale(1.1);
+    }
+
+    .manage__account__list li a {
+        position: relative;
+
+        text-decoration: none;
+        width: 100%;
+
+        color: var(--text-color);
+        font-size: 20px;
+
+    }
+
+    .manage__account__logout {
+        outline: 0;
+        background: transparent;
+        border: none;
+
+        width: 100%;
+        overflow: hidden;
+
+        color: var(--text-color);
+        font-size: 20px;
+    }
+
+    .manage__account__page {
+        position: absolute;
+
+        left: 200%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    /* .login__container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 60%;
+
+       border-radius: .4em;
+
+        box-shadow: 0 0 15px rgba(0, 0, 0, .4);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        overflow: hidden;
+
+        height: 32rem;
+    }
+
+    .login__container::before {
+        content: '';
+        position: absolute;
+    }
+
+    .bg-top {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+       
+        height: 24rem;
+        overflow: hidden;
+        background: var(--primary-background);
+
+        box-shadow: 0 0 18px rgba(0, 0, 0, .4);
+        z-index: -1;
+    }
+
+    .bg-bottom {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 8rem;
+        background: var(--secondary-background);
+        z-index: -2;
+    }
+
+    .login__container header h4 {
+        font-weight: 500;
+        font-size: 32px;
+        color: var(--text-color);
+        letter-spacing: 1px;
+    }
+
+    .login__container header span {
+
+    } */
+
+    .manage__account__container {
+        height: 100%;
+        margin: 2.4rem;
+    }
+
+    .manage__account__title {
+        color: white;
+
+        font-size: 1.2em;
+        letter-spacing: .1em;
+
+        padding-bottom: .4em;
+
+        border-bottom: .1em solid grey;
+    }
+
+    .manage__account__content{
+        padding-top: 2.4em;
+        display: flex;
+        height: 100%;
+
+    }
+
+    .manage__account__list {
+        list-style: none;
+    }
+
+    .account__nav-item {
+        padding: .4em 0 .4em .8em;
+        transition: 0.2s;
+    }
+
+    .account__nav-item:hover {
+        background-color: var(--secondary-background);
+        box-shadow: 0px .2rem .4rem black;
+        transform: scale(1.1);
+    }
+
+    .account__nav-item:active {
+        box-shadow: 0px .1rem .2rem black;
+        transform: scale(.95);
+    }
+
+    .account__nav-link {
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-app-region: no-drag;
+        user-select: none;
+        text-decoration: none;
+        color: white;
+        font-size: 1.2em;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .account__nav-link > .material-icons {
+        margin-right: .8em;
+    }
+
+    .account__nav-title {
+        font-weight: bold;
+        letter-spacing: .1em;
+    }
+
+    .manage__account__logout {
+        outline: none;
+        border: none;
+        background: transparent;
+        color: white;
+
+        font-size: 1.2em;
+        letter-spacing: .1em;
+        font-weight: bold;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: 2.4em;
+
+        cursor: pointer;
+    }
+
+    .manage__account__logout > .material-icons {
+        margin-left: .8em;
+    }
+
+    .manage__account__page {
+        margin-left: 1.6em;
+        background-color: var(--secondary-background);
+        width: 100%;
+        margin-right: .8em;
+
+        position: relative;
+    }
+
+    .manage__account__page > h4 {
+        margin: .3em .8em 0 .8em;
+
+        font-size: 1.8em;
+        color: var(--text-color);
+        border-bottom: 1px solid var(--text-color);
+    }
+
+    .account__form {
+        position: absolute;
+        
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 2fr 2fr 1fr 1fr;
+        grid-template-areas: 
+            "current-user changed"
+            "current-phone error"
+            "current current-2"
+            "save save";
+
+        top: 3.6em;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: auto;
+
+        margin: 0 1.6rem 1.6rem 1.6rem;
+    }
+
+    .validate-summary,
+    .validate-phone {
+        grid-area: error;
+
+        display: flex;
+        align-items: center;
+        
+        margin-top: calc(.6rem + 1.6rem + 10px);
+
+        font-size: 1rem;
+        color: var(--highlight-red);
+
+        width: 60%;
+    }
+
+    .btn-br {
+        position: absolute;
+        grid-area: save;
+        right: 0;
+        bottom: 0;
+    }
+
+    /* .custom-field {
+        width: 60%;
+        margin: 1.6rem 0;
+        position: relative;
+        font-size: 1.2em;
+        padding-top: 20px;
+        margin-bottom: 5px;
+    } */
+
+    /* .user-field {
+        grid-area: current-user;
+    }
+
+    .phone-field {
+        grid-area: current-phone; 
+    }
+
+    .current-row {
+        grid-area: current;
+    }
+
+    .account__form-2-1 {
+        grid-area: changed;
+    }
+
+    .account__form-2-2 {
+        grid-area: error;
+    } */
+
+    /* .custom-field input {
+        border: none;
+        -webkit-appearance: none;
+        -ms-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: var(--primary-background);
+
+        width: 100%;
+        padding: .6em;
+        border-radius: .2em;
+        outline: none;
+        font-size: 1em;
+        color: var(--text-color);
+    }
+
+    .custom-field input:disabled {
+        color: var(--disabled-color);
+    }
+
+    .custom-field input:disabled ~ .placeholder {
+        color: var(--disabled-color);
+        top: .6rem;
+        font-size: .8rem;
+    }
+
+    .custom-field .placeholder {
+        position: absolute;
+        left: 12px;
+        top: calc(50% + .6rem);
+        transform: translateY(-50%);
+        color: #aaa;
+        transition: 
+            top 0.3s ease,
+            font-size 0.3s ease,
+            color 0.3s ease;
+    }
+
+    .custom-field input:valid + .placeholder,
+    .custom-field input:invalid + .placeholder,
+    .custom-field input:focus + .placeholder {
+        top: .6rem;
+        font-size: .8rem;
+        color: var(--highlight-blue);
+    }
+
+    .custom-field .border {
+        width: 100%;
+        height: calc(100% - 20px);
+        position: absolute;
+        left: 0;
+        top: 20px;
+        border-radius: .15em;
+    }
+
+    .custom-field .border::before,
+    .custom-field .border::after {
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-radius: .15em;
+    }
+
+    .custom-field .border::before {
+        left: 0;
+        bottom: 0;
+        border-bottom: 0px solid var(--highlight-blue);
+        border-right: 0px solid var(--highlight-blue); 
+    }
+
+    .custom-field .border::after {
+        right: 0;
+        top: 0;
+        border-top: 0px solid var(--highlight-blue);
+        border-left: 0px solid var(--highlight-blue); 
+    }
+
+    .custom-field input:valid ~ .border:before,
+    .custom-field input:focus ~ .border:before,
+    .custom-field input:valid ~ .border:after,
+    .custom-field input:focus ~ .border:after {
+        width: calc(100% - .15em);
+        height: calc(100% - .15em);
+        border-width: .15em;
+    }
+
+    .custom-field input:valid ~ .border:before,
+    .custom-field input:focus ~ .border:before {
+        transition: 
+            width 0.3s ease,
+            height 0.3s ease 0.3s;
+    }
+
+    .custom-field input:valid ~ .border:after,
+    .custom-field input:focus ~ .border:after {
+        transition: 
+            border-width 0s ease 0.6s,
+            width 0.3s ease 0.6s,
+            height 0.3s ease 0.9s;
+    } */
+
+    /* ACCOUNT - TOAST */
+
+    .toast {
+        position: fixed;
+        display: block;
+        bottom: 0;
+        right: 0%;
+
+        width: 25%;
+        max-height: 14%;
+        margin: 0 2.4em 1.6em 0;
+        padding: .8rem .8rem 0 .8rem;
+
+        background: var(--secondary-background);
+        user-select: none;
+    }   
+
+    .toast__border {
+        width: 100%;
+        height: .15rem;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    .toast__border::before {
+        content: "";
+        display: inline-block;
+        width: 0px;
+        height: .15rem;
+        position: absolute;
+        border-bottom: .15rem solid var(--highlight-green);
+        animation: toast-progress 10s linear;
+    }
+
+    @keyframes toast-progress {
+        0% {
+            width: 0px;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+
+    .toast__content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        margin-bottom: .8rem;
+    }
+
+    .toast > .material-icons {
+        width: 10%;
+    }
+
+    .toast-success {
+        color: var(--highlight-green);
+    }
+
+    .toast__message {
+        display: block;
+        margin-left: .8rem;
+        width: 80%;
+        max-lines: 3;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        bottom: 0;
+        max-height: calc(100% - .8rem);
+    }
+
+    .toast__close {
+        position: absolute;
+        display: flex; 
+        justify-content: right;
+        right: 0;
+
+        outline: 0;
+        padding: 0;
+        margin: 0 .8rem 0 0;
+        border: none;
+        background: transparent;
+        color: var(--disabled-color);
+
+        cursor: pointer;
+    }
+
+    .toast__close > .material-icons {
+        padding: 0;
+        margin: 0;   
+        width: inherit;
+        height: inherit;
+    }
+
+    /* ACCOUNT Buttons */
+    /* .btn {
+        background-color: var(--highlight-blue);
+        color: white;
+        border: none;
+        outline: none;
+        padding: .6rem 1rem;
+        font-size: 1.2rem;
+        font-family: "Poppins", "Ubuntu", sans-serif;
+        box-shadow: 0px 5px 10px black;
+
+        transition: all .3s;
+        cursor: pointer;
+        border-radius: .2rem;
+    }
+
+    .btn:hover {
+        box-shadow: 0px .3rem .6rem -.1rem black;
+        transform: scale(1.1);
+    }
+
+    .btn:active {
+        box-shadow: 0px .1rem .2rem black;
+        transform: scale(.95);
+    } */
+
+    /* position: absolute;
+        
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 2fr 2fr 1fr 1fr;
+        grid-template-areas: 
+            "current-user changed"
+            "current-phone error"
+            "current current-2"
+            "save save";
+
+        top: 3.6em;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: auto;
+
+        margin: 0 1.6rem 1.6rem 1.6rem; */
+
+    /* REGISTER User */
+    
+}
+
+@media only screen and (min-width: 1025px) {
+    .login__container {
+        width: 50%;
+    }
+}
+@media only screen and (min-width: 1201px) {
+    .login__container {
+        width: 30%;
+    }
+}
+
+.list {
+    background: white;
+}
+
+#qrCode {
+    transform: translate(50%, 0);
+}
+
+.animate-slide {
+    animation: animateslide 2s;
+}
+.animate-slide-out {
+    animation: animateslideout 2s;
+}
+
+
+@keyframes animateslideout {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+@keyframes animateslide {
+    0% {
+        left: 200%;
+    }
+    100% {
+        left: 0%;
+    }
+}
+
+.login__container {
+    transition: height 1.3s ease;
+}
+
+/*.login__container {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__container h4 {
+    display: none;
+}
+
+.login__container form {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+
+    width: 80%;
+
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "email email"
+        "password password"
+        "remember remember"
+        "loginbtn loginbtn"
+        "line line"
+        "other other";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr .5fr 1fr 1fr 1.5fr;
+}
+
+.login__container form h2 {
+    grid-area: header;
+    
+    display: flex;
+    justify-content: center;
+
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--text-color);
+}
+
+.form-control {
+    width: 80%;
+    outline: 0;
+    padding: 8px;
+}
+
+.form__email {
+    grid-area: email;
+    
+}
+
+.form__password {
+    grid-area: password;
+}
+
+.form__remember {
+    grid-area: remember;
+}
+
+.form__submit {
+    grid-area: loginbtn;
+}
+
+.seperator {
+    grid-area: line;
+}
+
+.form__other {
+    grid-area: other;
+}*/

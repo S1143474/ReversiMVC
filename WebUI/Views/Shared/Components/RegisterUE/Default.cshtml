@@ -1,0 +1,27 @@
+@model Infrastructure.Identity.RegisterModel
+
+<div class="input-group">
+    <input asp-for="Input.UserName" placeholder=" " required autocomplete="off"/>
+                        
+    <label asp-for="Input.UserName">
+        <svg xmlns="http://www.w3.org/2000/svg" class="material-svg" fill="currentColor" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/></svg>
+        <span>Username</span>
+    </label>
+    <p class="foot__note">
+        <span asp-validation-for="Input.UserName"></span>
+    </p>
+</div>
+
+<div class="input-group">
+    <input asp-for="Input.Email" placeholder=" " required autocomplete="off"/>
+                        
+    <label asp-for="Input.Email">
+        <svg class="material-svg" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6M20 6L12 11L4 6H20M20 18H4V8L12 13L20 8V18Z" />
+        </svg>
+        <span>Email</span>
+    </label>
+    <p class="foot__note">
+        <span asp-validation-for="Input.Email"></span>
+    </p>
+</div>

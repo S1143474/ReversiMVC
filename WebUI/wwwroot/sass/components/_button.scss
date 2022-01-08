@@ -1,0 +1,82 @@
+@use 'sass:math';
+@use '../abstracts/colors' as clr;
+@import '../abstracts/mixins';
+
+$sizes: 20, 30, 40, 45, 50, 60, 70, 80, 90, 100;
+
+.btn {
+    border: none;
+    outline: none;
+
+    font-family: 'Poppins', 'Ubuntu', sans-serif;
+    font-weight: 600;
+
+    border-radius: .3em;
+
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+
+    @include user-select;
+    cursor: pointer;
+
+    transition: all .3s;
+
+    &:hover {
+        transform: scale(1.03);
+    }
+
+    &:active {
+        transform: scale(.991);
+    }
+
+    @each $size in $sizes {
+        &.w#{$size} {
+            width: #{$size}#{"%"};
+            padding: #{math.div($size, 100)}#{"em"};
+        }
+    }
+
+    font-size: var(--fs-400);
+
+    &.upper {
+        text-transform: uppercase;
+    }
+
+    &.blue {
+        background-color: clr.$blue;
+        color: clr.$text;
+    }
+
+    &.purple {
+        background-color: clr.$purple;
+        color: clr.$text;
+    }
+}
+
+// .btn {
+//     background-color: var(--highlight-blue);
+//     color: white;
+//     border: none;
+//     outline: none;
+//     padding: .6rem 1rem;
+//     font-size: 1.2rem;
+//     font-family: "Poppins", "Ubuntu", sans-serif;
+//     box-shadow: 0px 5px 10px black;
+
+//     transition: all .3s;
+//     cursor: pointer;
+//     border-radius: .2rem;
+
+//     &:hover {
+//         box-shadow: 0px .3rem .6rem -.1rem black;
+//         transform: scale(1.03);
+//     }
+
+//     &:active {
+//         box-shadow: 0px .1rem .2rem black;
+//         transform: scale(.991);
+//     }
+
+//     &__80 {
+//         width: 80%;
+//     }
+// }
