@@ -10,6 +10,7 @@ using Domain.Entities;
 using System.Text.Json;
 using Application.Spelers.Queries.GetSpeler;
 using Application.Spelers.Queries.GetSpellen;
+using Application.Spellen.Commands.PlaceFiche;
 using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpellen;
 
@@ -94,8 +95,29 @@ namespace Infrastructure.Services
             string json = JsonSerializer.Serialize(startSpelCommand);
             StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await httpClient.PutAsync($"spel/join", data);
+            var response = await httpClient.PutAsync("spel/join", data);
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<PlaceFicheDTO> PlaceFiche(bool hasPassed, int x, int y, string token, string spelerToken)
+        {
+            var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
+
+            string json = JsonSerializer.Serialize(new { hasPassed, x, y, token, spelerToken });
+            StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PutAsync("spel/zet", data);
+
+            if (response == null || response.StatusCode == HttpStatusCode.NoContent)
+                return null;
+
+            string jsonResponse;
+            using (var content = response.Content)
+            {
+                jsonResponse = await content.ReadAsStringAsync();
+            }
+
+            return JsonSerializer.Deserialize<PlaceFicheDTO>(jsonResponse);
         }
     }
 }

@@ -4,41 +4,52 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
+using Application.Spellen.Commands.PlaceFiche;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Infrastructure.SocketHub
+namespace Application.Hubs
 {
-    public class ReversiHub : Hub<IReversiHub>
+    public class ReversiHub : BaseHub
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ISpelService _spelService;
         
-        public ReversiHub([FromServices] IHttpContextAccessor httpContextAccessor, ISpelService service)
+        public ReversiHub([FromServices] IHttpContextAccessor httpContextAccessor, ISpelService service) : base(httpContextAccessor)
         {
-            _httpContextAccessor = httpContextAccessor;
             _spelService = service;
         }
 
-        public Task OnMove(object move)
+        public async Task OnMove(object move)
         {
-            throw new NotImplementedException();
+            var result = await Mediator.Send(new PlaceFicheCommand
+            {
+                //TODO: fix passes.
+                HasPassed = false,
+                X = 1,
+                Y = 1,
+                SpelerToken = UserId
+            });
+
         }
 
         public async Task StartGame()
         {
             // TODO: Add starttime to database.
 
-            var userId = _httpContextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var spel = await _spelService.RetrieveSpelOverSpelerToken(userId);
+            var spel = await _spelService.RetrieveSpelOverSpelerToken(UserId);
 
             await Clients.User(spel.speler1Token).Redirect($"spel/Reversi/{spel.token}");
         }
 
+        public async Task SendStartGameAsync(string speler1Token, string speler2Token)
+        {
+            await Clients.Users(speler1Token, speler2Token).StartGame();
+        }
 
         public override Task OnConnectedAsync()
         {

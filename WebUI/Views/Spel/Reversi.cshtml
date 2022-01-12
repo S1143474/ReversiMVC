@@ -49,22 +49,26 @@
             <span class="game__ownedboardbalance__player-1"></span>
             <span class="game__ownedboardbalance__player-2"></span>
         </div>
-        <form onsubmit="return handleMove(Event)"  >
+        <form id="reversiboardform"  >
             <table class="game__container__board">
                 @for (var row = 0; row < @Model.Bord.Count; row++) {
                     <tr class="game__container__board__row">
-                        @foreach (var cell in @Model.Bord[row]) {
+                        @for (var col = 0; col < @Model.Bord[row].Count; col++)
+                        {
                             <td class="game__container__board__col">
-                                @if (@cell == 0) {
-                                    <button type="submit" class="game__container__board__cell fiche fiche-empty"></button>
+                                @if (@Model.Bord[row][col] == 0)
+                                {
+                                    <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-empty"></button>
                                 }
 
-                                @if (@cell == 1) {
-                                    <div class="game__container__board__cell fiche fiche-white"></div>
+                                @if (@Model.Bord[row][col] == 1)
+                                {
+                                    <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-white"></button>
                                 }
 
-                                @if (@cell == 2) {
-                                    <div class="game__container__board__cell fiche fiche-black"></div>
+                                @if (@Model.Bord[row][col] == 2)
+                                {
+                                    <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-black"></button>
                                 }
                             </td>
                         }

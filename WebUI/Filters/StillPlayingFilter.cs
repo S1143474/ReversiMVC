@@ -89,7 +89,7 @@ namespace WebUI.Filters
                             return;
                         }
                         /*context.HttpContext.Response.Redirect($"/Spel/Reversi/{_spel.token}");*/
-                        context.Result = new RedirectResult($"/Spel/Reversi/{spel.token}");
+                        context.Result = new RedirectResult($"/spel/Reversi/{spel.token}");
 
                     }
                       

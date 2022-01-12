@@ -4,8 +4,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
+using Application.Hubs;
 using Domain.Enums;
-using Infrastructure.SocketHub;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
 
@@ -20,9 +20,10 @@ namespace Application.Spellen.Commands.StartSpel
     public class StartSpelCommandHandle : IRequestHandler<StartSpelCommand, SpelState>
     {
         public IHubContext<ReversiHub, IReversiHub> _hub;
+       /* public IReversiHub _hub;*/
         private readonly ISpelService _spelService;
         
-        public StartSpelCommandHandle(IHubContext<ReversiHub, IReversiHub> hub, ISpelService service)
+        public StartSpelCommandHandle(IHubContext<ReversiHub, IReversiHub> hub/*IReversiHub hub*/, ISpelService service)
         {
             _hub = hub;
             _spelService = service;
@@ -37,6 +38,10 @@ namespace Application.Spellen.Commands.StartSpel
 
             if (spel.speler2Token is not null)
             {
+                /* await _hub.SendStartGameAsync(spel.speler1Token, spel.speler2Token);
+                 await _hub.SendRedirectAsync(spel.speler1Token, spel.speler2Token,
+                     $"spel/Reversi/{spel.token}");*/
+
                 await _hub.Clients.Users(spel.speler1Token, spel.speler2Token).StartGame();
                 await _hub.Clients.Users(spel.speler1Token).Redirect($"spel/Reversi/{spel.token}");
 

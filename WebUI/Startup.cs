@@ -1,7 +1,7 @@
 ﻿using Application;
 using Application.Common.Interfaces;
+using Application.Hubs;
 using Infrastructure;
-using Infrastructure.SocketHub;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

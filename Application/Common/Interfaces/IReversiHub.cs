@@ -13,5 +13,8 @@ namespace Application.Common.Interfaces
         Task Redirect(string url);
 
         Task OnMove(object move);
+
+        Task SendStartGameAsync(string speler1Token, string speler2Token);
+        Task SendRedirectAsync(string speler1Token, string speler2Token, string url);
     }
 }

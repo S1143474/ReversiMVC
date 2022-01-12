@@ -20,10 +20,32 @@ historyListItems.forEach(item => {
     observer.observe(item);
 });
 
+//onsubmit="return handleMove(this)" 
+
+document.getElementById("reversiboardform").addEventListener("submit", (event) => {
+   
+    event.preventDefault();
+    clickAudio.play();
+
+    let x = event.submitter.getAttribute('x');
+    let y = event.submitter.getAttribute('y');
+
+    let data = {
+        x: x,
+        y: y
+    }
+
+    console.log("X:", x);
+    console.log("Y:", y);
+
+    connection.invoke("OnMove", data);
+
+    /*return false;*/
+});
 
 const handleMove = (event) => {
-    console.log(clickAudio);
+    /*console.log(event);
     clickAudio.play();
-    return false;
+    return false;*/
 };
 
