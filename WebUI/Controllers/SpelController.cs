@@ -35,9 +35,25 @@ namespace WebUI.Controllers
             return View(result);
         }
 
-        [HttpGet]
         [Route("[controller]/[action]/{id}")]
+        [HttpGet]
         public async Task<ActionResult> Reversi(string id)
+        {
+            var result = await Mediator.Send(new GetSpelQuery()
+            {
+                Id = id,
+                UserId = UserId
+            });
+
+            if (result == null)
+                return NotFound();
+
+            return View(result);
+        }
+
+        [Route("[controller]/[action]/{id}")]
+        [HttpPost]
+        public async Task<ActionResult> Reversi(string id, [FromBody]int move_x, [FromBody]int move_y)
         {
             var result = await Mediator.Send(new GetSpelQuery()
             {

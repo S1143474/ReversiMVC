@@ -2,6 +2,7 @@
 
 @use './base/font-face';
 @use './abstracts';
+@use './abstracts/animations';
 @use './components/card';
 @use './components/input';
 @use './components/input-button';
@@ -13,7 +14,7 @@
 @use './pages/account/login';
 @use './pages/account/mobilechooseaction';
 @use './pages/spel/index';
-@use './pages/spel/details';
+@use './pages/spel/reversi';
 @use './pages/spel/options';
 @use './pages/spel/create';
 @use './pages/spel/history';

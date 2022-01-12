@@ -1,0 +1,21 @@
+@keyframes fadeFightBarRight {
+   0% {
+       left: 0;
+   }
+
+   25% {
+       left: -55%;
+   }
+
+   50% {
+       left: 15%;
+   }
+
+   75% {
+       left: -55%
+   }
+
+   100% {
+       left: 0;
+   }
+}

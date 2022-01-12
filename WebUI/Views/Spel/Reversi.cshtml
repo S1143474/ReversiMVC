@@ -49,27 +49,29 @@
             <span class="game__ownedboardbalance__player-1"></span>
             <span class="game__ownedboardbalance__player-2"></span>
         </div>
-        <table class="game__container__board">
-        @*@foreach (var row in @Model.Bord) {
-            <tr class="game__container__board__row">
-            @foreach (var cell in row) {
-                <td class="game__container__board__col">
-                    @if (@cell == 0) {
-                        <div class="game__container__board__cell fiche fiche-empty"></div>
-                    }
+        <form onsubmit="return handleMove(Event)"  >
+            <table class="game__container__board">
+                @for (var row = 0; row < @Model.Bord.Count; row++) {
+                    <tr class="game__container__board__row">
+                        @foreach (var cell in @Model.Bord[row]) {
+                            <td class="game__container__board__col">
+                                @if (@cell == 0) {
+                                    <button type="submit" class="game__container__board__cell fiche fiche-empty"></button>
+                                }
 
-                    @if (@cell == 1) {
-                        <div class="game__container__board__cell fiche fiche-white"></div>
-                    }
+                                @if (@cell == 1) {
+                                    <div class="game__container__board__cell fiche fiche-white"></div>
+                                }
 
-                    @if (@cell == 2) {
-                        <div class="game__container__board__cell fiche fiche-black"></div>
-                    }
-                </td>
-            }
-            </tr>
-        }*@
-        </table>
+                                @if (@cell == 2) {
+                                    <div class="game__container__board__cell fiche fiche-black"></div>
+                                }
+                            </td>
+                        }
+                    </tr>
+                }
+            </table>
+        </form>
     </div>
     <aside class="game__player__info player-2">
         <div class="game__player__content">

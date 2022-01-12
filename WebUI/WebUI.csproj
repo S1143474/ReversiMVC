@@ -6,15 +6,24 @@
 	
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
 	</ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\audio\click_sound.mp3" />
     <Content Remove="wwwroot\img\reversi.png" />
   </ItemGroup>
     
   <ItemGroup>
+    <EmbeddedResource Include="wwwroot\audio\click_sound.mp3" />
     <EmbeddedResource Include="wwwroot\img\reversi.png" />
   </ItemGroup>
     
@@ -24,6 +33,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\audio\click_sound.mp3" />
   </ItemGroup>
 
   

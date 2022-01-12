@@ -98,6 +98,7 @@
         </nav>
     </header>
     <main role="main">
+
         @RenderBody()
         @if (TempData.ContainsKey("PlayerState") && (int)TempData["PlayerState"] != 0)
         {
