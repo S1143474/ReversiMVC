@@ -2,30 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Spelers.Commands.CreateSpeler;
 using Domain.Entities;
 using Infrastructure.Persistence;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebUI.Controllers
 {
-    public class SpelerController : Controller
+    public class SpelerController : ControllerBase
     {
         private readonly ReversiDbContext _context;
 
-        public SpelerController(ReversiDbContext context)
+        public SpelerController(IHttpContextAccessor httpContextAccessor, ReversiDbContext context) : base(httpContextAccessor)
         {
             _context = context;
         }
 
-        // GET: Speler
+     /*   // GET: Speler
         public async Task<IActionResult> Index()
         {
             return View(await _context.Spelers.ToListAsync());
-        }
+        }*/
 
-        // GET: Speler/Details/5
+   /*     // GET: Speler/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -42,17 +45,24 @@ namespace WebUI.Controllers
 
             return View(spelerModel);
         }
-
+*/
         // GET: Speler/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(string ReturnUrl)
         {
-            return View();
+            // TODO: Do something when result equals false.
+            var result = await Mediator.Send(new CreateSpelerCommand
+            {
+                UserId = UserId,
+                UserName = UserName
+            });
+
+            return LocalRedirect(ReturnUrl);
         }
 
         // POST: Speler/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Guid,Naam,AantalGewonnen,AantalVerloren,AantalGelijk")] Speler spelerModel)
         {
@@ -63,10 +73,10 @@ namespace WebUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(spelerModel);
-        }
+        }*/
 
         // GET: Speler/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        /*public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -78,13 +88,13 @@ namespace WebUI.Controllers
             {
                 return NotFound();
             }
-            return View(spelerModel);
-        }
+           return View(spelerModel);
+        }*/
 
         // POST: Speler/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Guid,Naam,AantalGewonnen,AantalVerloren,AantalGelijk")] Speler spelerModel)
         {
@@ -114,10 +124,10 @@ namespace WebUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(spelerModel);
-        }
+        }*/
 
         // GET: Speler/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        /*public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -132,10 +142,10 @@ namespace WebUI.Controllers
             }
 
             return View(spelerModel);
-        }
+        }*/
 
         // POST: Speler/Delete/5
-        [HttpPost, ActionName("Delete")]
+        /*[HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
@@ -143,11 +153,11 @@ namespace WebUI.Controllers
             _context.Spelers.Remove(spelerModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
+        }*/
 
-        private bool SpelerModelExists(string id)
+        /*private bool SpelerModelExists(string id)
         {
             return _context.Spelers.Any(e => e.Guid == id);
-        }
+        }*/
     }
 }

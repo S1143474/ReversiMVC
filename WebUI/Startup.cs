@@ -29,7 +29,7 @@ internal class Startup
              options.Filters.Add(typeof(StillPlayingFilter));
          });*/
 
-        /*services.AddMvc();*/
+        services.AddMvc();
 
         services.AddSession();
 

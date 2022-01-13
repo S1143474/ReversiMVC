@@ -30,7 +30,7 @@ namespace Application.Spelers.Queries.GetSpeler
         {
 
             var speler =  await _context.Spelers.FirstOrDefaultAsync(s => s.Guid.Equals(request.UserId), cancellationToken);
-
+            
             return new SpelerDTO()
             {
                 Draws = speler?.AantalGelijk ?? 0,

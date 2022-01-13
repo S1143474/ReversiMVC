@@ -6,6 +6,7 @@ namespace Application.Spellen.Commands.PlaceFiche
 {
     public class PlaceFicheDTO
     {
+        public int AanDeBeurt { get; set; }
         public bool IsPlaceExecuted { get; set; }
 
         public List<FicheCoordDTO> FichesToTurnAround { get; set; }

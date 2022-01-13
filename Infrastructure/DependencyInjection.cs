@@ -39,6 +39,8 @@ namespace Infrastructure
             services.AddHttpClient("SpelRestAPI", client =>
             {
                 client.BaseAddress = new Uri(configuration.GetValue<string>("ReversiRestAPI"));
+                client.DefaultRequestHeaders.Add("x-api-key", configuration.GetValue<string>("ApiKey"));
+                
             }).AddTransientHttpErrorPolicy(policy => 
                 policy.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(300)));
 
@@ -52,7 +54,8 @@ namespace Infrastructure
                 options.AddDefaultPolicy(builder => builder.WithOrigins("https://localhost:44339").AllowCredentials());
             });
 
-            services.AddSingleton<ISpelService, SpelService>(); 
+            services.AddSingleton<ISpelService, SpelService>();
+            services.AddScoped<DbContext, ReversiDbContext>();
 
             services.AddSignalR();
 

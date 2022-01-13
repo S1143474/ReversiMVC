@@ -117,7 +117,7 @@ namespace Infrastructure.Services
                 jsonResponse = await content.ReadAsStringAsync();
             }
 
-            return JsonSerializer.Deserialize<PlaceFicheDTO>(jsonResponse);
+            return JsonSerializer.Deserialize<PlaceFicheDTO>(jsonResponse, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
         }
     }
 }

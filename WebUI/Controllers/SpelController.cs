@@ -51,7 +51,7 @@ namespace WebUI.Controllers
             return View(result);
         }
 
-        [Route("[controller]/[action]/{id}")]
+        /*[Route("[controller]/[action]/{id}")]
         [HttpPost]
         public async Task<ActionResult> Reversi(string id, [FromBody]int move_x, [FromBody]int move_y)
         {
@@ -65,7 +65,7 @@ namespace WebUI.Controllers
                 return NotFound();
 
             return View(result);
-        }
+        }*/
 
         [HttpGet]
         [Route("[controller]/[action]/{id}")]

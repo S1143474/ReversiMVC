@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <aside class="game__player__info player-1">
+   @* <aside class="game__player__info player-1">
         <div class="game__player__content">
             <h2 class="game__player__name">@Model.Speler1Naam</h2>
 
@@ -43,41 +43,52 @@
                 <button>Forfeit</button>
             </div>
         </div>
-    </aside>
-    <div class="game__container">
-        <div class="game__ownedboardbalance">
-            <span class="game__ownedboardbalance__player-1"></span>
-            <span class="game__ownedboardbalance__player-2"></span>
-        </div>
-        <form id="reversiboardform"  >
-            <table class="game__container__board">
-                @for (var row = 0; row < @Model.Bord.Count; row++) {
-                    <tr class="game__container__board__row">
-                        @for (var col = 0; col < @Model.Bord[row].Count; col++)
-                        {
-                            <td class="game__container__board__col">
-                                @if (@Model.Bord[row][col] == 0)
-                                {
-                                    <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-empty"></button>
-                                }
+    </aside>*@
+   <div class="game__container">
+       <div class="game__ownedboardbalance">
+           <span class="game__ownedboardbalance__player-1"></span>
+           <span class="game__ownedboardbalance__player-2"></span>
+       </div>
+       <form id="reversiboardform"  >
+           <table class="game__container__board">
+               @for (var row = 0; row < @Model.Bord.Count; row++) {
+                   <tr class="game__container__board__row">
+                       @for (var col = 0; col < @Model.Bord[row].Count; col++)
+                       {
+                           <td class="game__container__board__col">
+                               @if (@Model.Bord[row][col] == 0)
+                               {
+                                   <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-empty"></button>
+                               }
 
-                                @if (@Model.Bord[row][col] == 1)
-                                {
-                                    <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-white"></button>
-                                }
+                               @if (@Model.Bord[row][col] == 1)
+                               {
+                                   <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-white"></button>
+                               }
 
-                                @if (@Model.Bord[row][col] == 2)
-                                {
-                                    <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-black"></button>
-                                }
-                            </td>
-                        }
-                    </tr>
-                }
-            </table>
-        </form>
-    </div>
-    <aside class="game__player__info player-2">
+                               @if (@Model.Bord[row][col] == 2)
+                               {
+                                   <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-black"></button>
+                               }
+                           </td>
+                       }
+                   </tr>
+               }
+           </table>
+       </form>
+   </div>
+   
+   <aside>
+       <div>
+           <h2>
+               @Model.Speler1Naam
+               <span> --- </span>
+               @Model.Speler2Naam
+           </h2>
+       </div>
+   </aside>
+
+   @*<aside class="game__player__info player-2">
         <div class="game__player__content">
             <h2 class="game__player__name game__player__name-highlighted">@Model.Speler2Naam</h2>
 
@@ -99,7 +110,7 @@
             </div>
             <div class="game__player__interaction"></div>
         </div>
-    </aside>
+    </aside>*@
 </section>
 
 @* <section>

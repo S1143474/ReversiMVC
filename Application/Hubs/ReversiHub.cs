@@ -29,11 +29,12 @@ namespace Application.Hubs
             var result = await Mediator.Send(new PlaceFicheCommand
             {
                 //TODO: fix passes.
-                HasPassed = false,
+                HasPassed = true,
                 X = 1,
                 Y = 1,
                 SpelerToken = UserId
             });
+
 
         }
 

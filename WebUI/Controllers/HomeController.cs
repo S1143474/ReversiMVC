@@ -18,20 +18,12 @@ namespace WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var query = new GetSpelerByIdQuery()
+            var result = await Mediator.Send(new GetSpelerByIdQuery
             {
                 UserId = UserId,
                 Naam = UserName
-            };
-
-            var result = await Mediator.Send(query);
-
-            /*if (IsMobileDevice)
-            {
-                return RedirectToPage("/Account/MobileChooseAction", new { area = "Identity" });
-            }
-            return RedirectToPage("/Account/MobileChooseAction", new { area = "Identity" });*/
-
+            });
+            
             return View(result);
         }
 

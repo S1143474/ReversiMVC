@@ -32,15 +32,19 @@ connection.on("Redirect", (url) => {
     window.location.pathname = url;
 });
 
-connection.start().then(function () {
-    console.log("Start Conenction");
-    //document.getElementById("sendButton").disabled = false;
-}).catch(function (err) {
-    console.error(err.toString());
+
+async function start() {
+    try {
+        await connection.start();
+        console.debug("SignalR");
+    } catch (err) {
+        console.debug(err);
+        setTimeout(start, 3000);
+    }
+}
+
+connection.onclose(async () => {
+    await start();
 });
 
-$(() => {
-
-});
-
-
+start();

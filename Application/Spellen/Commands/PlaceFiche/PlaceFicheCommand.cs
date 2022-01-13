@@ -31,6 +31,7 @@ namespace Application.Spellen.Commands.PlaceFiche
             PlaceFicheDTO result = await _spelService.PlaceFiche(request.HasPassed, request.X, request.Y, request.Token,
                 request.SpelerToken);
 
+            
 
             return result;
         }
