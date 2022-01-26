@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Spellen.Commands.FinishedSpel;
+using Application.Spellen.Commands.PlaceFiche;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Common.Interfaces
 {
     public interface IReversiHub
     {
+        // Probably not necessary anymore.
         Task StartGame();
 
         Task Redirect(string url);
 
-        Task OnMove(object move);
+        Task OnMove(List<FicheCoordDTO> fichesToTurnAround, int aanDeBeurt);
 
-        Task SendStartGameAsync(string speler1Token, string speler2Token);
-        Task SendRedirectAsync(string speler1Token, string speler2Token, string url);
+        Task OnWrongMove();
+
+        Task OnDisableMove(List<FicheCoordDTO> fichesToTurnAround, int aanDeBeurt);
+
+        Task OnFinish(FinishedSpelDTO finishedSpelDto);
     }
 }

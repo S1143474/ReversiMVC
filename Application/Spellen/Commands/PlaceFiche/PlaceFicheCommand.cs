@@ -4,11 +4,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
+using Application.Hubs;
 using MediatR;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Application.Spellen.Commands.PlaceFiche
 {
-    public class PlaceFicheCommand : IRequest<PlaceFicheDTO>
+    public class PlaceFicheCommand : IRequest<PlacedFichedDTO>
     {
         public bool HasPassed { get; set; }
         public int X { get; set; }
@@ -17,7 +19,7 @@ namespace Application.Spellen.Commands.PlaceFiche
         public string SpelerToken { get; set; }
     }
 
-    public class PlaceFicheCommandHandle : IRequestHandler<PlaceFicheCommand, PlaceFicheDTO>
+    public class PlaceFicheCommandHandle : IRequestHandler<PlaceFicheCommand, PlacedFichedDTO>
     {
         private readonly ISpelService _spelService;
 
@@ -26,14 +28,14 @@ namespace Application.Spellen.Commands.PlaceFiche
             _spelService = spelService;
         }
 
-        public async Task<PlaceFicheDTO> Handle(PlaceFicheCommand request, CancellationToken cancellationToken)
+        public async Task<PlacedFichedDTO> Handle(PlaceFicheCommand request, CancellationToken cancellationToken)
         {
-            PlaceFicheDTO result = await _spelService.PlaceFiche(request.HasPassed, request.X, request.Y, request.Token,
-                request.SpelerToken);
+            var placedFiche = await _spelService.PlaceFiche(request.HasPassed, request.X, request.Y, request.Token,
+                request.SpelerToken); 
 
-            
+            placedFiche.PlacedBySpelerToken = request.SpelerToken;
 
-            return result;
+            return placedFiche;
         }
     }
 }

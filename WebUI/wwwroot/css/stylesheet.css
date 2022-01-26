@@ -946,7 +946,7 @@
   z-index: -1;
   width: 100vw;
   height: 100vh;
-  animation: alphaFade 5.5s linear;
+  /*animation: alphaFade 5.5s linear;*/
 }
 @keyframes alphaFade {
   0% {
@@ -977,7 +977,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  animation: fadeInLeft 5s ease;
+  /*animation: fadeInLeft 5s ease;*/
 }
 .game__introduction-left h2 {
   color: #eee;
@@ -1048,7 +1048,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  animation: fadeInRight 5s ease;
+  /*animation: fadeInRight 5s ease;*/
 }
 .game__introduction-right h2 {
   position: absolute;

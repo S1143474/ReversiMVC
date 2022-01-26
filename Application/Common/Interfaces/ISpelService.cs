@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Application.Spelers.Queries.GetSpellen;
 using Application.Spellen.Commands.CreateSpel;
 using Application.Spellen.Commands.PlaceFiche;
 using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpellen;
-using Domain.Entities;
 
 namespace Application.Common.Interfaces
 {
@@ -25,6 +20,6 @@ namespace Application.Common.Interfaces
 
         Task<bool> JoinSpelReversi(StartSpelCommand startSpelCommand);
 
-        Task<PlaceFicheDTO> PlaceFiche(bool hasPassed, int x, int y, string token, string spelerToken);
+        Task<PlacedFichedDTO> PlaceFiche(bool hasPassed, int x, int y, string token, string spelerToken);
     }
 }

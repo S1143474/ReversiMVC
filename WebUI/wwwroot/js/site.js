@@ -22,17 +22,18 @@ historyListItems.forEach(item => {
 
 //onsubmit="return handleMove(this)" 
 
-document.getElementById("reversiboardform").addEventListener("submit", (event) => {
+/*document.getElementById("reversiboardform").addEventListener("submit", (event) => {
    
     event.preventDefault();
     clickAudio.play();
 
-    let x = event.submitter.getAttribute('x');
-    let y = event.submitter.getAttribute('y');
+    let x = parseInt(event.submitter.getAttribute('x'));
+    let y = parseInt(event.submitter.getAttribute('y'));
 
     let data = {
         x: x,
-        y: y
+        y: y,
+        hasPassed: false
     }
 
     console.log("X:", x);
@@ -40,8 +41,8 @@ document.getElementById("reversiboardform").addEventListener("submit", (event) =
 
     connection.invoke("OnMove", data);
 
-    /*return false;*/
-});
+    *//*return false;*//*
+});*/
 
 const handleMove = (event) => {
     /*console.log(event);

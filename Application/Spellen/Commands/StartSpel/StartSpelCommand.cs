@@ -35,14 +35,8 @@ namespace Application.Spellen.Commands.StartSpel
 
             var spel = await _spelService.RetrieveSpelOverToken(request.SpelToken);
 
-
             if (spel.speler2Token is not null)
             {
-                /* await _hub.SendStartGameAsync(spel.speler1Token, spel.speler2Token);
-                 await _hub.SendRedirectAsync(spel.speler1Token, spel.speler2Token,
-                     $"spel/Reversi/{spel.token}");*/
-
-                await _hub.Clients.Users(spel.speler1Token, spel.speler2Token).StartGame();
                 await _hub.Clients.Users(spel.speler1Token).Redirect($"spel/Reversi/{spel.token}");
 
                 return SpelState.Playing;

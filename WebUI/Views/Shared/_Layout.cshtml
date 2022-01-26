@@ -33,77 +33,89 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 <body>
-    <header class="header__container">
-        <nav class="header">
-            <a class="header__title" asp-controller="Home" asp-action="Index">Reversi</a>
-            <ul>
-                <li>
-                    <a asp-controller="Home" asp-action="Index">
-                        <i class="material-icons">home</i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-controller="Spel" asp-action="Menu" class="header__game__join">
-                        <i class="material-icons">sports_esports</i>
-                        <span>Spellen</span>
-                    </a>
-                </li>
-                <li class="privacy__link">
-                    <a asp-controller="Home" asp-action="Privacy">
-                        <i class="material-icons">lock</i>
-                        <span>Privacy</span>
-                    </a>
-                </li>
-                <li class="account__link">
-                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage Account">
-                        <i class="material-icons">person</i>
-                        <span>Account</span>
-                    </a>
-                </li>
-                <li class="account__link">
-                    <span>@User.Identity.Name</span>
-                </li>
-            </ul>
+<header class="header__container">
+    <nav class="header">
+        <a class="header__title" asp-controller="Home" asp-action="Index">Reversi</a>
+        <ul>
+            <li>
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="material-icons">home</i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Spel" asp-action="Menu" class="header__game__join">
+                    <i class="material-icons">sports_esports</i>
+                    <span>Spellen</span>
+                </a>
+            </li>
+            <li class="privacy__link">
+                <a asp-controller="Home" asp-action="Privacy">
+                    <i class="material-icons">lock</i>
+                    <span>Privacy</span>
+                </a>
+            </li>
+            <li class="account__link">
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage Account">
+                    <i class="material-icons">person</i>
+                    <span>Account</span>
+                </a>
+            </li>
+            <li class="account__link">
+                <span>@User.Identity.Name</span>
+            </li>
+        </ul>
 
-            <form class="action__form" method="post" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <form class="action__form" method="post" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
 
-                <ul class="account__settings">
-                    @if (SignInManager.IsSignedIn(User))
-                    {
+            <ul class="account__settings">
+                @if (SignInManager.IsSignedIn(User))
+                {
 
                         @*<li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
                             </li>*@
-                        <li class="nav-item">
-                            <a class="material-icons" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage Account">
-                                person
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <button class="material-icons logout__btn" title="Logout" type="submit">
-                                logout
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <a class="material-icons reorder-btn" title="re-order">
-                                reorder
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </form>
+                    <li class="nav-item">
+                        <a class="material-icons" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage Account">
+                            person
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="material-icons logout__btn" title="Logout" type="submit">
+                            logout
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="material-icons reorder-btn" title="re-order">
+                            reorder
+                        </a>
+                    </li>
+                }
+            </ul>
+        </form>
 
 
-        </nav>
-    </header>
+    </nav>
+</header>
+
     <main role="main">
+        <script type="text/javascript" src="~/js/app.js"></script>
+        <script>
+            $(() => {
+                const afterInit = () => {
+                    console.log("after init");
+                };
 
+                Game.init(afterInit);
+            });
+        </script>
         @RenderBody()
         @if (TempData.ContainsKey("PlayerState") && (int)TempData["PlayerState"] != 0)
         {
             <script>
+                
                 window.onload = () => {
+
                     alert("Je bent nog bezig met een andere game, deze moet eerst afgemaakt worden voordat je door kunt naar de volgende.");
                 };
             </script>

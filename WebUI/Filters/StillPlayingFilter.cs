@@ -84,12 +84,11 @@ namespace WebUI.Filters
 
                         if (IsSpeler1Waiting(spel.speler2Token))
                         {
-                            context.Result = new RedirectResult($"spel/Waiting/{spel.token}");
+                            context.Result = new RedirectToActionResult("Waiting", "Spel", new { id = spel.token });
                             await next();
                             return;
                         }
-                        /*context.HttpContext.Response.Redirect($"/Spel/Reversi/{_spel.token}");*/
-                        context.Result = new RedirectResult($"/spel/Reversi/{spel.token}");
+                        context.Result = new RedirectToActionResult("Reversi", "Spel", new { id = spel.token });
 
                     }
                       

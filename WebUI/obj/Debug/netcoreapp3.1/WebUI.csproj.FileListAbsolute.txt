@@ -145,3 +145,5 @@ C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\WebUI.cs
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\WebUI.genruntimeconfig.cache
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Spel\Waiting.cshtml.g.cs
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\MobileChooseAction.cshtml.g.cs
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNet.SignalR.SystemWeb.dll

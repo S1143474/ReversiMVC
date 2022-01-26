@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
+using Application.Spellen.Commands.FinishedSpel;
+using Application.Spellen.Commands.OpponentsTurn;
 using Application.Spellen.Commands.PlaceFiche;
+using Application.Spellen.Commands.WrongPlacedFiche;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,18 +28,42 @@ namespace Application.Hubs
             _spelService = service;
         }
 
-        public async Task OnMove(object move)
+        public async Task OnMove(JsonElement dto)
         {
+            // TODO: Make function from deserialization.
+            var raw = dto.GetRawText();
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+            var data = JsonSerializer.Deserialize<PlaceFicheDTO>(raw, options);
+          
             var result = await Mediator.Send(new PlaceFicheCommand
             {
                 //TODO: fix passes.
-                HasPassed = true,
-                X = 1,
-                Y = 1,
+                HasPassed = data.HasPassed,
+                X = data.X,
+                Y = data.Y,
                 SpelerToken = UserId
             });
 
+            if (result.IsSpelFinished)
+            {
+                await Mediator.Send(new FinishedSpelCommand { SpelerToken = UserId });
+                return;
+            }
 
+            if (!result.IsPlaceExecuted)
+            {
+                await Mediator.Send(new WrongPlacedFicheCommand
+                {
+                    CurrentSpelerToken = result.PlacedBySpelerToken
+                });
+                return;
+            }
+
+            await Mediator.Send(new OpponentsTurnCommand
+            {
+                CurrentSpelerToken = result.PlacedBySpelerToken,
+                FichesToTurnAround = result.FichesToTurnAround
+            });
         }
 
         public async Task StartGame()

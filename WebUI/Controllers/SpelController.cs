@@ -6,11 +6,13 @@ using Application.Spelers.Queries.GetSpellen;
 using Application.Spellen.Commands.CreateSpel;
 using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpel;
+using Domain.Entities;
 using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using WebUI.Filters;
 
@@ -79,7 +81,7 @@ namespace WebUI.Controllers
 
             if (result == SpelState.Playing)
             {
-                return RedirectToAction(nameof(Reversi), new
+                return new RedirectToActionResult(nameof(Reversi), "Spel", new
                 {
                     id
                 });
@@ -106,14 +108,14 @@ namespace WebUI.Controllers
 
             if (await Mediator.Send(command))
             {
-                return RedirectToAction(nameof(AvailableGames));
+                return RedirectToAction(nameof(Waiting));
             }
 
             return View();
         }
 
         [HttpGet]
-        [Route("spel")]
+        [Route("Spel")]
         public async Task<ActionResult> Menu()
         {
             return View();

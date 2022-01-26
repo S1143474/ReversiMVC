@@ -58,17 +58,17 @@
                            <td class="game__container__board__col">
                                @if (@Model.Bord[row][col] == 0)
                                {
-                                   <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-empty"></button>
+                                   <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-empty" ></button>
                                }
 
                                @if (@Model.Bord[row][col] == 1)
                                {
-                                   <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-white"></button>
+                                   <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-white" ></button>
                                }
 
                                @if (@Model.Bord[row][col] == 2)
                                {
-                                   <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-black"></button>
+                                   <button x="@col" y="@row" type="submit" class="game__container__board__cell fiche fiche-black" ></button>
                                }
                            </td>
                        }
@@ -80,10 +80,11 @@
    
    <aside>
        <div>
+           <p id="extra-info"></p>
            <h2>
-               @Model.Speler1Naam
+               <span id="speler-1">@Model.Speler1Naam</span>
                <span> --- </span>
-               @Model.Speler2Naam
+               <span id="speler-2">@Model.Speler2Naam</span>
            </h2>
        </div>
    </aside>

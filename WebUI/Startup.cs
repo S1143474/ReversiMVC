@@ -2,6 +2,7 @@
 using Application.Common.Interfaces;
 using Application.Hubs;
 using Infrastructure;
+using Microsoft.AspNet.SignalR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

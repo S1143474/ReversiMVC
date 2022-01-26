@@ -8,6 +8,8 @@ using Application.Common.Interfaces;
 using Application.Spellen.Commands.CreateSpel;
 using Domain.Entities;
 using System.Text.Json;
+using Application.DataTransferModels;
+using Application.DataTransferModels.Spel;
 using Application.Spelers.Queries.GetSpeler;
 using Application.Spelers.Queries.GetSpellen;
 using Application.Spellen.Commands.PlaceFiche;
@@ -99,7 +101,7 @@ namespace Infrastructure.Services
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<PlaceFicheDTO> PlaceFiche(bool hasPassed, int x, int y, string token, string spelerToken)
+        public async Task<PlacedFichedDTO> PlaceFiche(bool hasPassed, int x, int y, string token, string spelerToken)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
@@ -117,7 +119,7 @@ namespace Infrastructure.Services
                 jsonResponse = await content.ReadAsStringAsync();
             }
 
-            return JsonSerializer.Deserialize<PlaceFicheDTO>(jsonResponse, new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            return JsonSerializer.Deserialize<PlacedFichedDTO>(jsonResponse, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
         }
     }
 }
