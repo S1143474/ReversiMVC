@@ -17,7 +17,7 @@ namespace Application.Common.Interfaces
 
         Task OnMove(List<FicheCoordDTO> fichesToTurnAround, int aanDeBeurt);
 
-        Task OnWrongMove();
+        Task OnWrongMove(string notExecutedMessage);
 
         Task OnDisableMove(List<FicheCoordDTO> fichesToTurnAround, int aanDeBeurt);
 

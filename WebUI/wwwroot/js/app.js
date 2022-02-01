@@ -104,6 +104,7 @@ var Game = (url => {
     Game.Model.listen("OnMove", _onMove);
     Game.Model.listen("OnWrongMove", _wrongMoveMessage);
     Game.Model.listen("OnDisableMove", _disableMovePlacement);
+    Game.Model.listen("OnFinish", _finish);
     console.log(configMap.apiUrl);
 
     _getCurrentGameState();
@@ -161,6 +162,10 @@ var Game = (url => {
       button.disabled = true;
       button.style = "pointer-events: none;";
     });
+  };
+
+  var _finish = gameResult => {
+    console.log("Game Finished", gameResult);
   };
 
   var _getCurrentGameState = () => {

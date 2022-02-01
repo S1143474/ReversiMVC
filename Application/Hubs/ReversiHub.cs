@@ -54,6 +54,7 @@ namespace Application.Hubs
             {
                 await Mediator.Send(new WrongPlacedFicheCommand
                 {
+                    NotExecutedMessage = result.NotExecutedMessage,
                     CurrentSpelerToken = result.PlacedBySpelerToken
                 });
                 return;

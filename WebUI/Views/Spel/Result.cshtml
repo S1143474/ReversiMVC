@@ -1,0 +1,102 @@
+﻿@model  Application.Spellen.Commands.FinishedSpel.FinishedSpelResultsDTO;
+<section class="result__content">
+    <div class="result__content__icon">
+        @if (!@Model.IsDraw)
+        {
+            @if (@Model.IsWinner)
+            {
+                <div class="icon__outer__ring win">
+                    <div class="icon__inner__ring">
+                        <span class="material-icons win">
+                            emoji_events
+                        </span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="icon__outer__ring loss">
+                    <div class="icon__inner__ring">
+                        <span class="material-icons loss">
+                            trending_down
+                        </span>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="icon__outer__ring draw">
+                <div class="icon__inner__ring">
+                    <span class="material-icons draw">
+                        handshake
+                    </span>
+                </div>
+            </div>
+        }
+    </div>
+    @if (!@Model.IsDraw)
+    {
+        @if (@Model.IsWinner)
+        {
+            <h1 class="result__content__title">Wow!<br/>You've won the game.</h1>
+            <p class="result__content__subtitle">Congratulations,<br/>you received some points.</p>
+        }
+        else
+        {
+            <h1 class="result__content__title">Unfortunately, you lost.</h1>
+            <p class="result__content__subtitle">Better luck next time!</p>
+        }
+    }
+    else
+    {
+        <h1 class="result__content__title">Unfortunately, a draw</h1>
+        <p class="result__content__subtitle">Good job! Better luck next time!</p>
+    }
+
+    <form class="result__content__actions">
+        <button asp-controller="spel" asp-action="History" class="btn w40 outline-pink">Game Stats</button>
+        <button asp-controller="spel" asp-action="Menu" class="btn w40 blue">Hub</button>
+    </form>
+</section>
+@if (@Model.IsWinner && !@Model.IsDraw)
+{
+<script type="module">
+    import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+    
+    confetti({
+        particleCount: 150,
+        spread: 240
+    });
+    
+    var duration = 5 * 500;
+    var end = Date.now() + duration;
+
+    (function frame() {
+      // launch a few confetti from the left edge
+      /*confetti({
+        particleCount: 7,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: Math.random() }
+      });*/
+      // and launch a few from the right edge
+      /*confetti({
+        particleCount: 7,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: Math.random() }
+      });*/
+      
+      confetti({
+        particleCount: 7,
+        spread: 240
+    });
+
+      // keep going until we are out of time
+      if (Date.now() < end) {
+        setTimeout(requestAnimationFrame(frame), 500);;
+      }
+    }());
+</script>
+}

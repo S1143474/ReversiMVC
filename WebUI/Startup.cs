@@ -75,7 +75,6 @@ internal class Startup
 
             endpoints.MapHub<ReversiHub>("/reversiHub");
 
-            /*endpoints.MapHub<ReversiHub>("/reversiHub");*/
             endpoints.MapRazorPages();
         });
     }

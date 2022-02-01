@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Application.DataTransferModels;
 
 namespace Application.Spellen.Commands.PlaceFiche
 {
@@ -16,8 +15,13 @@ namespace Application.Spellen.Commands.PlaceFiche
         public string LoserToken { get; set; }
 
         public string PlacedBySpelerToken { get; set; }
+
         public int AanDeBeurt { get; set; }
+
         public bool IsPlaceExecuted { get; set; }
+
+        public string NotExecutedMessage { get; set; }
+
         public List<FicheCoordDTO> FichesToTurnAround { get; set; }
     }
     public class FicheCoordDTO

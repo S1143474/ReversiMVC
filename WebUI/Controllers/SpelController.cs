@@ -6,6 +6,7 @@ using Application.Spelers.Queries.GetSpellen;
 using Application.Spellen.Commands.CreateSpel;
 using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpel;
+using Application.Spellen.Queries.GetSpelFinishedResults;
 using Domain.Entities;
 using Domain.Enums;
 using MediatR;
@@ -52,23 +53,7 @@ namespace WebUI.Controllers
 
             return View(result);
         }
-
-        /*[Route("[controller]/[action]/{id}")]
-        [HttpPost]
-        public async Task<ActionResult> Reversi(string id, [FromBody]int move_x, [FromBody]int move_y)
-        {
-            var result = await Mediator.Send(new GetSpelQuery()
-            {
-                Id = id,
-                UserId = UserId
-            });
-
-            if (result == null)
-                return NotFound();
-
-            return View(result);
-        }*/
-
+        
         [HttpGet]
         [Route("[controller]/[action]/{id}")]
         public async Task<ActionResult> Waiting(string id)
@@ -125,6 +110,17 @@ namespace WebUI.Controllers
         public ActionResult History()
         {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Result()
+        {
+            var result = await Mediator.Send(new GetSpelFinishedResultsQuery { SpelerToken = UserId });
+
+            if (result == null)
+                return RedirectToAction(nameof(Menu));
+
+            return View(result);
         }
     }
 }

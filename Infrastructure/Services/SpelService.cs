@@ -6,12 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Spellen.Commands.CreateSpel;
-using Domain.Entities;
 using System.Text.Json;
-using Application.DataTransferModels;
-using Application.DataTransferModels.Spel;
-using Application.Spelers.Queries.GetSpeler;
-using Application.Spelers.Queries.GetSpellen;
+using Application.Spellen.Commands.FinishedSpel;
 using Application.Spellen.Commands.PlaceFiche;
 using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpellen;
@@ -120,6 +116,41 @@ namespace Infrastructure.Services
             }
 
             return JsonSerializer.Deserialize<PlacedFichedDTO>(jsonResponse, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+        }
+
+        public async Task<string> GetSpelTokenFromSpelerToken(string spelerToken)
+        {
+            var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
+
+            var response = await httpClient.GetAsync($"Spel/SpelToken?spelerToken={spelerToken}");
+
+            if (response == null || response.StatusCode == HttpStatusCode.NoContent || response.StatusCode == HttpStatusCode.NotFound)
+                return null;
+
+            using var content = response.Content;
+
+            var result = await content.ReadAsStringAsync();
+
+            return result;
+        }
+
+        public async Task<FinishedSpelResultsDTO> GetSpelFinishedResults(string spelToken)
+        {
+            var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
+
+            var response = await httpClient.GetAsync($"Spel/SpelFinished?spelToken={spelToken}");
+
+            if (response == null || response.StatusCode == HttpStatusCode.NoContent || response.StatusCode == HttpStatusCode.NotFound)
+                return null;
+
+            using var content = response.Content;
+
+            var result = await content.ReadAsStringAsync();
+
+            if (result == null || string.IsNullOrWhiteSpace(result))
+                return null;
+
+            return JsonSerializer.Deserialize<FinishedSpelResultsDTO>(result, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }); ;
         }
     }
 }

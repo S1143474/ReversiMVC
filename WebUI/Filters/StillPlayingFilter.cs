@@ -76,7 +76,7 @@ namespace WebUI.Filters
                         routeData.TryGetValue("action", out var action))
                     {
 
-                        if (IsInWaitingView(controller, action) || IsInReversiView(controller, action))
+                        if (IsInWaitingView(controller, action) || IsInReversiView(controller, action) || IsInResultView(controller, action))
                         {
                             await next();
                             return;
@@ -115,6 +115,7 @@ namespace WebUI.Filters
         /// <returns></returns>
         private bool IsInReversiView(object controller, object action) => controller.Equals("Spel") && action.Equals("Reversi");
 
+        private bool IsInResultView(object controller, object action) => controller.Equals("Spel") && action.Equals("Result");
 
     }
 }

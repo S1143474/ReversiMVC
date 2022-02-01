@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "canvas-confetti@1.4.0",
+      "destination": "wwwroot/canvas-confetti/",
+      "files": [
+        "confetti.min.js"
+      ]
+    }
+  ]
+}

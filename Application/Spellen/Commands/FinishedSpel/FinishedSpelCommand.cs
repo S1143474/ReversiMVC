@@ -30,12 +30,17 @@ namespace Application.Spellen.Commands.FinishedSpel
         {
             var result = await _spelService.RetrieveSpelOverSpelerToken(request.SpelerToken);
 
-            await _hub.Clients.Users(result.speler1Token, result.speler2Token).OnFinish(new FinishedSpelDTO
+            await _hub.Clients.Users(result.speler1Token, result.speler2Token).Redirect($"spel/Result");
+            /*await _hub.Clients.Users(result.speler1Token, result.speler2Token).OnFinish(new FinishedSpelDTO
             {
-                
-            });
-
-            return true && result != null;
+                WinnerName = finishedResults.WinnerToken,
+                LoserName = finishedResults.LoserToken,
+                IsDraw = finishedResults.IsDraw,
+                AmountOfGeenFichesTurned = finishedResults.AmountOfGeenFichesTurned,
+                AmountOfWitFichesTurned = finishedResults.AmountOfWitFichesTurned,
+                AmountOfZwartFichesTurned = finishedResults.AmountOfZwartFichesTurned
+            });*/
+            return true;
         }
     }
 }
