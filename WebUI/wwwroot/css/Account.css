@@ -572,8 +572,16 @@
         width: 0px;
         height: .15rem;
         position: absolute;
-        border-bottom: .15rem solid var(--highlight-green);
+        /*border-bottom: .15rem solid var(--highlight-green);*/
         animation: toast-progress 10s linear;
+    }
+
+    .toast-success .toast__border::before {
+        border-bottom: .15rem solid var(--highlight-green);
+    }
+
+    .toast-danger .toast__border::before {
+        border-bottom: .15rem solid var(--highlight-red);
     }
 
     @keyframes toast-progress {
@@ -599,6 +607,10 @@
 
     .toast-success {
         color: var(--highlight-green);
+    }
+
+    .toast-danger {
+        color: var(--highlight-red);
     }
 
     .toast__message {

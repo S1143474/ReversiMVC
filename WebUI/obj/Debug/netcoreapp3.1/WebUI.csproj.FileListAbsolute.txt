@@ -149,3 +149,6 @@ C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsof
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNet.SignalR.SystemWeb.dll
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Spel\Result.cshtml.g.cs
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Speler\Index.cshtml.g.cs
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Speler\AsignRoles.cshtml.g.cs
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Speler\Monitoring.cshtml.g.cs

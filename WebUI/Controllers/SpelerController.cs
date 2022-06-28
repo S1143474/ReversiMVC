@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Spelers.Commands.CreateSpeler;
 using Domain.Entities;
 using Infrastructure.Persistence;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SpelerController : ControllerBase
     {
         private readonly ReversiDbContext _context;
@@ -22,32 +24,46 @@ namespace WebUI.Controllers
             _context = context;
         }
 
-     /*   // GET: Speler
+        // GET: Speler
         public async Task<IActionResult> Index()
         {
             return View(await _context.Spelers.ToListAsync());
-        }*/
-
-   /*     // GET: Speler/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var spelerModel = await _context.Spelers
-                .FirstOrDefaultAsync(m => m.Guid == id);
-            if (spelerModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(spelerModel);
         }
-*/
+
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> AsignRoles()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Route("[controller]/[action]")]
+        public async Task<IActionResult> Monitoring()
+        {
+            return View();
+        }
+
+        /*     // GET: Speler/Details/5
+             public async Task<IActionResult> Details(string id)
+             {
+                 if (id == null)
+                 {
+                     return NotFound();
+                 }
+
+                 var spelerModel = await _context.Spelers
+                     .FirstOrDefaultAsync(m => m.Guid == id);
+                 if (spelerModel == null)
+                 {
+                     return NotFound();
+                 }
+
+                 return View(spelerModel);
+             }
+     */
         // GET: Speler/Create
-        public async Task<IActionResult> Create(string ReturnUrl)
+        /*public async Task<IActionResult> Create(string ReturnUrl)
         {
             // TODO: Do something when result equals false.
             var result = await Mediator.Send(new CreateSpelerCommand
@@ -57,7 +73,7 @@ namespace WebUI.Controllers
             });
 
             return LocalRedirect(ReturnUrl);
-        }
+        }*/
 
         // POST: Speler/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

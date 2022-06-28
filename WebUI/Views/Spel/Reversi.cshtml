@@ -89,6 +89,34 @@
        </div>
    </aside>
 
+   @* TODO: Create a proper error message popup.
+       <div class="toast toast-danger" role="alert">
+       <div class="toast__content">
+           <span class="material-icons">warning</span>
+           <p class="toast__message">An error occurred, please try again later.</p>
+           <button type="button" class="toast__close" data-dismiss="alert" aria-label="Close"><span class="material-icons">close</span></button>
+       </div>
+        
+       <span class="toast__border"></span>
+       <script type="text/javascript">
+           window.onload = () => {
+               const animated = document.querySelector('.toast__border');
+               const closeToastBtn = document.querySelector('.toast__close');
+                
+               animated.addEventListener('animationend', () => {
+                   $(".toast").animate({opactity: 0}, 1, function() {
+                       $(this).hide();
+                   });
+               });
+
+               closeToastBtn.addEventListener('click', () => {
+                   $(".toast").hide();
+               });
+           }
+            
+       </script>
+   </div>*@
+
    @*<aside class="game__player__info player-2">
         <div class="game__player__content">
             <h2 class="game__player__name game__player__name-highlighted">@Model.Speler2Naam</h2>

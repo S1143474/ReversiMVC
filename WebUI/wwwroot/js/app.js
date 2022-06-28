@@ -105,6 +105,7 @@ var Game = (url => {
     Game.Model.listen("OnWrongMove", _wrongMoveMessage);
     Game.Model.listen("OnDisableMove", _disableMovePlacement);
     Game.Model.listen("OnFinish", _finish);
+    Game.Model.listen("OnError", _onError);
     console.log(configMap.apiUrl);
 
     _getCurrentGameState();
@@ -149,7 +150,8 @@ var Game = (url => {
     });
   };
 
-  var _wrongMoveMessage = () => {
+  var _wrongMoveMessage = notExecutedMessage => {
+    console.log(notExecutedMessage);
     var element = document.getElementById("extra-info");
     element.textContent = "Verkeerde zet, probeer het nog eens";
   };
@@ -166,6 +168,20 @@ var Game = (url => {
 
   var _finish = gameResult => {
     console.log("Game Finished", gameResult);
+  };
+
+  var _onError = message => {
+    console.log('Error', message);
+    console.log('TODO: ', 'create a proper popup error message'); // const animated = document.querySelector('.toast__border');
+    // const closeToastBtn = document.querySelector('.toast__close');
+    // animated.addEventListener('animationend', () => {
+    //     $(".toast").animate({opactity: 0}, 1, function() {
+    //         $(this).hide();
+    //     });
+    // });
+    // closeToastBtn.addEventListener('click', () => {
+    //     $(".toast").hide();
+    // });
   };
 
   var _getCurrentGameState = () => {

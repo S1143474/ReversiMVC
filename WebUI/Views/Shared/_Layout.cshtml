@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 
 <!DOCTYPE html>
@@ -35,34 +36,34 @@
 <body>
 <header class="header__container">
     <nav class="header">
-        <a class="header__title" asp-controller="Home" asp-action="Index">Reversi</a>
-        <ul>
-            <li>
-                <a asp-controller="Home" asp-action="Index">
+        <a class="header__title no-drag" asp-controller="Home" asp-action="Index">Reversi</a>
+        <ul class="header__nav__pages">
+            <li class="nav-page-item">
+                <a class="nav-item-action no-drag" asp-controller="Home" asp-action="Index">
                     <i class="material-icons">home</i>
-                    <span>Home</span>
+                    <span class="nav-underline">Home</span>
                 </a>
             </li>
-            <li>
-                <a asp-controller="Spel" asp-action="Menu" class="header__game__join">
+            <li class="nav-page-item">
+                <a class="nav-item-action no-drag" asp-controller="Spel" asp-action="Menu" class="header__game__join">
                     <i class="material-icons">sports_esports</i>
-                    <span>Hub</span>
+                    <span class="nav-underline">Hub</span>
                 </a>
             </li>
-            <li class="privacy__link">
-                <a asp-controller="Home" asp-action="Privacy">
+            <li class="nav-page-item privacy__link">
+                <a class="nav-item-action no-drag" asp-controller="Home" asp-action="Privacy">
                     <i class="material-icons">lock</i>
-                    <span>Privacy</span>
+                    <span class="nav-underline">Privacy</span>
                 </a>
             </li>
-            <li class="account__link">
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage Account">
+            @*<li class="account__link">
+                <a class="nav-item-action no-drag" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage Account">
                     <i class="material-icons">person</i>
                     <span>Account</span>
                 </a>
-            </li>
-            <li class="account__link">
-                <span>@User.Identity.Name</span>
+            </li>*@
+            <li id="user-name" class="nav-page-item account__link">
+                <span class="nav-item-action">@User.Identity.Name</span>
             </li>
         </ul>
 
@@ -71,25 +72,37 @@
             <ul class="account__settings">
                 @if (SignInManager.IsSignedIn(User))
                 {
+                    @if (User.Claims.FirstOrDefault(claim => claim.Value == "Admin") != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-item-action no-drag" asp-controller="Speler" asp-action="AsignRoles">
+                                <span class="material-icons tooltip-icon">admin_panel_settings</span>
+                                <span class="tooltip-title">Admin</span>
+                            </a>
+                        </li>
+                    }
 
-                        @*<li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-                            </li>*@
+                    if (User.Claims.FirstOrDefault(claim => claim.Value == "Moderator") != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-item-action no-drag" asp-controller="Speler" asp-action="Monitoring">
+                                <span class="material-icons tooltip-icon">shield</span>
+                                <span class="tooltip-title">Moderator</span>
+                            </a>
+                        </li>
+                    }
+
                     <li class="nav-item">
-                        <a class="material-icons" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage Account">
-                            person
+                        <a class="nav-item-action no-drag" asp-area="Identity" asp-page="/Account/Manage/Index">
+                            <span class="material-icons tooltip-icon">person</span>
+                            <span class="tooltip-title">Account</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <button class="material-icons logout__btn" title="Logout" type="submit">
                             logout
                         </button>
-                    </li>
-                    <li class="nav-item">
-                        <a class="material-icons reorder-btn" title="re-order">
-                            reorder
-                        </a>
-                    </li>
+                    </li>*@
                 }
             </ul>
         </form>

@@ -20,6 +20,7 @@ using WebUI.Filters;
 namespace WebUI.Controllers
 {
     [Authorize]
+    /*[Authorize(Roles = "Admin")]*/
     [ServiceFilter(typeof(StillPlayingFilter))]
     public class SpelController : ControllerBase
     {   
@@ -64,6 +65,12 @@ namespace WebUI.Controllers
                 SpelToken = id
             });
 
+            if (result == SpelState.Error)
+            {
+                TempData["error"] = "error";
+                return new RedirectToActionResult(nameof(AvailableGames), "Spel", new {});
+            }
+
             if (result == SpelState.Playing)
             {
                 return new RedirectToActionResult(nameof(Reversi), "Spel", new
@@ -91,10 +98,11 @@ namespace WebUI.Controllers
                 PlayerToken = UserId
             };
 
-            if (await Mediator.Send(command))
-            {
+            var isSpelCreated = await Mediator.Send(command);
+
+            // TODO: Create Toast message when spel is not created.
+            if (isSpelCreated)
                 return RedirectToAction(nameof(Waiting));
-            }
 
             return View();
         }
