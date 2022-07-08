@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ha46efomoFW+sNTgl0dYXZYpNEz5Nymhky0pXsKoVUOoWpPxJ9IvEFfxs283ABmJz2Cmt2uwGKJ3KQ4qnnG14Q==",
+  "dgSpecHash": "Zuf5A4KP7ninOt6KhJZaX/4rY8FiKHP6qkjWAXRpIhCa3CXrYUb5lNW6Ax1eddYarCMi5Aj+VV1jhY9XJTsCkw==",
   "success": true,
   "projectFilePath": "C:\\Users\\bassc\\source\\repos\\ReversiMvcApp\\Application\\Application.csproj",
   "expectedPackageFiles": [
@@ -28,10 +28,7 @@
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.10\\microsoft.extensions.primitives.3.1.10.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+    "C:\\Users\\bassc\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
   ],
   "logs": [
     {

@@ -11,16 +11,22 @@ using Application.Spellen.Commands.FinishedSpel;
 using Application.Spellen.Commands.PlaceFiche;
 using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpellen;
+using Infrastructure.Common;
+using MediatR;
 
 namespace Infrastructure.Services
 {
     public class SpelService : ISpelService
     {
+        private const string ApiClientName = "SpelRestAPI";
+        private HttpClient httpClient { get; }
         private IHttpClientFactory HttpClientFactory { get; set; }
 
         public SpelService(IHttpClientFactory httpClientFactory)
         {
             HttpClientFactory = httpClientFactory;
+
+            httpClient = HttpClientFactory.CreateClient(ApiClientName);
         }
 
         public async Task<List<SpelDTO>> ReturnListOfSpellen()
@@ -37,7 +43,7 @@ namespace Infrastructure.Services
             {
                 json = await content.ReadAsStringAsync();
             }
-            
+
             var result = JsonSerializer.Deserialize<List<SpelDTO>>(json);
             return result;
         }
@@ -72,7 +78,7 @@ namespace Infrastructure.Services
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
-            var response = await httpClient.GetAsync($"SpelSpeler/{spelerToken}");
+            var response = await httpClient.GetAsync($"spel/SpelSpeler/{spelerToken}");
 
             if (response == null || response.StatusCode == HttpStatusCode.NoContent)
                 return null;
@@ -106,7 +112,7 @@ namespace Infrastructure.Services
 
             var response = await httpClient.PutAsync("spel/zet", data);
 
-            if (response == null || response.StatusCode == HttpStatusCode.NoContent)
+            if (response == null || response.StatusCode == HttpStatusCode.NoContent || !response.IsSuccessStatusCode)
                 return null;
 
             string jsonResponse;

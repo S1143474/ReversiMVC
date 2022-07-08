@@ -152,3 +152,5 @@ C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\libman.j
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Speler\Index.cshtml.g.cs
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Speler\AsignRoles.cshtml.g.cs
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Speler\Monitoring.cshtml.g.cs
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Speler\MonitoringPlayer.cshtml.g.cs
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Spel\GlobalStats.cshtml.g.cs

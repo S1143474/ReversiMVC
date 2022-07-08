@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
+using Domain.Entities;
+using Domain.Events.Spellen;
 using MediatR;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -28,7 +30,9 @@ namespace Application.Spellen.Commands.CreateSpel
         public async Task<bool> Handle(CreateSpelCommand command, CancellationToken cancellationToken)
         {
             // TODO: API CancellationTOken from Nick Chapas YT.
-            return await _service.CreateSpel(command);
+            var result = await _service.CreateSpel(command);
+
+            return result;
         }
     }
 }

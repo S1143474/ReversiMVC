@@ -1,0 +1,118 @@
+﻿@using System.Collections
+@model List<Domain.Entities.Speler>
+
+@{
+    <div id="global__stats__page">
+        <div id="stats">
+            <section id="top__three__players">
+            <div class="top__card">
+                <div class="top__card__header header-green">
+                    <h3 class="total-wins">@Model[1].AantalGewonnen</h3>
+                    <h3 class="nr nr-3">NR. 2</h3>
+                    <span class="wins-subtitle">Wins</span>
+                </div>
+                <div class="top__card__body">
+                    <div class="top__card__initials__circle circle-green">
+                        <span class="top__card__initials">@Model[1].Naam.Substring(0, 2)</span>
+                    </div>
+                    <div class="top__card__body__info">
+                        <div class="top__card__body__info__content">
+                            <h5>@Model[1].AantalVerloren</h5>
+                            <span>Losses</span>
+                        </div>
+                        <div class="top__card__body__info__content">
+                            <h5>@Model[1].AantalGelijk</h5>
+                            <span>Draws</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="top__card__footer">
+                    <hr/>
+                </div>
+            </div>
+            <div class="top__card">
+                <div class="top__card__header header-yellow">
+                    <h3 class="total-wins">@Model[0].AantalGewonnen</h3>
+                    <h3 class="nr nr-3">NR. 1</h3>
+                    <span class="wins-subtitle">Wins</span>
+                </div>
+                <div class="top__card__body">
+                    <div class="top__card__initials__circle circle-yellow">
+                        <span class="top__card__initials">@Model[0].Naam.Substring(0, 2)</span>
+                    </div>
+                    <div class="top__card__body__info">
+                        <div class="top__card__body__info__content">
+                            <h5>@Model[0].AantalVerloren</h5>
+                            <span>Losses</span>
+                        </div>
+                        <div class="top__card__body__info__content">
+                            <h5>@Model[0].AantalGelijk</h5>
+                            <span>Draws</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="top__card__footer">
+                    <hr/>
+                </div>
+            </div>
+            <div class="top__card">
+                <div class="top__card__header header-blue">
+                    <h3 class="total-wins">@Model[2].AantalGewonnen</h3>
+                    <h3 class="nr nr-3">NR. 3</h3>
+                    <span class="wins-subtitle">Wins</span>
+                </div>
+                <div class="top__card__body">
+                    <div class="top__card__initials__circle circle-blue">
+                        <span class="top__card__initials">@Model[2].Naam.Substring(0, 2)</span>
+                    </div>
+                    <div class="top__card__body__info">
+                        <div class="top__card__body__info__content">
+                            <h5>@Model[2].AantalVerloren</h5>
+                            <span>Losses</span>
+                        </div>
+                        <div class="top__card__body__info__content">
+                            <h5>@Model[2].AantalGelijk</h5>
+                            <span>Draws</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="top__card__footer">
+                    <hr/>
+                </div>
+            </div>
+        </section>
+        <section id="table__section">
+            <table id="global__stats__table">
+                <thead class="table-head">
+                <tr>
+                    <th>
+                        User
+                    </th>
+                    <th>
+                        Wins
+                    </th>
+                    <th>
+                        Losses
+                    </th>
+                    <th>
+                        Draws
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @for (var i = 3; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>@Model[i].Naam</td>
+                        <td>@Model[i].AantalGewonnen</td>
+                        <td>@Model[i].AantalVerloren</td>
+                        <td>@Model[i].AantalGelijk</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </section>
+        
+        </div>
+    </div>
+}

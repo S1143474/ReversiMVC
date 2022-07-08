@@ -1,0 +1,74 @@
+@use '../abstracts/colors' as clr;
+@import '../abstracts/mixins';
+
+.stats__card {
+
+    @include for-phone-only {
+        height: 8rem;
+    }
+
+    @include for-big-desktop-up {
+        min-width: 15%;
+    }
+    
+    // border: .1em solid black;
+    border-radius: .4em;
+    margin: 1rem;
+
+    background-color: clr.$secondarybackground;
+    box-shadow: 0px 0px .8em rgba(0, 0, 0, 0.4);
+
+    &__content {
+        
+        padding: 1em;
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &__left {
+            width: 50%;
+
+            h4 {
+                color: clr.$text;
+                font-weight: 600;
+                font-size: 2.827rem;
+            }
+
+            span {
+                position: absolute;
+                // outline: 1px solid red;
+                width: calc(100% - 2em);
+                font-weight: 400;
+                color: clr.$sub-text;
+            }
+        }
+
+        &__right {
+            width: 50%;
+
+            position: absolute;
+
+            top: 45%;
+
+            @include for-phone-only {
+                top: 50%;
+            }
+            right: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transform: translateY(-50%);
+
+            .material-icons {
+                @include user-select;
+                // position: absolute;
+                color: clr.$blue;
+                font-size: 84px;
+            }
+        }
+    }
+}

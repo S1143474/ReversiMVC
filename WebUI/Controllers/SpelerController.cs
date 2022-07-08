@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Spelers.Commands.CreateSpeler;
+using Application.Spelers.Commands.DeleteSpeler;
 using Domain.Entities;
 using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authorization;
@@ -39,9 +40,34 @@ namespace WebUI.Controllers
 
         [HttpGet]
         [Route("[controller]/[action]")]
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Monitoring()
         {
             return View();
+        }
+
+        [HttpGet]
+        [Route("[controller]/Monitoring/{id}")]
+        [Authorize(Roles = "Admin,Moderator")]
+        public async Task<IActionResult> MonitoringPlayer()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("[controller]/[action]")]
+        [Authorize(Roles = "Admin,Moderator")]
+        public async Task<IActionResult> MonitoringPost(string userId, string reason)
+        {
+            var result = await Mediator.Send(new DeleteSpelerCommand
+            {
+                UserIdToDelete = userId,
+                Reason = reason
+            });
+
+            return RedirectToAction(nameof(Monitoring));
         }
 
         /*     // GET: Speler/Details/5

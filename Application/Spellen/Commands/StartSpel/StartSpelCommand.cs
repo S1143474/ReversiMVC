@@ -31,7 +31,10 @@ namespace Application.Spellen.Commands.StartSpel
 
         public async Task<SpelState> Handle(StartSpelCommand request, CancellationToken cancellationToken)
         {
-            var result = await _spelService.JoinSpelReversi(request);
+            var isSpelJoined = await _spelService.JoinSpelReversi(request);
+
+            if (isSpelJoined == false)
+                return SpelState.Error;
 
             var spel = await _spelService.RetrieveSpelOverToken(request.SpelToken);
 

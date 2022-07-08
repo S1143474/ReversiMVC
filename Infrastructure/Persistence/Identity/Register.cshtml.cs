@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.Mail;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Domain.Entities;
+using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -24,17 +27,20 @@ namespace Infrastructure.Identity
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ReversiDbContext _reversiDbContext;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ReversiDbContext reversiContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _reversiDbContext = reversiContext;
         }
 
         [BindProperty]
@@ -83,9 +89,14 @@ namespace Infrastructure.Identity
                 var user = new IdentityUser { UserName = Input.UserName, Email = Input.Email };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                var spelerRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Speler"));
+                /*var modRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Moderator"));
+                var adminRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Admin"));*/
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                    _reversiDbContext.Spelers.Add(new Speler(user.Id, user.UserName));
+                    await _reversiDbContext.SaveChangesAsync();
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

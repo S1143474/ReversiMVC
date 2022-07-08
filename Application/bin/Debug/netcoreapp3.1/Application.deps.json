@@ -259,6 +259,9 @@
         }
       },
       "Domain/1.0.0": {
+        "dependencies": {
+          "MediatR": "9.0.0"
+        },
         "runtime": {
           "Domain.dll": {}
         }

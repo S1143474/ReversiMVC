@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebUI.Filters;
+using WebUI.Services;
 
 internal class Startup
 {
@@ -21,6 +22,7 @@ internal class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddSingleton<ICurrentUserService, CurrentUserService>();
         services.AddApplication();
         services.AddInfrastructure(Configuration);
 

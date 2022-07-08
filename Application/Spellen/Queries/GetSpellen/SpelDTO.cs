@@ -13,5 +13,8 @@ namespace Application.Spellen.Queries.GetSpellen
         public string speler2Token { get; set; }
         public List<List<int>> bord { get; set; }
         public int aandeBeurt { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime startedAt { get; set; }
+        public DateTime endedAt { get; set; }
     }
 }

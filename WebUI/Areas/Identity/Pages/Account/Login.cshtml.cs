@@ -87,10 +87,10 @@ namespace WebUI.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToAction("Create", "Speler", new
+                   /* return RedirectToAction("Create", "Speler", new
                     {
                         ReturnUrl = returnUrl
-                    });
+                    });*/
 
                     return LocalRedirect(returnUrl);
                 }

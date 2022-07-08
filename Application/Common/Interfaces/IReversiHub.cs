@@ -22,5 +22,7 @@ namespace Application.Common.Interfaces
         Task OnDisableMove(List<FicheCoordDTO> fichesToTurnAround, int aanDeBeurt);
 
         Task OnFinish(FinishedSpelDTO finishedSpelDto);
+
+        Task OnError(string message);
     }
 }

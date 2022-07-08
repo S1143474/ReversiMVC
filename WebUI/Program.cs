@@ -1,5 +1,8 @@
+using System;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace MyNamespace
 {
@@ -10,10 +13,21 @@ namespace MyNamespace
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            var builder = WebHost.CreateDefaultBuilder(args)
                 .UseUrls("https://192.168.2.19:3000")
                 .UseStartup<Startup>();
+
+            builder.ConfigureLogging((Action<WebHostBuilderContext, ILoggingBuilder>)((hostingContext, logging) =>
+            {
+                logging.AddConfiguration((IConfiguration)hostingContext.Configuration.GetSection("Logging"));
+                logging.AddConsole();
+                logging.AddDebug();
+                logging.AddEventSourceLogger();
+            }));
+            return builder;
+        }
 
         /*public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

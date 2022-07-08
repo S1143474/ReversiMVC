@@ -81,6 +81,51 @@ $sizes: 20, 30, 40, 45, 50, 60, 70, 80, 90, 100;
         }
     }
 
+    &.outline-red {
+        outline: .1em solid clr.$red;
+        background-color: transparent;
+        color: clr.$text;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+
+        &:active {
+            background-color: rgba(clr.$red, .45);
+            transform: scale(.991);
+        }
+    }
+
+    &.outline-green {
+        outline: .1em solid clr.$green;
+        background-color: transparent;
+        color: clr.$text;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+
+        &:active {
+            background-color: rgba(clr.$green, .45);
+            transform: scale(.991);
+        }
+    }
+
+    &.outline-purple {
+        outline: .1em solid clr.$purple;
+        background-color: transparent;
+        color: clr.$text;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+
+        &:active {
+            background-color: rgba(clr.$purple, .45);
+            transform: scale(.991);
+        }
+    }
+
     &.pink {
         background-color: clr.$pink;
         color: clr.$text;

@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Spelers.Queries.GetSpelers;
 using Application.Spelers.Queries.GetSpellen;
 using Application.Spellen.Commands.CreateSpel;
 using Application.Spellen.Commands.StartSpel;
@@ -127,6 +128,14 @@ namespace WebUI.Controllers
 
             if (result == null)
                 return RedirectToAction(nameof(Menu));
+
+            return View(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GlobalStats()
+        {
+            var result = await Mediator.Send(new GetSpelersQuery());
 
             return View(result);
         }

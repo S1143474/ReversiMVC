@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Domain.Common;
 
 namespace Domain.Entities
 {
-    public class Spel
+    public class Spel : BaseAuditableEntity
     {
         public int ID { get; set; }
         public string Omschrijving { get; set; }

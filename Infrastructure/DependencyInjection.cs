@@ -32,7 +32,15 @@ namespace Infrastructure
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
             services
-                .AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddDefaultIdentity<IdentityUser>(options =>
+                {
+                    options.SignIn.RequireConfirmedAccount = true;
+
+                    /* SET Rules for lockouts when entering a password to many times. (also preventing ddos attacks) */
+                    options.Lockout.AllowedForNewUsers = true;
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+                    options.Lockout.MaxFailedAccessAttempts = 3;
+                })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 

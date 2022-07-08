@@ -1,12 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "eDmtAWWL43oZgpqeHSAa1/uTiZrsyvB0Y/8LKzza/+KmrNlodeNL/L96qzP6HV0l90TbdQSYyxEKcWz69Am80A==",
+  "dgSpecHash": "xNkqBBiFhzvqhaife0zXma6Jg3Wo1CfxngTS/ETLbFKm66sit+pN7t9YOQvE9WSMlXDgZWpJ162Mz8lfoeY69A==",
   "success": true,
   "projectFilePath": "C:\\Users\\bassc\\source\\repos\\ReversiMvcApp\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+    "C:\\Users\\bassc\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512"
   ],
   "logs": []
 }

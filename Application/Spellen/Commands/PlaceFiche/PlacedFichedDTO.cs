@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Application.Common.Interfaces;
+using Application.Common.Models;
 
 namespace Application.Spellen.Commands.PlaceFiche
 {
-    public class PlacedFichedDTO 
+    public class PlacedFichedDTO : BaseDTO
     {
         public bool IsSpelFinished { get; set; }
 

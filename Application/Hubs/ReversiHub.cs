@@ -5,10 +5,12 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
+using Application.Spellen.Commands.ErrorSpel;
 using Application.Spellen.Commands.FinishedSpel;
 using Application.Spellen.Commands.OpponentsTurn;
 using Application.Spellen.Commands.PlaceFiche;
 using Application.Spellen.Commands.WrongPlacedFiche;
+using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -44,26 +46,39 @@ namespace Application.Hubs
                 SpelerToken = UserId
             });
 
-            if (result.IsSpelFinished)
+            if (result.ApiState == ApiState.Failed)
+            {
+                await Mediator.Send(new ErrorSpelCommand
+                {
+                    SpelerToken = UserId,
+                    ErrorMessage = "Something went wrong with placing a fiche, please try again."
+                });
+                return;
+                // TODO: Send failed message...
+            }
+
+            var baseDto = result.DTO as PlacedFichedDTO;
+
+            if (baseDto.IsSpelFinished)
             {
                 await Mediator.Send(new FinishedSpelCommand { SpelerToken = UserId });
                 return;
             }
 
-            if (!result.IsPlaceExecuted)
+            if (!baseDto.IsPlaceExecuted)
             {
                 await Mediator.Send(new WrongPlacedFicheCommand
                 {
-                    NotExecutedMessage = result.NotExecutedMessage,
-                    CurrentSpelerToken = result.PlacedBySpelerToken
+                    NotExecutedMessage = baseDto.NotExecutedMessage,
+                    CurrentSpelerToken = baseDto.PlacedBySpelerToken
                 });
                 return;
             }
 
             await Mediator.Send(new OpponentsTurnCommand
             {
-                CurrentSpelerToken = result.PlacedBySpelerToken,
-                FichesToTurnAround = result.FichesToTurnAround
+                CurrentSpelerToken = baseDto.PlacedBySpelerToken,
+                FichesToTurnAround = baseDto.FichesToTurnAround
             });
         }
 

@@ -39,7 +39,16 @@ namespace Application.Spellen.Queries.GetSpelFinishedResults
 
             var currenSpeler = await _reversiDbContext.Spelers.FindAsync(request.SpelerToken);
             
-            
+            if (finishedResults.IsWinner)
+                currenSpeler.AantalGewonnen++;
+
+            if (!finishedResults.IsWinner)
+                currenSpeler.AantalVerloren++;
+
+            if (finishedResults.IsDraw)
+                currenSpeler.AantalGelijk++;
+
+            await _reversiDbContext.SaveChangesAsync(cancellationToken);
 
             return finishedResults;
         }
