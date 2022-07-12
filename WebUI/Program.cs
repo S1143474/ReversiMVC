@@ -16,7 +16,7 @@ namespace MyNamespace
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             var builder = WebHost.CreateDefaultBuilder(args)
-                .UseUrls("https://192.168.2.19:3000")
+                .UseUrls("https://192.168.2.15:3000")
                 .UseStartup<Startup>();
 
             builder.ConfigureLogging((Action<WebHostBuilderContext, ILoggingBuilder>)((hostingContext, logging) =>

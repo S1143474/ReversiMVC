@@ -23,8 +23,34 @@
     display: flex;
 
     &__changeables {
+        position: relative;
         width: 50%;
         height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        color: clr.$text;
+
+        h2 {
+            position: absolute;
+            top: 0;
+            font-weight: 300;
+            font-size: 2.827rem;
+        }
+
+        &__actions {
+            display: flex;
+            gap: 2rem;
+            flex-direction: column;
+            align-items: space-between;
+            justify-content: space-evenly;
+            // justify-content: center;
+            // align-items: center;
+            width: 90%;
+        }
     }
 
     &__profile {
@@ -56,5 +82,34 @@
             margin-top: 1.125rem;
             width: 85%;
         }
+    }
+}
+
+
+#update-user-password-dialog {
+    
+
+    #btn-close-update-user-password-dialog {
+        position: absolute;
+        top: 18px;
+        right: 24px;
+        height: calc(24px + .2em);
+        padding: .1em;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #btn-update-password {
+        // position: absolute;
+        // right: 24px;
+        // bottom: 18px;
+
+        // margin-bottom: 2rem;
+        justify-self: end;
+        align-self: flex-end;
+        margin-bottom: 8px;
     }
 }

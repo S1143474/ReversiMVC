@@ -70,10 +70,20 @@
         font-size: var(--fs-400);
     }
 
+    input:disabled + label {
+        position: absolute;
+        top: -5%;
+        left: 5%;
+        color: clr.$disabled;
+        font-size: var(--fs-400);
+    }
+
     input:valid + .material-svg,
+    input:disabled + .material-svg,
     input:not(:placeholder-shown):not(:focus):invalid + .material-svg,
     input:focus + .material-svg,
     input:valid + .material-icons,
+    input:disabled + .material-icons,
     input:not(:placeholder-shown):not(:focus):invalid + .material-icons,
     input:focus + .material-icons {
         position: absolute;

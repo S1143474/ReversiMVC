@@ -2,7 +2,27 @@
     <div id="monitoring__player__page">
         <div id="monitoring__player__card">
             <div id="monitoring__player__card__changeables">
+                <h2>Edit</h2>
 
+                <div id="monitoring__player__card__changeables__actions">
+                    <button id="btn-update-password" class="btn outline-blue icon-btn w100">
+                        <svg class="material-svg" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/>
+                        </svg>
+                        <span>
+                            Update Password
+                        </span>
+                    </button>
+                    <button id="btn-update-2fa" class="btn outline-blue icon-btn w100">
+                        <span class="material-icons">
+                            key
+                        </span>
+                        <span>
+                            Update 2FA
+                        </span>
+                    </button>
+                </div>
+                
             </div>
             <div id="monitoring__player__card__profile">
                 <h2>Profile</h2>
@@ -13,7 +33,7 @@
                     <input placeholder="" value="Baas500" disabled autocomplete="off"/>
                     <label>
                         <span class="material-icons">
-                            psychology_alt
+                            person
                         </span>
 
                         <span>Username</span>
@@ -27,7 +47,7 @@
                     <input placeholder="" value="basschimmel@outlook.com" disabled autocomplete="off"/>
                     <label>
                         <span class="material-icons">
-                            psychology_alt
+                            mail_outline
                         </span>
 
                         <span>Email</span>
@@ -41,7 +61,7 @@
                     <input placeholder="" value="+316 15177607" disabled autocomplete="off"/>
                     <label>
                         <span class="material-icons">
-                            psychology_alt
+                            phone
                         </span>
 
                         <span>Phone-number</span>
@@ -52,5 +72,55 @@
                 </div>
             </div>
         </div>
+
+        <script>
+
+        </script>
+
+        <dialog class="dialog" id="update-user-password-dialog">
+            <h2>Update User Password?</h2>
+            <button id="btn-close-update-user-password-dialog" class="btn outline-red"><span class="material-icons">close</span></button>
+            <p>Are you certain with the change you're about to make?<br/> Once saved they cannot be reversed!</p>
+            <form>
+                <div class="input-group">
+                    <input placeholder="" type="password" autocomplete="off"/>
+                    <label>
+                        <span class="material-icons">
+                            password
+                        </span>
+
+                        <span>Old Password</span>
+                    </label>
+                </div>
+                
+                <div class="input-group">
+                    <input placeholder="" type="password" value="" autocomplete="off"/>
+                    <label>
+                        <span class="material-icons">
+                            password
+                        </span>
+
+                        <span>New Password</span>
+                    </label>
+                </div>
+                
+                <div class="input-group">
+                    <input placeholder="" type="password" value="" autocomplete="off"/>
+                    <label>
+                        <span class="material-icons">
+                            password
+                        </span>
+
+                        <span>Confirm Password</span>
+                    </label>
+                </div>
+                
+                <button id="btn-update-password" class="btn outline-green w45">Update password</button>
+            </form>
+        </dialog>
+
+        <dialog class="dialog" id="update-2fa-dialog">
+
+        </dialog>
     </div>
 }

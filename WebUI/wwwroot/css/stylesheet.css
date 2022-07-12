@@ -173,10 +173,19 @@
   color: #01A2E9;
   font-size: var(--fs-400);
 }
+.input-group input:disabled + label {
+  position: absolute;
+  top: -5%;
+  left: 5%;
+  color: #51576E;
+  font-size: var(--fs-400);
+}
 .input-group input:valid + .material-svg,
+.input-group input:disabled + .material-svg,
 .input-group input:not(:placeholder-shown):not(:focus):invalid + .material-svg,
 .input-group input:focus + .material-svg,
 .input-group input:valid + .material-icons,
+.input-group input:disabled + .material-icons,
 .input-group input:not(:placeholder-shown):not(:focus):invalid + .material-icons,
 .input-group input:focus + .material-icons {
   position: absolute;
@@ -526,6 +535,16 @@
 .btn.pink {
   background-color: #FE4EDA;
   color: #eee;
+}
+.btn.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.5em 1em;
+}
+.btn.icon-btn svg {
+  width: 32px;
+  height: 32px;
 }
 
 .game__card {
@@ -1817,33 +1836,6 @@ ul li a {
   cursor: pointer;
 }
 
-#delete-user-dialog {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: none;
-  border-radius: 0.4rem;
-  box-shadow: 0 0 0.5rem 0.3rem rgba(0, 0, 0, 0.3), inset 0 0 0.5rem rgba(0, 0, 0, 0.4);
-  padding: 18px 24px;
-  background-color: #262421;
-  color: #eee;
-  transition: opacity 0.5s;
-  opacity: 0;
-}
-#delete-user-dialog[open] {
-  opacity: 1;
-  animation: fadeIn 0.3s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 #delete-user-dialog h2 {
   font-weight: 700;
 }
@@ -1868,12 +1860,6 @@ ul li a {
   justify-content: space-between;
 }
 
-#delete-user-dialog::backdrop {
-  background: linear-gradient(45deg, #A279EF, #01A2E9);
-  opacity: 0.4;
-  filter: blur(8px);
-}
-
 #monitoring__player__page {
   margin: 96px 32px;
   width: calc(100% - 64px);
@@ -1891,8 +1877,28 @@ ul li a {
   display: flex;
 }
 #monitoring__player__card__changeables {
+  position: relative;
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+}
+#monitoring__player__card__changeables h2 {
+  position: absolute;
+  top: 0;
+  font-weight: 300;
+  font-size: 2.827rem;
+}
+#monitoring__player__card__changeables__actions {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-evenly;
+  width: 90%;
 }
 #monitoring__player__card__profile {
   width: 50%;
@@ -1915,6 +1921,23 @@ ul li a {
   border-color: #A279EF;
   margin-top: 1.125rem;
   width: 85%;
+}
+
+#update-user-password-dialog #btn-close-update-user-password-dialog {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  height: calc(24px + 0.2em);
+  padding: 0.1em;
+}
+#update-user-password-dialog form {
+  display: flex;
+  flex-direction: column;
+}
+#update-user-password-dialog #btn-update-password {
+  justify-self: end;
+  align-self: flex-end;
+  margin-bottom: 8px;
 }
 
 #global__stats__page {
@@ -2132,4 +2155,37 @@ ul li a {
   text-decoration: none;
   color: #01A2E9;
   font-size: 84px;
+}
+
+.dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 0.5rem 0.3rem rgba(0, 0, 0, 0.3), inset 0 0 0.5rem rgba(0, 0, 0, 0.4);
+  padding: 18px 24px;
+  background-color: #262421;
+  color: #eee;
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+.dialog[open] {
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in;
+}
+.dialog::backdrop {
+  background: linear-gradient(45deg, #A279EF, #01A2E9);
+  opacity: 0.4;
+  filter: blur(8px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

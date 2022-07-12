@@ -100,17 +100,31 @@ var Game = (url => {
 
   var privateInit = afterInit => {
     Game.Model.init();
+    Game.ComponentEvents.init();
+    Game.ComponentEvents.addClick("btn-update-password", _openDialog, "update-user-password-dialog");
+    Game.ComponentEvents.addClick("btn-update-2fa", _openDialog, "update-2fa-dialog");
+    Game.ComponentEvents.addClick("btn-close-update-user-password-dialog", _closeDialog, "update-user-password-dialog");
     Game.Model.listen("Redirect", _redirect);
     Game.Model.listen("OnMove", _onMove);
     Game.Model.listen("OnWrongMove", _wrongMoveMessage);
     Game.Model.listen("OnDisableMove", _disableMovePlacement);
     Game.Model.listen("OnFinish", _finish);
     Game.Model.listen("OnError", _onError);
-    console.log(configMap.apiUrl);
-
-    _getCurrentGameState();
+    console.log(configMap.apiUrl); // _getCurrentGameState();
 
     afterInit();
+  };
+
+  var _closeDialog = dialogId => {
+    var dialogComponent = document.getElementById(dialogId);
+    if (dialogComponent == null) throw new Error("Dialog Id Not Found!");
+    if (typeof dialogComponent.showModal === "function") dialogComponent.close();
+  };
+
+  var _openDialog = dialogId => {
+    var dialogComponent = document.getElementById(dialogId);
+    if (dialogComponent == null) throw new Error("Dialog Id Not Found!");
+    if (typeof dialogComponent.showModal === "function") dialogComponent.showModal();
   };
 
   var _turnFiches = (fichesToTurnAround, turn) => {
@@ -198,6 +212,27 @@ var Game = (url => {
     init: privateInit
   };
 })(API_URL);
+
+Game.ComponentEvents = (() => {
+  var configMap = {};
+  var stateMap = {};
+
+  var privateInit = () => {};
+
+  var privateAddClickListener = (id, callback, param) => {
+    console.log("private listener");
+    var componentId = document.getElementById(id);
+    if (componentId == null) throw new Error("Id Not Found");
+    componentId.addEventListener('click', () => {
+      callback(param);
+    });
+  };
+
+  return {
+    init: privateInit,
+    addClick: privateAddClickListener
+  };
+})();
 
 Game.Data = (() => {
   var configMap = {
