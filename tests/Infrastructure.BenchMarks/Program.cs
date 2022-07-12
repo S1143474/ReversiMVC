@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.BenchMarks
 {
@@ -6,7 +7,7 @@ namespace Infrastructure.BenchMarks
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           
         }
     }
 }
