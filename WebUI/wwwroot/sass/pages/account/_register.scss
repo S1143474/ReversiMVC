@@ -1,3 +1,5 @@
+@import '../../abstracts/mixins';
+
 #register__container {
     position: absolute;
 
@@ -8,6 +10,38 @@
 
     display: flex;
     justify-content: center;
+
+    form {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    @include for-phone-and-tablet-small {
+        top: 45%;
+
+        .card__progress {
+            display: none;
+        }
+    }
+}
+
+.grecaptcha-badge {
+    bottom: 14px;
+    transition: bottom .3s ease;
+
+    @include for-phone-and-tablet-small {
+        bottom: 72px !important;
+    }
+}
+
+#register__actions {
+    display: flex;
+    justify-content: space-between;
+
+    .link {
+        margin: auto 0;
+    }
 }
 
 // #register__container {

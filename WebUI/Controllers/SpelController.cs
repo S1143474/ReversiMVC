@@ -8,6 +8,7 @@ using Application.Spellen.Commands.CreateSpel;
 using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpel;
 using Application.Spellen.Queries.GetSpelFinishedResults;
+using Application.Spellen.Queries.GetSpellen;
 using Domain.Entities;
 using Domain.Enums;
 using MediatR;
@@ -42,7 +43,7 @@ namespace WebUI.Controllers
 
         [Route("[controller]/[action]/{id}")]
         [HttpGet]
-        public async Task<ActionResult> Reversi(string id)
+        public async Task<ActionResult> Reversi(Guid id)
         {
             var result = await Mediator.Send(new GetSpelQuery()
             {
@@ -58,7 +59,7 @@ namespace WebUI.Controllers
         
         [HttpGet]
         [Route("[controller]/[action]/{id}")]
-        public async Task<ActionResult> Waiting(string id)
+        public async Task<ActionResult> Waiting(Guid id)
         {
             var result = await Mediator.Send(new StartSpelCommand()
             {
@@ -99,11 +100,11 @@ namespace WebUI.Controllers
                 PlayerToken = UserId
             };
 
-            var isSpelCreated = await Mediator.Send(command);
+            var spelInQueue = await Mediator.Send(command);
 
             // TODO: Create Toast message when spel is not created.
-            if (isSpelCreated)
-                return RedirectToAction(nameof(Waiting));
+            if (spelInQueue != null)
+                return RedirectToAction(nameof(Waiting), new { id = spelInQueue.Token });
 
             return View();
         }
@@ -116,9 +117,14 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public ActionResult History()
+        public async Task<ActionResult> History()
         {
-            return View();
+            var result = await Mediator.Send(new GetSpellenHistoryQuery
+            {
+                SpelerToken = UserId
+            });
+
+            return View(result);
         }
 
         [HttpGet]

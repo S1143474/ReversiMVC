@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Application.Common.Interfaces;
+using Infrastructure.Common;
 using Infrastructure.Persistence;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
@@ -17,7 +18,7 @@ namespace Infrastructure
         private static readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
-            IConfiguration configuration) 
+            IConfiguration configuration)
         {
             services.AddDbContext<ReversiDbContext>(options =>
                 options.UseSqlServer(
@@ -34,12 +35,19 @@ namespace Infrastructure
             services
                 .AddDefaultIdentity<IdentityUser>(options =>
                 {
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequireNonAlphanumeric = true;
+                    options.Password.RequireUppercase = true;
+                    options.Password.RequiredLength = 12;
+                    
                     options.SignIn.RequireConfirmedAccount = true;
+                    options.User.RequireUniqueEmail = true;
 
                     /* SET Rules for lockouts when entering a password to many times. (also preventing ddos attacks) */
                     options.Lockout.AllowedForNewUsers = true;
-                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
-                    options.Lockout.MaxFailedAccessAttempts = 3;
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(double.Parse(configuration.GetSection("AppSettings:LockoutTimeInMinutes").Value));
+                    options.Lockout.MaxFailedAccessAttempts = int.Parse(configuration.GetSection("AppSettings:LockoutMaxFailedAttempts").Value);
                 })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -48,11 +56,16 @@ namespace Infrastructure
             {
                 client.BaseAddress = new Uri(configuration.GetValue<string>("ReversiRestAPI"));
                 client.DefaultRequestHeaders.Add("x-api-key", configuration.GetValue<string>("ApiKey"));
-                
-            }).AddTransientHttpErrorPolicy(policy => 
+
+            }).AddTransientHttpErrorPolicy(policy =>
                 policy.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(300)));
 
-            services.AddCors(options => 
+            services.AddHttpClient("GoogleCaptcha", client =>
+            {
+                client.BaseAddress = new Uri("https://www.google.com/recaptcha/api/siteverify");
+            });
+
+        services.AddCors(options => 
             {
                 options.AddPolicy(MyAllowSpecificOrigins, builder =>
                     {
@@ -63,9 +76,15 @@ namespace Infrastructure
             });
 
             services.AddSingleton<ISpelService, SpelService>();
+            services.AddScoped<IGoogleCaptchaService, GoogleCaptchaService>();
+
             services.AddScoped<DbContext, ReversiDbContext>();
 
             services.AddSignalR();
+
+
+            services.Configure<ApplicationSettings>(configuration.GetSection("AppSettings"));
+            services.AddScoped<IEmailService, EmailService>();
 
             return services;
         }

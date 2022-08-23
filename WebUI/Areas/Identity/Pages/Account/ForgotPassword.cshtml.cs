@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Common.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -18,11 +19,13 @@ namespace WebUI.Areas.Identity.Pages.Account
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmailSender _emailSender;
+        private readonly IEmailService _emailService;
 
-        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
+        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender, IEmailService emailService)
         {
             _userManager = userManager;
             _emailSender = emailSender;
+            _emailService = emailService;
         }
 
         [BindProperty]
@@ -56,10 +59,11 @@ namespace WebUI.Areas.Identity.Pages.Account
                     values: new { area = "Identity", code },
                     protocol: Request.Scheme);
 
-                await _emailSender.SendEmailAsync(
+                _emailService.Send("basschimmel@outlook.com", "Reset password", $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                /*await _emailSender.SendEmailAsync(
                     Input.Email,
                     "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");*/
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

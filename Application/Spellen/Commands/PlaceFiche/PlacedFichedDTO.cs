@@ -16,7 +16,7 @@ namespace Application.Spellen.Commands.PlaceFiche
 
         public string LoserToken { get; set; }
 
-        public string PlacedBySpelerToken { get; set; }
+        public Guid PlacedBySpelerToken { get; set; }
 
         public int AanDeBeurt { get; set; }
 

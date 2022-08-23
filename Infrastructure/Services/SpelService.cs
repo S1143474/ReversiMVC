@@ -7,29 +7,48 @@ using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Spellen.Commands.CreateSpel;
 using System.Text.Json;
+using Application.Common.Models.Requests;
 using Application.Spellen.Commands.FinishedSpel;
 using Application.Spellen.Commands.PlaceFiche;
 using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpellen;
-using Infrastructure.Common;
 using MediatR;
+using Microsoft.AspNetCore.Identity.UI.V3.Pages.Internal.Account;
 
 namespace Infrastructure.Services
 {
     public class SpelService : ISpelService
     {
         private const string ApiClientName = "SpelRestAPI";
+
         private HttpClient httpClient { get; }
-        private IHttpClientFactory HttpClientFactory { get; set; }
+        private IHttpClientFactory HttpClientFactory { get; }
+
+        private readonly JsonSerializerOptions _options;
 
         public SpelService(IHttpClientFactory httpClientFactory)
         {
             HttpClientFactory = httpClientFactory;
 
             httpClient = HttpClientFactory.CreateClient(ApiClientName);
+
+            _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         }
 
-        public async Task<List<SpelDTO>> ReturnListOfSpellen()
+        public async Task<List<SpelDto>> ReturnListOfSpellen()
+        {
+            var response = await httpClient.GetAsync("spel/queue");
+
+            response.EnsureSuccessStatusCode();
+
+            var stream = await response.Content.ReadAsStreamAsync();
+
+            var spellenDto = await JsonSerializer.DeserializeAsync<List<SpelDto>>(stream, _options);
+
+            return spellenDto;
+        }
+
+        /*public async Task<List<SpelDto>> ReturnListOfSpellen()
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
@@ -44,11 +63,25 @@ namespace Infrastructure.Services
                 json = await content.ReadAsStringAsync();
             }
 
-            var result = JsonSerializer.Deserialize<List<SpelDTO>>(json);
+            var result = JsonSerializer.Deserialize<List<SpelDto>>(json);
             return result;
+        }*/
+
+        public async Task<SpelDto> CreateSpel(SpelCreateDto spelCreateDto)
+        {
+            string json = JsonSerializer.Serialize(spelCreateDto);
+            StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PostAsync("spel/create", data);
+
+            var stream = await response.Content.ReadAsStreamAsync();
+
+            var inQueueSpel = await JsonSerializer.DeserializeAsync<SpelDto>(stream, _options);
+
+            return inQueueSpel;
         }
 
-        public async Task<bool> CreateSpel(CreateSpelCommand spelCommand)
+        /*public async Task<bool> CreateSpel(CreateSpelCommand spelCommand)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
@@ -57,9 +90,29 @@ namespace Infrastructure.Services
 
             var response = await httpClient.PostAsync("Spel", data);
             return response.IsSuccessStatusCode;
-        }
+        }*/
 
-        public async Task<SpelDTO> RetrieveSpelOverToken(string token)
+        public async Task<SpelDto> RetrieveSpelOverToken(Guid token)
+        {
+            var response = await httpClient.GetAsync($"spel/{token}", HttpCompletionOption.ResponseHeadersRead);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException hre)
+            {
+                return null;
+            }
+
+            var stream = await response.Content.ReadAsStreamAsync();
+
+            var inProcesSpel = await JsonSerializer.DeserializeAsync<SpelDto>(stream, _options);
+
+            return inProcesSpel;
+
+        }
+        /*public async Task<SpelDTO> RetrieveSpelOverToken(string token)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
@@ -72,9 +125,29 @@ namespace Infrastructure.Services
             }
 
             return string.IsNullOrEmpty(json) ? null : JsonSerializer.Deserialize<SpelDTO>(json);
+        }*/
+
+        public async Task<SpelDto> RetrieveSpelOverSpelerToken(Guid spelerToken)
+        {
+            var response = await httpClient.GetAsync($"spel/unfinished?spelerToken={spelerToken}", HttpCompletionOption.ResponseHeadersRead);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException hre)
+            {
+                return null;
+            }
+
+            var stream = await response.Content.ReadAsStreamAsync();
+
+            var spelDto = await JsonSerializer.DeserializeAsync<SpelDto>(stream, _options);
+
+            return spelDto;
         }
 
-        public async Task<SpelDTO> RetrieveSpelOverSpelerToken(string spelerToken)
+        /*public async Task<SpelDTO> RetrieveSpelOverSpelerToken(string spelerToken)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
@@ -90,9 +163,18 @@ namespace Infrastructure.Services
             }
 
             return JsonSerializer.Deserialize<SpelDTO>(json);
-        }
+        }*/
 
         public async Task<bool> JoinSpelReversi(StartSpelCommand startSpelCommand)
+        {
+            string json = JsonSerializer.Serialize(startSpelCommand);
+            StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PutAsync($"spel/participate", data);
+
+            return response.IsSuccessStatusCode;
+        }
+        /*public async Task<bool> JoinSpelReversi(StartSpelCommand startSpelCommand)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
@@ -101,7 +183,7 @@ namespace Infrastructure.Services
 
             var response = await httpClient.PutAsync("spel/join", data);
             return response.IsSuccessStatusCode;
-        }
+        }*/
 
         public async Task<PlacedFichedDTO> PlaceFiche(bool hasPassed, int x, int y, string token, string spelerToken)
         {
@@ -124,7 +206,7 @@ namespace Infrastructure.Services
             return JsonSerializer.Deserialize<PlacedFichedDTO>(jsonResponse, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
         }
 
-        public async Task<string> GetSpelTokenFromSpelerToken(string spelerToken)
+        public async Task<string> GetSpelTokenFromSpelerToken(Guid spelerToken)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
@@ -157,6 +239,26 @@ namespace Infrastructure.Services
                 return null;
 
             return JsonSerializer.Deserialize<FinishedSpelResultsDTO>(result, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }); ;
+        }
+
+        public async Task<List<SpelFinishedDto>> GetSpellenFinishedBySpelerTokenDescAsync(Guid spelerToken)
+        {
+            var response = await httpClient.GetAsync($"spel/finished?spelerToken={spelerToken}&OrderBy=finishedAt desc", HttpCompletionOption.ResponseHeadersRead);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException hre)
+            {
+                return null;
+            }
+
+            var stream = await response.Content.ReadAsStreamAsync();
+
+            var spellenDto = await JsonSerializer.DeserializeAsync<List<SpelFinishedDto>>(stream, _options);
+
+            return spellenDto;
         }
     }
 }

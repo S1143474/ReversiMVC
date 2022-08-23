@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Claims;
 using Application.Common.Interfaces;
 using MediatR;
@@ -37,7 +38,15 @@ namespace Application.Hubs
 
         protected ISender Mediator => _mediator ??= _httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISender>();
 
-        protected string UserId => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+/*        protected Guid UserId => Guid.Parse(_httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier));
+*/        
+        protected Guid UserId {
+            get
+            {
+                Guid.TryParse(_httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier), out Guid result);
+                return result;
+            }
+        }
         protected string UserName => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Name);
         private string _userAgent => _httpContextAccessor.HttpContext.Request.Headers["User-Agent"];
         protected bool IsMobileDevice => mobileDevices.Any(device => _userAgent.ToLower().Contains(device));

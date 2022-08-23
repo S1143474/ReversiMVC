@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Application.Spellen.Queries.GetSpellen
 {
-    public class SpelDTO
-    {
-        public int id { get; set; }
+    public class SpelDTO {
+
         public string omschrijving { get; set; }
         public string token { get; set; }
         public string speler1Token { get; set; }

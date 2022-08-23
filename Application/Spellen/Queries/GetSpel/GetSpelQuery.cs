@@ -13,8 +13,8 @@ namespace Application.Spellen.Queries.GetSpel
 {
     public class GetSpelQuery : IRequest<GetSpelDTO>
     {
-        public string Id { get; set; }
-        public string UserId { get; set; }
+        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
     }
 
     public class GetSpelQueryHandle : IRequestHandler<GetSpelQuery, GetSpelDTO>
@@ -36,9 +36,9 @@ namespace Application.Spellen.Queries.GetSpel
                 return null;
 
             var speler1 = 
-                await _context.Spelers.FindAsync(request.UserId == spel.speler1Token ? spel.speler1Token : spel.speler2Token);
+                await _context.Spelers.FindAsync(request.UserId == spel.Speler1Token ? spel.Speler1Token : spel.Speler2Token);
             var speler2 =
-                await _context.Spelers.FindAsync(request.UserId == spel.speler1Token ? spel.speler2Token : spel.speler1Token);
+                await _context.Spelers.FindAsync(request.UserId == spel.Speler1Token ? spel.Speler2Token : spel.Speler1Token);
 
             GetSpelDTO spelDTO = spel.MapToGetSpelDto();
 

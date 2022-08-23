@@ -4,7 +4,83 @@
     ViewData["Title"] = "Two-factor authentication";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div id="twofa__login__container">
+    <form id="twofa__login__form" method="post" asp-route-returnUrl="@Model.ReturnUrl">
+        <h1>Two-Factor Authentication</h1>
+        <div id="twofa__login__form__pincode">
+            <label>Enter 6-digit code from your authenticator application</label>
+
+            <input 
+                type="tel" 
+                name="pincode-1" 
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="1"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                name="pincode-2" 
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="2"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                name="pincode-3" 
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="3"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                name="pincode-4" 
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="4"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                name="pincode-5" 
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="5"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                name="pincode-6" 
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="6"
+                placeholder="."
+                autocomplete="off">
+        </div>
+        <div class="twofa__login__remember">
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMachine">
+                        <input asp-for="Input.RememberMachine" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMachine)
+                    </label>
+                </div>
+            </div>
+        <div id="twofa__login__form__buttons">
+            <button id="twofa__login" type="submit" class="btn outline-blue w30" >Log in</button>
+        </div>
+        
+        <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">Use a recovery code</a>
+    </form>
+</div>
+
+@* <h1>@ViewData["Title"]</h1>
 <hr />
 <p>Your login is protected with an authenticator app. Enter your authenticator code below.</p>
 <div class="row">
@@ -34,7 +110,7 @@
 <p>
     Don't have access to your authenticator device? You can
     <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
-</p>
+</p> *@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

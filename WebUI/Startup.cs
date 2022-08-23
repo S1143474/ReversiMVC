@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using WebUI;
 using WebUI.Filters;
 using WebUI.Services;
 
@@ -25,6 +28,7 @@ internal class Startup
         services.AddSingleton<ICurrentUserService, CurrentUserService>();
         services.AddApplication();
         services.AddInfrastructure(Configuration);
+        services.AddAutoMapper(typeof(Startup));
 
         services.AddScoped<StillPlayingFilter>();
         /* services.AddMvc().AddMvcOptions(options =>
@@ -38,9 +42,16 @@ internal class Startup
 
         services.AddControllersWithViews();
         services.AddRazorPages();
+
+        services.Configure<GoogleCaptchaConfig>(Configuration.GetSection("Recaptcha"));
+        /*services.AddRecaptcha(new RecaptchaOptions
+        {
+            SiteKey = Configuration["Recaptcha:SiteKey"],
+            SecretKey = Configuration["Recaptcha:SecretKey"]
+        });*/
     }
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
     {
         if (env.IsDevelopment())
         {
@@ -79,5 +90,8 @@ internal class Startup
 
             endpoints.MapRazorPages();
         });
+
+        loggerFactory.AddFile("Logs/reversi-mvc-{Date}.txt");
+
     }
 }

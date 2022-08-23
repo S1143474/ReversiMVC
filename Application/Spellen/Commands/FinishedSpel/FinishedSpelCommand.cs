@@ -12,7 +12,7 @@ namespace Application.Spellen.Commands.FinishedSpel
 {
     public class FinishedSpelCommand : IRequest<bool>
     {
-        public string SpelerToken { get; set; }
+        public Guid SpelerToken { get; set; }
     }
 
     public class FinishedSpelCommandHandle : IRequestHandler<FinishedSpelCommand, bool>
@@ -30,7 +30,7 @@ namespace Application.Spellen.Commands.FinishedSpel
         {
             var result = await _spelService.RetrieveSpelOverSpelerToken(request.SpelerToken);
 
-            await _hub.Clients.Users(result.speler1Token, result.speler2Token).Redirect($"spel/Result");
+            await _hub.Clients.Users(result.Speler1Token.ToString(), result.Speler2Token.ToString()).Redirect($"spel/Result");
             /*await _hub.Clients.Users(result.speler1Token, result.speler2Token).OnFinish(new FinishedSpelDTO
             {
                 WinnerName = finishedResults.WinnerToken,

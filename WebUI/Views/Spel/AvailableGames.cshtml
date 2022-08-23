@@ -1,5 +1,5 @@
 ﻿@using System.Diagnostics
-@model IEnumerable<Application.Spellen.Queries.GetSpellen.SpelDTO>
+@model IEnumerable<Application.Common.Models.Requests.SpelDto>
 @{
     ViewData["Title"] = "Reversi";
 }
@@ -10,10 +10,10 @@
         <div class="open__game__list">
             @foreach (var item in Model)
             {
-                <a asp-controller="Spel" asp-action="Reversi" asp-route-id="@item.token" class="game__card">
+                <a asp-controller="Spel" asp-action="Reversi" asp-route-id="@item.Token" class="game__card">
                     <h2 class="card__action__title">Play</h2>
-                    <p class="game__card__description">@item.omschrijving</p>
-                    <span class="game__card__from">@item.speler1Token</span>
+                    <p class="game__card__description">@item.Description</p>
+                    <span class="game__card__from">@item.Speler1Token</span>
                 </a>
             }
             @{
@@ -28,7 +28,6 @@
 
                 Random random = new Random();
             }
-            @for (int i = 0; i < 128; i++)
             @foreach (var item in Model)
             {
                 int num = random.Next(0, 8);
@@ -46,7 +45,7 @@
                     <div class="game__card__game__info">
                         <h2 class="game__card__player__name">John Doe</h2>
                                                 <p class="game__card__game__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                     <p class="game__card__game__description">@item.omschrijving</p>
+                     <p class="game__card__game__description">@item.Description</p>
                         <div class="game__card__game__achievements">
                             <div>
                                 <h6>Wins</h6>

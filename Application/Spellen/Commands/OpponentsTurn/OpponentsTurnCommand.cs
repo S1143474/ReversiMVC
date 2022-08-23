@@ -14,7 +14,7 @@ namespace Application.Spellen.Commands.OpponentsTurn
 { 
     public class OpponentsTurnCommand : IRequest<bool>
     {
-        public string CurrentSpelerToken { get; set; }
+        public Guid CurrentSpelerToken { get; set; }
         public List<FicheCoordDTO> FichesToTurnAround { get; set; }
     }
 
@@ -33,12 +33,12 @@ namespace Application.Spellen.Commands.OpponentsTurn
         {
             var spel = await _spelService.RetrieveSpelOverSpelerToken(request.CurrentSpelerToken);
 
-            string opponentSpelerToken = (spel.speler1Token == request.CurrentSpelerToken)
-                ? spel.speler2Token
-                : spel.speler1Token;
+            var opponentSpelerToken = (spel.Speler2Token.Equals(request.CurrentSpelerToken))
+                ? spel.Speler2Token
+                : spel.Speler1Token;
 
-            await _hub.Clients.Users(request.CurrentSpelerToken).OnDisableMove(request.FichesToTurnAround, spel.aandeBeurt);
-            await _hub.Clients.Users(opponentSpelerToken).OnMove(request.FichesToTurnAround, spel.aandeBeurt);
+            await _hub.Clients.Users(request.CurrentSpelerToken.ToString()).OnDisableMove(request.FichesToTurnAround, spel.Turn);
+            await _hub.Clients.Users(opponentSpelerToken.ToString()).OnMove(request.FichesToTurnAround, spel.Turn);
             return true;
         }
     }

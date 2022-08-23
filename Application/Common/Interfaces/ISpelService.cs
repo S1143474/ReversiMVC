@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Common.Models.Requests;
 using Application.Spellen.Commands.CreateSpel;
 using Application.Spellen.Commands.FinishedSpel;
 using Application.Spellen.Commands.PlaceFiche;
@@ -11,20 +13,22 @@ namespace Application.Common.Interfaces
     // TODO: Create command for all of the methods.
     public interface ISpelService
     {
-        Task<List<SpelDTO>> ReturnListOfSpellen();
+        Task<List<SpelDto>> ReturnListOfSpellen();
 
-        Task<bool> CreateSpel(CreateSpelCommand spelCommand);
+        Task<SpelDto> CreateSpel(SpelCreateDto spelCreateDto);
 
-        Task<SpelDTO> RetrieveSpelOverToken(string token);
+        Task<SpelDto> RetrieveSpelOverToken(Guid token);
 
-        Task<SpelDTO> RetrieveSpelOverSpelerToken(string spelerToken);
+        Task<SpelDto> RetrieveSpelOverSpelerToken(Guid spelerToken);
 
         Task<bool> JoinSpelReversi(StartSpelCommand startSpelCommand);
 
         Task<PlacedFichedDTO> PlaceFiche(bool hasPassed, int x, int y, string token, string spelerToken);
 
-        Task<string> GetSpelTokenFromSpelerToken(string spelerToken);
+        Task<string> GetSpelTokenFromSpelerToken(Guid spelerToken);
 
         Task<FinishedSpelResultsDTO> GetSpelFinishedResults(string spelToken);
+
+        Task<List<SpelFinishedDto>> GetSpellenFinishedBySpelerTokenDescAsync(Guid spelerToken);
     }
 }

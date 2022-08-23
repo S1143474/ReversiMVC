@@ -38,7 +38,18 @@ namespace WebUI.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        protected string UserId => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+        protected Guid UserId
+        {
+            get
+            {
+                var nameIdentifier = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (Guid.TryParse(nameIdentifier, out var result))
+                    return result;
+
+                return Guid.Empty;
+            }
+        }
+
         protected string UserName => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Name);
         private string _userAgent => _httpContextAccessor.HttpContext.Request.Headers["User-Agent"];
         protected bool IsMobileDevice => mobileDevices.Any(device => _userAgent.ToLower().Contains(device));

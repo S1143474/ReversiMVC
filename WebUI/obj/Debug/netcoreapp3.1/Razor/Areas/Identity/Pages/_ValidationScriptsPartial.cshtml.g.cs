@@ -34,7 +34,7 @@ using WebUI.Areas.Identity.Pages;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cc701c74526a50864c63e5c7b74df3b62d9eb0fc", @"/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"445fffb31d6b1284ee7b09a8fd6d9c0c83b9ea18", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0d7d3586b989deea81b1d529bd891f229b486e17", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Identity_Pages__ValidationScriptsPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable

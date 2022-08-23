@@ -25,6 +25,10 @@
 @use './pages/spel/globalstats';
 @use './components/stats-card';
 @use './components/dialog';
+@use './pages/spel/waiting';
+@use './components/link';
+@use './pages/account/twofapage';
+@use './pages/account/forgotemail';
 // @import 'base/all';
 // @import 'components/all';
 // @import 'layout/all';

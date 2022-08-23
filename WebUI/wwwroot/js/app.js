@@ -104,15 +104,26 @@ var Game = (url => {
     Game.ComponentEvents.addClick("btn-update-password", _openDialog, "update-user-password-dialog");
     Game.ComponentEvents.addClick("btn-update-2fa", _openDialog, "update-2fa-dialog");
     Game.ComponentEvents.addClick("btn-close-update-user-password-dialog", _closeDialog, "update-user-password-dialog");
+    Game.ComponentEvents.addClick("twofa__login");
     Game.Model.listen("Redirect", _redirect);
     Game.Model.listen("OnMove", _onMove);
     Game.Model.listen("OnWrongMove", _wrongMoveMessage);
     Game.Model.listen("OnDisableMove", _disableMovePlacement);
     Game.Model.listen("OnFinish", _finish);
     Game.Model.listen("OnError", _onError);
+    Game.Model.listen("OnPlayerOnline", _test);
+    var location = window.location.pathname;
+    var locationList = location.split('/');
+    var locationListLength = locationList.length - 1;
+    Game.LoginWith2fa.init(locationList[locationListLength]);
     console.log(configMap.apiUrl); // _getCurrentGameState();
 
     afterInit();
+  };
+
+  var _test = message => {
+    var counter = document.getElementById("online__player__counter");
+    if (counter !== null) counter.innerText = "players online: ".concat(message);
   };
 
   var _closeDialog = dialogId => {
@@ -220,9 +231,13 @@ Game.ComponentEvents = (() => {
   var privateInit = () => {};
 
   var privateAddClickListener = (id, callback, param) => {
-    console.log("private listener");
     var componentId = document.getElementById(id);
-    if (componentId == null) throw new Error("Id Not Found");
+
+    if (componentId == null) {
+      console.error("Component Id: ".concat(id, " Not Found"));
+      return;
+    }
+
     componentId.addEventListener('click', () => {
       callback(param);
     });
@@ -361,6 +376,297 @@ Game.Reversi = (() => {
 
   var privateInit = () => {
     return true;
+  };
+
+  return {
+    init: privateInit
+  };
+})();
+
+Game.LoginWith2fa = (() => {
+  var configMap = {
+    page: 'LoginWith2fa'
+  };
+  var stateMap = {
+    currentPage: '',
+    isLocated: false,
+    pincode: []
+  };
+
+  var privateInit = page => {
+    stateMap.currentPage = page;
+    stateMap.isLocated = configMap.page === page;
+    if (!stateMap.isLocated) return;
+    maskInputFields();
+  };
+
+  var maskInputFields = () => {
+    console.log('maskinput');
+    var debug = false;
+    var pincode1 = document.getElementsByName('pincode-1');
+    var form = $('#twofa__login__form');
+    var group = form.find('#twofa__login__form__pincode');
+    var inputs = group.find('input');
+    var first = form.find('[name=pincode-1]');
+    var second = form.find('[name=pincode-2]');
+    var third = form.find('[name=pincode-3]');
+    var fourth = form.find('[name=pincode-4]');
+    var fifth = form.find('[name=pincode-5]');
+    var sixth = form.find('[name=pincode-6]');
+    inputs.on('keyup', event => {
+      var code = event.keyCode || event.which;
+
+      if (code === 9 && !event.shiftKey) {
+        event.preventDefault();
+        $('#twofa__login').focus();
+      }
+    }).inputmask({
+      mask: '9',
+      placeholder: '',
+      showMaskOnHover: false,
+      showMaskOnFocus: false,
+      clearIncomplete: true,
+      onincomplete: function onincomplete() {
+        !debug || console.log('inputmask incomplete');
+      },
+      oncleared: function oncleared() {
+        var index = inputs.index(this),
+            prev = index - 1,
+            next = index + 1;
+
+        if (prev >= 0) {
+          // clear field
+          inputs.eq(prev).val(''); // focus field
+
+          inputs.eq(prev).focus(); // remove last nubmer
+
+          stateMap.pincode.splice(-1, 1);
+        } else {
+          return false;
+        }
+
+        !debug || console.log('[oncleared]', prev, index, next);
+      },
+      onKeyValidation: function onKeyValidation(key, result) {
+        var index = inputs.index(this),
+            prev = index - 1,
+            next = index + 1; // focus to next field
+
+        if (prev < 6) {
+          inputs.eq(next).focus();
+        }
+
+        !debug || console.log('[onKeyValidation]', index, key, result, _pincode);
+      },
+      onBeforePaste: function onBeforePaste(data, opts) {
+        $.each(data.split(''), function (index, value) {
+          // set value
+          inputs.eq(index).val(value);
+          !debug || console.log('[onBeforePaste:each]', index, value);
+        });
+        return false;
+      }
+    });
+    $('[name=pincode-1]').on('focus', function (event) {//   ! debug || console.log('[1:focus]', _pincode);
+    }).inputmask({
+      oncomplete: function oncomplete() {
+        // add first character
+        stateMap.pincode.push($(this).val()); // focus to second field
+
+        $('[name=pincode-2]').focus(); // ! debug || console.log('[1:oncomplete]', _pincode);
+      }
+    });
+    $('[name=pincode-2]').on('focus', function (event) {
+      if (!(first.val().trim() !== '')) {
+        // prevent default
+        event.preventDefault(); // reset pincode
+
+        stateMap.pincode = []; // handle each field
+
+        inputs.each(function () {
+          // clear each field
+          $(this).val('');
+        }); // focus to first field
+
+        first.focus();
+      }
+
+      !debug || console.log('[2:focus]', _pincode);
+    }).inputmask({
+      oncomplete: function oncomplete() {
+        // add second character
+        stateMap.pincode.push($(this).val()); // focus to third field
+
+        $('[name=pincode-3]').focus();
+        !debug || console.log('[2:oncomplete]', _pincode);
+      }
+    });
+    $('[name=pincode-3]').on('focus', function (event) {
+      if (!(first.val().trim() !== '' && second.val().trim() !== '')) {
+        // prevent default
+        event.preventDefault(); // reset pincode
+
+        stateMap.pincode = []; // handle each field
+
+        inputs.each(function () {
+          // clear each field
+          $(this).val('');
+        }); // focus to first field
+
+        first.focus();
+      }
+
+      !debug || console.log('[3:focus]', _pincode);
+    }).inputmask({
+      oncomplete: function oncomplete() {
+        // add third character
+        stateMap.pincode.push($(this).val()); // focus to fourth field
+
+        $('[name=pincode-4]').focus();
+        !debug || console.log('[3:oncomplete]', _pincode);
+      }
+    });
+    $('[name=pincode-4]').on('focus', function (event) {
+      if (!(first.val().trim() !== '' && second.val().trim() !== '' && third.val().trim() !== '')) {
+        // prevent default
+        event.preventDefault(); // reset pincode
+
+        stateMap.pincode = []; // handle each field
+
+        inputs.each(function () {
+          // clear each field
+          $(this).val('');
+        }); // focus to first field
+
+        first.focus();
+      }
+
+      !debug || console.log('[4:focus]', _pincode);
+    }).inputmask({
+      oncomplete: function oncomplete() {
+        // add fo fourth character
+        stateMap.pincode.push($(this).val()); // focus to fifth field
+
+        $('[name=pincode-5]').focus();
+        !debug || console.log('[4:oncomplete]', _pincode);
+      }
+    });
+    $('[name=pincode-5]').on('focus', function (event) {
+      if (!(first.val().trim() !== '' && second.val().trim() !== '' && third.val().trim() !== '' && fourth.val().trim() !== '')) {
+        // prevent default
+        event.preventDefault(); // reset pincode
+
+        stateMap.pincode = []; // handle each field
+
+        inputs.each(function () {
+          // clear each field
+          $(this).val('');
+        }); // focus to first field
+
+        first.focus();
+      }
+
+      !debug || console.log('[5:focus]', stateMap.pincode);
+    }).inputmask({
+      oncomplete: function oncomplete() {
+        // add fifth character
+        stateMap.pincode.push($(this).val()); // focus to sixth field
+
+        $('[name=pincode-6]').focus();
+        !debug || console.log('[5:oncomplete]', stateMap.pincode);
+      }
+    });
+    $('[name=pincode-6]').on('focus', function (event) {
+      if (!(first.val().trim() !== '' && second.val().trim() !== '' && third.val().trim() !== '' && fourth.val().trim() !== '' && fifth.val().trim() !== '')) {
+        // prevent default
+        event.preventDefault(); // reset pincode
+
+        stateMap.pincode = []; // handle each field
+
+        inputs.each(function () {
+          // clear each field
+          $(this).val('');
+        }); // focus to first field
+
+        first.focus();
+      }
+
+      !debug || console.log('[6:focus]', stateMap.pincode);
+    }).inputmask({
+      oncomplete: function oncomplete() {
+        // add sixth character
+        stateMap.pincode.push($(this).val()); // pin length not equal to six characters
+
+        if (stateMap.pincode.length !== 6) {
+          // reset pin
+          stateMap.pincode = []; // handle each field
+
+          inputs.each(function () {
+            // clear each field
+            $(this).val('');
+          }); // focus to first field
+
+          $('[name=pincode-1]').focus();
+        } else {
+          // handle each field
+          inputs.each(function () {
+            // disable field
+            $(this).prop('disabled', true);
+          }); // send request
+          //   _req = $.ajax({
+          //     type: 'POST',
+          //     url: '/api/tfa',
+          //     data: {
+          //       'code': _pincode.join(''),
+          //       '_csrf': ''
+          //     }
+          //   })
+          //   .done(function(data, textStatus, jqXHR) {
+          //     try {
+          //       ! debug || console.log('data', data);
+          //       if (data.ok === true) {
+          //         $group.addClass('form__group--success');
+          //         $button.removeAttr('disabled');
+          //       }
+          //       if (data.ok === false) {
+          //         $group.addClass('form__group--error');
+          //       }
+          //     } catch (err) {
+          //     }
+          //   })
+          //   .fail(function(jqXHR, textStatus, errorThrown) {
+          //     $group.removeClass('form__group--error');
+          //   })
+          //   .always(function(dataOrjqXHR, textStatus, jqXHRorErrorThrown) {
+          //     // reset pin
+          //     stateMap.pincode = [];
+          //     // reset request
+          //     _req = null;
+          //     setTimeout(function() {
+          //       // handle each field
+          //       $inputs.each(function() {
+          //         // clear all fields
+          //         $(this).val('');
+          //         // enable all fields
+          //         $(this).prop('disabled', false);
+          //       });
+          //       // remove response status class
+          //       $group.removeClass('form__group--success form__group--error');
+          //       // disable submit button
+          //       $button.attr('disabled', true);
+          //       // focus to first field
+          //       $first.focus();
+          //     }, 2000);
+          //   });
+        }
+
+        !debug || console.log('[6:oncomplete]', _pincode);
+      }
+    });
+
+    pincode1.onfocus = event => {};
+
+    console.log(pincode1);
   };
 
   return {

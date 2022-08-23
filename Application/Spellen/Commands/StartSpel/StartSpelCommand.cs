@@ -13,8 +13,8 @@ namespace Application.Spellen.Commands.StartSpel
 {
     public class StartSpelCommand : IRequest<SpelState>
     {
-        public string Speler2Token { get; set; }
-        public string SpelToken { get; set; }
+        public Guid Speler2Token { get; set; }
+        public Guid SpelToken { get; set; }
     }
 
     public class StartSpelCommandHandle : IRequestHandler<StartSpelCommand, SpelState>
@@ -31,16 +31,20 @@ namespace Application.Spellen.Commands.StartSpel
 
         public async Task<SpelState> Handle(StartSpelCommand request, CancellationToken cancellationToken)
         {
+            var spel = await _spelService.RetrieveSpelOverToken(request.SpelToken);
+            
+            if (spel.Speler1Token.Equals(request.Speler2Token))
+                return SpelState.Waiting;
+            
             var isSpelJoined = await _spelService.JoinSpelReversi(request);
 
             if (isSpelJoined == false)
                 return SpelState.Error;
 
-            var spel = await _spelService.RetrieveSpelOverToken(request.SpelToken);
 
-            if (spel.speler2Token is not null)
+            if (spel.Speler2Token is not null)
             {
-                await _hub.Clients.Users(spel.speler1Token).Redirect($"spel/Reversi/{spel.token}");
+                await _hub.Clients.Users(spel.Speler1Token.ToString()).Redirect($"spel/Reversi/{spel.Token}");
 
                 return SpelState.Playing;
             }

@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
+using Application.Common.Models.Requests;
 using Domain.Entities;
 using Domain.Events.Spellen;
 using MediatR;
@@ -12,13 +13,13 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Application.Spellen.Commands.CreateSpel
 {
-    public class CreateSpelCommand : IRequest<bool>
+    public class CreateSpelCommand : IRequest<SpelDto>
     {
-        public string PlayerToken { get; set; }
+        public Guid PlayerToken { get; set; }
         public string Description { get; set; }
     }
 
-    public class CreateSpelCommandHandler : IRequestHandler<CreateSpelCommand, bool>
+    public class CreateSpelCommandHandler : IRequestHandler<CreateSpelCommand, SpelDto>
     {
         public ISpelService _service { get; set; }
         
@@ -27,10 +28,18 @@ namespace Application.Spellen.Commands.CreateSpel
             _service = spelService;
         }
 
-        public async Task<bool> Handle(CreateSpelCommand command, CancellationToken cancellationToken)
+        public async Task<SpelDto> Handle(CreateSpelCommand command, CancellationToken cancellationToken)
         {
             // TODO: API CancellationTOken from Nick Chapas YT.
-            var result = await _service.CreateSpel(command);
+            SpelDto result = null;
+            try
+            {
+                result = await _service.CreateSpel(new SpelCreateDto { Description = command.Description, Speler1Token = command.PlayerToken});
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
             return result;
         }

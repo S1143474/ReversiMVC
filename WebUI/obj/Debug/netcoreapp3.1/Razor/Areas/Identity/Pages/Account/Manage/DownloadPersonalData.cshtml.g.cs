@@ -48,7 +48,7 @@ using WebUI.Areas.Identity.Pages.Account.Manage;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1221592829143e1143c12669de891290a2e97032", @"/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"445fffb31d6b1284ee7b09a8fd6d9c0c83b9ea18", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0d7d3586b989deea81b1d529bd891f229b486e17", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dbdb5a460a3be86c12dc0ebadd6c8a39c4c76a2d", @"/Areas/Identity/Pages/Account/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"90446effc71ecbe05f74b1ef59c81f5dd8f01a10", @"/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml")]
     #nullable restore

@@ -88,7 +88,7 @@ namespace Application.Hubs
 
             var spel = await _spelService.RetrieveSpelOverSpelerToken(UserId);
 
-            await Clients.User(spel.speler1Token).Redirect($"spel/Reversi/{spel.token}");
+            await Clients.User(spel.Speler1Token.ToString()).Redirect($"spel/Reversi/{spel.Token}");
         }
 
         public async Task SendStartGameAsync(string speler1Token, string speler2Token)
@@ -96,7 +96,7 @@ namespace Application.Hubs
             await Clients.Users(speler1Token, speler2Token).StartGame();
         }
 
-        public override Task OnConnectedAsync()
+        public override async Task OnConnectedAsync()
         {
             /*Console.WriteLine("ReversiHub: On - Conneced");*/
             // Add your own code here.
@@ -105,16 +105,33 @@ namespace Application.Hubs
             // After the code in this method completes, the client is informed that
             // the connection is established; for example, in a JavaScript client,
             // the start().done callback is executed.
-            return base.OnConnectedAsync();
+            if (!UserId.Equals(default))
+            {
+                UserHandler.ConnectedIds.Add(UserId);
+                await Clients.All.OnPlayerOnline(UserHandler.ConnectedIds.Count);
+            }
+
+            await base.OnConnectedAsync();
         }
 
-        public override Task OnDisconnectedAsync(Exception exception)
+        public override async Task OnDisconnectedAsync(Exception exception)
         {
             /*Console.WriteLine("ReversiHub: On - Conneced");*/
             // Add your own code here.
             // For example: in a chat application, mark the user as offline, 
             // delete the association between the current connection id and user name.
-            return base.OnDisconnectedAsync(exception);
+            if (!UserId.Equals(default))
+            {
+                UserHandler.ConnectedIds.Remove(UserId);
+                await Clients.All.OnPlayerOnline(UserHandler.ConnectedIds.Count);
+            }
+
+            await base.OnDisconnectedAsync(exception);
         }
+    }
+
+    public static class UserHandler
+    {
+        public static HashSet<Guid> ConnectedIds = new HashSet<Guid>();
     }
 }

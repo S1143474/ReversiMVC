@@ -12,7 +12,7 @@ namespace Application.Spellen.Commands.WrongPlacedFiche
 {
     public class WrongPlacedFicheCommand : IRequest<bool>
     {
-        public string CurrentSpelerToken { get; set; }
+        public Guid CurrentSpelerToken { get; set; }
         public string NotExecutedMessage { get; set; }
     }
 
@@ -27,7 +27,7 @@ namespace Application.Spellen.Commands.WrongPlacedFiche
 
         public async Task<bool> Handle(WrongPlacedFicheCommand request, CancellationToken cancellationToken)
         {
-            await _hub.Clients.Users(request.CurrentSpelerToken).OnWrongMove(request.NotExecutedMessage);
+            await _hub.Clients.Users(request.CurrentSpelerToken.ToString()).OnWrongMove(request.NotExecutedMessage);
 
             // TODO: Make this pretty
             return true;

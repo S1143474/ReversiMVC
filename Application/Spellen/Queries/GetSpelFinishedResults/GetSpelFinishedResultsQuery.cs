@@ -13,7 +13,7 @@ namespace Application.Spellen.Queries.GetSpelFinishedResults
 {
     public class GetSpelFinishedResultsQuery : IRequest<FinishedSpelResultsDTO>
     {
-        public string SpelerToken { get; set; }
+        public Guid SpelerToken { get; set; }
     }
 
     public class GetSpelFinishedResultsQueryHandle : IRequestHandler<GetSpelFinishedResultsQuery, FinishedSpelResultsDTO>
@@ -35,7 +35,7 @@ namespace Application.Spellen.Queries.GetSpelFinishedResults
 
             if (finishedResults == null) return null;
 
-            finishedResults.IsWinner = finishedResults.WinnerToken == request.SpelerToken;
+            finishedResults.IsWinner = finishedResults.WinnerToken.Equals(request.SpelerToken);
 
             var currenSpeler = await _reversiDbContext.Spelers.FindAsync(request.SpelerToken);
             

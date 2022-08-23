@@ -1,275 +1,88 @@
-﻿@{
-
-}
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Http
+@model List<Application.Common.Models.Requests.SpelFinishedDto>
 
 <div class="history__content">
+@if (Model != null && Model.Count() != 0)
+{
+
     <div class="history__list">
-        <div class="history__list__item left item-win">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">emoji_events</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Win</span>
-                    <span>18-12-2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. Nullam id hendrerit odio, sit amet finibus orci. Morbi sapien magna, placerat vitae pulvinar semper, faucibus id odio.</p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            string pos = (i % 2 == 0) ? "left" : "right";
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var listItem = "";
+            var listIcon = "";
+            var listItemTitle = "";
+            if (Model[i].GameWonBy.Equals(default))
+            {
+                // Draw
+                listItem = "item-draw";
+                listIcon = "handshake";
+                listItemTitle = "Draw";
+
+            } else if (Model[i].GameWonBy.Equals(userId))
+            {
+                // Win
+                listItem = "item-win";
+                listIcon = "emoji_events";
+                listItemTitle = "Win";
+            }
+            else
+            {
+                // Lost
+                listItem = "item-loss";
+                listIcon = "trending_down";
+                listItemTitle = "Loss";
+
+            }
+
+            <div class="history__list__item left @pos @listItem">
+                <div class="history__centerline"></div>
+                <span class="history__list__item__icon material-icons">@listIcon</span>
+                <section>
+                    <div class="history__list__item__details">
+                        <span class="history__list__item__details__title">@listItemTitle</span>
+                        <span>18-12-2021</span>
                     </div>
-                    <i>- Baas500</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item right item-loss">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">trending_down</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Loss</span>
-                    <span>17-12-2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. </p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
+                    <p>@Model[i].Description</p>
+                    <div class="history__list__item__footer">
+                        @*<div class="history__list__item__footer__labels">
+                            <span class="history__list__item__footer__label label-moves">2345</span>
+                            <span class="history__list__item__footer__label label-highscore">highscore</span>
+                            <span class="history__list__item__footer__label label-fastest">fastest</span>
+                        </div>*@
+                        <i>- Baas500</i>
                     </div>
-                    <i>- roobdino</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item left item-draw">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">handshake</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Draw</span>
-                    <span>16-12-2021</span>
-                </div>
-                <p>Game omschrijving</p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- loltimo5</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item right item-stats">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">workspace_premium</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">New Achievement</span>
-                    <span>17-12-2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. </p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- roobdino</i>
-                </div>
-            </section>
-        </div> 
-        <div class="history__list__item left item-draw">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">handshake</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Draw</span>
-                    <span>16-12-2021</span>
-                </div>
-                <p>Game omschrijving</p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- loltimo5</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item right item-win">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">emoji_events</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Win</span>
-                    <span>17-12-2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. </p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- roobdino</i>
-                </div>
-            </section>
-        </div>
-          
-        <div class="history__list__item left item-draw">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">handshake</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Draw</span>
-                    <span>16-12-2021</span>
-                </div>
-                <p>Game omschrijving</p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- loltimo5</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item right item-win">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">emoji_events</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Win</span>
-                    <span>17-12-2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. </p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- roobdino</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item left item-draw">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">handshake</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Draw</span>
-                    <span>16-12-2021</span>
-                </div>
-                <p>Game omschrijving</p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- loltimo5</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item right item-win">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">emoji_events</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Win</span>
-                    <span>17-12-2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. </p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- roobdino</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item left item-draw">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">handshake</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Draw</span>
-                    <span>16-12-2021</span>
-                </div>
-                <p>Game omschrijving</p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- loltimo5</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item right item-win">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">emoji_events</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Win</span>
-                    <span>17-12-2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. </p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- roobdino</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item left item-draw">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">handshake</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Draw</span>
-                    <span>16-12-2021</span>
-                </div>
-                <p>Game omschrijving</p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- loltimo5</i>
-                </div>
-            </section>
-        </div>
-        <div class="history__list__item right item-win">
-            <div class="history__centerline"></div>
-            <span class="history__list__item__icon material-icons">emoji_events</span>
-            <section>
-                <div class="history__list__item__details">
-                    <span class="history__list__item__details__title">Win</span>
-                    <span>17-12-2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. </p>
-                <div class="history__list__item__footer">
-                    <div class="history__list__item__footer__labels">
-                        <span class="history__list__item__footer__label label-moves">2345</span>
-                        <span class="history__list__item__footer__label label-highscore">highscore</span>
-                        <span class="history__list__item__footer__label label-fastest">fastest</span>
-                    </div>
-                    <i>- roobdino</i>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
+        }
     </div>
+}
+else
+{
+    <h1 class="nothing-found">No Previous Games Found</h1>
+}
 </div>
+
+@*
+<div class="history__list__item right item-stats">
+    <div class="history__centerline"></div>
+    <span class="history__list__item__icon material-icons">workspace_premium</span>
+    <section>
+        <div class="history__list__item__details">
+            <span class="history__list__item__details__title">New Achievement</span>
+            <span>17-12-2021</span>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. </p>
+        <div class="history__list__item__footer">
+            <div class="history__list__item__footer__labels">
+                <span class="history__list__item__footer__label label-moves">2345</span>
+                <span class="history__list__item__footer__label label-highscore">highscore</span>
+                <span class="history__list__item__footer__label label-fastest">fastest</span>
+            </div>
+            <i>- roobdino</i>
+        </div>
+    </section>
+</div>*@

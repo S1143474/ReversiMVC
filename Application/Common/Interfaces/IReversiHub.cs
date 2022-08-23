@@ -24,5 +24,7 @@ namespace Application.Common.Interfaces
         Task OnFinish(FinishedSpelDTO finishedSpelDto);
 
         Task OnError(string message);
+
+        Task OnPlayerOnline(int amount);
     }
 }

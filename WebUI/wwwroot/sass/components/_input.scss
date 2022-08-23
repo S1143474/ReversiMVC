@@ -1,8 +1,13 @@
 @use '../abstracts/colors' as clr;
+@import '../abstracts/mixins';
 
 .input-group {
     width: 100%;
-    margin: 1.563rem 0;
+
+    @include for-tablet-landscape-up {
+        margin: 1.563rem 0;
+    }
+    
     position: relative;
    
     input {
@@ -18,14 +23,19 @@
         outline: 0;
         border: none;
 
-        border-radius: .175rem;        
+        border-radius: .175rem;  
+        
+        @include for-phone-and-tablet-small {
+            padding: .775rem 0 .775rem .775rem;
+        }
     }
 
     label {
         position: absolute;
 
-        top: 50%;
-        transform: translateY(-50%);
+        top: calc(50% - .75rem);
+        
+        transform: translateY(calc(-50% - .3rem));
         left: 1rem;
         
         font-size: var(--fs-400);
@@ -64,18 +74,20 @@
     input:not(:placeholder-shown):not(:focus):invalid + label,
     input:focus + label {
         position: absolute;
-        top: -5%;
+        top: 0%;
         left: 5%;
         color: clr.$blue;
         font-size: var(--fs-400);
+        transform: translateY(-50%);
     }
 
     input:disabled + label {
         position: absolute;
-        top: -5%;
+        top: 0%;
         left: 5%;
         color: clr.$disabled;
         font-size: var(--fs-400);
+        transform: translateY(-50%);
     }
 
     input:valid + .material-svg,
@@ -89,10 +101,11 @@
         position: absolute;
         width: 1.875rem;
         height: 1.875rem;
-        top: -5%;
+        top: 0%;
         left: 5%;
         color: clr.$blue;
         font-size: var(--fs-500);
+        transform: translateY(-50%);
     }
 
     .foot__note {

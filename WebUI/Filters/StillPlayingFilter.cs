@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Domain.Entities;
@@ -66,7 +67,7 @@ namespace WebUI.Filters
              
             if (claim != null)
             {
-                var spel = await _spelService.RetrieveSpelOverSpelerToken(claim.Value);
+                var spel = await _spelService.RetrieveSpelOverSpelerToken(Guid.Parse(claim.Value));
 
                 if (spel != null)
                 {
@@ -82,13 +83,13 @@ namespace WebUI.Filters
                             return;
                         }
 
-                        if (IsSpeler1Waiting(spel.speler2Token))
+                        if (IsSpeler1Waiting(spel.Speler2Token))
                         {
-                            context.Result = new RedirectToActionResult("Waiting", "Spel", new { id = spel.token });
+                            context.Result = new RedirectToActionResult("Waiting", "Spel", new { id = spel.Token });
                             await next();
                             return;
                         }
-                        context.Result = new RedirectToActionResult("Reversi", "Spel", new { id = spel.token });
+                        context.Result = new RedirectToActionResult("Reversi", "Spel", new { id = spel.Token });
 
                     }
                       
@@ -103,7 +104,7 @@ namespace WebUI.Filters
         /// </summary>
         /// <param name="speler2Token"></param>
         /// <returns></returns>
-        private bool IsSpeler1Waiting(string speler2Token) => speler2Token is null;
+        private bool IsSpeler1Waiting(Guid? speler2Token) => speler2Token is null;
 
         private bool IsInWaitingView(object controller, object action) => controller.Equals("Spel") && action.Equals("Waiting");
 

@@ -4,6 +4,10 @@
     ViewData["Title"] = "Register";
 }
 
+@using Microsoft.Extensions.Options
+@using Application
+
+@inject IOptions<GoogleCaptchaConfig> GoogleCaptchaConfig
 @* <h1>@ViewData["Title"]</h1> *@
 
 <div id="register__container">
@@ -18,7 +22,7 @@
 
             <section class="card__content">
                 <form asp-route-returnUrl="@Model.ReturnUrl" method="post" >
-                    
+                    <input type="hidden" id="LoginViewModelToken" asp-for="@Model.Input.RecaptchaToken"/>
                     <div class="card__progress">
                         <div class="line line-left"></div>
                         <div class="card__progress__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/></svg></div>
@@ -27,6 +31,8 @@
                         <div class="line line-right"></div>
                     </div>
                     
+                    
+                    <recaptcha/>
                     @await Component.InvokeAsync("RegisterUE")
 
                     @*<div class="input-group">
@@ -54,9 +60,24 @@
                             <span asp-validation-for="Input.Email"></span>
                         </p>
                     </div>*@
-
-                    <div class="input-group">
+                    @* <div class="input-group">
                         <input asp-for="Input.Password" placeholder=" " autocomplete="off" required/>
+                                
+                        <label asp-for="Input.Password">
+                            <svg class="material-svg" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/>
+                            </svg>
+                            <span>Password</span>
+                        </label>
+
+                        <p class="foot__note">
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </p>
+                    @* <label asp-for="Omschrijving" class="control-label"></label>
+                        <input asp-for="Omschrijving" class="form-control"/>
+                    </div> *@
+                    <div class="input-group">
+                        <input asp-for="Input.Password" placeholder=" " autocomplete="password" required/>
                         <label asp-for="Input.Password">
                             <svg class="material-svg" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/>
@@ -69,7 +90,7 @@
                     </div>
 
                     <div class="input-group">
-                        <input asp-for="Input.ConfirmPassword" placeholder=" " autocomplete="off" required/>
+                        <input asp-for="Input.ConfirmPassword" placeholder=" " autocomplete="confirm-password" required/>
                         <label asp-for="Input.ConfirmPassword">
                             <svg class="material-svg" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/>
@@ -95,8 +116,24 @@
                         <input asp-for="Input.ConfirmPassword" class="form-control" />
                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                     </div> *@
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    @* <div asp-validation-summary="All" class="text-danger"></div> *@
+                    
+                    <div id="register__actions">
+                        <div class="link">
+                            <a asp-page="./Login">
+                                <span class="material-icons">
+                                    arrow_back
+                                </span>
+                                <p>
+                                    Back To Login
+                                </p>
+                            </a>
+                        </div>
+                        
+                        
+                        <button type="submit" class="btn blue w30">Register</button>
+                    </div>
+                    
                 </form>
             </section>
         </div> 
@@ -135,4 +172,27 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey"></script>
+    <script>
+        function getCaptchaToken() {
+            grecaptcha.ready(function() {
+                grecaptcha.execute('@GoogleCaptchaConfig.Value.SiteKey', {action: 'submit'}).then(function(token) {
+                    // Add your logic to submit to your backend server here.
+                    @* console.log(token); *@
+                    document.getElementById("LoginViewModelToken").value = token;
+                });
+            });
+        };
+
+        setInterval(getCaptchaToken, 115000);
+
+        $(function() {
+            getCaptchaToken();
+        });
+    </script>
+    @*<script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
+
+    <recaptcha-script/>
 }

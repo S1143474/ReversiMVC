@@ -9,7 +9,7 @@ namespace Domain.Entities
     public class Speler
     {
         [Key]
-        public string Guid { get; set; }
+        public Guid Guid { get; set; }
 
         public string Naam { get; set; }
         public int AantalGewonnen { get; set; }
@@ -23,9 +23,19 @@ namespace Domain.Entities
         /// </summary>
         /// <param name="guid"></param>
         /// <param name="naam"></param>
-        public Speler(string guid, string naam)
+        public Speler(Guid guid, string naam)
         {
             Guid = guid;
+            Naam = naam;
+            AantalGewonnen = 0;
+            AantalVerloren = 0;
+            AantalGelijk = 0;
+            AantalFicheFliped = 0;
+        }
+
+        public Speler(string guid, string naam)
+        {
+            Guid = Guid.Parse(guid);
             Naam = naam;
             AantalGewonnen = 0;
             AantalVerloren = 0;

@@ -7,7 +7,6 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Entities;
-using Infrastructure.Common;
 using MediatR;
 
 namespace Infrastructure.Persistence
@@ -38,8 +37,6 @@ namespace Infrastructure.Persistence
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            await _mediator.DispatchDomainEvents(this);
-
             return await base.SaveChangesAsync(cancellationToken);
         }
     }

@@ -12,58 +12,14 @@
     display: flex;
     justify-content: center;
 
-    // @include for-phone-only {
-    //     position: fixed;
-    //     z-index: 121;
+    .form__remember {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 32px;
+    }
 
-    //     display: flex;
-    //     flex-direction: column;
-
-    //     align-items: center;
-    //     width: 100%;
-    //     min-height: -webkit-fill-available;
-    //     background-color: clr.$background;
-
-    //     .card {
-    //         display: none;
-    //     }
-
-    //     &__mobile {
-    //         display: flex;
-    //         flex-direction: column;
-    //         align-items: center;
-    //         justify-content: center;
-
-    //         height: 100%;
-    //         color: clr.$text;
-
-    //         margin: 1.556em;
-
-    //         & > h1 {
-    //             color: clr.$text;
-    //             letter-spacing: .1em;
-    //         }
-
-    //         & > p {
-    //             text-align: center;
-    //         }
-
-    //         &__authenticate {
-    //             position: absolute;
-    //             bottom: 0;
-
-    //             display: flex;
-    //             justify-content: space-between;
-
-    //             width: 90%;
-    //             // margin-right: 5%;
-    //             margin-bottom: 1.566em;
-    //             padding: 1em;
-
-    //             background-color: clr.$secondarybackground;
-
-    //             border-radius: .3em;
-    //         }
-    //     }
-    // }
+    .form__submit {
+        display: flex;
+        justify-content: flex-end;
+    }
 } 

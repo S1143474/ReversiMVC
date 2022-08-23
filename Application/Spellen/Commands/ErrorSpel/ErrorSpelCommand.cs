@@ -12,7 +12,7 @@ namespace Application.Spellen.Commands.ErrorSpel
 {
     public class ErrorSpelCommand : IRequest<bool>
     {
-        public string SpelerToken { get; set; }
+        public Guid SpelerToken { get; set; }
         public string ErrorMessage { get; set; }
     }
 
@@ -29,7 +29,7 @@ namespace Application.Spellen.Commands.ErrorSpel
         {
             try
             {
-                await _hub.Clients.Users(request.SpelerToken).OnError(request.ErrorMessage);
+                await _hub.Clients.Users(request.SpelerToken.ToString()).OnError(request.ErrorMessage);
                 return true;
             }
             catch (Exception ex)
