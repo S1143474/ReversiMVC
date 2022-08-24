@@ -1,0 +1,15 @@
+2022-08-24T09:38:09.3915245+02:00 0HMK5KEBKVCR9:00000001 [INF] Begin Request Id: 5eecb47f-3633-4f07-8fc2-a5670a3b30cf, request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery (fa73f68d)
+2022-08-24T09:38:10.0992189+02:00 0HMK5KEBKVCR9:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2022-08-24T09:38:11.9375395+02:00 0HMK5KEBKVCR9:00000001 [INF] Executed DbCommand ("51"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]
+WHERE [s].[Guid] = @__request_UserId_0" (0723d8ff)
+2022-08-24T09:38:11.9633516+02:00 0HMK5KEBKVCR9:00000001 [WRN] Long Running Request: 'requestid', request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery, total request time: 2562ms (85293e0b)
+2022-08-24T09:38:11.9663685+02:00 0HMK5KEBKVCR9:00000001 [INF] End Request Id: 5eecb47f-3633-4f07-8fc2-a5670a3b30cf, request name: GetSpelerByIdQuery, requested by user: , total request time: 2567ms (0716a98a)
+2022-08-24T09:46:46.0818626+02:00 0HMK5KEBKVCRS:00000001 [INF] Begin Request Id: 4c27b475-bbc3-4e5f-a764-8adc15246bd6, request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery (83381f48)
+2022-08-24T09:46:46.1108944+02:00 0HMK5KEBKVCRS:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2022-08-24T09:46:46.1574065+02:00 0HMK5KEBKVCRS:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]
+WHERE [s].[Guid] = @__request_UserId_0" (0723d8ff)
+2022-08-24T09:46:46.1590229+02:00 0HMK5KEBKVCRS:00000001 [INF] End Request Id: 4c27b475-bbc3-4e5f-a764-8adc15246bd6, request name: GetSpelerByIdQuery, requested by user: , total request time: 75ms (f35a70d0)

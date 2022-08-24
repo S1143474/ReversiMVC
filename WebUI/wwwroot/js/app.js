@@ -103,8 +103,8 @@ var Game = (url => {
     Game.ComponentEvents.init();
     Game.ComponentEvents.addClick("btn-update-password", _openDialog, "update-user-password-dialog");
     Game.ComponentEvents.addClick("btn-update-2fa", _openDialog, "update-2fa-dialog");
-    Game.ComponentEvents.addClick("btn-close-update-user-password-dialog", _closeDialog, "update-user-password-dialog");
-    Game.ComponentEvents.addClick("twofa__login");
+    Game.ComponentEvents.addClick("btn-close-update-user-password-dialog", _closeDialog, "update-user-password-dialog"); // Game.ComponentEvents.addClick("twofa__login");
+
     Game.Model.listen("Redirect", _redirect);
     Game.Model.listen("OnMove", _onMove);
     Game.Model.listen("OnWrongMove", _wrongMoveMessage);
@@ -115,10 +115,67 @@ var Game = (url => {
     var location = window.location.pathname;
     var locationList = location.split('/');
     var locationListLength = locationList.length - 1;
-    Game.LoginWith2fa.init(locationList[locationListLength]);
+    Game.LoginWith2faPage.init(locationList[locationListLength]);
+    Game.RegisterPage.init(locationList[locationListLength]);
+    Game.ComponentEvents.addClickOnClass("show__password__icon", showPassword);
+    Game.ComponentEvents.addClickOnClass("hide__password__icon", hidePassword);
+    Game.ComponentEvents.addOnFocus("register__password", showPasswordStrengthMeter);
+    Game.ComponentEvents.addOnFocusOut("register__password", hidePasswordStrengthMeter);
+    Game.ComponentEvents.addOnFocus("register__confirm__password", showPasswordStrengthMeter);
+    Game.ComponentEvents.addOnFocusOut("register__confirm__password", hidePasswordStrengthMeter);
     console.log(configMap.apiUrl); // _getCurrentGameState();
 
     afterInit();
+  };
+
+  var hidePasswordStrengthMeter = componentId => {
+    for (var nextElement of componentId.parentNode.children) {
+      if (nextElement.classList.contains("password__strength__checker")) {
+        nextElement.style.display = 'none';
+      }
+    }
+  };
+
+  var showPasswordStrengthMeter = componentId => {
+    var strengthPasswordMeter = document.getElementsByClassName('password__strength__checker');
+
+    for (var element of strengthPasswordMeter) {
+      element.style.display = 'none';
+    }
+
+    for (var nextElement of componentId.parentNode.children) {
+      if (nextElement.classList.contains("password__strength__checker")) {
+        nextElement.style.display = 'flex';
+      }
+    }
+  };
+
+  var showPassword = element => {
+    element.style.display = 'none';
+
+    for (var nextElement of element.parentNode.children) {
+      if (nextElement.classList.contains("hide__password__icon")) {
+        nextElement.style.display = 'block';
+      }
+
+      if (nextElement.tagName.toLowerCase() === 'input') {
+        nextElement.type = 'text';
+      }
+    }
+  };
+
+  var hidePassword = element => {
+    element.style.display = 'none';
+
+    for (var nextElement of element.parentNode.children) {
+      if (nextElement.classList.contains("show__password__icon")) {
+        nextElement.style.display = 'block';
+      }
+
+      if (nextElement.tagName.toLowerCase() === 'input') {
+        nextElement.type = 'password';
+      }
+    }
   };
 
   var _test = message => {
@@ -243,9 +300,59 @@ Game.ComponentEvents = (() => {
     });
   };
 
+  var privateAddClickOnClassListener = (id, callback) => {
+    var components = document.getElementsByClassName(id);
+
+    if (components == null) {
+      console.error("Component class: ".concat(id, " Not Found"));
+      return;
+    }
+
+    console.log(components);
+
+    var _loop = function _loop(component) {
+      component.addEventListener('click', () => {
+        callback(component);
+      });
+    };
+
+    for (var component of components) {
+      _loop(component);
+    }
+  };
+
+  var privateAddOnFocusListener = (id, callback) => {
+    var componentId = document.getElementById(id);
+
+    if (componentId == null) {
+      console.error("Component Id: ".concat(id, " Not Found"));
+      return;
+    }
+
+    componentId.addEventListener('focus', () => {
+      callback(componentId);
+    });
+  };
+
+  var privateAddOnFocusOutListener = (id, callback) => {
+    var componentId = document.getElementById(id);
+
+    if (componentId == null) {
+      console.error("Component Id: ".concat(id, " Not Found"));
+      return;
+    }
+
+    componentId.addEventListener('focusout', () => {
+      callback(componentId);
+    });
+  };
+
   return {
     init: privateInit,
-    addClick: privateAddClickListener
+    addClick: privateAddClickListener,
+    addClickOnClass: privateAddClickOnClassListener,
+    addOnFocus: privateAddOnFocusListener,
+    addOnFocusOut: privateAddOnFocusOutListener
   };
 })();
 
@@ -383,7 +490,7 @@ Game.Reversi = (() => {
   };
 })();
 
-Game.LoginWith2fa = (() => {
+Game.LoginWith2faPage = (() => {
   var configMap = {
     page: 'LoginWith2fa'
   };
@@ -667,6 +774,28 @@ Game.LoginWith2fa = (() => {
     pincode1.onfocus = event => {};
 
     console.log(pincode1);
+  };
+
+  return {
+    init: privateInit
+  };
+})();
+
+Game.RegisterPage = (() => {
+  var configMap = {
+    page: 'Register'
+  };
+  var stateMap = {
+    currentPage: '',
+    isLocated: false,
+    pincode: []
+  };
+
+  var privateInit = page => {
+    stateMap.currentPage = page;
+    stateMap.isLocated = configMap.page === page;
+    if (!stateMap.isLocated) return; // Game.ComponentEvents.addClickOnClass("show__password__icon", showPassword)
+    // Game.ComponentEvents.addClickOnClass("hide__password__icon", hidePassword)
   };
 
   return {

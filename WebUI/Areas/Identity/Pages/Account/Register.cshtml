@@ -77,26 +77,113 @@
                         <input asp-for="Omschrijving" class="form-control"/>
                     </div> *@
                     <div class="input-group">
-                        <input asp-for="Input.Password" placeholder=" " autocomplete="password" required/>
+                        <input id="register__password" asp-for="Input.Password" placeholder=" " autocomplete="password" required/>
+                        
                         <label asp-for="Input.Password">
                             <svg class="material-svg" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/>
                             </svg>
                             <span>Password</span>
                         </label>
+
+                        <span class="show__password__icon material-icons">
+                            visibility
+                        </span>
+
+                        <span class="hide__password__icon material-icons">
+                            visibility_off
+                        </span>
+                        <aside class="password__strength__checker">
+                            <h3>Password must include:</h3>
+                            <ul>
+                                <li class="included">
+                                    <span class="material-icons">
+                                        task_alt
+                                    </span>
+                                    12-128 Characters
+                                </li>
+                                <li class="included">
+                                    <span class="material-icons">
+                                        task_alt
+                                    </span>
+                                    At least one capital letter
+                                </li>
+                                <li class="included">
+                                    <span class="material-icons">
+                                        task_alt
+                                    </span>
+                                    At least one lowercase letter
+                                </li>
+                                <li class="not-included">
+                                    <span class="material-icons">
+                                        close
+                                    </span>
+                                    At least one number
+                                </li>
+                                <li class="not-included">
+                                    <span class="material-icons">
+                                        close
+                                    </span>
+                                    At least one non alphanumeric character
+                                </li>
+                            </ul>
+                        </aside>
                         <p class="foot__note">
                             <span asp-validation-for="Input.Password" class="text-danger"></span>
                         </p>
                     </div>
 
                     <div class="input-group">
-                        <input asp-for="Input.ConfirmPassword" placeholder=" " autocomplete="confirm-password" required/>
+                        <input id="register__confirm__password" asp-for="Input.ConfirmPassword" placeholder=" " autocomplete="confirm-password" required/>
                         <label asp-for="Input.ConfirmPassword">
                             <svg class="material-svg" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"/>
                             </svg>
                             <span>Confirmation Password</span>
                         </label>
+
+                        <span class="show__password__icon material-icons">
+                            visibility
+                        </span>
+
+                        <span class="hide__password__icon material-icons">
+                            visibility_off
+                        </span>
+                        <aside class="password__strength__checker">
+                            <h3>Password must include:</h3>
+                            <ul>
+                                <li class="included">
+                                    <span class="material-icons">
+                                        task_alt
+                                    </span>
+                                    12-128 Characters
+                                </li>
+                                <li class="included">
+                                    <span class="material-icons">
+                                        task_alt
+                                    </span>
+                                    At least one capital letter
+                                </li>
+                                <li class="included">
+                                    <span class="material-icons">
+                                        task_alt
+                                    </span>
+                                    At least one lowercase letter
+                                </li>
+                                <li class="not-included">
+                                    <span class="material-icons">
+                                        close
+                                    </span>
+                                    At least one number
+                                </li>
+                                <li class="not-included">
+                                    <span class="material-icons">
+                                        close
+                                    </span>
+                                    At least one non alphanumeric character
+                                </li>
+                            </ul>
+                        </aside>
                         <p class="foot__note">
                             <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                         </p>
