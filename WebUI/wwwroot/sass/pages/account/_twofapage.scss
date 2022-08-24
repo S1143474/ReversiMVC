@@ -108,7 +108,7 @@
                 margin: 10px 0;
             }
 
-            & > input {
+            .auth_number {
                 display: inline-block;
                 float: left;
                 width: 15%;
@@ -121,11 +121,12 @@
                 border-bottom: 2px solid rgba(clr.$text, .3);
                 border-radius: 2px 2px 0;
                 background-color: clr.$background;
-                .valid {
-                    background-color: clr.$green;
+
+                &.valid {
+                    background-color: clr.$background;
                 }
                 
-                .Invalid {
+                &.Invalid {
                     background-color: clr.$red;
                 }
                 transition: background-color .3s, color .3s, opacity .3s;

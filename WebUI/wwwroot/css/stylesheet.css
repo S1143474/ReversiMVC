@@ -2689,7 +2689,7 @@ ul li a {
   text-align: center;
   margin: 10px 0;
 }
-#twofa__login__form__pincode > input {
+#twofa__login__form__pincode .auth_number {
   display: inline-block;
   float: left;
   width: 15%;
@@ -2715,23 +2715,23 @@ ul li a {
   margin-right: 2%;
   padding: 0;
 }
-#twofa__login__form__pincode > input .valid {
-  background-color: #A2E901;
+#twofa__login__form__pincode .auth_number.valid {
+  background-color: #171613;
 }
-#twofa__login__form__pincode > input .Invalid {
+#twofa__login__form__pincode .auth_number.Invalid {
   background-color: #DA3D2D;
 }
-#twofa__login__form__pincode > input:focus {
+#twofa__login__form__pincode .auth_number:focus {
   outline: 0;
   box-shadow: none;
   border-color: #01A2E9;
   animation: border-pulsate 2.8s infinite;
   -webkit-tap-highlight-color: transparent;
 }
-#twofa__login__form__pincode > input:last-child {
+#twofa__login__form__pincode .auth_number:last-child {
   margin-right: 0;
 }
-#twofa__login__form__pincode > input[disabled] {
+#twofa__login__form__pincode .auth_number[disabled] {
   background-color: #51576E;
   opacity: 1;
 }
