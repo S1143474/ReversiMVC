@@ -147,11 +147,6 @@
   width: 100%;
   position: relative;
 }
-@media (min-width: 900px) {
-  .input-group {
-    margin: 1.563rem 0;
-  }
-}
 .input-group input {
   width: 100%;
   padding: 1rem 0 1rem 1rem;
@@ -271,7 +266,7 @@
 }
 .input-group .password__strength__checker {
   position: absolute;
-  top: -285%;
+  top: -265%;
   left: 50%;
   transform: translate(-50%);
   z-index: 12;
@@ -283,14 +278,54 @@
   border-radius: 0.5em;
   box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.4);
 }
-@media (max-width: 769px) {
-  .input-group .password__strength__checker {
-    top: -345%;
-  }
-}
 @media (max-width: 599px) {
   .input-group .password__strength__checker {
-    top: -445%;
+    top: -285%;
+  }
+}
+@media (min-width: 320px) {
+  .input-group .password__strength__checker {
+    top: -465%;
+  }
+}
+@media (min-width: 340px) {
+  .input-group .password__strength__checker {
+    top: -435%;
+  }
+}
+@media (min-width: 370px) {
+  .input-group .password__strength__checker {
+    top: -410%;
+  }
+}
+@media (min-width: 370px) {
+  .input-group .password__strength__checker {
+    top: -385%;
+  }
+}
+@media (min-width: 370px) {
+  .input-group .password__strength__checker {
+    top: -355%;
+  }
+}
+@media (min-width: 415px) {
+  .input-group .password__strength__checker {
+    top: -325%;
+  }
+}
+@media (min-width: 755px) {
+  .input-group .password__strength__checker {
+    top: -285%;
+  }
+}
+@media (min-width: 770px) {
+  .input-group .password__strength__checker {
+    top: -265%;
+  }
+}
+@media (min-width: 900px) {
+  .input-group .password__strength__checker {
+    top: -285%;
   }
 }
 .input-group .password__strength__checker::after {
@@ -315,6 +350,7 @@
 }
 .input-group .password__strength__checker ul li {
   display: flex;
+  transition: color 0.3s ease;
 }
 .input-group .password__strength__checker ul li.included {
   color: #A2E901;
@@ -2679,6 +2715,12 @@ ul li a {
   margin-right: 2%;
   padding: 0;
 }
+#twofa__login__form__pincode > input .valid {
+  background-color: #A2E901;
+}
+#twofa__login__form__pincode > input .Invalid {
+  background-color: #DA3D2D;
+}
 #twofa__login__form__pincode > input:focus {
   outline: 0;
   box-shadow: none;
@@ -2741,4 +2783,38 @@ ul li a {
   left: 10%;
   top: 10%;
   transform: rotate(-35deg) translateY(0);
+}
+
+#confirm__email__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #eee;
+}
+#confirm__email__content h1 {
+  font-size: var(--fs-800);
+  font-weight: 400;
+  margin-bottom: 0.556rem;
+}
+#confirm__email__content p {
+  text-align: center;
+  font-size: var(--fs-400);
+  margin-bottom: 1.256rem;
+}
+#confirm__email__content .material-icons {
+  font-size: 3.565rem;
+  color: #A2E901;
+  margin-bottom: 1.756rem;
+}
+#confirm__email__content__add_twofa a {
+  color: #01A2E9;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+#confirm__email__content__add_twofa a:hover {
+  color: #A279EF;
 }

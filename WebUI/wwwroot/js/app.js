@@ -123,9 +123,73 @@ var Game = (url => {
     Game.ComponentEvents.addOnFocusOut("register__password", hidePasswordStrengthMeter);
     Game.ComponentEvents.addOnFocus("register__confirm__password", showPasswordStrengthMeter);
     Game.ComponentEvents.addOnFocusOut("register__confirm__password", hidePasswordStrengthMeter);
+    Game.ComponentEvents.addOnInput("register__password", udpatePasswordMeter);
+    Game.ComponentEvents.addOnInput("register__confirm__password", udpatePasswordMeter);
     console.log(configMap.apiUrl); // _getCurrentGameState();
 
     afterInit();
+  };
+
+  var _hasUpperCase = string => {
+    return /[A-Z]/.test(string);
+  };
+
+  var _hasLowerCase = string => {
+    return /[a-z]/.test(string);
+  };
+
+  var _hasNumber = string => {
+    return /\d/.test(string);
+  };
+
+  var _hasNonAlphaNumeric = string => {
+    return /[^a-zA-Z\d\s:]/g.test(string);
+  };
+
+  var _togglePasswordRequirement = (element, passwordCondition) => {
+    if (passwordCondition) {
+      element.classList.add("included");
+      element.classList.remove("not-included");
+      element.classList.remove("none");
+      element.children[0].innerText = "task_alt";
+      return;
+    }
+
+    element.classList.add("not-included");
+    element.classList.remove("none");
+    element.classList.remove("included");
+    element.children[0].innerText = "close";
+  };
+
+  var udpatePasswordMeter = element => {
+    for (var nextElement of element.parentNode.children) {
+      if (nextElement.classList.contains("password__strength__checker")) {
+        var requirements = nextElement.children[1].children;
+
+        if (element.value.length === 0) {
+          for (var el of requirements) {
+            if (!el.classList.contains("none")) {
+              el.classList.add("none");
+              el.children[0].innerText = "close";
+            }
+
+            el.classList.remove("not-included", "included");
+          }
+
+          return;
+        }
+
+        _togglePasswordRequirement(requirements[0], element.value.length >= 12 && element.value.length <= 128);
+
+        _togglePasswordRequirement(requirements[1], _hasUpperCase(element.value));
+
+        _togglePasswordRequirement(requirements[2], _hasLowerCase(element.value));
+
+        _togglePasswordRequirement(requirements[3], _hasNumber(element.value));
+
+        _togglePasswordRequirement(requirements[4], _hasNonAlphaNumeric(element.value));
+      }
+    }
   };
 
   var hidePasswordStrengthMeter = componentId => {
@@ -308,8 +372,6 @@ Game.ComponentEvents = (() => {
       return;
     }
 
-    console.log(components);
-
     var _loop = function _loop(component) {
       component.addEventListener('click', () => {
         callback(component);
@@ -347,12 +409,26 @@ Game.ComponentEvents = (() => {
     });
   };
 
+  var privateAddOnInputListener = (id, callback) => {
+    var componentId = document.getElementById(id);
+
+    if (componentId == null) {
+      console.error("Component Id: ".concat(id, " Not Found"));
+      return;
+    }
+
+    componentId.addEventListener('input', () => {
+      callback(componentId);
+    });
+  };
+
   return {
     init: privateInit,
     addClick: privateAddClickListener,
     addClickOnClass: privateAddClickOnClassListener,
     addOnFocus: privateAddOnFocusListener,
-    addOnFocusOut: privateAddOnFocusOutListener
+    addOnFocusOut: privateAddOnFocusOutListener,
+    addOnInput: privateAddOnInputListener
   };
 })();
 
@@ -510,16 +586,16 @@ Game.LoginWith2faPage = (() => {
   var maskInputFields = () => {
     console.log('maskinput');
     var debug = false;
-    var pincode1 = document.getElementsByName('pincode-1');
+    var pincode1 = document.getElementsByName('Input.Pincode1');
     var form = $('#twofa__login__form');
     var group = form.find('#twofa__login__form__pincode');
     var inputs = group.find('input');
-    var first = form.find('[name=pincode-1]');
-    var second = form.find('[name=pincode-2]');
-    var third = form.find('[name=pincode-3]');
-    var fourth = form.find('[name=pincode-4]');
-    var fifth = form.find('[name=pincode-5]');
-    var sixth = form.find('[name=pincode-6]');
+    var first = form.find('[name=Input.Pincode1]');
+    var second = form.find('[name=Input.Pincode2]');
+    var third = form.find('[name=Input.Pincode3]');
+    var fourth = form.find('[name=Input.Pincode4]');
+    var fifth = form.find('[name=Input.Pincode5]');
+    var sixth = form.find('[name=Input.Pincode6]');
     inputs.on('keyup', event => {
       var code = event.keyCode || event.which;
 
@@ -574,16 +650,16 @@ Game.LoginWith2faPage = (() => {
         return false;
       }
     });
-    $('[name=pincode-1]').on('focus', function (event) {//   ! debug || console.log('[1:focus]', _pincode);
+    $('[name=Input.Pincode1]').on('focus', function (event) {//   ! debug || console.log('[1:focus]', _pincode);
     }).inputmask({
       oncomplete: function oncomplete() {
         // add first character
         stateMap.pincode.push($(this).val()); // focus to second field
 
-        $('[name=pincode-2]').focus(); // ! debug || console.log('[1:oncomplete]', _pincode);
+        $('[name=Input.Pincode2]').focus(); // ! debug || console.log('[1:oncomplete]', _pincode);
       }
     });
-    $('[name=pincode-2]').on('focus', function (event) {
+    $('[name=Input.Pincode2]').on('focus', function (event) {
       if (!(first.val().trim() !== '')) {
         // prevent default
         event.preventDefault(); // reset pincode
@@ -604,11 +680,11 @@ Game.LoginWith2faPage = (() => {
         // add second character
         stateMap.pincode.push($(this).val()); // focus to third field
 
-        $('[name=pincode-3]').focus();
+        $('[name=Input.Pincode3]').focus();
         !debug || console.log('[2:oncomplete]', _pincode);
       }
     });
-    $('[name=pincode-3]').on('focus', function (event) {
+    $('[name=Input.Pincode3]').on('focus', function (event) {
       if (!(first.val().trim() !== '' && second.val().trim() !== '')) {
         // prevent default
         event.preventDefault(); // reset pincode
@@ -629,11 +705,11 @@ Game.LoginWith2faPage = (() => {
         // add third character
         stateMap.pincode.push($(this).val()); // focus to fourth field
 
-        $('[name=pincode-4]').focus();
+        $('[name=Input.Pincode4]').focus();
         !debug || console.log('[3:oncomplete]', _pincode);
       }
     });
-    $('[name=pincode-4]').on('focus', function (event) {
+    $('[name=Input.Pincode4]').on('focus', function (event) {
       if (!(first.val().trim() !== '' && second.val().trim() !== '' && third.val().trim() !== '')) {
         // prevent default
         event.preventDefault(); // reset pincode
@@ -654,11 +730,11 @@ Game.LoginWith2faPage = (() => {
         // add fo fourth character
         stateMap.pincode.push($(this).val()); // focus to fifth field
 
-        $('[name=pincode-5]').focus();
+        $('[name=Input.Pincode5]').focus();
         !debug || console.log('[4:oncomplete]', _pincode);
       }
     });
-    $('[name=pincode-5]').on('focus', function (event) {
+    $('[name=Input.Pincode5]').on('focus', function (event) {
       if (!(first.val().trim() !== '' && second.val().trim() !== '' && third.val().trim() !== '' && fourth.val().trim() !== '')) {
         // prevent default
         event.preventDefault(); // reset pincode
@@ -679,11 +755,11 @@ Game.LoginWith2faPage = (() => {
         // add fifth character
         stateMap.pincode.push($(this).val()); // focus to sixth field
 
-        $('[name=pincode-6]').focus();
+        $('[name=Input.Pincode6]').focus();
         !debug || console.log('[5:oncomplete]', stateMap.pincode);
       }
     });
-    $('[name=pincode-6]').on('focus', function (event) {
+    $('[name=Input.Pincode6]').on('focus', function (event) {
       if (!(first.val().trim() !== '' && second.val().trim() !== '' && third.val().trim() !== '' && fourth.val().trim() !== '' && fifth.val().trim() !== '')) {
         // prevent default
         event.preventDefault(); // reset pincode
@@ -713,7 +789,7 @@ Game.LoginWith2faPage = (() => {
             $(this).val('');
           }); // focus to first field
 
-          $('[name=pincode-1]').focus();
+          $('[name=Input.Pincode1]').focus();
         } else {
           // handle each field
           inputs.each(function () {

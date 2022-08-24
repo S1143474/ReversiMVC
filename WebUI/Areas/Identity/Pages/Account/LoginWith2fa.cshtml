@@ -4,6 +4,16 @@
     ViewData["Title"] = "Two-factor authentication";
 }
 
+@{
+    var isValid = "valid";
+    foreach (var item in @ModelState.Values)
+    {
+        var SOME = item.Errors;
+        if (SOME.Count > 0)
+            isValid = "Invalid";
+    }
+}
+
 <div id="twofa__login__container">
     <form id="twofa__login__form" method="post" asp-route-returnUrl="@Model.ReturnUrl">
         <h1>Two-Factor Authentication</h1>
@@ -11,8 +21,9 @@
             <label>Enter 6-digit code from your authenticator application</label>
 
             <input 
-                type="tel" 
-                name="pincode-1" 
+                type="tel"
+                class="@isValid"
+                asp-for="Input.Pincode1"
                 maxlength="1"
                 pattern="[\d]*"
                 tabindex="1"
@@ -21,7 +32,7 @@
 
             <input 
                 type="tel" 
-                name="pincode-2" 
+                asp-for="Input.Pincode2"
                 maxlength="1"
                 pattern="[\d]*"
                 tabindex="2"
@@ -30,7 +41,7 @@
 
             <input 
                 type="tel" 
-                name="pincode-3" 
+                asp-for="Input.Pincode3"
                 maxlength="1"
                 pattern="[\d]*"
                 tabindex="3"
@@ -39,7 +50,7 @@
 
             <input 
                 type="tel" 
-                name="pincode-4" 
+                asp-for="Input.Pincode4"
                 maxlength="1"
                 pattern="[\d]*"
                 tabindex="4"
@@ -48,7 +59,7 @@
 
             <input 
                 type="tel" 
-                name="pincode-5" 
+                asp-for="Input.Pincode5"
                 maxlength="1"
                 pattern="[\d]*"
                 tabindex="5"
@@ -57,7 +68,7 @@
 
             <input 
                 type="tel" 
-                name="pincode-6" 
+                asp-for="Input.Pincode6"
                 maxlength="1"
                 pattern="[\d]*"
                 tabindex="6"

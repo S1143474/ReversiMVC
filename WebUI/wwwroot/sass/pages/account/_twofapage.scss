@@ -121,6 +121,13 @@
                 border-bottom: 2px solid rgba(clr.$text, .3);
                 border-radius: 2px 2px 0;
                 background-color: clr.$background;
+                .valid {
+                    background-color: clr.$green;
+                }
+                
+                .Invalid {
+                    background-color: clr.$red;
+                }
                 transition: background-color .3s, color .3s, opacity .3s;
                 cursor: default;
                 @include user-select;
@@ -141,6 +148,7 @@
                     margin-right: 0;
                 }
 
+                
                 &[disabled] {
                     background-color: clr.$disabled;
                     opacity: 1;
@@ -170,6 +178,8 @@
         }
     }
 }
+
+
 
 @keyframes border-pulsate {
     0% {

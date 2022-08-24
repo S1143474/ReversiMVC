@@ -5,7 +5,7 @@
     width: 100%;
 
     @include for-tablet-landscape-up {
-        margin: 1.563rem 0;
+        // margin: 1.563rem 0;
     }
     
     position: relative;
@@ -154,13 +154,56 @@
 
         position: absolute;
 
-        top: -285%;
-        @include for-phone-and-tablet-small {
-            top: -345%;
-        }
+        top: -265%;
+        // @include for-phone-and-tablet-small {
+        //     top: -285%;
+        // }
+
+        
+        
 
         @include for-phone-only {
-            top: -445%;
+            top: -285%;
+        }
+
+        @include for-small-phone-only {
+            top: -465%;
+        }
+
+        @include for-small-340-phone-only {
+            top: -435%;
+        }
+
+        @include for-small-370-phone-only {
+            top: -410%;
+        }
+
+        @include for-small-370-phone-only {
+            top: -385%;
+        }
+
+        @include for-small-370-phone-only {
+            top: -355%;
+        }
+
+        @include for-small-415-phone-only {
+            top: -325%;
+        }
+
+        @include for-small-755-phone-only {
+            top: -285%;
+        }
+
+        @include for-small-770-phone-only {
+            top: -265%;
+        }
+
+        // @include for-tablet-portrait-up {
+        //     top: -315%;
+        // }
+
+        @include for-tablet-landscape-up {
+            top: -285%;
         }
         
         left: 50%;
@@ -204,6 +247,8 @@
 
             li {
                 display: flex;
+
+                transition: color .3s ease;
 
                 &.included {
                     color: clr.$green;

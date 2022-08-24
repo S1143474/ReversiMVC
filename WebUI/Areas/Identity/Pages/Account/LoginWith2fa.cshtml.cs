@@ -33,10 +33,28 @@ namespace WebUI.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            public int Pincode1 { get; set; }
+            
+            [Required]
+            public int Pincode2 { get; set; }
+
+            [Required]
+            public int Pincode3 { get; set; }
+
+            [Required]
+            public int Pincode4 { get; set; }
+
+            [Required]
+            public int Pincode5 { get; set; }
+
+            [Required]
+            public int Pincode6 { get; set; }
+
+            /*[Required]
             [StringLength(7, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Text)]
             [Display(Name = "Authenticator code")]
-            public string TwoFactorCode { get; set; }
+            public string TwoFactorCode { get; set; }*/
 
             [Display(Name = "Remember this machine")]
             public bool RememberMachine { get; set; }
@@ -73,7 +91,8 @@ namespace WebUI.Areas.Identity.Pages.Account
                 throw new InvalidOperationException($"Unable to load two-factor authentication user.");
             }
 
-            var authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
+            var authenticatorCode = $"{Input.Pincode1}{Input.Pincode2}{Input.Pincode3}{Input.Pincode4}{Input.Pincode5}{Input.Pincode6}";
+            /*var authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);*/
 
             var result = await _signInManager.TwoFactorAuthenticatorSignInAsync(authenticatorCode, rememberMe, Input.RememberMachine);
 

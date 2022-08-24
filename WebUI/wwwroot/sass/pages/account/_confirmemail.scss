@@ -1,0 +1,48 @@
+@use '../../abstracts/colors' as clr;
+@import '../../abstracts/mixins';
+
+#confirm__email__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: clr.$text;
+    
+    h1 {
+        font-size: var(--fs-800);
+        font-weight: 400;
+        margin-bottom: .556rem;
+    }
+
+    p {
+        text-align: center;
+        font-size: var(--fs-400);
+
+        margin-bottom: 1.256rem;
+    }
+
+    .material-icons {
+        font-size: 3.565rem;
+        color: clr.$green;
+        margin-bottom: 1.756rem;
+    }
+
+    &__add_twofa {
+         
+        a {
+            color: clr.$blue;
+            text-underline-offset: 3px;
+            
+            transition: color .3s ease;
+
+            &:hover {
+                color: clr.$purple;
+            }
+        }
+    }
+}
