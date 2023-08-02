@@ -26,5 +26,6 @@ namespace Application.Common.Interfaces
         Task OnError(string message);
 
         Task OnPlayerOnline(int amount);
+        Task OnCreateGame();
     }
 }

@@ -50,6 +50,7 @@ namespace WebUI.Controllers
             }
         }
 
+        protected HttpContext Context => _httpContextAccessor.HttpContext;
         protected string UserName => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Name);
         private string _userAgent => _httpContextAccessor.HttpContext.Request.Headers["User-Agent"];
         protected bool IsMobileDevice => mobileDevices.Any(device => _userAgent.ToLower().Contains(device));

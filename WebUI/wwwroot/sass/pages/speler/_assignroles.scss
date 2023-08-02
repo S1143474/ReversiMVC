@@ -1,0 +1,22 @@
+@use '../../abstracts/colors' as clr;
+@import '../../abstracts/mixins';
+
+#asignroles_page {
+    height: calc(100vh - 256px);
+    margin-inline: 64px;
+    margin-block: 128px;
+
+    &_container {
+        height: 70%;
+    }
+    overflow-y: scroll;
+    outline: 1px red;
+}
+
+#savechangesbtn {
+    position: absolute;
+    display: none;
+    bottom: 10%;
+    left: 64px;
+    padding-inline: 1em;
+}

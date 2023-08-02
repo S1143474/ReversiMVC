@@ -1,0 +1,1388 @@
+2023-07-10T18:43:37.2804118+02:00 0HMS1CJ6HQH61:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:43:38.7064939+02:00 0HMS1CJ6HQH61:00000001 [INF] Executed DbCommand ("66"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T18:43:38.8186281+02:00 0HMS1CJ6HQH61:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T18:43:38.8583148+02:00 0HMS1CJ6HQH61:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0" (0723d8ff)
+2023-07-10T18:43:38.9143060+02:00 0HMS1CJ6HQH61:00000001 [INF] Begin Request Id: b4aba0bc-8842-4e50-9878-5c19c68892f1, request name: GetSpelerByIdQuery, requested by user: b3fcebbd-0cd4-480e-b751-6e4be18e4cad, request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery (c6a524a0)
+2023-07-10T18:43:38.9554030+02:00 0HMS1CJ6HQH61:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:43:39.0163131+02:00 0HMS1CJ6HQH61:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]
+WHERE [s].[Guid] = @__request_UserId_0" (0723d8ff)
+2023-07-10T18:43:39.0304477+02:00 0HMS1CJ6HQH61:00000001 [INF] End Request Id: b4aba0bc-8842-4e50-9878-5c19c68892f1, request name: GetSpelerByIdQuery, requested by user: b3fcebbd-0cd4-480e-b751-6e4be18e4cad, total request time: 114ms (c6153565)
+2023-07-10T18:43:42.4684320+02:00 0HMS1CJ6HQH61:00000025 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:43:42.4753890+02:00 0HMS1CJ6HQH61:00000025 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T18:43:47.1238137+02:00 0HMS1CJ6HQH67:00000001 [INF] Begin Request Id: 0bf049fb-1d36-4489-9f44-95967ab18c0c, request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery (eb048915)
+2023-07-10T18:43:47.1275860+02:00 0HMS1CJ6HQH67:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:43:47.1357322+02:00 0HMS1CJ6HQH67:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]
+WHERE [s].[Guid] = @__request_UserId_0" (0723d8ff)
+2023-07-10T18:43:47.1384586+02:00 0HMS1CJ6HQH67:00000001 [INF] End Request Id: 0bf049fb-1d36-4489-9f44-95967ab18c0c, request name: GetSpelerByIdQuery, requested by user: , total request time: 12ms (423fcd26)
+2023-07-10T18:43:56.3296519+02:00 0HMS1CJ6HQH67:0000003F [INF] Start processing HTTP request "GET" https://www.google.com/recaptcha/api/siteverify?secret=6LcgKUohAAAAACXkztFI9AonZZMRHc2ATnGPeQiX&response=03AAYGu2QjURRNbHLIO6Zbr4-gUDTpC_EXnSdZE86IOvVTDG4ZsC5VumHILZaQOQ7Wy6W0U6DXg_iidRTs8cZJYJDibpym0B4X6YfdjGwonhR34w04aYYOHB40_DLflVxI8gTjfHuOnkf8Eru4U1wcRSAvyi6HBPL2y4JBNaquyJea23CxzipOiAtx92lHyv25Lns0kT0LTBEvS_UzOL70dVdZgNd0CZus1pAsC6KyftsjwnZNOmSINvQl89-L8ibqyO9e2-bHoeioGnKqv9jH_LbuoJZr7vpiJC_PN55i6OfAIgApZUiBKI_DJlZNilykJeYyPXlXSvrOZ4uFH0WTSk23O6U-gLcAudC36yR8uSOIZUN-Xt1-dNt6ne6SLE-zO3kNR-sR7AiqjpSIJmHW3W1afmS8eVgP8qat1kHXyPawpdoikUFauNg3GmkraiPQIYDnANAlT3d-CqrOLPX1Ciy_xl0EQnV535FAC_t0LH8V6P22EdAKjoOKzo8Lp3GPi00u3RBf8CxS1KqjHJpUUa7rf8LImmpHpjcfAeO4o2WWw4UChoszXpI (338f1c77)
+2023-07-10T18:43:56.3330506+02:00 0HMS1CJ6HQH67:0000003F [INF] Sending HTTP request "GET" https://www.google.com/recaptcha/api/siteverify?secret=6LcgKUohAAAAACXkztFI9AonZZMRHc2ATnGPeQiX&response=03AAYGu2QjURRNbHLIO6Zbr4-gUDTpC_EXnSdZE86IOvVTDG4ZsC5VumHILZaQOQ7Wy6W0U6DXg_iidRTs8cZJYJDibpym0B4X6YfdjGwonhR34w04aYYOHB40_DLflVxI8gTjfHuOnkf8Eru4U1wcRSAvyi6HBPL2y4JBNaquyJea23CxzipOiAtx92lHyv25Lns0kT0LTBEvS_UzOL70dVdZgNd0CZus1pAsC6KyftsjwnZNOmSINvQl89-L8ibqyO9e2-bHoeioGnKqv9jH_LbuoJZr7vpiJC_PN55i6OfAIgApZUiBKI_DJlZNilykJeYyPXlXSvrOZ4uFH0WTSk23O6U-gLcAudC36yR8uSOIZUN-Xt1-dNt6ne6SLE-zO3kNR-sR7AiqjpSIJmHW3W1afmS8eVgP8qat1kHXyPawpdoikUFauNg3GmkraiPQIYDnANAlT3d-CqrOLPX1Ciy_xl0EQnV535FAC_t0LH8V6P22EdAKjoOKzo8Lp3GPi00u3RBf8CxS1KqjHJpUUa7rf8LImmpHpjcfAeO4o2WWw4UChoszXpI (2e7ac211)
+2023-07-10T18:43:56.4412309+02:00 0HMS1CJ6HQH67:0000003F [INF] Received HTTP response headers after 101.0215ms - 200 (f0742c1f)
+2023-07-10T18:43:56.4436544+02:00 0HMS1CJ6HQH67:0000003F [INF] End processing HTTP request after 123.3879ms - 200 (7656b38e)
+2023-07-10T18:43:56.4550694+02:00 0HMS1CJ6HQH67:0000003F [INF] Succesfully retrieved captcha with a good score: 0,9 (1e19cf2b)
+2023-07-10T18:43:56.4587541+02:00 0HMS1CJ6HQH67:0000003F [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:43:56.4682153+02:00 0HMS1CJ6HQH67:0000003F [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T18:43:56.5473407+02:00 0HMS1CJ6HQH67:0000003F [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T18:43:56.5518520+02:00 0HMS1CJ6HQH67:0000003F [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0" (0723d8ff)
+2023-07-10T18:43:56.5561479+02:00 0HMS1CJ6HQH67:0000003F [INF] User:  logged in. (50ed7709)
+2023-07-10T18:43:56.6440793+02:00 0HMS1CJ6HQH67:00000041 [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (338f1c77)
+2023-07-10T18:43:56.6543231+02:00 0HMS1CJ6HQH67:00000041 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T18:43:57.3493844+02:00 0HMS1CJ6HQH67:00000041 [INF] Received HTTP response headers after 692.9725ms - 500 (f0742c1f)
+2023-07-10T18:43:57.6721992+02:00 0HMS1CJ6HQH67:00000041 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T18:43:58.0627800+02:00 0HMS1CJ6HQH67:00000041 [INF] Received HTTP response headers after 388.3414ms - 500 (f0742c1f)
+2023-07-10T18:43:58.3714995+02:00 0HMS1CJ6HQH67:00000041 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T18:43:58.7856234+02:00 0HMS1CJ6HQH67:00000041 [INF] Received HTTP response headers after 411.9706ms - 500 (f0742c1f)
+2023-07-10T18:43:59.0928720+02:00 0HMS1CJ6HQH67:00000041 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T18:43:59.4854915+02:00 0HMS1CJ6HQH67:00000041 [INF] Received HTTP response headers after 390.6265ms - 500 (f0742c1f)
+2023-07-10T18:43:59.4888016+02:00 0HMS1CJ6HQH67:00000041 [INF] End processing HTTP request after 2845.0664ms - 500 (7656b38e)
+2023-07-10T18:44:09.7195936+02:00 0HMS1CJ6HQH67:00000055 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:44:09.7267088+02:00 0HMS1CJ6HQH67:00000055 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T18:44:09.7300065+02:00 0HMS1CJ6HQH67:00000055 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:44:09.7347716+02:00 0HMS1CJ6HQH67:00000055 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T18:44:46.0168038+02:00 0HMS1CJ6HQH6H:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:44:46.0244436+02:00 0HMS1CJ6HQH6H:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__userRole_id_0" (0723d8ff)
+2023-07-10T18:44:46.0351036+02:00 0HMS1CJ6HQH6H:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T18:44:46.0450301+02:00 0HMS1CJ6HQH6H:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE ([a].[UserId] = @__userRole_id_0) AND ([a].[ClaimValue] = N'Admin')" (0723d8ff)
+2023-07-10T18:44:46.0507840+02:00 0HMS1CJ6HQH6H:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T18:44:46.0591224+02:00 0HMS1CJ6HQH6H:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T18:44:46.1464748+02:00 0HMS1CJ6HQH6H:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T18:44:46.1732735+02:00 0HMS1CJ6HQH6H:00000003 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:44:46.1760132+02:00 0HMS1CJ6HQH6H:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T18:44:46.1784090+02:00 0HMS1CJ6HQH6H:00000003 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:44:46.1807123+02:00 0HMS1CJ6HQH6H:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T18:44:53.2432932+02:00 0HMS1CJ6HQH6H:00000017 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:44:53.2497939+02:00 0HMS1CJ6HQH6H:00000017 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T18:44:53.2555529+02:00 0HMS1CJ6HQH6H:00000017 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:44:53.2589891+02:00 0HMS1CJ6HQH6H:00000017 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T18:44:58.1036597+02:00 0HMS1CJ6HQH6O:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:44:58.1107284+02:00 0HMS1CJ6HQH6O:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T18:46:59.2320766+02:00 0HMS1CL3FG1J3:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:46:59.6966044+02:00 0HMS1CL3FG1J3:00000001 [INF] Executed DbCommand ("44"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T18:47:42.2690677+02:00 0HMS1CL3FG1J7:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T18:47:42.2924636+02:00 0HMS1CL3FG1J7:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__userRole_id_0" (0723d8ff)
+2023-07-10T18:47:46.9362012+02:00 0HMS1CL3FG1J7:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T19:12:45.3633088+02:00 0HMS1D3DMLQRD:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:12:45.7614370+02:00 0HMS1D3DMLQRD:00000001 [INF] Executed DbCommand ("38"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T19:12:45.8323884+02:00 0HMS1D3DMLQRD:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE ([a].[UserId] = @__userRole_id_0) AND ([a].[ClaimValue] = N'Admin')" (0723d8ff)
+2023-07-10T19:12:45.8619370+02:00 0HMS1D3DMLQRD:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:12:45.8815064+02:00 0HMS1D3DMLQRD:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:12:45.9611613+02:00 0HMS1D3DMLQRD:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:12:46.0732085+02:00 0HMS1D3DMLQRD:00000003 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:12:46.1351073+02:00 0HMS1D3DMLQRD:00000003 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T19:12:46.1523452+02:00 0HMS1D3DMLQRD:00000003 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:12:46.1577661+02:00 0HMS1D3DMLQRD:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T19:12:46.2341148+02:00 0HMS1D3DMLQRD:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:12:46.2536024+02:00 0HMS1D3DMLQRD:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:12:59.4724209+02:00 0HMS1D3DMLQRD:00000027 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:12:59.4776808+02:00 0HMS1D3DMLQRD:00000027 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T19:12:59.4801484+02:00 0HMS1D3DMLQRD:00000027 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE ([a].[UserId] = @__userRole_id_0) AND ([a].[ClaimValue] = N'Admin')" (0723d8ff)
+2023-07-10T19:12:59.4838657+02:00 0HMS1D3DMLQRD:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:12:59.4881656+02:00 0HMS1D3DMLQRD:00000027 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:12:59.4925139+02:00 0HMS1D3DMLQRD:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:12:59.4995195+02:00 0HMS1D3DMLQRD:00000029 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:12:59.5025858+02:00 0HMS1D3DMLQRD:00000029 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T19:12:59.5069362+02:00 0HMS1D3DMLQRD:00000029 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:12:59.5094107+02:00 0HMS1D3DMLQRD:00000029 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T19:12:59.5166169+02:00 0HMS1D3DMLQRD:00000029 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:12:59.5211779+02:00 0HMS1D3DMLQRD:00000029 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:13:09.7240248+02:00 0HMS1D3DMLQRK:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:13:09.7284629+02:00 0HMS1D3DMLQRK:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:13:09.7875909+02:00 0HMS1D3DMLQRK:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:13:11.7986483+02:00 0HMS1D3DMLQRK:00000029 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:13:11.8038380+02:00 0HMS1D3DMLQRK:00000029 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:13:11.8093082+02:00 0HMS1D3DMLQRK:00000029 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:13:12.4484195+02:00 0HMS1D3DMLQRK:0000003B [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (338f1c77)
+2023-07-10T19:13:12.4619611+02:00 0HMS1D3DMLQRK:0000003B [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:13:12.9250829+02:00 0HMS1D3DMLQRK:0000003B [INF] Received HTTP response headers after 456.4356ms - 500 (f0742c1f)
+2023-07-10T19:13:13.2340384+02:00 0HMS1D3DMLQRK:0000003B [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:13:13.5843139+02:00 0HMS1D3DMLQRK:0000003B [INF] Received HTTP response headers after 348.3252ms - 500 (f0742c1f)
+2023-07-10T19:13:13.8872303+02:00 0HMS1D3DMLQRK:0000003B [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:13:14.2284273+02:00 0HMS1D3DMLQRK:0000003B [INF] Received HTTP response headers after 339.041ms - 500 (f0742c1f)
+2023-07-10T19:13:14.5432789+02:00 0HMS1D3DMLQRK:0000003B [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:13:14.8935923+02:00 0HMS1D3DMLQRK:0000003B [INF] Received HTTP response headers after 347.8236ms - 500 (f0742c1f)
+2023-07-10T19:13:14.8973178+02:00 0HMS1D3DMLQRK:0000003B [INF] End processing HTTP request after 2457.7211ms - 500 (7656b38e)
+2023-07-10T19:13:14.9917242+02:00 0HMS1D3DMLQRK:0000003B [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:13:14.9963806+02:00 0HMS1D3DMLQRK:0000003B [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:13:15.0027752+02:00 0HMS1D3DMLQRK:0000003B [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:13:35.8872186+02:00 0HMS1D3DMLQRD:0000003D [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:13:35.8923871+02:00 0HMS1D3DMLQRD:0000003D [INF] Executed DbCommand ("1"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T19:13:35.8986021+02:00 0HMS1D3DMLQRD:0000003D [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:13:35.9026507+02:00 0HMS1D3DMLQRD:0000003D [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:13:35.9098319+02:00 0HMS1D3DMLQRD:0000003D [INF] Executed DbCommand ("2"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:13:35.9197756+02:00 0HMS1D3DMLQRD:0000003F [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:13:35.9241299+02:00 0HMS1D3DMLQRD:0000003F [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T19:13:35.9274939+02:00 0HMS1D3DMLQRD:0000003F [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:13:35.9296765+02:00 0HMS1D3DMLQRD:0000003F [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T19:13:35.9361986+02:00 0HMS1D3DMLQRD:0000003F [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:13:35.9405967+02:00 0HMS1D3DMLQRD:0000003F [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:27.4002821+02:00 0HMS1D4EMMU22:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:14:27.8355975+02:00 0HMS1D4EMMU22:00000001 [INF] Executed DbCommand ("48"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:14:27.9242381+02:00 0HMS1D4EMMU22:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:27.9588910+02:00 0HMS1D4EMMU22:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0" (0723d8ff)
+2023-07-10T19:14:28.0218792+02:00 0HMS1D4EMMU22:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:14:28.0859701+02:00 0HMS1D4EMMU22:00000001 [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T19:14:28.1006330+02:00 0HMS1D4EMMU22:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T19:14:28.1975353+02:00 0HMS1D4EMMU22:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:33.3282495+02:00 0HMS1D4EMMU22:00000025 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:14:33.3403856+02:00 0HMS1D4EMMU22:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T19:14:33.3475615+02:00 0HMS1D4EMMU22:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:33.3856417+02:00 0HMS1D4EMMU22:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:14:33.3971905+02:00 0HMS1D4EMMU22:00000025 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:14:33.4719747+02:00 0HMS1D4EMMU22:00000025 [INF] Executed DbCommand ("7"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AspNetUserClaims] ([ClaimType], [ClaimValue], [UserId])
+VALUES (@p0, @p1, @p2);
+SELECT [Id]
+FROM [AspNetUserClaims]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2023-07-10T19:14:33.4981670+02:00 0HMS1D4EMMU22:00000025 [INF] Executed DbCommand ("2"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:14:33.5147490+02:00 0HMS1D4EMMU22:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:14:33.5172104+02:00 0HMS1D4EMMU22:00000025 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:14:33.5206101+02:00 0HMS1D4EMMU22:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:14:33.5311975+02:00 0HMS1D4EMMU22:00000027 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:14:33.5339683+02:00 0HMS1D4EMMU22:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T19:14:33.5377136+02:00 0HMS1D4EMMU22:00000027 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:14:33.5400197+02:00 0HMS1D4EMMU22:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T19:14:33.5494703+02:00 0HMS1D4EMMU22:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:14:33.5554985+02:00 0HMS1D4EMMU22:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:39.4625254+02:00 0HMS1D4EMMU2A:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:14:39.4697903+02:00 0HMS1D4EMMU2A:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:14:39.4765993+02:00 0HMS1D4EMMU2A:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:39.4838858+02:00 0HMS1D4EMMU2A:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0" (0723d8ff)
+2023-07-10T19:14:39.5828426+02:00 0HMS1D4EMMU2A:00000001 [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (338f1c77)
+2023-07-10T19:14:39.5929849+02:00 0HMS1D4EMMU2A:00000001 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:14:39.9965909+02:00 0HMS1D4EMMU2A:00000001 [INF] Received HTTP response headers after 397.007ms - 500 (f0742c1f)
+2023-07-10T19:14:40.3105184+02:00 0HMS1D4EMMU2A:00000001 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:14:40.6379252+02:00 0HMS1D4EMMU2A:00000001 [INF] Received HTTP response headers after 325.3195ms - 500 (f0742c1f)
+2023-07-10T19:14:40.9522933+02:00 0HMS1D4EMMU2A:00000001 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:14:41.2610740+02:00 0HMS1D4EMMU2A:00000001 [INF] Received HTTP response headers after 306.7268ms - 500 (f0742c1f)
+2023-07-10T19:14:41.5765711+02:00 0HMS1D4EMMU2A:00000001 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:14:41.8895183+02:00 0HMS1D4EMMU2A:00000001 [INF] Received HTTP response headers after 310.9462ms - 500 (f0742c1f)
+2023-07-10T19:14:41.8933668+02:00 0HMS1D4EMMU2A:00000001 [INF] End processing HTTP request after 2319.0537ms - 500 (7656b38e)
+2023-07-10T19:14:41.9941128+02:00 0HMS1D4EMMU2A:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:54.2472385+02:00 0HMS1D4EMMU22:00000031 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:14:54.2503379+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T19:14:54.2541163+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:54.2605434+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:14:54.2631531+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:14:54.2676767+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AspNetUserClaims] ([ClaimType], [ClaimValue], [UserId])
+VALUES (@p0, @p1, @p2);
+SELECT [Id]
+FROM [AspNetUserClaims]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2023-07-10T19:14:54.2714855+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:14:54.2760802+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:14:54.2790076+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:14:54.2822197+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:14:54.2848820+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T19:14:54.2882053+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:54.2961815+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE ([a].[UserId] = @__userRole_id_0) AND ([a].[ClaimValue] = N'Admin')" (0723d8ff)
+2023-07-10T19:14:54.3020698+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE ([a].[UserId] = @__userRole_id_0) AND ([a].[ClaimValue] = N'Moderator')" (0723d8ff)
+2023-07-10T19:14:54.3187244+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("6"ms) [Parameters=["@__8__locals1_user_Id_0='?' (Size = 450), @__claim_Value_1='?' (Size = 4000), @__claim_Type_2='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE (([a].[UserId] = @__8__locals1_user_Id_0) AND ([a].[ClaimValue] = @__claim_Value_1)) AND ([a].[ClaimType] = @__claim_Type_2)" (0723d8ff)
+2023-07-10T19:14:54.3257271+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:14:54.3289060+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:14:54.3358423+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DELETE FROM [AspNetUserClaims]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:14:54.3380116+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("0"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:14:54.3439877+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:14:54.3465906+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:14:54.3497626+02:00 0HMS1D4EMMU22:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:14:54.3564126+02:00 0HMS1D4EMMU22:00000033 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:14:54.3594679+02:00 0HMS1D4EMMU22:00000033 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T19:14:54.3630643+02:00 0HMS1D4EMMU22:00000033 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:14:54.3655212+02:00 0HMS1D4EMMU22:00000033 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T19:14:54.3717705+02:00 0HMS1D4EMMU22:00000033 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:14:54.3765452+02:00 0HMS1D4EMMU22:00000033 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:14:59.3489595+02:00 0HMS1D4EMMU2A:00000025 [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (338f1c77)
+2023-07-10T19:14:59.3507884+02:00 0HMS1D4EMMU2A:00000025 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:14:59.6625872+02:00 0HMS1D4EMMU2A:00000025 [INF] Received HTTP response headers after 309.7905ms - 500 (f0742c1f)
+2023-07-10T19:14:59.9662607+02:00 0HMS1D4EMMU2A:00000025 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:15:00.2728977+02:00 0HMS1D4EMMU2A:00000025 [INF] Received HTTP response headers after 304.4277ms - 500 (f0742c1f)
+2023-07-10T19:15:00.5753887+02:00 0HMS1D4EMMU2A:00000025 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:15:00.8803631+02:00 0HMS1D4EMMU2A:00000025 [INF] Received HTTP response headers after 303.1465ms - 500 (f0742c1f)
+2023-07-10T19:15:01.1863456+02:00 0HMS1D4EMMU2A:00000025 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:15:01.4951379+02:00 0HMS1D4EMMU2A:00000025 [INF] Received HTTP response headers after 306.7586ms - 500 (f0742c1f)
+2023-07-10T19:15:01.4968680+02:00 0HMS1D4EMMU2A:00000025 [INF] End processing HTTP request after 2148.049ms - 500 (7656b38e)
+2023-07-10T19:15:01.5456871+02:00 0HMS1D4EMMU2A:00000025 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:01.5506732+02:00 0HMS1D4EMMU2A:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:15:01.5541205+02:00 0HMS1D4EMMU2A:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:15:02.8853900+02:00 0HMS1D4EMMU2A:0000003B [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:02.8902294+02:00 0HMS1D4EMMU2A:0000003B [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:15:02.8956110+02:00 0HMS1D4EMMU2A:0000003B [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:15:04.9170619+02:00 0HMS1D4EMMU2A:0000004F [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:04.9229434+02:00 0HMS1D4EMMU2A:0000004F [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:15:04.9289101+02:00 0HMS1D4EMMU2A:0000004F [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:15:05.9859938+02:00 0HMS1D4EMMU2A:00000063 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:05.9903149+02:00 0HMS1D4EMMU2A:00000063 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:15:05.9953161+02:00 0HMS1D4EMMU2A:00000063 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:15:07.0283022+02:00 0HMS1D4EMMU2A:00000077 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:07.0326076+02:00 0HMS1D4EMMU2A:00000077 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:15:07.0374846+02:00 0HMS1D4EMMU2A:00000077 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:15:09.2975475+02:00 0HMS1D4EMMU2A:0000008B [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:09.3020970+02:00 0HMS1D4EMMU2A:0000008B [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:15:09.3072551+02:00 0HMS1D4EMMU2A:0000008B [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:15:19.8743667+02:00 0HMS1D4EMMU22:00000041 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:19.8775519+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T19:15:19.8826573+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:15:19.8861286+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE ([a].[UserId] = @__userRole_id_0) AND ([a].[ClaimValue] = N'Admin')" (0723d8ff)
+2023-07-10T19:15:19.8884909+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("1"ms) [Parameters=["@__8__locals1_user_Id_0='?' (Size = 450), @__claim_Value_1='?' (Size = 4000), @__claim_Type_2='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE (([a].[UserId] = @__8__locals1_user_Id_0) AND ([a].[ClaimValue] = @__claim_Value_1)) AND ([a].[ClaimType] = @__claim_Type_2)" (0723d8ff)
+2023-07-10T19:15:19.8912560+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:15:19.8936440+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:15:19.8983171+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DELETE FROM [AspNetUserClaims]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:15:19.9003115+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("0"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:15:19.9035772+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:15:19.9057127+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:15:19.9088502+02:00 0HMS1D4EMMU22:00000041 [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:15:19.9165808+02:00 0HMS1D4EMMU22:00000043 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:19.9193644+02:00 0HMS1D4EMMU22:00000043 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T19:15:19.9233923+02:00 0HMS1D4EMMU22:00000043 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:19.9256881+02:00 0HMS1D4EMMU22:00000043 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T19:15:19.9312345+02:00 0HMS1D4EMMU22:00000043 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:15:19.9349039+02:00 0HMS1D4EMMU22:00000043 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:15:22.0397516+02:00 0HMS1D4EMMU2A:0000009F [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:22.0439273+02:00 0HMS1D4EMMU2A:0000009F [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:15:22.0488128+02:00 0HMS1D4EMMU2A:0000009F [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:15:22.8851430+02:00 0HMS1D4EMMU2A:000000B3 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:15:22.8890529+02:00 0HMS1D4EMMU2A:000000B3 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:15:22.8941169+02:00 0HMS1D4EMMU2A:000000B3 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:36:15.7028654+02:00 0HMS1DGGT1SB3:0000003D [INF] Start processing HTTP request "GET" https://www.google.com/recaptcha/api/siteverify?secret=6LcgKUohAAAAACXkztFI9AonZZMRHc2ATnGPeQiX&response=03AAYGu2SBvZV7kEgK0UEF2SNylN21oh9E4sVzZn5qlLykevEODfnuojPn6sgR7S3ro8YpGVfVptd0_eB-AV_EJ0ETRpzQ5rLZMpeHfvHQccLu3M0LdMbV9OAi3iytj-nzvaAX6Pgsv6s6POaJ8r3emErq9eC4EEadc2Tg5gEC-wOJ2o_tdtugcKZFrXHp7pvHvw6130nzyXXAaeGKbVESaNvmY2RQuL2CfWw3UjHtsCXLlcCP0kSSGASJS68MFc3_hpYvF0Buma6fmWieGHAgOfAatwVavO28HjjKu-kDxpY90cMn1CM_v4mBsNvjuswKdE_DXWMGH91f0Gjazpo5GBVkVBnirj97uDN5ZAbIB7oLOf3Cy0CWOxScTHRq01vhBCxC83EchIOkIRrS8wwHQAvwMPMTMSC7mfEWsNjjLhyGou_yIjd73_kAC_B7HeIkwNJYd1_s5kEcAaxgEZZybFZu1h5R6jfb97iTqXSNB5Osw10l4ktoLlqhio1CGCmCkjZkipi7w-JHAwbtllUrXLik9lAEypI-n8H5KSUL7XnUEHxsvr0__P0 (338f1c77)
+2023-07-10T19:36:15.7112488+02:00 0HMS1DGGT1SB3:0000003D [INF] Sending HTTP request "GET" https://www.google.com/recaptcha/api/siteverify?secret=6LcgKUohAAAAACXkztFI9AonZZMRHc2ATnGPeQiX&response=03AAYGu2SBvZV7kEgK0UEF2SNylN21oh9E4sVzZn5qlLykevEODfnuojPn6sgR7S3ro8YpGVfVptd0_eB-AV_EJ0ETRpzQ5rLZMpeHfvHQccLu3M0LdMbV9OAi3iytj-nzvaAX6Pgsv6s6POaJ8r3emErq9eC4EEadc2Tg5gEC-wOJ2o_tdtugcKZFrXHp7pvHvw6130nzyXXAaeGKbVESaNvmY2RQuL2CfWw3UjHtsCXLlcCP0kSSGASJS68MFc3_hpYvF0Buma6fmWieGHAgOfAatwVavO28HjjKu-kDxpY90cMn1CM_v4mBsNvjuswKdE_DXWMGH91f0Gjazpo5GBVkVBnirj97uDN5ZAbIB7oLOf3Cy0CWOxScTHRq01vhBCxC83EchIOkIRrS8wwHQAvwMPMTMSC7mfEWsNjjLhyGou_yIjd73_kAC_B7HeIkwNJYd1_s5kEcAaxgEZZybFZu1h5R6jfb97iTqXSNB5Osw10l4ktoLlqhio1CGCmCkjZkipi7w-JHAwbtllUrXLik9lAEypI-n8H5KSUL7XnUEHxsvr0__P0 (2e7ac211)
+2023-07-10T19:36:15.8173650+02:00 0HMS1DGGT1SB3:0000003D [INF] Received HTTP response headers after 99.8427ms - 200 (f0742c1f)
+2023-07-10T19:36:15.8193870+02:00 0HMS1DGGT1SB3:0000003D [INF] End processing HTTP request after 129.7561ms - 200 (7656b38e)
+2023-07-10T19:36:15.8332265+02:00 0HMS1DGGT1SB3:0000003D [INF] Succesfully retrieved captcha with a good score: 0,9 (1e19cf2b)
+2023-07-10T19:36:16.1893376+02:00 0HMS1DGGT1SB3:0000003D [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:36:16.6439160+02:00 0HMS1DGGT1SB3:0000003D [INF] Executed DbCommand ("46"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:36:16.8071994+02:00 0HMS1DGGT1SB3:0000003D [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:36:16.8430777+02:00 0HMS1DGGT1SB3:0000003D [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0" (0723d8ff)
+2023-07-10T19:36:16.8504005+02:00 0HMS1DGGT1SB3:0000003D [INF] User:  logged in. (50ed7709)
+2023-07-10T19:36:16.9465581+02:00 0HMS1DGGT1SB3:0000003F [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (338f1c77)
+2023-07-10T19:36:16.9613868+02:00 0HMS1DGGT1SB3:0000003F [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:36:17.7642958+02:00 0HMS1DGGT1SB3:0000003F [INF] Received HTTP response headers after 799.7698ms - 500 (f0742c1f)
+2023-07-10T19:36:18.0819374+02:00 0HMS1DGGT1SB3:0000003F [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:36:18.4354658+02:00 0HMS1DGGT1SB3:0000003F [INF] Received HTTP response headers after 351.6346ms - 500 (f0742c1f)
+2023-07-10T19:36:18.7540878+02:00 0HMS1DGGT1SB3:0000003F [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:36:19.1198292+02:00 0HMS1DGGT1SB3:0000003F [INF] Received HTTP response headers after 362.9517ms - 500 (f0742c1f)
+2023-07-10T19:36:19.2450131+02:00 0HMS1DGGT1SB9:00000001 [INF] Begin Request Id: 94874c13-41f8-458c-9a4d-db073a81e5fa, request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery (57cd5fee)
+2023-07-10T19:36:19.2815538+02:00 0HMS1DGGT1SB9:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:36:19.3476673+02:00 0HMS1DGGT1SB9:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]
+WHERE [s].[Guid] = @__request_UserId_0" (0723d8ff)
+2023-07-10T19:36:19.3500727+02:00 0HMS1DGGT1SB9:00000001 [INF] End Request Id: 94874c13-41f8-458c-9a4d-db073a81e5fa, request name: GetSpelerByIdQuery, requested by user: , total request time: 103ms (d65aa0cf)
+2023-07-10T19:36:19.4331024+02:00 0HMS1DGGT1SB3:0000003F [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:36:19.8036288+02:00 0HMS1DGGT1SB3:0000003F [INF] Received HTTP response headers after 368.2444ms - 500 (f0742c1f)
+2023-07-10T19:36:19.8074065+02:00 0HMS1DGGT1SB3:0000003F [INF] End processing HTTP request after 2862.1902ms - 500 (7656b38e)
+2023-07-10T19:36:19.9088282+02:00 0HMS1DGGT1SB3:0000003F [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:36:19.9252808+02:00 0HMS1DGGT1SB3:0000003F [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:36:19.9312471+02:00 0HMS1DGGT1SB3:0000003F [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:36:22.2048163+02:00 0HMS1DGGT1SB3:00000051 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:36:22.2168274+02:00 0HMS1DGGT1SB3:00000051 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T19:36:22.2302398+02:00 0HMS1DGGT1SB3:00000051 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:36:22.2352519+02:00 0HMS1DGGT1SB3:00000051 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T19:36:22.2524543+02:00 0HMS1DGGT1SB3:00000051 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:36:22.2585500+02:00 0HMS1DGGT1SB3:00000051 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:36:30.5434212+02:00 0HMS1DGGT1SB9:0000003F [INF] Start processing HTTP request "GET" https://www.google.com/recaptcha/api/siteverify?secret=6LcgKUohAAAAACXkztFI9AonZZMRHc2ATnGPeQiX&response=03AAYGu2Sw3DW_4vxtrgGDybIDpiciJQorJv-IVbwJzKtGDhgn74_HciyUH_8wM-0HzQboczjqBEoTN42x8I89uHgUD9LL6M1BN5CoQlJpVePumitSyQqkE1RO5mtZ_OQJVcggAkoLeFE71H2NLjCRqa4nDQuu7fl08ObFdZ_PQFtponF7cf-lx7pwuxLulX0GIHpbzaUtvjVCRz3ZAryISqXH7zR9An_YfbwLC6isVUYhbZgPTY_2paFlUHNHgYh1Grxd3MKC-51hhkZrAV4X2cn4JZcMK1yQfWhtRYQ5bzO0tcO9e6V_il4NgsiphtvwD6THfwKoarMWWEw6Ya7AYtv55rnmFPN44v4jiyJctKIx3Y0KTlDUWLouYB48y8L2korHx5mf87Kej8qkH-KXIdLhM6OyRXgI1LloBQJvUYTX7zm-sGKXrhXPLDBWMFUG9tSzsK9lrHKqEQBCRJ4e8ovPL4oEMN0L9ZoprI1WOjk8iYzqmT0CE3zzmDBZKLkvMYfRxU23ZGQYsej1soDuvVYWYALbMA4yN2um_6cVJXnOJelnpBIpTLI (338f1c77)
+2023-07-10T19:36:30.5449901+02:00 0HMS1DGGT1SB9:0000003F [INF] Sending HTTP request "GET" https://www.google.com/recaptcha/api/siteverify?secret=6LcgKUohAAAAACXkztFI9AonZZMRHc2ATnGPeQiX&response=03AAYGu2Sw3DW_4vxtrgGDybIDpiciJQorJv-IVbwJzKtGDhgn74_HciyUH_8wM-0HzQboczjqBEoTN42x8I89uHgUD9LL6M1BN5CoQlJpVePumitSyQqkE1RO5mtZ_OQJVcggAkoLeFE71H2NLjCRqa4nDQuu7fl08ObFdZ_PQFtponF7cf-lx7pwuxLulX0GIHpbzaUtvjVCRz3ZAryISqXH7zR9An_YfbwLC6isVUYhbZgPTY_2paFlUHNHgYh1Grxd3MKC-51hhkZrAV4X2cn4JZcMK1yQfWhtRYQ5bzO0tcO9e6V_il4NgsiphtvwD6THfwKoarMWWEw6Ya7AYtv55rnmFPN44v4jiyJctKIx3Y0KTlDUWLouYB48y8L2korHx5mf87Kej8qkH-KXIdLhM6OyRXgI1LloBQJvUYTX7zm-sGKXrhXPLDBWMFUG9tSzsK9lrHKqEQBCRJ4e8ovPL4oEMN0L9ZoprI1WOjk8iYzqmT0CE3zzmDBZKLkvMYfRxU23ZGQYsej1soDuvVYWYALbMA4yN2um_6cVJXnOJelnpBIpTLI (2e7ac211)
+2023-07-10T19:36:30.5620532+02:00 0HMS1DGGT1SB9:0000003F [INF] Received HTTP response headers after 15.6183ms - 200 (f0742c1f)
+2023-07-10T19:36:30.5634227+02:00 0HMS1DGGT1SB9:0000003F [INF] End processing HTTP request after 20.522ms - 200 (7656b38e)
+2023-07-10T19:36:30.5657038+02:00 0HMS1DGGT1SB9:0000003F [INF] Succesfully retrieved captcha with a good score: 0,9 (1e19cf2b)
+2023-07-10T19:36:30.5675710+02:00 0HMS1DGGT1SB9:0000003F [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:36:30.5709407+02:00 0HMS1DGGT1SB9:0000003F [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:36:30.6440877+02:00 0HMS1DGGT1SB9:0000003F [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450), @__p_1='?' (Size = 128), @__p_2='?' (Size = 128)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[UserId], [a].[LoginProvider], [a].[Name], [a].[Value]
+FROM [AspNetUserTokens] AS [a]
+WHERE (([a].[UserId] = @__p_0) AND ([a].[LoginProvider] = @__p_1)) AND ([a].[Name] = @__p_2)" (0723d8ff)
+2023-07-10T19:36:30.6589943+02:00 0HMS1DGGT1SB9:0000003F [INF] User:  needs to login with 2fa. (1b8087ab)
+2023-07-10T19:36:30.6755989+02:00 0HMS1DGGT1SB9:00000041 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:36:30.6783672+02:00 0HMS1DGGT1SB9:00000041 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:36:50.1698564+02:00 0HMS1DGGT1SB9:00000055 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:36:50.1748311+02:00 0HMS1DGGT1SB9:00000055 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:36:50.1812529+02:00 0HMS1DGGT1SB9:00000055 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450), @__p_1='?' (Size = 128), @__p_2='?' (Size = 128)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[UserId], [a].[LoginProvider], [a].[Name], [a].[Value]
+FROM [AspNetUserTokens] AS [a]
+WHERE (([a].[UserId] = @__p_0) AND ([a].[LoginProvider] = @__p_1)) AND ([a].[Name] = @__p_2)" (0723d8ff)
+2023-07-10T19:36:50.1890308+02:00 0HMS1DGGT1SB9:00000055 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:36:50.1926806+02:00 0HMS1DGGT1SB9:00000055 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0" (0723d8ff)
+2023-07-10T19:36:50.1958236+02:00 0HMS1DGGT1SB9:00000055 [INF] User with ID '"b3fcebbd-0cd4-480e-b751-6e4be18e4cad"' logged in with 2fa. (d57ab239)
+2023-07-10T19:36:50.2015769+02:00 0HMS1DGGT1SB9:00000057 [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (338f1c77)
+2023-07-10T19:36:50.2030941+02:00 0HMS1DGGT1SB9:00000057 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:36:50.5457136+02:00 0HMS1DGGT1SB9:00000057 [INF] Received HTTP response headers after 341.0376ms - 500 (f0742c1f)
+2023-07-10T19:36:50.8716927+02:00 0HMS1DGGT1SB9:00000057 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:36:51.2184689+02:00 0HMS1DGGT1SB9:00000057 [INF] Received HTTP response headers after 344.5392ms - 500 (f0742c1f)
+2023-07-10T19:36:51.5439371+02:00 0HMS1DGGT1SB9:00000057 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:36:51.8568154+02:00 0HMS1DGGT1SB9:00000057 [INF] Received HTTP response headers after 310.9587ms - 500 (f0742c1f)
+2023-07-10T19:36:52.1607286+02:00 0HMS1DGGT1SB9:00000057 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:36:52.4885627+02:00 0HMS1DGGT1SB9:00000057 [INF] Received HTTP response headers after 326.2169ms - 500 (f0742c1f)
+2023-07-10T19:36:52.4904061+02:00 0HMS1DGGT1SB9:00000057 [INF] End processing HTTP request after 2288.8687ms - 500 (7656b38e)
+2023-07-10T19:36:52.5381800+02:00 0HMS1DGGT1SB9:00000057 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:36:52.5464248+02:00 0HMS1DGGT1SB9:00000057 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:36:52.5510536+02:00 0HMS1DGGT1SB9:00000057 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:37:00.7792194+02:00 0HMS1DGGT1SB3:00000063 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:37:00.7908583+02:00 0HMS1DGGT1SB3:00000063 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userRole_id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__userRole_id_0" (0723d8ff)
+2023-07-10T19:37:00.7970676+02:00 0HMS1DGGT1SB3:00000063 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:37:00.8278956+02:00 0HMS1DGGT1SB3:00000063 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:37:00.8371897+02:00 0HMS1DGGT1SB3:00000063 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:37:00.9070335+02:00 0HMS1DGGT1SB3:00000063 [INF] Executed DbCommand ("3"ms) [Parameters=["@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AspNetUserClaims] ([ClaimType], [ClaimValue], [UserId])
+VALUES (@p0, @p1, @p2);
+SELECT [Id]
+FROM [AspNetUserClaims]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();" (0723d8ff)
+2023-07-10T19:37:00.9351234+02:00 0HMS1DGGT1SB3:00000063 [INF] Executed DbCommand ("3"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:37:00.9520611+02:00 0HMS1DGGT1SB3:00000063 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2023-07-10T19:37:00.9540434+02:00 0HMS1DGGT1SB3:00000063 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2023-07-10T19:37:00.9569063+02:00 0HMS1DGGT1SB3:00000063 [INF] Executed DbCommand ("1"ms) [Parameters=["@p14='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2023-07-10T19:37:00.9661723+02:00 0HMS1DGGT1SB3:00000065 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:37:00.9687345+02:00 0HMS1DGGT1SB3:00000065 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]" (0723d8ff)
+2023-07-10T19:37:00.9718413+02:00 0HMS1DGGT1SB3:00000065 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:37:00.9738274+02:00 0HMS1DGGT1SB3:00000065 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]" (0723d8ff)
+2023-07-10T19:37:00.9826178+02:00 0HMS1DGGT1SB3:00000065 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:37:00.9851236+02:00 0HMS1DGGT1SB3:00000065 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:37:03.1571056+02:00 0HMS1DGGT1SB9:0000006B [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (338f1c77)
+2023-07-10T19:37:03.1596291+02:00 0HMS1DGGT1SB9:0000006B [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:37:03.4853730+02:00 0HMS1DGGT1SB9:0000006B [INF] Received HTTP response headers after 323.9436ms - 500 (f0742c1f)
+2023-07-10T19:37:03.8120406+02:00 0HMS1DGGT1SB9:0000006B [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:37:04.1322252+02:00 0HMS1DGGT1SB9:0000006B [INF] Received HTTP response headers after 318.0108ms - 500 (f0742c1f)
+2023-07-10T19:37:04.4473397+02:00 0HMS1DGGT1SB9:0000006B [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:37:04.7556412+02:00 0HMS1DGGT1SB9:0000006B [INF] Received HTTP response headers after 306.622ms - 500 (f0742c1f)
+2023-07-10T19:37:05.0725302+02:00 0HMS1DGGT1SB9:0000006B [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=b3fcebbd-0cd4-480e-b751-6e4be18e4cad (2e7ac211)
+2023-07-10T19:37:05.3776840+02:00 0HMS1DGGT1SB9:0000006B [INF] Received HTTP response headers after 303.425ms - 500 (f0742c1f)
+2023-07-10T19:37:05.3793262+02:00 0HMS1DGGT1SB9:0000006B [INF] End processing HTTP request after 2223.3702ms - 500 (7656b38e)
+2023-07-10T19:37:05.4222539+02:00 0HMS1DGGT1SB9:0000006B [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:37:05.4275111+02:00 0HMS1DGGT1SB9:0000006B [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:37:05.4317548+02:00 0HMS1DGGT1SB9:0000006B [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:37:06.2567227+02:00 0HMS1DGGT1SB9:00000081 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:37:06.2613634+02:00 0HMS1DGGT1SB9:00000081 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:37:06.2655913+02:00 0HMS1DGGT1SB9:00000081 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:37:07.6490282+02:00 0HMS1DGGT1SB9:0000008D [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:37:07.6532453+02:00 0HMS1DGGT1SB9:0000008D [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:37:07.6578627+02:00 0HMS1DGGT1SB9:0000008D [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:42:04.3271049+02:00 0HMS1DJSF3FS7:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:42:04.7638776+02:00 0HMS1DJSF3FS7:00000001 [INF] Executed DbCommand ("46"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:42:04.8664062+02:00 0HMS1DJSF3FS7:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:42:07.5171567+02:00 0HMS1DJSF3FS7:00000025 [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (884de235)
+2023-07-10T19:42:12.9371949+02:00 0HMS1DJSF3FS7:00000029 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:42:12.9446737+02:00 0HMS1DJSF3FS7:00000029 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:42:12.9494509+02:00 0HMS1DJSF3FS7:00000029 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:42:26.1715311+02:00 0HMS1DJSF3FS7:0000003D [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (884de235)
+2023-07-10T19:42:43.8168793+02:00 0HMS1DK8BGQPU:00000001 [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (884de235)
+2023-07-10T19:42:45.4291700+02:00 0HMS1DK8BGQPU:00000005 [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (884de235)
+2023-07-10T19:43:06.8150460+02:00 0HMS1DK8BGQPU:00000007 [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (338f1c77)
+2023-07-10T19:43:06.8263650+02:00 0HMS1DK8BGQPU:00000007 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:43:07.2156920+02:00 0HMS1DK8BGQPU:00000007 [INF] Received HTTP response headers after 383.1656ms - 500 (f0742c1f)
+2023-07-10T19:43:07.5363483+02:00 0HMS1DK8BGQPU:00000007 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:43:07.8458810+02:00 0HMS1DK8BGQPU:00000007 [INF] Received HTTP response headers after 307.8676ms - 500 (f0742c1f)
+2023-07-10T19:43:08.1643589+02:00 0HMS1DK8BGQPU:00000007 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:43:08.4649825+02:00 0HMS1DK8BGQPU:00000007 [INF] Received HTTP response headers after 298.6263ms - 500 (f0742c1f)
+2023-07-10T19:43:08.7682129+02:00 0HMS1DK8BGQPU:00000007 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:43:09.0673549+02:00 0HMS1DK8BGQPU:00000007 [INF] Received HTTP response headers after 297.308ms - 500 (f0742c1f)
+2023-07-10T19:43:09.0709769+02:00 0HMS1DK8BGQPU:00000007 [INF] End processing HTTP request after 2265.411ms - 500 (7656b38e)
+2023-07-10T19:43:09.5767137+02:00 0HMS1DK8BGQPU:00000007 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:43:09.9941177+02:00 0HMS1DK8BGQPU:00000007 [INF] Executed DbCommand ("43"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:43:10.0845890+02:00 0HMS1DK8BGQPU:00000007 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:43:13.4196477+02:00 0HMS1DK8BGQPU:0000001D [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (884de235)
+2023-07-10T19:43:14.4267122+02:00 0HMS1DK8BGQPU:0000001F [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (338f1c77)
+2023-07-10T19:43:14.4281058+02:00 0HMS1DK8BGQPU:0000001F [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:43:14.7286918+02:00 0HMS1DK8BGQPU:0000001F [INF] Received HTTP response headers after 298.8959ms - 500 (f0742c1f)
+2023-07-10T19:43:15.0321641+02:00 0HMS1DK8BGQPU:0000001F [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:43:15.3225412+02:00 0HMS1DK8BGQPU:0000001F [INF] Received HTTP response headers after 288.5584ms - 500 (f0742c1f)
+2023-07-10T19:43:15.6305191+02:00 0HMS1DK8BGQPU:0000001F [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:43:15.9232057+02:00 0HMS1DK8BGQPU:0000001F [INF] Received HTTP response headers after 290.7141ms - 500 (f0742c1f)
+2023-07-10T19:43:16.2472008+02:00 0HMS1DK8BGQPU:0000001F [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:43:16.5463137+02:00 0HMS1DK8BGQPU:0000001F [INF] Received HTTP response headers after 296.8766ms - 500 (f0742c1f)
+2023-07-10T19:43:16.5482653+02:00 0HMS1DK8BGQPU:0000001F [INF] End processing HTTP request after 2121.4457ms - 500 (7656b38e)
+2023-07-10T19:43:16.6218236+02:00 0HMS1DK8BGQPU:0000001F [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:43:16.6298055+02:00 0HMS1DK8BGQPU:0000001F [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:43:16.6334591+02:00 0HMS1DK8BGQPU:0000001F [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:45:45.6877687+02:00 0HMS1DLUEACAL:00000003 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:45:46.1046005+02:00 0HMS1DLUEACAL:00000003 [INF] Executed DbCommand ("42"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:45:46.1920412+02:00 0HMS1DLUEACAL:00000003 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:45:47.8956013+02:00 0HMS1DLUEACAL:00000029 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:45:47.9030972+02:00 0HMS1DLUEACAL:00000029 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:45:47.9081309+02:00 0HMS1DLUEACAL:00000029 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:45:49.3069096+02:00 0HMS1DLUEACAL:0000003F [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:45:49.3124047+02:00 0HMS1DLUEACAL:0000003F [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:45:49.3173044+02:00 0HMS1DLUEACAL:0000003F [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:45:57.3908585+02:00 0HMS1DLUEACAL:00000053 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:45:57.3951359+02:00 0HMS1DLUEACAL:00000053 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:45:57.4510210+02:00 0HMS1DLUEACAL:00000053 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:46:21.7957764+02:00 0HMS1DLUEACAV:00000003 [INF] Start processing HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (338f1c77)
+2023-07-10T19:46:21.8064974+02:00 0HMS1DLUEACAV:00000003 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:46:22.1855229+02:00 0HMS1DLUEACAV:00000003 [INF] Received HTTP response headers after 371.4504ms - 500 (f0742c1f)
+2023-07-10T19:46:22.4943424+02:00 0HMS1DLUEACAV:00000003 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:46:22.7845579+02:00 0HMS1DLUEACAV:00000003 [INF] Received HTTP response headers after 288.3565ms - 500 (f0742c1f)
+2023-07-10T19:46:23.1065209+02:00 0HMS1DLUEACAV:00000003 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:46:23.3923981+02:00 0HMS1DLUEACAV:00000003 [INF] Received HTTP response headers after 283.7221ms - 500 (f0742c1f)
+2023-07-10T19:46:23.7029970+02:00 0HMS1DLUEACAV:00000003 [INF] Sending HTTP request "GET" https://localhost:44339/api/spel/unfinished?spelerToken=ad151d7a-bf1a-4465-b8d5-6d0ef8ad42bd (2e7ac211)
+2023-07-10T19:46:23.9904998+02:00 0HMS1DLUEACAV:00000003 [INF] Received HTTP response headers after 285.7546ms - 500 (f0742c1f)
+2023-07-10T19:46:23.9937484+02:00 0HMS1DLUEACAV:00000003 [INF] End processing HTTP request after 2205.7922ms - 500 (7656b38e)
+2023-07-10T19:46:24.0873806+02:00 0HMS1DLUEACAV:00000003 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:46:24.0923694+02:00 0HMS1DLUEACAV:00000003 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:46:24.0959335+02:00 0HMS1DLUEACAV:00000003 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:46:25.2246006+02:00 0HMS1DLUEACAV:00000025 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:46:25.2306273+02:00 0HMS1DLUEACAV:00000025 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:46:25.2360724+02:00 0HMS1DLUEACAV:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:46:26.4562074+02:00 0HMS1DLUEACAV:0000003B [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:46:26.4611415+02:00 0HMS1DLUEACAV:0000003B [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:46:26.4663604+02:00 0HMS1DLUEACAV:0000003B [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:46:27.1087045+02:00 0HMS1DLUEACAV:0000004D [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:46:27.1141828+02:00 0HMS1DLUEACAV:0000004D [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:46:27.1262381+02:00 0HMS1DLUEACAV:0000004D [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:46:28.7426676+02:00 0HMS1DLUEACAV:00000065 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:46:28.7468500+02:00 0HMS1DLUEACAV:00000065 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:46:28.7521783+02:00 0HMS1DLUEACAV:00000065 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:48:41.0401160+02:00 0HMS1DNIN7B7J:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:48:41.4572957+02:00 0HMS1DNIN7B7J:00000001 [INF] Executed DbCommand ("45"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:48:41.6520728+02:00 0HMS1DNIN7B7J:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:48:55.2516031+02:00 0HMS1DNIN7B7J:00000029 [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin, Moderator' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (9cbc4ba7)
+2023-07-10T19:48:56.8262205+02:00 0HMS1DNIN7B7J:0000002D [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:48:56.8331924+02:00 0HMS1DNIN7B7J:0000002D [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:48:56.8421295+02:00 0HMS1DNIN7B7J:0000002D [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:48:57.8585529+02:00 0HMS1DNIN7B7J:00000041 [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin, Moderator' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (9cbc4ba7)
+2023-07-10T19:48:58.7731928+02:00 0HMS1DNIN7B7J:00000045 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:48:58.7795420+02:00 0HMS1DNIN7B7J:00000045 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:48:58.7868115+02:00 0HMS1DNIN7B7J:00000045 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:49:48.0537930+02:00 0HMS1DO6M8386:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:49:48.4850242+02:00 0HMS1DO6M8386:00000001 [INF] Executed DbCommand ("45"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:49:48.6752294+02:00 0HMS1DO6M8386:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:49:49.8102392+02:00 0HMS1DO6M8386:00000029 [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin,Moderator' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (cccbda2d)
+2023-07-10T19:49:50.8315853+02:00 0HMS1DO6M8386:0000002D [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:49:50.8386669+02:00 0HMS1DO6M8386:0000002D [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:49:50.8483655+02:00 0HMS1DO6M8386:0000002D [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:49:51.6484877+02:00 0HMS1DO6M8386:00000041 [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin,Moderator' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (cccbda2d)
+2023-07-10T19:49:52.8837315+02:00 0HMS1DO6M8386:00000045 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:49:52.8898569+02:00 0HMS1DO6M8386:00000045 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:49:52.8979182+02:00 0HMS1DO6M8386:00000045 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:50:24.8196732+02:00 0HMS1DOHKSKTL:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:50:25.2420578+02:00 0HMS1DOHKSKTL:00000001 [INF] Executed DbCommand ("46"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:50:25.4346500+02:00 0HMS1DOHKSKTL:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:50:26.6611785+02:00 0HMS1DOHKSKTL:0000002B [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:50:26.6684620+02:00 0HMS1DOHKSKTL:0000002B [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:50:26.6734790+02:00 0HMS1DOHKSKTL:0000002B [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:50:27.7165274+02:00 0HMS1DOHKSKTL:0000003F [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin,Moderator' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (cccbda2d)
+2023-07-10T19:50:28.7932766+02:00 0HMS1DOHKSKTL:00000043 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:50:28.7994610+02:00 0HMS1DOHKSKTL:00000043 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:50:28.8039404+02:00 0HMS1DOHKSKTL:00000043 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:57:17.7051005+02:00 0HMS1DSCLSQNI:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:57:18.1320572+02:00 0HMS1DSCLSQNI:00000001 [INF] Executed DbCommand ("44"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:57:18.2188007+02:00 0HMS1DSCLSQNI:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:57:20.2201695+02:00 0HMS1DSCLSQNI:00000017 [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin,Moderator' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (cccbda2d)
+2023-07-10T19:57:21.3011288+02:00 0HMS1DSCLSQNI:0000001B [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:57:21.3078359+02:00 0HMS1DSCLSQNI:0000001B [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:57:21.3120473+02:00 0HMS1DSCLSQNI:0000001B [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:57:22.1339017+02:00 0HMS1DSCLSQNI:00000031 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:57:22.1395418+02:00 0HMS1DSCLSQNI:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:57:22.1438566+02:00 0HMS1DSCLSQNI:00000031 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:57:23.0027824+02:00 0HMS1DSCLSQNI:00000047 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:57:23.0074323+02:00 0HMS1DSCLSQNI:00000047 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:57:23.0116251+02:00 0HMS1DSCLSQNI:00000047 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:57:36.8139740+02:00 0HMS1DSIC501E:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:57:37.2447129+02:00 0HMS1DSIC501E:00000001 [INF] Executed DbCommand ("42"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:57:37.3395386+02:00 0HMS1DSIC501E:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:57:38.8210850+02:00 0HMS1DSIC501E:00000017 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:57:38.8278259+02:00 0HMS1DSIC501E:00000017 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:57:38.8329711+02:00 0HMS1DSIC501E:00000017 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:57:39.4054138+02:00 0HMS1DSIC501E:00000021 [ERR] Something went wrong: System.InvalidOperationException: The AuthorizationPolicy named: 'Admin,Moderator' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at WebUI.ExceptionMiddleWare.ExceptionMiddleWare.InvokeAsync(HttpContext httpContext) in C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\ExceptionMiddleWare\ExceptionMiddleWare.cs:line 26 (cccbda2d)
+2023-07-10T19:57:40.3504155+02:00 0HMS1DSIC501E:00000025 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:57:40.3553437+02:00 0HMS1DSIC501E:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:57:40.3596729+02:00 0HMS1DSIC501E:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T19:57:41.3019339+02:00 0HMS1DSIC501E:00000035 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T19:57:41.3084471+02:00 0HMS1DSIC501E:00000035 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T19:57:41.3141018+02:00 0HMS1DSIC501E:00000035 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:00:33.9314010+02:00 0HMS1DU75BUTG:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:00:34.3597681+02:00 0HMS1DU75BUTG:00000001 [INF] Executed DbCommand ("43"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:00:34.4539263+02:00 0HMS1DU75BUTG:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:00:36.6967030+02:00 0HMS1DU75BUTG:00000027 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:00:36.7039894+02:00 0HMS1DU75BUTG:00000027 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:00:36.7092846+02:00 0HMS1DU75BUTG:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:00:37.7101406+02:00 0HMS1DU75BUTG:0000003D [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:00:37.7172194+02:00 0HMS1DU75BUTG:0000003D [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:00:37.7222771+02:00 0HMS1DU75BUTG:0000003D [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:13.1985672+02:00 0HMS1E08GJBR8:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:13.6380802+02:00 0HMS1E08GJBR8:00000001 [INF] Executed DbCommand ("44"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:13.7269645+02:00 0HMS1E08GJBR8:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:15.3528073+02:00 0HMS1E08GJBR8:00000027 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:15.3593587+02:00 0HMS1E08GJBR8:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:15.3641294+02:00 0HMS1E08GJBR8:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:16.6071316+02:00 0HMS1E08GJBR8:0000003D [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:16.6124825+02:00 0HMS1E08GJBR8:0000003D [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:16.6173097+02:00 0HMS1E08GJBR8:0000003D [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:17.9047094+02:00 0HMS1E08GJBR8:00000053 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:17.9097373+02:00 0HMS1E08GJBR8:00000053 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:17.9143439+02:00 0HMS1E08GJBR8:00000053 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:22.3600516+02:00 0HMS1E08GJBRJ:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:22.3649752+02:00 0HMS1E08GJBRJ:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:22.3716720+02:00 0HMS1E08GJBRJ:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:24.3207558+02:00 0HMS1E08GJBRJ:00000025 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:24.3277072+02:00 0HMS1E08GJBRJ:00000025 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:24.3334265+02:00 0HMS1E08GJBRJ:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:25.4903791+02:00 0HMS1E08GJBRJ:0000003B [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:25.4963024+02:00 0HMS1E08GJBRJ:0000003B [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:25.5018062+02:00 0HMS1E08GJBRJ:0000003B [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:53.1783494+02:00 0HMS1E0KDP7NS:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:53.6134062+02:00 0HMS1E0KDP7NS:00000001 [INF] Executed DbCommand ("49"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:53.6995064+02:00 0HMS1E0KDP7NS:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:55.1893150+02:00 0HMS1E0KDP7NS:00000025 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:55.1963478+02:00 0HMS1E0KDP7NS:00000025 [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:55.2016368+02:00 0HMS1E0KDP7NS:00000025 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:56.8795328+02:00 0HMS1E0KDP7NS:00000039 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:56.8851760+02:00 0HMS1E0KDP7NS:00000039 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:56.8901388+02:00 0HMS1E0KDP7NS:00000039 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:04:59.8633346+02:00 0HMS1E0KDP7O4:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:04:59.8720581+02:00 0HMS1E0KDP7O4:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:04:59.8793745+02:00 0HMS1E0KDP7O4:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:05:00.9317830+02:00 0HMS1E0KDP7O4:00000027 [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:05:00.9374490+02:00 0HMS1E0KDP7O4:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:05:00.9423387+02:00 0HMS1E0KDP7O4:00000027 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-07-10T20:05:01.8102167+02:00 0HMS1E0KDP7O4:0000003D [INF] Entity Framework Core "3.1.15" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-07-10T20:05:01.8165307+02:00 0HMS1E0KDP7O4:0000003D [INF] Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-07-10T20:05:01.8231502+02:00 0HMS1E0KDP7O4:0000003D [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)

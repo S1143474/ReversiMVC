@@ -20,10 +20,13 @@ namespace Application.Common.Interfaces
         Task<SpelDto> RetrieveSpelOverToken(Guid token);
 
         Task<SpelDto> RetrieveSpelOverSpelerToken(Guid spelerToken);
+        Task<SpelDto> RetrieveFinishedSpelOverSpelerToken(Guid spelerToken);
 
         Task<bool> JoinSpelReversi(StartSpelCommand startSpelCommand);
 
         Task<PlacedFichedDTO> PlaceFiche(bool hasPassed, int x, int y, string token, string spelerToken);
+
+        Task<bool> SurrenderSpel(Guid spelerToken, Guid token);
 
         Task<string> GetSpelTokenFromSpelerToken(Guid spelerToken);
 

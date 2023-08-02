@@ -1,0 +1,44 @@
+@use '../../../abstracts/colors' as clr;
+
+.enable-auth-app {
+    p {
+        color: clr.$text;
+    }
+
+    .list {
+        background-color: clr.$secondarybackground;
+        
+        > li {
+            position: relative;
+            margin-left: 24px;
+            margin-block: .67em;
+            color: clr.$blue;
+
+            > p > a{
+                color: clr.$purple;
+                text-underline-offset: 3px;
+            }
+
+            > div {
+                margin-block: .67em;
+            }
+        }
+
+        label {
+            color: clr.$text;
+        }
+
+        #send-code {
+            display: flex;
+            flex-direction: row;
+            // align-items: center;            
+            > div {
+                width: 50%;
+            }
+
+            > button {
+                margin: auto;
+            }
+        }
+    }
+}

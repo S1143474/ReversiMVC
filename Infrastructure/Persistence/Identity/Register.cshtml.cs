@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
-namespace Infrastructure.Identity
+namespace WebUI.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -27,8 +27,8 @@ namespace Infrastructure.Identity
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
-        private readonly IEmailService _emailService;
+        /*private readonly IEmailSender _emailSender;*/
+        /*private readonly IEmailService _emailService;*/
         private readonly ReversiDbContext _reversiDbContext;
         private readonly IGoogleCaptchaService _service;
 
@@ -36,16 +36,16 @@ namespace Infrastructure.Identity
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender,
-            IEmailService emailService,
+            /*IEmailSender emailSender,*/
+            /*IEmailService emailService,*/
             ReversiDbContext reversiContext,
             IGoogleCaptchaService service)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _emailSender = emailSender;
-            _emailService = emailService;
+            /*_emailSender = emailSender;*/
+            /*_emailService = emailService;*/
             _reversiDbContext = reversiContext;
             _service = service;
         }
@@ -84,6 +84,25 @@ namespace Infrastructure.Identity
             public string RecaptchaToken { get; set; }
         }
 
+        private async Task<ClaimsIdentity> CreateIdentity(IdentityUser user)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+
+            var identity = new ClaimsIdentity(
+                new[]
+                {
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),
+                }, "Cookie");
+
+            foreach (var role in roles)
+            {
+                identity.AddClaim(new Claim(ClaimTypes.Role, role));
+            }
+
+            return identity;
+        }
+
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
@@ -109,6 +128,7 @@ namespace Infrastructure.Identity
           
             var user = new IdentityUser { UserName = Input.UserName, Email = Input.Email };
             
+      
             var result = await _userManager.CreateAsync(user, Input.Password);
             /*var modRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Moderator"));
             var adminRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Admin"));*/
@@ -119,12 +139,13 @@ namespace Infrastructure.Identity
                 var errorMessage = string.Join(", ", errors);
                 _logger.LogError($"Something went wrong with creating a user: {errorMessage}");
                 foreach (var error in result.Errors)
-                {
+                { 
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
                 return Page();
             }
 
+            var resultAsignRole = await _userManager.AddToRoleAsync(user, "Speler");
             var spelerRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Speler"));
 
             _logger.LogInformation($"Assigned 'speler' role to user: {user.Id}");
@@ -135,18 +156,18 @@ namespace Infrastructure.Identity
 
             _logger.LogInformation($"Inserted a new Speler entity with id: {user.Id} into the database");
 
-            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            /*var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
             var callbackUrl = Url.Page(
                 "/Account/ConfirmEmail",
                 pageHandler: null,
                 values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                protocol: Request.Scheme);
+                protocol: Request.Scheme);*/
 
-            await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+            /*await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                 $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-            _emailService.Send("basschimmel@outlook.com", "Confirm your email", $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+            _emailService.Send("basschimmel@outlook.com", "Confirm your email", $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");*/
 
             if (_userManager.Options.SignIn.RequireConfirmedAccount)
             {

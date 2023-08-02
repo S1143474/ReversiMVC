@@ -34,9 +34,9 @@ namespace Application.Spellen.Queries.GetSpel
 
             if (spel == null)
                 return null;
-
-            var speler1 = 
-                await _context.Spelers.FindAsync(request.UserId == spel.Speler1Token ? spel.Speler1Token : spel.Speler2Token);
+           
+            var speler1 =
+               await _context.Spelers.FindAsync(request.UserId == spel.Speler1Token ? spel.Speler1Token : spel.Speler2Token);
             var speler2 =
                 await _context.Spelers.FindAsync(request.UserId == spel.Speler1Token ? spel.Speler2Token : spel.Speler1Token);
 

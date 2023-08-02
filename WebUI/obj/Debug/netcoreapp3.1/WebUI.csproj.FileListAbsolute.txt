@@ -174,3 +174,12 @@ C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Serilog.
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\MailKit.dll
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\MimeKit.dll
 C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Owin.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Microsoft.Owin.Security.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\bin\Debug\netcoreapp3.1\Owin.dll
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\WebUI.StaticWebAssets.Pack.cache
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.WebUI.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.WebUI.props
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.WebUI.props
+C:\Users\bassc\source\repos\ReversiMvcApp\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.WebUI.props

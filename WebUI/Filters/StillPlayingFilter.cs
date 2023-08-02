@@ -89,8 +89,8 @@ namespace WebUI.Filters
                             await next();
                             return;
                         }
-                        context.Result = new RedirectToActionResult("Reversi", "Spel", new { id = spel.Token });
 
+                        context.Result = new RedirectToActionResult("Reversi", "Spel", new { id = spel.Token });
                     }
                       
                 }

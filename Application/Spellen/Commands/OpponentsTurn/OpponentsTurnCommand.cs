@@ -34,11 +34,14 @@ namespace Application.Spellen.Commands.OpponentsTurn
             var spel = await _spelService.RetrieveSpelOverSpelerToken(request.CurrentSpelerToken);
 
             var opponentSpelerToken = (spel.Speler2Token.Equals(request.CurrentSpelerToken))
-                ? spel.Speler2Token
-                : spel.Speler1Token;
-
-            await _hub.Clients.Users(request.CurrentSpelerToken.ToString()).OnDisableMove(request.FichesToTurnAround, spel.Turn);
+                ? spel.Speler1Token
+                : spel.Speler2Token;
+            await _hub.Clients.Users(request.CurrentSpelerToken.ToString(), opponentSpelerToken.ToString()).OnDisableMove(request.FichesToTurnAround, spel.Turn);
             await _hub.Clients.Users(opponentSpelerToken.ToString()).OnMove(request.FichesToTurnAround, spel.Turn);
+
+            /*await _hub.Clients.Users(opponentSpelerToken.ToString()).OnDisableMove(request.FichesToTurnAround, spel.Turn);
+            await _hub.Clients.Users(request.CurrentSpelerToken.ToString()).OnMove(request.FichesToTurnAround, spel.Turn);
+            return*/
             return true;
         }
     }

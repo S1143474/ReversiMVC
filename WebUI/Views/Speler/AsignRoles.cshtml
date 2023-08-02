@@ -1,3 +1,79 @@
-﻿@{
-    <h1>Asign Roles</h1>
+﻿@model Application.Spelers.Queries.GetRoles.AssignRolesDTO;
+
+@{
+    <section id="asignroles_page">
+        <div>
+            <h2>Members (@Model.UserCount)</h2>
+        </div>
+        <div id="asignroles_page_container">
+            <form asp-controller="Speler" asp-action="AsignRoles" method="post">
+            <input id="changeListInput" name="list" type="hidden"/>
+        <table class="table">
+                <thead class="table-head">
+                    <tr>
+                        <th>
+                            Hidden Id
+                        </th>
+                        <th>
+                            Username
+                        </th>
+                        @*<th>
+                            Mobile
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        }*@
+                        <th>
+                            Role
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                @foreach (var speler in Model.Users) { 
+                    <tr class="table-row">
+                        <td class="table-cell">
+                            <input value="@speler.Guid" hidden>
+                            <span class="material-icons">
+                                visibility_off
+                            </span>
+                        </td>
+                        <td>
+                            <span>@speler.Name</span>
+                        </td>
+                        @*<td>
+                            <span>@speler.Name</span>
+                        </td>
+                        <td>
+                            <span>@speler.Name</span>
+                        </td>*@
+                        <td>
+                            <select>
+                                @if (speler.Roles.Contains("Admin"))
+                                {
+                                    <option value="Speler">Speler</option>
+                                    <option value="Moderator">Moderator</option>
+                                    <option selected="selected" value="Admin">Admin</option>
+                                } else if (speler.Roles.Contains("Moderator"))
+                                {
+                                    <option value="Speler">Speler</option>
+                                    <option selected="selected" value="Moderator">Moderator</option>
+                                    <option value="Admin">Admin</option>
+                                } else
+                                {
+                                    <option selected="selected" value="Speler">Speler</option>
+                                    <option value="Moderator">Moderator</option>
+                                    <option value="Admin">Admin</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <button id="savechangesbtn" class="btn outline-blue">Save</button>
+        </form>
+
+        </div>
+    </section>
 }

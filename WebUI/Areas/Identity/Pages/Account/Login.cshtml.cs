@@ -23,16 +23,19 @@ namespace WebUI.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly ICurrentUserService _currentUser;
+        private readonly IGoogleCaptchaService _service;
 
         public LoginModel(SignInManager<IdentityUser> signInManager, 
             ILogger<LoginModel> logger,
             UserManager<IdentityUser> userManager,
-            ICurrentUserService currentUserService)
+            ICurrentUserService currentUserService,
+            IGoogleCaptchaService service)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _currentUser = currentUserService;
+            _service = service;
         }
 
         [BindProperty]
@@ -61,6 +64,9 @@ namespace WebUI.Areas.Identity.Pages.Account
 
             [Display(Name = "Remember me?")]
             public bool RememberMe { get; set; }
+
+            [Required]
+            public string RecaptchaToken { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -83,6 +89,11 @@ namespace WebUI.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
+
+            var captchaResult = await _service.VerifyCaptchaToken(Input.RecaptchaToken);
+
+            if (!captchaResult)
+                return Page();
 
             if (ModelState.IsValid)
             {

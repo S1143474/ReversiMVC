@@ -40,7 +40,7 @@ namespace Infrastructure
                     options.Password.RequireNonAlphanumeric = true;
                     options.Password.RequireUppercase = true;
                     options.Password.RequiredLength = 12;
-                    
+
                     options.SignIn.RequireConfirmedAccount = true;
                     options.User.RequireUniqueEmail = true;
 
@@ -50,7 +50,20 @@ namespace Infrastructure
                     options.Lockout.MaxFailedAccessAttempts = int.Parse(configuration.GetSection("AppSettings:LockoutMaxFailedAttempts").Value);
                 })
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+            /*                .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider)
+             *                
+            */
+            /*                    .AddRoles<IdentityRole>();
+            */
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+            services.Configure<PasswordHasherOptions>(options => options.IterationCount = int.Parse(configuration.GetSection("AppSettings:HashIterations").Value));
 
             services.AddHttpClient("SpelRestAPI", client =>
             {
@@ -58,23 +71,33 @@ namespace Infrastructure
                 client.DefaultRequestHeaders.Add("x-api-key", configuration.GetValue<string>("ApiKey"));
 
             }).AddTransientHttpErrorPolicy(policy =>
-                policy.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(300)));
+                policy.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(300))
+            );
 
             services.AddHttpClient("GoogleCaptcha", client =>
             {
                 client.BaseAddress = new Uri("https://www.google.com/recaptcha/api/siteverify");
             });
 
-        services.AddCors(options => 
-            {
+            services.AddCors(options =>
+                {
                 options.AddPolicy(MyAllowSpecificOrigins, builder =>
-                    {
-                        builder.WithOrigins("https://localhost:44339/api/Spel");
-                    });
-
-                options.AddDefaultPolicy(builder => builder.WithOrigins("https://localhost:44339").AllowCredentials());
+                {
+                    builder.WithOrigins("https://localhost:44339/api/Spel");
+                    builder.WithOrigins("https://icanhazdadjoke.com/").WithMethods("*").WithHeaders("*");
+                });
+                
+                options.AddDefaultPolicy(builder => builder.WithOrigins("https://localhost:44339", "https://icanhazdadjoke.com/").AllowCredentials());
             });
 
+            /*  services.AddAuthorization(options =>
+              {
+                  options.AddPolicy("Moderator", policy => policy.RequireClaim("Moderator"));
+                  options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
+              });*/
+
+/*            services.AddAuthorization(options => options.AddPolicy(options.DefaultPolicy));
+*/
             services.AddSingleton<ISpelService, SpelService>();
             services.AddScoped<IGoogleCaptchaService, GoogleCaptchaService>();
 
@@ -85,6 +108,8 @@ namespace Infrastructure
 
             services.Configure<ApplicationSettings>(configuration.GetSection("AppSettings"));
             services.AddScoped<IEmailService, EmailService>();
+
+            
 
             return services;
         }

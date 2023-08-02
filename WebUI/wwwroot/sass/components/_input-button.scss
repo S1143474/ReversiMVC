@@ -49,6 +49,7 @@
     &__text {
         display: inline-block;
         position: relative;
+        
         background-color: clr.$secondarybackground;
         color: clr.$text;
 
@@ -71,6 +72,10 @@
             left: .875rem;
             color: clr.$blue;
             font-size: var(--fs-300);
+        }
+
+        &.dark {
+            background-color: clr.$background;
         }
 
         // &:valid + .material-svg,

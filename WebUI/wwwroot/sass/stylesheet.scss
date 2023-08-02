@@ -22,14 +22,31 @@
 @use './pages/home';
 @use './pages/speler/monitoring';
 @use './pages/speler/monitoring-player';
+@use './pages/speler/accessdenied';
+@use './pages/speler/assignroles';
 @use './pages/spel/globalstats';
 @use './components/stats-card';
 @use './components/dialog';
 @use './pages/spel/waiting';
 @use './components/link';
+@use './components/toast';
+
 @use './pages/account/twofapage';
 @use './pages/account/forgotemail';
 @use './pages/account/confirmemail';
+
+@use './pages/account/manage/layout';
+@use './pages/account/manage/profile';
+@use './pages/account/manage/email';
+@use './pages/account/manage/personaldata';
+@use './pages/account/manage/deletepersonaldata';
+@use './pages/account/manage/towfactorauth';
+@use './pages/account/manage/disabletwofactorauth';
+@use './pages/account/manage/resetauthkey';
+@use './pages/account/manage/generaterecoverycodes';
+@use './pages/account/manage/setupauthapp';
+@use './pages/account/manage/changepassword';
+
 // @import 'base/all';
 // @import 'components/all';
 // @import 'layout/all';

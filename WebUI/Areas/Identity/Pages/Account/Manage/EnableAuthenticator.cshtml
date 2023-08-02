@@ -7,7 +7,7 @@
 
 <partial name="_StatusMessage" for="StatusMessage" />
 <h4>@ViewData["Title"]</h4>
-<div>
+<div class="enable-auth-app">
     <p>To use an authenticator app go through the following steps:</p>
     <ol class="list">
         <li>
@@ -34,14 +34,34 @@
             <div class="row">
                 <div class="col-md-6">
                     <form id="send-code" method="post">
-                        <div class="form-group">
-                            <label asp-for="Input.Code" class="control-label">Verification Code</label>
-                            <input asp-for="Input.Code" class="form-control" autocomplete="off" />
-                            <span asp-validation-for="Input.Code" class="text-danger"></span>
+                        <div class="input__group-button">
+                            <input class="input__group__text dark" asp-for="Input.Code" placeholder=" " required autocomplete="off"/>
+                       
+                            <label asp-for="Input.Code">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                                Verification Code
+                            </label>
+
+                            <input class="input__group__button input__btn" type="submit" value="VERIFY"/>
+                            <p class="foot__note">
+                                <span asp-validation-for="Input.Code"></span>
+                            </p>
+                            @* <label asp-for="Omschrijving" class="control-label"></label>
+            <input asp-for="Omschrijving" class="form-control"/>*@
                         </div>
-                        <button type="submit" class="btn btn-primary">Verify</button>
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    </form>
+                        @*<div class="input-group">
+                            <input asp-for="Input.Code" placeholder=" " required autocomplete="off"/>
+
+                            <label asp-for="Input.Code">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                                <span>Verification Code</span>
+                            </label>
+                            <p class="foot__note">
+                                <span asp-validation-for="Input.Code"></span>
+                            </p>
+                        </div>*@
+@*                        <button type="submit" class="btn outline-blue w20">Verify</button>
+*@                    </form>
                 </div>
             </div>
         </li>
@@ -58,8 +78,8 @@
                 text: "@Html.Raw(Model.AuthenticatorUri)",
                 width: 256,
                 height: 256,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
+                colorDark: "#000",
+                colorLight: "#fff",
                 correctLevel: QRCode.CorrectLevel.H
             });
     </script>

@@ -96,6 +96,23 @@ namespace Application.Hubs
             await Clients.Users(speler1Token, speler2Token).StartGame();
         }
 
+        public async Task OnSurrender()
+        {
+            var id = UserId;
+            var spelToken = await _spelService.GetSpelTokenFromSpelerToken(UserId);
+            var result = await _spelService.SurrenderSpel(UserId, Guid.Parse(spelToken));
+            
+            if (result && spelToken != null)
+            {
+                await Mediator.Send(new FinishedSpelCommand { SpelerToken = UserId });
+            }
+        }
+
+        public async Task SpelCreated()
+        {
+            
+        }
+
         public override async Task OnConnectedAsync()
         {
             /*Console.WriteLine("ReversiHub: On - Conneced");*/

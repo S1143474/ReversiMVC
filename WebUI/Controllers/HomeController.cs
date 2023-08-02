@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 using Application.Spelers.Queries.GetSpeler;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
+using WebUI.ExceptionMiddleWare;
 
 namespace WebUI.Controllers
 {
@@ -24,6 +26,23 @@ namespace WebUI.Controllers
                 Naam = UserName
             });
             
+            return View(result);
+        }
+
+        [HttpGet("{err}")]
+        public async Task<IActionResult> Index(string? err)
+        {
+            if (err is "reqerror")
+            {
+                ViewData["errormessage"] =
+                    "Unable to play reversi because the target computer has actively refused the connection. Please try again later.";
+            }
+            var result = await Mediator.Send(new GetSpelerByIdQuery
+            {
+                UserId = UserId,
+                Naam = UserName
+            });
+
             return View(result);
         }
 

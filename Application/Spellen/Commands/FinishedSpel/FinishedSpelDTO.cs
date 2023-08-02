@@ -11,6 +11,7 @@ namespace Application.Spellen.Commands.FinishedSpel
         public string LoserName { get; set; }
 
         public bool IsDraw { get; set; }
+        public bool IsWinner { get; set; }
 
         public int AmountOfWitFichesTurned { get; set; }
         public int AmountOfZwartFichesTurned { get; set; }

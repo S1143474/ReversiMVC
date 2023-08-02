@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using WebUI;
+using WebUI.ExceptionMiddleWare;
 using WebUI.Filters;
 using WebUI.Services;
 
@@ -44,6 +45,7 @@ internal class Startup
         services.AddRazorPages();
 
         services.Configure<GoogleCaptchaConfig>(Configuration.GetSection("Recaptcha"));
+
         /*services.AddRecaptcha(new RecaptchaOptions
         {
             SiteKey = Configuration["Recaptcha:SiteKey"],
@@ -58,12 +60,15 @@ internal class Startup
             app.UseDeveloperExceptionPage();
             /*app.UseDatabaseErrorPage();*/
         }
-        else
+        /*else
         {
             app.UseExceptionHandler("/Home/Error");
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
-        }
+        }*/
+
+        app.UseMiddleware<ExceptionMiddleWare>();
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
@@ -90,6 +95,8 @@ internal class Startup
 
             endpoints.MapRazorPages();
         });
+
+        
 
         loggerFactory.AddFile("Logs/reversi-mvc-{Date}.txt");
 

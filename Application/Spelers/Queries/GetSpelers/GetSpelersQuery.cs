@@ -27,7 +27,7 @@ namespace Application.Spelers.Queries.GetSpelers
 
         public async Task<List<Speler>> Handle(GetSpelersQuery request, CancellationToken cancellationToken)
         {
-            return await _reversiDbContext.Spelers.ToListAsync(cancellationToken);
+            return await _reversiDbContext.Spelers.OrderByDescending(x => x.AantalGewonnen).ToListAsync(cancellationToken);
         }
     }
 }

@@ -100,7 +100,9 @@ var Game = (url => {
 
   var privateInit = afterInit => {
     Game.Model.init();
+    Game.Template.init();
     Game.ComponentEvents.init();
+    Game.Reversi.init();
     Game.ComponentEvents.addClick("btn-update-password", _openDialog, "update-user-password-dialog");
     Game.ComponentEvents.addClick("btn-update-2fa", _openDialog, "update-2fa-dialog");
     Game.ComponentEvents.addClick("btn-close-update-user-password-dialog", _closeDialog, "update-user-password-dialog"); // Game.ComponentEvents.addClick("twofa__login");
@@ -112,6 +114,7 @@ var Game = (url => {
     Game.Model.listen("OnFinish", _finish);
     Game.Model.listen("OnError", _onError);
     Game.Model.listen("OnPlayerOnline", _test);
+    Game.Model.listen("OnCreateGame", _gameCreated);
     var location = window.location.pathname;
     var locationList = location.split('/');
     var locationListLength = locationList.length - 1;
@@ -293,14 +296,30 @@ var Game = (url => {
     buttons.forEach(button => {
       button.disabled = false;
       button.style = "pointer-events: auto;";
-    });
+    }); // High light current user.
+
+    var leftScoreOwner = document.querySelector(".game__ownedboardbalance__player-1");
+    var rightScoreOwner = document.querySelector(".game__ownedboardbalance__player-2");
+    rightScoreOwner.classList.remove("big");
+    leftScoreOwner.classList.add("big");
+    Game.Reversi.displayJoke();
   };
 
-  var _wrongMoveMessage = notExecutedMessage => {
-    console.log(notExecutedMessage);
-    var element = document.getElementById("extra-info");
-    element.textContent = "Verkeerde zet, probeer het nog eens";
-  };
+  var _wrongMoveMessage = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(function* (notExecutedMessage) {
+      console.log(notExecutedMessage);
+      var element = document.getElementById("wrong_move_info");
+      console.log("Element:" + element);
+      element.innerHTML = iconText("notification_important", notExecutedMessage);
+      element.style.display = "flex";
+      yield delay(4000);
+      element.style.display = "none";
+    });
+
+    return function _wrongMoveMessage(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
 
   var _disableMovePlacement = (fichesToTurnAround, aanDeBeurt) => {
     _turnFiches(fichesToTurnAround, aanDeBeurt);
@@ -309,7 +328,12 @@ var Game = (url => {
     buttons.forEach(button => {
       button.disabled = true;
       button.style = "pointer-events: none;";
-    });
+    }); // Stop highlightin current user and highlight opponent
+
+    var leftScoreOwner = document.querySelector(".game__ownedboardbalance__player-1");
+    var rightScoreOwner = document.querySelector(".game__ownedboardbalance__player-2");
+    rightScoreOwner.classList.add("big");
+    leftScoreOwner.classList.remove("big");
   };
 
   var _finish = gameResult => {
@@ -330,6 +354,16 @@ var Game = (url => {
     // });
   };
 
+  var _gameCreated = () => {
+    console.debug("Game Created");
+    var location = window.location.pathname;
+    var locationList = location.split('/');
+    var pageName = locationList[locationList.length - 1];
+    console.debug("Pagename:", pageName);
+    if (pageName !== "AvailableGames") return;
+    window.location.reload();
+  };
+
   var _getCurrentGameState = () => {
     setInterval(() => {
       Game.Model.getGameState().then(result => {
@@ -344,6 +378,27 @@ var Game = (url => {
     init: privateInit
   };
 })(API_URL);
+
+Game.API = (() => {
+  var _privateInit = () => {
+    console.log("API: Private Init");
+  };
+
+  var getRandomDadJoke = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(function* () {
+      return yield Game.Data.get("https://icanhazdadjoke.com/").catch(error => console.error(error));
+    });
+
+    return function getRandomDadJoke() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  return {
+    init: _privateInit,
+    getRandomDadJoke
+  };
+})();
 
 Game.ComponentEvents = (() => {
   var configMap = {};
@@ -422,13 +477,29 @@ Game.ComponentEvents = (() => {
     });
   };
 
+  var _addOnChangeListener = (id, callback) => {
+    var component = id.getElementsByTagName("select")[0];
+
+    if (component == null) {
+      console.error("Component: ".concat(id, " Not Found"));
+      return;
+    }
+
+    if (component.getAttribute('listener') === 'true') return;
+    component.setAttribute('listener', 'true');
+    component.addEventListener('change', event => {
+      callback(component, event);
+    });
+  };
+
   return {
     init: privateInit,
     addClick: privateAddClickListener,
     addClickOnClass: privateAddClickOnClassListener,
     addOnFocus: privateAddOnFocusListener,
     addOnFocusOut: privateAddOnFocusOutListener,
-    addOnInput: privateAddOnInputListener
+    addOnInput: privateAddOnInputListener,
+    addOnChange: _addOnChangeListener
   };
 })();
 
@@ -443,7 +514,7 @@ Game.Data = (() => {
     }]
   };
   var stateMap = {
-    environment: 'development'
+    environment: 'production'
   };
 
   var listen = function listen(hubMethodName, callback) {
@@ -468,7 +539,17 @@ Game.Data = (() => {
   };
 
   var get = url => {
-    return stateMap.environment == 'development' ? getMockData(url) : $.get(url).then(result => {
+    return stateMap.environment == 'development' ? getMockData(url) : $.ajax({
+      url: url,
+      dataType: 'json',
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      error: function error(XMLHttpRequest, textStatus, errorThrown) {
+        alert("Status: " + textStatus);
+        alert("Error: " + errorThrown);
+      }
+    }).then(result => {
+      console.log(result);
       return result;
     }).catch(error => {
       console.error(error.message);
@@ -485,11 +566,23 @@ Game.Data = (() => {
 
   var privateInit = environment => {
     console.log("Data: Init");
+    $("#game-resign-button").on("click", event => {
+      configMap.hubConnection.invoke("OnSurrender");
+    });
+    $("#game-pass-button").on("click", event => {
+      var data = {
+        x: -1,
+        y: -1,
+        hasPassed: true
+      };
+      configMap.hubConnection.invoke("OnMove", data);
+    });
     $("#reversiboardform").on("submit", event => {
       event.preventDefault();
-      clickAudio.play();
-      var element = document.getElementById("extra-info");
-      element.textContent = null; // console.log(event);
+      clickAudio.play(); // let element = document.getElementById("extra-info");
+      // console.log("Element: " + element);
+      // element.textContent = null;
+      // console.log(event);
 
       var x = parseInt(event.originalEvent.submitter.getAttribute('x'));
       var y = parseInt(event.originalEvent.submitter.getAttribute('y'));
@@ -524,7 +617,7 @@ Game.Model = (() => {
   var configMap = {};
 
   var privateInit = () => {
-    Game.Data.init('development');
+    Game.Data.init('production');
     Game.Data.listen("StartGame", () => {});
     Game.Data.listen("Redirect", () => {}, "url"); // Game.Data.listen("OnMove", (aanDeBeurt) => { console.log(aanDeBeurt); }, "aanDeBeurt");
 
@@ -554,15 +647,146 @@ Game.Model = (() => {
 })();
 
 Game.Reversi = (() => {
-  console.log("hallo, vanuit module Reversi.");
   var configMap = {};
+  var stateMap = {
+    orignalRoles: {
+      Speler: [],
+      Moderator: [],
+      Admin: []
+    },
+    changedRoles: []
+  };
+
+  var _assignEventListeners = () => {
+    var currentLocation = window.location.pathname.split('/')[2];
+    if (currentLocation !== "AsignRoles") return;
+    var rows = document.getElementsByTagName("table")[0].rows; // var last = rows[rows.length - 1];
+    // var cell = last.cells[0];
+    // var value = cell.innerHTML
+
+    var _loop2 = function _loop2(i) {
+      var role = rows[i].cells[2].getElementsByTagName("select")[0].value;
+      var guid = rows[i].cells[0].getElementsByTagName("input")[0].value;
+      stateMap.orignalRoles[role].push(guid);
+      Game.ComponentEvents.addOnChange(rows[i].cells[2], (component, event) => {
+        var user = stateMap.changedRoles.find(el => el.id === guid);
+
+        if (user === undefined) {
+          stateMap.changedRoles.push({
+            id: guid,
+            role: component.value
+          });
+        } else {
+          user.role = component.value;
+        }
+
+        var inputList = document.getElementById("changeListInput");
+        inputList.value = JSON.stringify(stateMap.changedRoles);
+
+        _showSaveButton();
+      });
+    };
+
+    for (var i = 1; i < rows.length; i++) {
+      _loop2(i);
+    }
+  };
+
+  var _submitRoleChange = () => {
+    console.log("Submit: ", stateMap.changedRoles);
+  };
+
+  var _showSaveButton = () => {
+    var saveBtn = document.getElementById("savechangesbtn");
+    saveBtn.style.display = "block";
+  };
+
+  var getRandomJokeTemplate = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(function* () {
+      var jokeJson = yield Game.API.getRandomDadJoke();
+      var dadjoke = jokeJson.joke;
+      var jokeTemplate = Game.Template.parseTemplate("dadjoke.randomdadjoke", {
+        joke: dadjoke
+      });
+      return jokeTemplate;
+    });
+
+    return function getRandomJokeTemplate() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  var displayJoke = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator(function* () {
+      var template = yield getRandomJokeTemplate();
+      var dadJokeHtml = $("#current-dad-joke");
+      dadJokeHtml.html(template);
+    });
+
+    return function displayJoke() {
+      return _ref5.apply(this, arguments);
+    };
+  }();
 
   var privateInit = () => {
+    _assignEventListeners(); // $('form').submit(function(event){
+    //     // cancel the default action
+    //     event.preventDefault();
+    //     // var body = escape(myEditor.get('element').value);
+    //     // var theForm = $(this);
+    //     // $.post(theForm.attr('action'), theForm.serialize() + '&body=' + body, function (data) {
+    //         // do whatever with the result
+    //     // });
+    //     // $(this).submit();
+    //     // $(this).submit();
+    //     // event.submit();
+    // });
+
+
+    Game.ComponentEvents.addClick("savechangesbtn", _submitRoleChange);
     return true;
   };
 
   return {
-    init: privateInit
+    init: privateInit,
+    displayJoke
+  };
+})();
+
+Game.Template = (() => {
+  var privateInit = () => {
+    console.log("init template");
+    Handlebars.registerHelper('ifCond', function (v1, v2, options) {
+      if (v1 === v2) {
+        return options.fn(this);
+      }
+
+      return options.inverse(this);
+    });
+  };
+
+  var getTemplate = templateName => {
+    var templates = spa_templates.templates;
+    console.log(templates);
+
+    for (var t of templateName.split(".")) {
+      templates = templates[t];
+    }
+
+    return templates; // if (Object.hasOwn(templates, templateName)) {
+    //     return templates[templateName];
+    // }
+  };
+
+  var parseTemplate = (templateName, data) => {
+    var template = getTemplate(templateName);
+    return template(data);
+  };
+
+  return {
+    init: privateInit,
+    getTemplate,
+    parseTemplate
   };
 })();
 
@@ -878,3 +1102,7 @@ Game.RegisterPage = (() => {
     init: privateInit
   };
 })();
+
+var delay = ms => new Promise(res => setTimeout(res, ms));
+
+var iconText = (icon, text) => "<i class='material-icons'>".concat(icon, "</i> ").concat(text);

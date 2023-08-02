@@ -14,6 +14,45 @@
 
 }
 
+@if (ViewData["errormessage"] != null)
+{
+    var statusMessageClass = "warning";
+    var statusIcon = "warning";
+    @*<div class="alert alert-@statusMessageClass alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @Model
+    </div>*@
+
+    <div class="toast toast-@statusMessageClass" role="alert">
+        <div class="toast__content">
+            <span class="material-icons">@statusIcon</span>
+            <p class="toast__message">@ViewData["errormessage"]</p>
+            <button type="button" class="toast__close" data-dismiss="alert" aria-label="Close"><span class="material-icons">close</span></button>
+        </div>
+        
+        <span class="toast__border"></span>
+        <script type="text/javascript">
+            window.onload = () => {
+                const animated = document.querySelector('.toast__border');
+                const closeToastBtn = document.querySelector('.toast__close');
+                
+                animated.addEventListener('animationend', () => {
+                    $(".toast").animate({opactity: 0}, 1, function() {
+                        $(this).hide();
+                    });
+                });
+
+                closeToastBtn.addEventListener('click', () => {
+                    $(".toast").hide();
+                });
+            }
+            
+        </script>
+    </div>
+
+  
+}
+
 <aside class="home__stats">
     <div class="home__stats__card">
         <span data-title="Stats"></span>

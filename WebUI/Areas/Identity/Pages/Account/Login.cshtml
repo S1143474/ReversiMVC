@@ -19,6 +19,7 @@
 
             <section class="card__content">
                 <form method="post">
+                    <input type="hidden" id="LoginViewModelToken" asp-for="@Model.Input.RecaptchaToken"/>
                     <div class="input-group">
                         <input asp-for="Input.UserName" placeholder=" " required autocomplete="username"/>
 
@@ -39,7 +40,7 @@
                             </svg>
                             <span>Password</span>
                         </label>
-                        
+
                         <span class="show__password__icon material-icons">
                             visibility
                         </span>

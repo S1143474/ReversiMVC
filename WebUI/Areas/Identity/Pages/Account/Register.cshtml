@@ -1,5 +1,5 @@
 ﻿@page
-@model Infrastructure.Identity.RegisterModel
+@model RegisterModel
 @{
     ViewData["Title"] = "Register";
 }
@@ -279,9 +279,9 @@
             getCaptchaToken();
         });
     </script>
+    <recaptcha-script/>
     @*<script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
 
-    <recaptcha-script/>
 }

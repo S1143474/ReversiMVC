@@ -28,9 +28,9 @@ namespace Application.Spellen.Commands.FinishedSpel
 
         public async Task<bool> Handle(FinishedSpelCommand request, CancellationToken cancellationToken)
         {
-            var result = await _spelService.RetrieveSpelOverSpelerToken(request.SpelerToken);
+            var result = await _spelService.RetrieveFinishedSpelOverSpelerToken(request.SpelerToken);
 
-            await _hub.Clients.Users(result.Speler1Token.ToString(), result.Speler2Token.ToString()).Redirect($"spel/Result");
+                await _hub.Clients.Users(result.Speler1Token.ToString(), result.Speler2Token.ToString()).Redirect($"spel/Result");
             /*await _hub.Clients.Users(result.speler1Token, result.speler2Token).OnFinish(new FinishedSpelDTO
             {
                 WinnerName = finishedResults.WinnerToken,

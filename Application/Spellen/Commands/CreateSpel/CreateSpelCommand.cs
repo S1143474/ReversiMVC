@@ -5,11 +5,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Application.Common.Models.Requests;
+using Application.Hubs;
 using Domain.Entities;
 using Domain.Events.Spellen;
 using MediatR;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Application.Spellen.Commands.CreateSpel
 {
@@ -22,10 +24,12 @@ namespace Application.Spellen.Commands.CreateSpel
     public class CreateSpelCommandHandler : IRequestHandler<CreateSpelCommand, SpelDto>
     {
         public ISpelService _service { get; set; }
-        
-        public CreateSpelCommandHandler(ISpelService spelService)
+        private readonly IHubContext<ReversiHub, IReversiHub> _hub;
+
+        public CreateSpelCommandHandler(ISpelService spelService, IHubContext<ReversiHub, IReversiHub> hub)
         {
             _service = spelService;
+            _hub = hub;
         }
 
         public async Task<SpelDto> Handle(CreateSpelCommand command, CancellationToken cancellationToken)
@@ -35,6 +39,9 @@ namespace Application.Spellen.Commands.CreateSpel
             try
             {
                 result = await _service.CreateSpel(new SpelCreateDto { Description = command.Description, Speler1Token = command.PlayerToken});
+                
+                // TODO: Check if there is a better solutions this could probably lead to a lot of reloading.
+                await _hub.Clients.AllExcept(command.PlayerToken.ToString()).OnCreateGame();
             }
             catch (Exception ex)
             {

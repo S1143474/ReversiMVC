@@ -14,6 +14,9 @@ using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpellen;
 using MediatR;
 using Microsoft.AspNetCore.Identity.UI.V3.Pages.Internal.Account;
+using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Infrastructure.Services
 {
@@ -147,6 +150,25 @@ namespace Infrastructure.Services
             return spelDto;
         }
 
+        public async Task<SpelDto> RetrieveFinishedSpelOverSpelerToken(Guid spelerToken)
+        {
+            var response = await httpClient.GetAsync($"spel/finished?spelerToken={spelerToken}", HttpCompletionOption.ResponseHeadersRead);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException hre)
+            {
+                return null;
+            }
+
+            var stream = await response.Content.ReadAsStreamAsync();
+
+            var spelDto = await JsonSerializer.DeserializeAsync<List<SpelDto>>(stream, _options);
+
+            return spelDto.FirstOrDefault();
+        }
         /*public async Task<SpelDTO> RetrieveSpelOverSpelerToken(string spelerToken)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
@@ -192,8 +214,9 @@ namespace Infrastructure.Services
             string json = JsonSerializer.Serialize(new { hasPassed, x, y, token, spelerToken });
             StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await httpClient.PutAsync("spel/zet", data);
-
+            var response = await httpClient.PutAsync($"spel/inprocess/{token}/move", data);
+/*            var response = await httpClient.PutAsync("spel/zet", data);
+*/
             if (response == null || response.StatusCode == HttpStatusCode.NoContent || !response.IsSuccessStatusCode)
                 return null;
 
@@ -206,27 +229,47 @@ namespace Infrastructure.Services
             return JsonSerializer.Deserialize<PlacedFichedDTO>(jsonResponse, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
         }
 
+        public async Task<bool> SurrenderSpel(Guid spelerToken, Guid token)
+        {
+            var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
+            string json = JsonSerializer.Serialize(new { spelerToken });
+            StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PutAsync($"spel/inprocess/{token}/surrender", data);
+            
+            string jsonResponse;
+            using (var content = response.Content)
+            {
+                jsonResponse = await content.ReadAsStringAsync();
+            }
+
+            return JsonSerializer.Deserialize<bool>(jsonResponse, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+        }
+
         public async Task<string> GetSpelTokenFromSpelerToken(Guid spelerToken)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
-            var response = await httpClient.GetAsync($"Spel/SpelToken?spelerToken={spelerToken}");
-
+            /*var response = await httpClient.GetAsync($"Spel/SpelToken?spelerToken={spelerToken}");*/
+            var response = await httpClient.GetAsync($"spel/unfinished?spelerToken={spelerToken}");
             if (response == null || response.StatusCode == HttpStatusCode.NoContent || response.StatusCode == HttpStatusCode.NotFound)
                 return null;
 
-            using var content = response.Content;
+            string jsonResponse;
+            using (var content = response.Content)
+            {
+                jsonResponse = await content.ReadAsStringAsync();
+            }
+            var result = JsonSerializer.Deserialize<SpelDto>(jsonResponse, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
-            var result = await content.ReadAsStringAsync();
-
-            return result;
+            return result.Token.ToString();
         }
 
         public async Task<FinishedSpelResultsDTO> GetSpelFinishedResults(string spelToken)
         {
             var httpClient = HttpClientFactory.CreateClient("SpelRestAPI");
 
-            var response = await httpClient.GetAsync($"Spel/SpelFinished?spelToken={spelToken}");
+            var response = await httpClient.GetAsync($"spel/finished/{spelToken}");
 
             if (response == null || response.StatusCode == HttpStatusCode.NoContent || response.StatusCode == HttpStatusCode.NotFound)
                 return null;

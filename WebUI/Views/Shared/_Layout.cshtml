@@ -1,6 +1,10 @@
 ﻿@using System.Security.Claims
+@using Application
 @using Microsoft.AspNetCore.Identity
+@using Microsoft.Extensions.Options
 @inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IOptions<GoogleCaptchaConfig> GoogleCaptchaConfig
 
 <!DOCTYPE html>
 <html>
@@ -74,7 +78,12 @@
             <ul class="account__settings">
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    @if (User.Claims.FirstOrDefault(claim => claim.Value == "Admin") != null)
+                        var user = await UserManager.GetUserAsync(User);
+                        var userClaims = await UserManager.GetClaimsAsync(user);
+                        var roles = await UserManager.GetRolesAsync(user);
+
+
+                        @if (roles.Contains("Admin"))
                     {
                         <li class="nav-item">
                             <a class="nav-item-action no-drag" asp-controller="Speler" asp-action="AsignRoles">
@@ -84,7 +93,8 @@
                         </li>
                     }
 
-                    if (User.Claims.FirstOrDefault(claim => claim.Value == "Moderator") != null)
+
+                        @if (roles.Contains("Moderator"))
                     {
                         <li class="nav-item">
                             <a class="nav-item-action no-drag" asp-controller="Speler" asp-action="Monitoring">
@@ -135,6 +145,8 @@
                 };
             </script>
         }
+        <recaptcha/>
+
     </main>
     <footer class="footer">
         &copy; 2021 - Reversi
@@ -142,6 +154,31 @@
     <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/site.js"></script>
     <script type="text/javascript" src="~/js/Hub.js"></script>
+    <script type="text/javascript" src="~/js/vendor.js"></script>
+    <script type="text/javascript" src="~/js/templates.js"></script>
     @RenderSection("Scripts", required: false)
+    <script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey"></script>
+    <script>
+        function getCaptchaToken() {
+            grecaptcha.ready(function() {
+                window.onload = function() {
+                    grecaptcha.execute('@GoogleCaptchaConfig.Value.SiteKey', { action: 'submit' }).then(function(token) {
+                        // Add your logic to submit to your backend server here.
+                        console.log(`Captcha Token: ${token}`);
+                        console.log(`LoginViewModelToken: ${document.getElementById("LoginViewModelToken")}`);
+
+                        document.getElementById("LoginViewModelToken").value = token;
+                    });
+                };
+            });
+        };
+
+        setInterval(getCaptchaToken, 115000);
+
+        $(function() {
+            getCaptchaToken();
+        });
+    </script>
+    <recaptcha-script/>
 </body>
 </html>

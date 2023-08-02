@@ -15,6 +15,11 @@ namespace Infrastructure.Persistence
     {
         private readonly IMediator _mediator;
 
+        public ReversiDbContext(DbContextOptions<ReversiDbContext> options) : base(options)
+        {
+
+        }
+
         public ReversiDbContext(DbContextOptions<ReversiDbContext> options, IMediator mediator)
             : base(options)
         {

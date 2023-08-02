@@ -9,6 +9,7 @@ using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpel;
 using Application.Spellen.Queries.GetSpelFinishedResults;
 using Application.Spellen.Queries.GetSpellen;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
 using MediatR;
@@ -21,16 +22,18 @@ using WebUI.Filters;
 
 namespace WebUI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Speler")]
     /*[Authorize(Roles = "Admin")]*/
     [ServiceFilter(typeof(StillPlayingFilter))]
     public class SpelController : ControllerBase
     {   
         private readonly ILogger<SpelController> _logger;
+        private readonly IMapper _mapper;
 
-        public SpelController(ILogger<SpelController> logger, IHttpContextAccessor accessor) : base(accessor)
+        public SpelController(ILogger<SpelController> logger, IMapper mapper, IHttpContextAccessor accessor) : base(accessor)
         {
             _logger = logger;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -53,6 +56,27 @@ namespace WebUI.Controllers
 
             if (result == null)
                 return NotFound();
+
+            var speler1Token = Guid.Empty;
+            Guid.TryParse(result.Speler1Token, out speler1Token);
+
+            if (speler1Token != id && result.Speler2Token == "")
+            {
+                var spelToken = Guid.Empty;
+                Guid.TryParse(result.Token, out spelToken);
+
+                await Mediator.Send(new StartSpelCommand
+                {
+                    Speler2Token = UserId,
+                    SpelToken = spelToken
+                });
+
+                result = await Mediator.Send(new GetSpelQuery()
+                {
+                    Id = id,
+                    UserId = UserId
+                });
+            }
 
             return View(result);
         }
@@ -134,6 +158,7 @@ namespace WebUI.Controllers
 
             if (result == null)
                 return RedirectToAction(nameof(Menu));
+
 
             return View(result);
         }

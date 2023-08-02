@@ -46,8 +46,13 @@
     </aside>*@
    <div class="game__container">
        <div class="game__ownedboardbalance">
-           <span class="game__ownedboardbalance__player-1"></span>
-           <span class="game__ownedboardbalance__player-2"></span>
+           <span class="game__ownedboardbalance__player-1">
+                @* @Model.Speler1Naam *@
+                You
+           </span>
+           <span class="game__ownedboardbalance__player-2">
+                @Model.Speler2Naam
+           </span>
        </div>
        <form id="reversiboardform"  >
            <table class="game__container__board">
@@ -76,18 +81,44 @@
                }
            </table>
        </form>
+       
    </div>
-   
-   <aside>
-       <div>
-           <p id="extra-info"></p>
-           <h2>
-               <span id="speler-1">@Model.Speler1Naam</span>
-               <span> --- </span>
-               <span id="speler-2">@Model.Speler2Naam</span>
-           </h2>
-       </div>
-   </aside>
+<aside class="game__user__interaction">
+        <div class="game__user__interaction__message__board">
+            <p class="game__user__interaction__message__description">
+                @Model.Omschrijving
+            </p>
+            <span id="wrong_move_info">
+                <i class="material-icons">notification_important</i>
+                Je bent nog niet aan de beurt, wacht rustig je beurt af.
+            </span>
+            <section id="current-dad-joke">
+
+            </section>
+        </div>
+        <div class="game__user__interaction__options">
+            <button id="game-pass-button" class="game__user__interaction__button">
+                Pass
+                <i class="material-icons">skip_next</i>
+            </button>
+            <button class="game__user__interaction__button">
+                Pass
+                <i class="material-icons">skip_next</i>
+            </button>
+            <button class="game__user__interaction__button">
+                Pass
+                <i class="material-icons">skip_next</i>
+            </button>
+            <button class="game__user__interaction__button"  >
+                Pass
+                <i class="material-icons">skip_next</i>
+            </button>
+        </div>
+        <div class="game__user__interaction__options__critical">
+            <span id="game-resign-button"><i class="material-icons">flag</i>resign</span>
+        </div>
+    </aside>
+    
 
    @* TODO: Create a proper error message popup.
        <div class="toast toast-danger" role="alert">
@@ -141,6 +172,7 @@
         </div>
     </aside>*@
 </section>
+    
 
 @* <section>
     <!--class="container"-->
