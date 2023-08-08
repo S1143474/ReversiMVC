@@ -32,6 +32,11 @@ internal class Startup
         services.AddAutoMapper(typeof(Startup));
 
         services.AddScoped<StillPlayingFilter>();
+        services.Configure<CookiePolicyOptions>(options =>
+        {
+            options.CheckConsentNeeded = context => true;
+            options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+        });
         /* services.AddMvc().AddMvcOptions(options =>
          {
              options.Filters.Add(typeof(StillPlayingFilter));
@@ -71,13 +76,13 @@ internal class Startup
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
+        app.UseCookiePolicy();
 
         app.UseSession();
 
         app.UseRouting();
 
         app.UseCors();
-
         app.UseAuthentication();
         app.UseAuthorization();
 

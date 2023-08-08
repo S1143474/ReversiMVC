@@ -303,5 +303,21 @@ namespace Infrastructure.Services
 
             return spellenDto;
         }
+
+        public async Task<bool> DeleteSpelUnFinished(Guid spelToken)
+        {
+            var response = await httpClient.DeleteAsync($"spel/unfinished/delete/{spelToken}");
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException hre)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

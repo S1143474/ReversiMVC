@@ -92,6 +92,7 @@ namespace WebUI.Areas.Identity.Pages.Account
                 new[]
                 {
                     new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.NameIdentifier, user.Id),
                 }, "Cookie");
 
@@ -130,6 +131,7 @@ namespace WebUI.Areas.Identity.Pages.Account
             
       
             var result = await _userManager.CreateAsync(user, Input.Password);
+            
             /*var modRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Moderator"));
             var adminRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Admin"));*/
 
@@ -175,7 +177,11 @@ namespace WebUI.Areas.Identity.Pages.Account
             }
             else
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
+                ClaimsIdentity identity = await CreateIdentity(user);
+                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                /*                await _signInManager.SignInAsync(user, isPersistent: false);
+                */
+                await _signInManager.SignInWithClaimsAsync(user, isPersistent: false, principal.Claims);
                 return LocalRedirect(returnUrl);
             }
             

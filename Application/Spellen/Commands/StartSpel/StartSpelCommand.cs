@@ -33,6 +33,9 @@ namespace Application.Spellen.Commands.StartSpel
         {
             var spel = await _spelService.RetrieveSpelOverToken(request.SpelToken);
 
+            if (spel == null)
+                return SpelState.Error;
+
             if (spel.Speler1Token.Equals(request.Speler2Token))
             {
                 return SpelState.Waiting;

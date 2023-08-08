@@ -30,6 +30,7 @@ namespace Application.Hubs
             _spelService = service;
         }
 
+
         public async Task OnMove(JsonElement dto)
         {
             // TODO: Make function from deserialization.
@@ -111,6 +112,11 @@ namespace Application.Hubs
         public async Task SpelCreated()
         {
             
+        }
+
+        public async Task OnSpelerDeleted()
+        {
+
         }
 
         public override async Task OnConnectedAsync()

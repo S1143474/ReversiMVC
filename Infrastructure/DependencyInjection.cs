@@ -5,6 +5,7 @@ using Application.Common.Interfaces;
 using Infrastructure.Common;
 using Infrastructure.Persistence;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,9 +32,12 @@ namespace Infrastructure
                     configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
-
+            
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
+            
             services
-                .AddDefaultIdentity<IdentityUser>(options =>
+                .AddIdentity<IdentityUser, IdentityRole>(options =>
                 {
                     options.Password.RequireDigit = true;
                     options.Password.RequireLowercase = true;
@@ -48,22 +52,24 @@ namespace Infrastructure
                     options.Lockout.AllowedForNewUsers = true;
                     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(double.Parse(configuration.GetSection("AppSettings:LockoutTimeInMinutes").Value));
                     options.Lockout.MaxFailedAccessAttempts = int.Parse(configuration.GetSection("AppSettings:LockoutMaxFailedAttempts").Value);
+
                 })
-                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddDefaultUI();
             /*                .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider)
              *                
             */
             /*                    .AddRoles<IdentityRole>();
             */
-            services.ConfigureApplicationCookie(options =>
+            /*services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = $"/Identity/Account/Login";
                 options.LogoutPath = $"/Identity/Account/Logout";
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
-            });
+            });*/
             services.Configure<PasswordHasherOptions>(options => options.IterationCount = int.Parse(configuration.GetSection("AppSettings:HashIterations").Value));
+            services.Configure<SecurityStampValidatorOptions>(opts => opts.ValidationInterval = System.TimeSpan.FromSeconds(10));
 
             services.AddHttpClient("SpelRestAPI", client =>
             {

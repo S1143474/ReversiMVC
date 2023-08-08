@@ -17,10 +17,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using static Microsoft.EntityFrameworkCore.Internal.AsyncLock;
 
 namespace WebUI.Controllers
 {
-    [Authorize(Roles = "Speler")]
+    [Authorize]
     public class SpelerController : ControllerBase
     {
         private readonly ReversiDbContext _context;
@@ -29,10 +30,11 @@ namespace WebUI.Controllers
         private readonly UserManager<IdentityUser> _userManager;
 
 
-        public SpelerController(IHttpContextAccessor httpContextAccessor, ReversiDbContext context, ApplicationDbContext applicationContext, UserManager<IdentityUser> userManager) : base(httpContextAccessor)
+        public SpelerController(IHttpContextAccessor httpContextAccessor, ReversiDbContext context, ApplicationDbContext applicationContext, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager) : base(httpContextAccessor)
         { 
             _context = context;
             _userManager = userManager;
+            _signInManager = signInManager;
             _applicationDbContext = applicationContext;
         }
 
@@ -48,27 +50,29 @@ namespace WebUI.Controllers
         public async Task<IActionResult> AsignRoles()
         {
             var spelers = await _context.Spelers.ToListAsync();
-            var roles = await _applicationDbContext.UserClaims.ToListAsync();
+            
 
             var users = new List<AssignRolesUserDTO>();
-            foreach (var user in spelers)
+            foreach (var speler in spelers)
             {
+                var user = _userManager.Users.Where(x => x.Id == speler.Guid.ToString()).FirstOrDefault();
+                var roles = await _userManager.GetRolesAsync(user);
                 var roleUser = new AssignRolesUserDTO
                 {
-                    Guid = user.Guid,
-                    Name = user.Naam,
+                    Guid = speler.Guid,
+                    Name = speler.Naam,
                 };
 
-                var userRoles = new List<string>();
+               /* var userRoles = new List<string>();
                 foreach (var role in roles)
                 {
                     if (role.UserId.Equals(user.Guid.ToString()))
                     {
                         userRoles.Add(role.ClaimValue);
                     }
-                }
+                }*/
 
-                roleUser.Roles = userRoles;
+                roleUser.Roles = roles.ToList();
                 users.Add(roleUser);
             }
 
@@ -89,123 +93,92 @@ namespace WebUI.Controllers
         public async Task<IActionResult> AsignRolesPost(string list)
         {
             var userRoles = JsonConvert.DeserializeObject<List<AsignRolesDTO>>(list);
-/*            var user = await _userManager.GetUserAsync(User);
-*/
+
             foreach (var userRole in userRoles)
             {
-/*                var claims = await _applicationDbContext.UserClaims.Where(x => x.UserId.Equals(userRole.id)).ToListAsync();
-*/                /*var claimss = User.Claims.Where(x => x.Type.Equals("http://schemas.microsoft.com/ws/2008/06/identity/claims/role")).ToList();*/
                 var user = _userManager.Users.Where(x => x.Id == userRole.id).FirstOrDefault();
-                var claimss = await _userManager.GetClaimsAsync(user);
+                var roles = await _userManager.GetRolesAsync(user);
 
-                /*foreach(var claim in claims)
-                {
-                    if(!claim.ClaimValue.Equals(userRole.role))
-                    {
-                        _applicationDbContext.UserClaims.Add(new Microsoft.AspNetCore.Identity.IdentityUserClaim<string>
-                        {
-                            UserId = userRole.id,
-                            ClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
-                            ClaimValue = userRole.role,
-                        });
-                    }
-                }*/
-                /*var isAdmin = claims.Where(x => x.ClaimValue.Equals("Admin")).FirstOrDefault() != null;
-                var isModerator = claims.Where(x => x.ClaimValue.Equals("Moderator")).FirstOrDefault() != null;
-                var isSpeler = claims.Where(x => x.ClaimValue.Equals("Speler")).FirstOrDefault() != null;*/
-                var adminClaim = claimss.Where(x => x.Value.Equals("Admin")).FirstOrDefault();
-                var moderatorClaim = claimss.Where(x => x.Value.Equals("Moderator")).FirstOrDefault();
-                var spelerClaim = claimss.Where(x => x.Value.Equals("Speler")).FirstOrDefault();
+                var adminClaim = roles.Where(x => x.Equals("Admin")).FirstOrDefault();
+                var moderatorClaim = roles.Where(x => x.Equals("Moderator")).FirstOrDefault();
+                var spelerClaim = roles.Where(x => x.Equals("Speler")).FirstOrDefault();
 
-                var isAdmin = claimss.Where(x => x.Value.Equals("Admin")).FirstOrDefault() != null;
-                var isModerator = claimss.Where(x => x.Value.Equals("Moderator")).FirstOrDefault() != null;
-                var isSpeler = claimss.Where(x => x.Value.Equals("Speler")).FirstOrDefault() != null;
+                var isAdmin = roles.Where(x => x.Equals("Admin")).FirstOrDefault() != null;
+                var isModerator = roles.Where(x => x.Equals("Moderator")).FirstOrDefault() != null;
+                var isSpeler = roles.Where(x => x.Equals("Speler")).FirstOrDefault() != null;
 
                 if (isAdmin && userRole.role.Equals("Moderator") || userRole.role.Equals("Speler"))
                 {
-                    var oldClaim = _applicationDbContext.UserClaims.Where(x => x.UserId.Equals(userRole.id) && x.ClaimValue.Equals("Admin")).FirstOrDefault();
-
-                    if (oldClaim != null)
+                    if (adminClaim != null)
                     {                        
-                        await _userManager.RemoveClaimAsync(user, oldClaim.ToClaim());
-/*                        _applicationDbContext.UserClaims.Remove(oldClaim);
-*/                    }
+                       await _userManager.RemoveFromRoleAsync(user, adminClaim);
+                    }
                 }
 
                 if (isModerator && userRole.role.Equals("Speler"))
                 {
-                    var oldClaim = _applicationDbContext.UserClaims.Where(x => x.UserId.Equals(userRole.id) && x.ClaimValue.Equals("Moderator")).FirstOrDefault();
-
-                    if (oldClaim != null)
+                    if (moderatorClaim != null)
                     {
-                        await _userManager.RemoveClaimAsync(user, oldClaim.ToClaim());
-/*                        _applicationDbContext.UserClaims.Remove(oldClaim);
-*/                    }
+                        await _userManager.RemoveFromRoleAsync(user, moderatorClaim);
+                    }
                 }
 
                 if (isSpeler && !isAdmin && userRole.role.Equals("Admin"))
                 {
-                    await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, userRole.role));
-
-                    /*_applicationDbContext.UserClaims.Add(new Microsoft.AspNetCore.Identity.IdentityUserClaim<string>
-                    {
-                        UserId = userRole.id,
-                        ClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
-                        ClaimValue = userRole.role,
-                    });*/
+                    await _userManager.AddToRoleAsync(user, userRole.role);
 
                     if (!isModerator)
                     {
-                        await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Moderator"));
-
-                        /*_applicationDbContext.UserClaims.Add(new Microsoft.AspNetCore.Identity.IdentityUserClaim<string>
-                        {
-                            UserId = userRole.id,
-                            ClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
-                            ClaimValue = "Moderator",
-                        });*/
+                        await _userManager.AddToRoleAsync(user, "Moderator");
                     }
                 }
 
                 if (isSpeler && !isModerator && userRole.role.Equals("Moderator")) 
                 {
-                    await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, userRole.role));
-
-                    /*_applicationDbContext.UserClaims.Add(new Microsoft.AspNetCore.Identity.IdentityUserClaim<string>
-                    {
-                        UserId = userRole.id,
-                        ClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
-                        ClaimValue = userRole.role,
-                    });*/
+                    await _userManager.AddToRoleAsync(user, userRole.role);
                 }
-                await _userManager.UpdateAsync(user);
-            }
 
-            await _applicationDbContext.SaveChangesAsync();
+                await _userManager.UpdateSecurityStampAsync(user);
+                await _userManager.UpdateAsync(user);
+/*                await _signInManager.RefreshSignInAsync(user);
+*/            }
             return RedirectToAction(nameof(AsignRoles));
         }
 
         [HttpGet]
-        [Route("[controller]/[action]")]
+        [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> Monitoring()
         {
-            return View();
-        }
+            var spelers = await _context.Spelers.ToListAsync();
+            var users = new List<AssignRolesUserDTO>();
 
-        [HttpGet]
-        [Route("[controller]/Monitoring/{id}")]
-        public async Task<IActionResult> MonitoringPlayer()
-        {
+            foreach (var speler in spelers)
+            {
+                var user = _userManager.Users.Where(x => x.Id == speler.Guid.ToString()).FirstOrDefault();
 
-            return View();
+                var monitorUser = new AssignRolesUserDTO
+                {
+                    Guid = speler.Guid,
+                    Name = speler.Naam,
+                };
+
+                users.Add(monitorUser);
+            }
+
+            var result = new AssignRolesDTO()
+            {
+                UserCount = spelers.Count,
+                Users = users,
+            };
+
+            return View(result);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("[controller]/[action]")]
-        /*[Authorize(Policy = "Moderator")]
-        [Authorize(Policy = "Admin")]*/
-        public async Task<IActionResult> MonitoringPost(string userId, string reason)
+        [Authorize(Roles = "Admin, Moderator")]
+        public async Task<IActionResult> MonitoringPost(Guid userId, string reason)
         {
             var result = await Mediator.Send(new DeleteSpelerCommand
             {
@@ -216,6 +189,14 @@ namespace WebUI.Controllers
             return RedirectToAction(nameof(Monitoring));
         }
 
+        [HttpGet]
+        [Route("[controller]/Monitoring/{id}")]
+        [Authorize(Roles = "Admin, Moderator")]
+        public async Task<IActionResult> MonitoringPlayer()
+        {
+
+            return View();
+        }
         /*     // GET: Speler/Details/5
              public async Task<IActionResult> Details(string id)
              {

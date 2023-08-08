@@ -27,5 +27,6 @@ namespace Application.Common.Interfaces
 
         Task OnPlayerOnline(int amount);
         Task OnCreateGame();
+        Task OnDeletedUser(string reason);
     }
 }

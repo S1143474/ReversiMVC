@@ -115,6 +115,7 @@ var Game = (url => {
     Game.Model.listen("OnError", _onError);
     Game.Model.listen("OnPlayerOnline", _test);
     Game.Model.listen("OnCreateGame", _gameCreated);
+    Game.Model.listen("OnDeletedUser", _onDeletedUserMessage);
     var location = window.location.pathname;
     var locationList = location.split('/');
     var locationListLength = locationList.length - 1;
@@ -128,10 +129,45 @@ var Game = (url => {
     Game.ComponentEvents.addOnFocusOut("register__confirm__password", hidePasswordStrengthMeter);
     Game.ComponentEvents.addOnInput("register__password", udpatePasswordMeter);
     Game.ComponentEvents.addOnInput("register__confirm__password", udpatePasswordMeter);
+    Game.ComponentEvents.addClickOnClass("del-user", _showDeleteUserDialog);
+    Game.ComponentEvents.addClick("close__dialog", _closeDeleteUserDialog);
+    Game.ComponentEvents.addClick("confirm__delete__user__dialog", _submitDeleteUserDialog);
+    Game.ComponentEvents.addClick("close__deleted__user__dialog", _closeDeletedUserMessageDialog);
     console.log(configMap.apiUrl); // _getCurrentGameState();
 
     afterInit();
+  }; // ------- DELETE USER DIALOG -------
+
+
+  var _showDeleteUserDialog = component => {
+    var dialog = document.getElementById("delete-user-dialog");
+    var userId = component.getAttribute("user-id");
+    var userIdInput = document.getElementsByName("userId")[0];
+    userIdInput.value = userId;
+    dialog.showModal();
   };
+
+  var _closeDeleteUserDialog = event => {
+    event.preventDefault();
+    var dialog = document.getElementById("delete-user-dialog");
+    dialog.close();
+  };
+
+  var _closeDeletedUserMessageDialog = event => {
+    var dialog = document.getElementById("account__deletion__dialog");
+    dialog.close();
+    location.reload(true);
+  };
+
+  var _submitDeleteUserDialog = event => {
+    event.preventDefault();
+    var dialog = document.getElementById("delete-user-dialog");
+    var form = dialog.children[2];
+    var userIdInput = document.getElementsByName("userId")[0];
+    var reasonInput = document.getElementsByName("reason")[0];
+    form.submit();
+  }; // ------- PASSWORD CHECKER -------
+
 
   var _hasUpperCase = string => {
     return /[A-Z]/.test(string);
@@ -340,18 +376,16 @@ var Game = (url => {
     console.log("Game Finished", gameResult);
   };
 
+  var _onDeletedUserMessage = reason => {
+    var dialog = document.getElementById("account__deletion__dialog");
+    var dialogMessage = document.getElementById("account__deletion__reason");
+    dialogMessage.innerText = reason;
+    dialog.showModal();
+  };
+
   var _onError = message => {
     console.log('Error', message);
-    console.log('TODO: ', 'create a proper popup error message'); // const animated = document.querySelector('.toast__border');
-    // const closeToastBtn = document.querySelector('.toast__close');
-    // animated.addEventListener('animationend', () => {
-    //     $(".toast").animate({opactity: 0}, 1, function() {
-    //         $(this).hide();
-    //     });
-    // });
-    // closeToastBtn.addEventListener('click', () => {
-    //     $(".toast").hide();
-    // });
+    console.log('TODO: ', 'create a proper popup error message');
   };
 
   var _gameCreated = () => {
@@ -414,8 +448,8 @@ Game.ComponentEvents = (() => {
       return;
     }
 
-    componentId.addEventListener('click', () => {
-      callback(param);
+    componentId.addEventListener('click', event => {
+      callback(event, param);
     });
   };
 

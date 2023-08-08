@@ -5,8 +5,10 @@
     <div id="global__stats__page">
         <div id="stats">
             <section id="top__three__players">
-            <div class="top__card">
-                <div class="top__card__header header-green">
+             @if (Model.Count > 1)
+                {
+                    <div class="top__card">
+                        <div class="top__card__header header-green">
                     <h3 class="total-wins">@Model[1].AantalGewonnen</h3>
                     <h3 class="nr nr-3">NR. 2</h3>
                     <span class="wins-subtitle">Wins</span>
@@ -30,6 +32,7 @@
                     <hr/>
                 </div>
             </div>
+            }
             <div class="top__card">
                 <div class="top__card__header header-yellow">
                     <h3 class="total-wins">@Model[0].AantalGewonnen</h3>
@@ -55,6 +58,7 @@
                     <hr/>
                 </div>
             </div>
+            @if(Model.Count > 2) {
             <div class="top__card">
                 <div class="top__card__header header-blue">
                     <h3 class="total-wins">@Model[2].AantalGewonnen</h3>
@@ -80,6 +84,7 @@
                     <hr/>
                 </div>
             </div>
+            }
         </section>
         <section id="table__section">
             <table id="global__stats__table">

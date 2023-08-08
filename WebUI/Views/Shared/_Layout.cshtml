@@ -135,21 +135,23 @@
             });
         </script>
         @RenderBody()
-        @if (TempData.ContainsKey("PlayerState") && (int)TempData["PlayerState"] != 0)
-        {
-            <script>
-                
-                window.onload = () => {
-
-                    alert("Je bent nog bezig met een andere game, deze moet eerst afgemaakt worden voordat je door kunt naar de volgende.");
-                };
-            </script>
-        }
+        <dialog class="dialog" id="account__deletion__dialog">
+            <h2>
+                <span class="material-icons">
+                    warning
+                </span>
+                Server Notification
+            </h2>
+            <p id="account__deletion__reason">Your account has been deleted for the following reason: </p>
+            <div>
+                <button id="close__deleted__user__dialog" class="btn outline-blue w30">Ok</button>
+            </div>
+        </dialog>
         <recaptcha/>
 
     </main>
     <footer class="footer">
-        &copy; 2021 - Reversi
+        &copy; 2023 - Reversi - Bas Schimmel 
     </footer>
     <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/site.js"></script>

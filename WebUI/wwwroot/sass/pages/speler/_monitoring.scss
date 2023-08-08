@@ -1,6 +1,15 @@
 @use '../../abstracts/colors' as clr;
 @import '../../abstracts/mixins';
 
+#account__deletion__reason {
+    h2 {
+        display: flex;
+        align-items: center;
+    }
+    color: clr.$red;
+    
+}
+
 #monitoring-page {
     // position: absolute;
       

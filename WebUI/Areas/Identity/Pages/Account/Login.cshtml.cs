@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Polly;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 
 namespace WebUI.Areas.Identity.Pages.Account
 {
@@ -86,6 +88,26 @@ namespace WebUI.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+        private async Task<ClaimsIdentity> CreateIdentity(IdentityUser user)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+
+            var identity = new ClaimsIdentity(
+                new[]
+                {
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),
+                }, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            foreach (var role in roles)
+            {
+                identity.AddClaim(new Claim(ClaimTypes.Role, role));
+            }
+
+            return identity;
+        }
+
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
@@ -99,9 +121,24 @@ namespace WebUI.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+/*                var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+*/              
+                var user = await _userManager.FindByNameAsync(Input.UserName);
+
+                if (user == null)
+                {
+                    _logger.LogInformation($"Username not found: {Input.UserName}", user);
+                    return Page();
+                }
+                var result = await _signInManager.CheckPasswordSignInAsync(user, Input.Password, lockoutOnFailure: true);
+
+                ClaimsIdentity identity = await CreateIdentity(user);
+                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+
+               
                 if (result.Succeeded)
                 {
+                    await _signInManager.SignInWithClaimsAsync(user, isPersistent: false, principal.Claims);
                     _logger.LogInformation($"User: {_currentUser.UserId} logged in.");
                    /* return RedirectToAction("Create", "Speler", new
                     {

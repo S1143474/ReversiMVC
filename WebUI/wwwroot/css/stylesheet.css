@@ -2208,6 +2208,14 @@
   align-items: center;
 }
 
+#account__deletion__reason {
+  color: #DA3D2D;
+}
+#account__deletion__reason h2 {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 599px) {
   #monitoring-page {
     margin: 12px 4px;
