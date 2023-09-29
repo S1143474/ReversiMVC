@@ -1,0 +1,133 @@
+@use '../../../abstracts/colors' as clr;
+@import '../../../abstracts/mixins';
+
+.manage__account {
+    &__container {
+        height: 100%;
+        margin: 2.4rem;
+        margin-top: calc(2.4rem + 16px);
+
+        @include for-phone-and-tablet-small {
+            position: relative;
+            width: 100%;
+            padding: .5em .7em;
+        }
+    }
+
+    &__title {
+        color: clr.$text;
+
+        font-size: 1.2em;
+        letter-spacing: .1em;
+
+        padding-bottom: .4em;
+
+        border-bottom: .1em solid grey;
+
+        @include for-phone-and-tablet-small {
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    &__list {
+        list-style: none;
+
+        @include for-phone-and-tablet-small {
+            position: absolute;
+        
+            left: 0;
+            right: 0;
+        
+            margin: .8em .8em 0 .8em;
+
+            li {
+                text-align: center;
+                width: 100%;
+            
+                margin-block: .8em;
+                padding-block: .6em;
+            
+                transition: 0.5s;
+                
+                background: clr.$secondarybackground;
+                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+
+                a {
+                    position: relative;
+
+                    text-decoration: none;
+                    width: 100%;
+                
+                    color: clr.$text;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    &__content {
+        padding-top: 2.4em;
+        display: flex;
+        height: 100%;
+    }
+
+    &__logout {
+        outline: none;
+        border: none;
+        background: transparent;
+        color: clr.$text;
+
+        font-size: 1.2em;
+        letter-spacing: .1em;
+        font-weight: bold;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: 2.4em;
+
+        cursor: pointer;
+
+        & > .material-icons {
+            margin-left: .8em;
+        }
+
+        @include for-phone-and-tablet-small {      
+            width: 100%;
+            overflow: hidden;
+
+            font-size: 20px;
+        }
+    }
+
+    &__page {
+        margin-left: 1.6em;
+        background-color: var(--secondary-background);
+        width: 100%;
+        margin-right: .8em;
+
+        position: relative;
+
+        & > h4 {
+            margin: .3em .8em 0 .8em;
+
+            font-size: 1.8em;
+            color: clr.$text;
+            border-bottom: 1px solid clr.$text;
+        }
+
+        @include for-phone-and-tablet-small {
+            position: absolute;
+
+            left: 200%;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+﻿/* .option__card {
+    transition: 0.5s;
+}
+
+.option__link {
+    position: relative;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.option__label {
+    transition: 0.5s;
+    color: var(--text-color);
+}
+
+.option__title {
+    transition: 0.5s;
+}
+
+.option__card:hover {
+    transform: scale(1.1);
+}
+
+.option__card:hover .option__title {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+} */

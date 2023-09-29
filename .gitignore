@@ -3,3 +3,8 @@
 /bin
 /.vs
 /.ionide
+/.vscode
+/Application/obj
+/Domain/obj
+/Infrastructure/obj
+/WebUI/obj

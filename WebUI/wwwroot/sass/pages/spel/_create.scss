@@ -1,0 +1,101 @@
+@use '../../abstracts/colors' as clr;
+
+.create__game{
+    
+    &__content {
+        position: absolute;
+
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        form {
+            position: relative;
+            width: 80%;
+        }
+    }
+
+    &__title {
+        position: relative;
+        color: clr.$text;
+        font-size: var(--fs-800);
+        
+        text-align: center;
+
+        &__span {
+            position: absolute;
+            // top: -.6em;
+            // left: -.6em;
+            width: 100%;
+            height: 100%;
+            font-size: var(--fs-400);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // transform: rotate(-35deg) translate(calc(-4 * var(--fs-300)), );
+
+            &:before {
+                color: clr.$blue;
+                content: attr(text-before);
+
+                position: absolute;
+                left: 16%;
+                top: 25%;
+
+                transform: rotate(-35deg) translateY(0);
+            }
+
+            &:after {
+                color: clr.$purple;
+                content: attr(text-after);
+
+                position: absolute;
+                
+                left: 25%;
+                top: 2%;
+
+                transform: rotate(-35deg) translateY(0);
+            }
+        }
+    }
+
+    &__subtitle {
+        margin: 2.554rem 0 1.563rem ;
+        color: clr.$text;
+        letter-spacing: .05em;
+        text-align: center;
+    }
+
+    &__back {
+        margin-top: .56rem;
+        
+        a {
+            text-decoration: none;
+           
+            display: flex;
+            align-items: center;
+
+            color: clr.$disabled;
+
+            transition: .3s;
+
+            > span {
+                margin-right: .5rem;
+            }
+
+            > p {
+                font-size: var(--fs-300);
+            }
+
+            &:hover {
+                color: clr.$purple;
+            }
+        }
+    }
+}

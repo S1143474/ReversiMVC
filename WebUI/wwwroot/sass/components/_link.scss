@@ -1,0 +1,28 @@
+@use '../abstracts/colors' as clr;
+
+.link {
+    width: auto;
+    margin: auto;
+    a {
+        text-decoration: none;
+           
+        display: flex;
+        align-items: center;
+
+        color: clr.$disabled;
+
+        transition: .3s;
+
+        > span {
+            margin-right: .5rem;
+        }
+
+        > p {
+            font-size: var(--fs-300);
+        }
+
+        &:hover {
+            color: clr.$purple;
+        }
+    }
+}

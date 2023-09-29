@@ -1,0 +1,45 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h4>@ViewData["Title"]</h4>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<form id="profile-form" class="account__form" method="post">
+    <input type="hidden" id="LoginViewModelToken" asp-for="@Model.Input.RecaptchaToken"/>
+
+    <div class="input-group">
+        <input asp-for="Username" placeholder=" " required autocomplete="username" disabled/>
+
+        <label asp-for="Username">
+            <svg xmlns="http://www.w3.org/2000/svg" class="material-svg" fill="currentColor" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/></svg>
+            <span>Username</span>
+        </label>
+        <p class="foot__note">
+            <span asp-validation-for="Username"></span>
+        </p>
+    </div>
+
+    <div class="input-group">
+        <input asp-for="Input.PhoneNumber" placeholder=" " type="tel" pattern="[0-9]{10}" size="10" autocomplete="phone"/>
+
+        <label asp-for="Input.PhoneNumber">
+            <svg xmlns="http://www.w3.org/2000/svg" class="material-svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span>Phone Number</span>
+        </label>
+        <p class="foot__note">
+            <span asp-validation-for="Input.PhoneNumber"></span>
+        </p>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="validate-summary"></div>
+
+    <button id="update-profile-button" type="submit" class="btn outline-blue w10">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

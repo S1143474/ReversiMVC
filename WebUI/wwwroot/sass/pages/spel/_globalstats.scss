@@ -1,0 +1,208 @@
+@use '../../abstracts/colors' as clr;
+@import '../../abstracts/mixins';
+
+#global__stats__page {
+    position: relative;
+    margin: 96px 64px;
+    width: calc(100% - 128px);
+    height: calc(100vh - 152px);
+}
+
+#stats {
+    position: absolute;
+    right: 0;
+
+    width: 50%;
+    // outline: 1px solid red;
+    height: 100%;
+}
+
+#top__three__players {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+
+    min-height: 20%;
+    // outline: 1px solid blue;
+}
+
+.top__card {
+    position: relative;
+    background-color: clr.$secondarybackground;
+    width: 25%;
+
+    border-radius: .4em;
+    transition: .3s;
+
+    .nr {
+        transition: .3s;
+        position: absolute;
+        // top: 25%;
+        transform: translateY(25%);
+        font-size: 2rem;
+
+        opacity: 0;
+    }
+
+    &:hover .nr {
+        transition: .3s;
+
+        opacity: 1;
+    }
+
+    &:hover .total-wins,
+    &:hover .wins-subtitle {
+        transition: .3s;
+
+        opacity: 0;
+    }
+
+    &__header {
+        // transition: .3s;
+
+        // position: absolute;
+        width: 100%;
+        overflow: hidden;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        border-top-left-radius: .4em;
+        border-top-right-radius: .4em;
+
+        // display: flex;
+        // align-items: center;
+        // flex-direction: column;
+        color: clr.$text;
+
+        &.header-yellow {
+            background-color: clr.$yellow;
+            box-shadow: 0 0 1em .2em rgba(clr.$yellow, .4);
+        }
+
+        &.header-green {
+            background-color: clr.$green;
+            box-shadow: 0 0 .8em .18em rgba(clr.$green, .4);
+        }
+
+        &.header-blue {
+            background-color: clr.$blue;
+            box-shadow: 0 0 .5em .14em rgba(clr.$blue, .4);
+        }
+
+        h3 {
+            transition: .3s;
+            font-size: 2.827rem;
+        }
+
+        span {
+            position: absolute;
+        }
+    }
+
+    &__body {
+        position: relative;
+
+        color: clr.$text;
+        margin: 1em 0;
+
+        &__info {
+            display: flex;
+            justify-content: space-evenly;
+
+            &__content {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+
+                font-weight: 300;
+                font-size: 1.125rem;
+
+                h5 {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    &__footer {
+        display: none;
+    }
+
+    &__initials {
+        color: clr.$text;
+        font-weight: 500;
+        font-size: 1.425rem;
+
+        &__circle {
+            position: absolute;
+            
+            left: 50%;
+            top: 0;
+            transform:translate(-50%, -75%);
+            
+            width: 3rem;
+            height: 3rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            &.circle-yellow {
+                box-shadow: 0 0 1em .2em rgba(clr.$yellow, .4);
+                background-color: clr.$yellow;
+            }
+            
+            &.circle-green {
+                box-shadow: 0 0 1em .2em rgba(clr.$green, .4);
+                background-color: clr.$green;
+            }
+            &.circle-blue {
+                box-shadow: 0 0 1em .2em rgba(clr.$blue, .4);
+                background-color: clr.$blue;
+            }
+            outline: .2em solid clr.$secondarybackground;
+
+            border-radius: 50%;
+            text-align: center;
+        }
+    }
+}
+
+#table__section {
+    width: 100%;
+    height: calc(75% - 1em);
+    margin: 1rem;
+
+    margin-top: 1em;
+    overflow-y: scroll;
+
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+#global__stats__table {
+    // margin: 1em;
+    width: 100%;
+
+    background-color: clr.$secondarybackground;
+    height: 100%;
+
+    overflow-y: scroll;
+
+    tbody {
+        color: clr.$text;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: clr.$blue;
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: clr.$secondarybackground;
+    }
+
+    tbody tr td {
+        padding: 1%;
+    }
+}

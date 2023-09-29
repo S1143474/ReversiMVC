@@ -1,0 +1,25 @@
+@use '../../abstracts/colors' as clr;
+@import '../../abstracts/mixins';
+
+.login__container {
+    position: absolute;
+
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+
+    .form__remember {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 32px;
+    }
+
+    .form__submit {
+        display: flex;
+        justify-content: flex-end;
+    }
+} 

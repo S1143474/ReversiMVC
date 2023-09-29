@@ -1,0 +1,30 @@
+@use '../../../abstracts/colors' as clr;
+
+.reset-authkey {
+    p {
+        color: clr.$text;
+        display: flex;
+        
+        > strong {
+            color: clr.$red;
+        }
+
+        > span {
+            color: clr.$red;
+            margin-right: .41em;
+        }        
+    }
+
+    &-form {
+        > form {
+            position: absolute;
+            bottom: 1.33em;
+            right: 1.33em;
+
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}

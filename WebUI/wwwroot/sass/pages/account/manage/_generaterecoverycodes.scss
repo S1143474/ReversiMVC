@@ -1,0 +1,28 @@
+@use '../../../abstracts/colors' as clr;
+
+.generate-recovery-codes {
+    p {
+        color: clr.$text;
+
+        > strong {
+            color: clr.$red;
+        }
+
+        > a {
+            color: clr.$purple;
+            text-underline-offset: 3px;
+        }
+    }
+
+    &-form {
+        > form {
+            position: absolute;
+            bottom: 1.33em;
+            right: 1.33em;
+
+            display: flex;
+            justify-content: flex-end;
+            width: 50%;
+        }
+    }
+}

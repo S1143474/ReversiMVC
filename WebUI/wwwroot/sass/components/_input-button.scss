@@ -1,0 +1,238 @@
+@use '../abstracts/colors' as clr;
+
+.input__group{
+    
+    &-button {
+        min-width: 2em;
+        position: relative; 
+        right: 0;
+        left: 0;
+
+        label {
+            position: absolute;
+    
+            top: calc(50% - .9rem);
+            left: 1rem;
+            
+            font-size: var(--fs-400);
+    
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            cursor: text;
+    
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            transition: 
+                top .3s ease,
+                left .3s ease,
+                color .3s ease,
+                font-size .3s ease;
+    
+            .material-icons,
+            .material-svg {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: inherit;
+                padding-top: .1rem;
+                margin-right: .375rem;
+            }
+        }
+    }
+
+    &__text {
+        display: inline-block;
+        position: relative;
+        
+        background-color: clr.$secondarybackground;
+        color: clr.$text;
+
+        width: calc(100% - 3.56rem);
+
+        font-size: var(--fs-400);
+
+        outline: none;
+        border: none;
+        border-radius: .175rem; 
+
+        padding: 1rem;
+        margin-right: 2em;
+
+        &:valid + label,
+        &:not(:placeholder-shown):not(:focus):invalid + label,
+        &:focus + label {
+            position: absolute;
+            top: -.875rem;
+            left: .875rem;
+            color: clr.$blue;
+            font-size: var(--fs-300);
+        }
+
+        &.dark {
+            background-color: clr.$background;
+        }
+
+        // &:valid + .material-svg,
+        // &:not(:placeholder-shown):not(:focus):invalid + .material-svg,
+        // &:focus + .material-svg {
+        //     position: absolute;
+        //     width: 1.875rem;
+        //     height: 1.875rem;
+        //     top: -1rem;
+        //     left: .875rem;
+        //     color: clr.$blue;
+        //     font-size: var(--fs-300);
+        // }
+    }
+
+    &__button {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        
+        background-color: clr.$blue;
+        color: clr.$text;
+
+        font-size: var(--fs-400);
+        font-family: "Poppins", "Ubuntu", sans-serif;
+        letter-spacing: .05em;
+
+        outline: none;
+        border: none;
+        border-radius: .175rem; 
+
+        transition: .3s;
+
+        height: 100%;
+        aspect-ratio: 1 / 1;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &:active {
+            transform: scale(.95);
+        }
+
+        
+    }
+
+    // input:valid + label,
+    // input:not(:placeholder-shown):not(:focus):invalid + label,
+    // input:focus + label {
+    //     position: absolute;
+    //     top: -1.25rem;
+    //     left: .875rem;
+    //     color: clr.$blue;
+    //     font-size: var(--fs-500);
+    // }
+
+    // input:valid + .material-svg,
+    // input:not(:placeholder-shown):not(:focus):invalid + .material-svg,
+    // input:focus + .material-svg {
+    //     position: absolute;
+    //     width: 1.875rem;
+    //     height: 1.875rem;
+    //     top: -1.25rem;
+    //     left: .875rem;
+    //     color: clr.$blue;
+    //     font-size: var(--fs-500);
+    // }
+
+    .foot__note {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        margin-top: .56rem;
+
+        > span:empty {
+            height: 1.5rem;
+            // background-color: red;
+        }
+
+        > span > span {
+            color: clr.$red;
+            animation: fadeIn .67s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        a {
+            
+            outline: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            color: clr.$disabled;
+            
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                size: 1rem;
+            }
+
+            
+        }
+    }
+
+    // input[type=text] {
+    //     width: auto;
+
+    //     padding: 1rem;
+    //     margin-right: 3.56rem;
+
+    //     color: clr.$text;
+    //     background-color: clr.$secondarybackground;
+
+    //     font-size: var(--fs-400);
+
+    //     outline: 0;
+    //     border: none;
+    //     border-right: .2em solid clr.$background;
+    //     border-radius: .175rem;        
+
+    // }
+
+    // input[type=submit] {
+    //     position: absolute;
+    //     right: 0;
+        
+    //     height: 100%;
+    //     padding: auto;
+
+    //     outline: none;
+    //     border: none;
+
+    //     color: clr.$text;
+    //     font-family: "Poppins", "Ubuntu", sans-serif;
+    //     letter-spacing: .05em;
+    //     font-size: var(--fs-400);
+    //     background-color: transparent;
+    // }
+
+    // input[type=submit]:hover {
+        
+    // }
+
+    
+    
+}

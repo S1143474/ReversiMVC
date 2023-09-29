@@ -2,25 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+	<LangVersion>10.0</LangVersion>
     <UserSecretsId>aspnet-ReversiMvcApp-F0260F5B-111B-4C2E-BB29-06250604DEE2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20210225153247_InitialCreate.cs" />
-    <Compile Remove="Migrations\20210225153247_InitialCreate.Designer.cs" />
-    <Compile Remove="Migrations\20211216162922_AantalFicheFlipped.cs" />
-    <Compile Remove="Migrations\20211216162922_AantalFicheFlipped.Designer.cs" />
+    <Compile Remove="Areas\**" />
+    <Compile Remove="Views\**" />
+    <Content Remove="Areas\**" />
+    <Content Remove="Views\**" />
+    <EmbeddedResource Remove="Areas\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="Areas\**" />
+    <None Remove="Views\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\img\reversi.png" />
+    <None Include="Application\Application.csproj" />
+    <None Include="Domain\Domain.csproj" />
+    <None Include="Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="wwwroot\img\reversi.png" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
@@ -32,6 +36,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\bin\Debug\net6.0\ref\" />
+    <Folder Include="Application\obj\Debug\net6.0\ref\" />
+    <Folder Include="Domain\bin\Debug\net6.0\ref\" />
+    <Folder Include="Domain\Enums\" />
+    <Folder Include="Domain\obj\Debug\net6.0\ref\" />
+    <Folder Include="Domain\obj\Debug\net6.0\staticwebassets\" />
+    <Folder Include="Infrastructure\bin\Debug\net6.0\ref\" />
+    <Folder Include="Infrastructure\obj\Debug\net6.0\ref\" />
   </ItemGroup>
 
 </Project>

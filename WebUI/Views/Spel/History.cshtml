@@ -1,0 +1,88 @@
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Http
+@model List<Application.Spellen.Commands.FinishedSpel.FinishedSpelResultsDTO>
+
+<div class="history__content">
+@if (Model != null && Model.Count() != 0)
+{
+
+    <div class="history__list">
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            string pos = (i % 2 == 0) ? "left" : "right";
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var listItem = "";
+            var listIcon = "";
+            var listItemTitle = "";
+            if (Model[i].GameWonBy.Equals(default))
+            {
+                // Draw
+                listItem = "item-draw";
+                listIcon = "handshake";
+                listItemTitle = "Draw";
+
+            } else if (Model[i].GameWonBy.Equals(userId))
+            {
+                // Win
+                listItem = "item-win";
+                listIcon = "emoji_events";
+                listItemTitle = "Win";
+            }
+            else
+            {
+                // Lost
+                listItem = "item-loss";
+                listIcon = "trending_down";
+                listItemTitle = "Loss";
+
+            }
+
+            <div class="history__list__item left @pos @listItem">
+                <div class="history__centerline"></div>
+                <span class="history__list__item__icon material-icons">@listIcon</span>
+                <section>
+                    <div class="history__list__item__details">
+                        <span class="history__list__item__details__title">@listItemTitle</span>
+                        <span>@Model[i].GameFinishedAt</span>
+                    </div>
+                    <p>@Model[i].Description</p>
+                    <div class="history__list__item__footer">
+                        @*<div class="history__list__item__footer__labels">
+                            <span class="history__list__item__footer__label label-moves">2345</span>
+                            <span class="history__list__item__footer__label label-highscore">highscore</span>
+                            <span class="history__list__item__footer__label label-fastest">fastest</span>
+                        </div>*@
+                        <i>Winner: @Model[i].WinnerToken VS Loser: @Model[i].LoserToken</i>
+                    </div>
+                </section>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h1 class="nothing-found">No Previous Games Found</h1>
+}
+</div>
+
+@*
+<div class="history__list__item right item-stats">
+    <div class="history__centerline"></div>
+    <span class="history__list__item__icon material-icons">workspace_premium</span>
+    <section>
+        <div class="history__list__item__details">
+            <span class="history__list__item__details__title">New Achievement</span>
+            <span>17-12-2021</span>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut pharetra odio, nec egestas libero. </p>
+        <div class="history__list__item__footer">
+            <div class="history__list__item__footer__labels">
+                <span class="history__list__item__footer__label label-moves">2345</span>
+                <span class="history__list__item__footer__label label-highscore">highscore</span>
+                <span class="history__list__item__footer__label label-fastest">fastest</span>
+            </div>
+            <i>- roobdino</i>
+        </div>
+    </section>
+</div>*@

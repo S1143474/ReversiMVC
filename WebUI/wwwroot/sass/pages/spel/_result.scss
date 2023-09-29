@@ -1,0 +1,187 @@
+@use '../../abstracts/colors' as clr;
+
+.result__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__name {
+        z-index: -1;
+        font-size: 12px;
+        opacity: .8;
+    }
+
+    &__score {
+        color: clr.$text;
+        
+        &__title {
+            font-size: var(--fs-600);
+            font-weight: 600;
+        }
+
+        
+
+        &__box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 25%
+            ;
+            color: clr.$text;
+        }
+
+        &.left {
+            margin-left: 1em;
+        }
+
+        &.right {
+            margin-right: 1em;
+        }
+
+        &__fence {
+            width: 100%;
+            // background-color: red;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            // justify-content: center;
+        }
+    }
+
+    .icon {
+        &__outer__ring {
+            position: relative;
+            width: 6rem;
+            height: 10rem;
+
+            &.win {
+                background-color: clr.$purple;
+            }
+
+            &.loss {
+                background-color: clr.$red;
+            }
+
+            &.draw {
+                background-color: clr.$blue;
+            }
+
+            border-radius: .5rem;
+
+            &:before {
+                content: '';
+                position: absolute;
+                width: inherit;
+                height: inherit;
+
+                transform: rotate(60deg);
+                background-color: inherit;
+                border-radius: inherit;
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: inherit;
+                height: inherit;
+
+                transform: translateY(-7.9rem) rotate(-60deg);
+                background-color: inherit;
+                border-radius: inherit;
+            }
+        }
+
+        &__inner__ring {
+            position: relative;
+            width: 5rem;
+            height: 8rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            background-color: clr.$text;
+            border-radius: .5rem;
+
+            z-index: 5;
+            transform: translate(11%, 13%);
+
+            &:before {
+                content: '';
+                position: absolute;
+                width: inherit;
+                height: inherit;
+
+                z-index: 3;
+                transform: rotate(60deg);
+                background-color: inherit;
+                border-radius: inherit;
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: inherit;
+                height: inherit;
+
+                z-index: 3;
+                transform: translateX(0rem) rotate(-60deg);
+                background-color: inherit;
+                border-radius: inherit;
+            }
+
+            .material-icons {
+                position: absolute;
+                
+                z-index: 5;
+                
+                font-size: 7.1em;
+
+                &.win {
+                    color: clr.$yellow;
+                }
+
+                &.loss {
+                    color: clr.$red;
+                }
+
+                &.draw {
+                    color: clr.$blue;
+                }
+            }
+        }
+    }
+
+    &__title {
+        margin-top: 2.566rem;
+
+        text-align: center;
+
+        color: clr.$text;
+
+        font-size: var(--fs-600);
+        font-weight: 500;
+        letter-spacing: .05em;
+    }
+
+    &__subtitle {
+        margin-top: .992rem;
+
+        text-align: center;
+
+        opacity: .8;
+        color: clr.$text;
+    }
+
+    &__actions {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        gap: 1.556rem;
+
+        margin-top: 2.556rem;
+    }
+}

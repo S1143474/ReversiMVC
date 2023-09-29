@@ -1,0 +1,14 @@
+﻿@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Confirm email";
+}
+
+<section id="confirm__email__content">
+    <h1>Congratulations!</h1>
+    <p>Your email has been confirmed.<br/> You can now play as many reversi matches<br/> as you would like!</p>
+    <span class="material-icons">
+        verified_user
+    </span>
+    <span id="confirm__email__content__add_twofa">Make your profile more secure: <a asp-area="Identity" asp-page="./Manage/TwoFactorAuthentication">add 2FA</a></span>
+</section>

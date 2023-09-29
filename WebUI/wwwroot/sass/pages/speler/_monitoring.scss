@@ -1,0 +1,257 @@
+@use '../../abstracts/colors' as clr;
+@import '../../abstracts/mixins';
+
+#account__deletion__reason {
+    h2 {
+        display: flex;
+        align-items: center;
+    }
+    color: clr.$red;
+    
+}
+
+#monitoring-page {
+    // position: absolute;
+      
+    @include for-phone-only {
+        margin: 12px 4px;
+        width: calc(100% - 8px);
+        height: calc(100vh - 84px);
+
+        display: grid;
+        grid-template-areas: 
+            "users"
+            "stats";
+    }
+
+    @include for-desktop-up {
+        margin: 96px 32px;
+        width: calc(100% - 64px);
+        height: calc(100vh - 188px);
+
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 22% 3fr;
+        grid-template-areas: 
+            "stats stats"
+            ". users";
+    }
+
+    
+}
+
+#monitoring-stats {
+    grid-area: stats;
+
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    @include for-phone-only {
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+}
+
+#monitoring-page h1 {
+    position: relative;
+    display: none;
+    color: clr.$text;
+}
+
+#monitoring-page h1:after {
+    content: '';
+    position: absolute;
+    background-color: clr.$blue;
+    height: 4px;
+    width: 50%;
+    bottom: -.556rem;
+    left: 0;
+}
+
+.table-box {
+    // display: none;
+
+    width: 100%;
+    height: 100%;
+    margin: 1rem;
+
+    margin-top: 1em;
+    overflow-y: scroll;
+
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    // outline: 1px solid green;
+    grid-area: users;
+}
+
+// .leftFixed {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     width: 60px;
+//     background-color: red;
+//     color: white;
+//     text-shadow: none;
+//     z-index: 1;
+//     display: none;
+//     text-align: center;
+// }
+// .rightFixed {
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     right: 0;
+//     left: auto;
+//     width: 60px;
+//     background-color: red;
+//     color: white;
+//     text-shadow: none;
+//     z-index: 1;
+//     display: none;
+//     text-align: center;
+// }
+
+ul li a{
+    z-index: 100;
+}
+
+.table {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: clr.$background;
+}
+
+@include for-phone-only {
+    #user__table td:nth-child(1),
+    #user__table th:nth-child(1),
+    #user__table td:nth-child(3), 
+    #user__table th:nth-child(3),
+    #user__table td:nth-child(4), 
+    #user__table th:nth-child(4) {
+        display: none;
+    }
+}
+
+.table-head {
+    top: 0;
+    position: sticky;
+    background-color: clr.$secondarybackground;
+    box-shadow: 0 .4em 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.table-head tr th {
+    // position: sticky;
+    padding: 16px;
+    color: clr.$text;
+    font-weight: 500;
+    font-size: 18px;
+    // top: 0;
+    // background-color: red;
+    border: none;
+}
+
+.table-body {
+    color: clr.$text;
+}
+
+.table-body tr:nth-child(even) {
+    background-color: clr.$blue;
+}
+
+.table-body tr:nth-child(odd) {
+    background-color: clr.$secondarybackground;
+}
+
+.table-body tr td {
+    padding: 1%;
+}
+
+.user-state {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.user-operations {
+    position: relative;
+}
+
+.operations {
+    display: flex;
+    justify-content: space-evenly;
+
+    svg {
+        cursor: pointer;
+        transition: .2s;
+
+        &:hover {
+            fill: clr.$sub-text;
+        }
+    }
+
+    span {
+        cursor: pointer;
+        transition: .2s;
+
+        &:hover {
+            color: clr.$sub-text;
+        }
+    }
+}
+
+.user-operations .material-icons {
+    // position: absolute;
+    // cursor: pointer;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    // z-index: 1;
+
+    @include user-select;
+}
+
+.table-cell {
+    position: relative;
+    @include user-select;
+}
+
+.table-cell .material-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+
+#delete-user-dialog h2 {
+    font-weight: 700;
+}
+
+#delete-user-dialog p {
+    color: clr.$sub-text;
+    font-weight: 200;
+
+    margin-top: .556rem;
+}
+
+#delete-user-dialog form {
+    margin-top: 1rem;
+}
+
+#delete-user-dialog form input{
+    width: 100%;
+}
+
+#delete-user-dialog form div{
+    margin-top: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+}

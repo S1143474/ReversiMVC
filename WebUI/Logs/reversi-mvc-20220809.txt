@@ -1,0 +1,8 @@
+2022-08-09T15:48:33.0282362+02:00 0HMJQ1NCNIO7D:00000001 [INF] Begin Request Id: a2cdd32d-4d48-44c8-918a-e7bd46ee60f1, request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery (eb2e61cd)
+2022-08-09T15:48:33.5313298+02:00 0HMJQ1NCNIO7D:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2022-08-09T15:48:34.2601242+02:00 0HMJQ1NCNIO7D:00000001 [INF] Executed DbCommand ("46"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]
+WHERE [s].[Guid] = @__request_UserId_0" (0723d8ff)
+2022-08-09T15:48:34.2782169+02:00 0HMJQ1NCNIO7D:00000001 [WRN] Long Running Request: 'requestid', request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery, total request time: 1243ms (cf2a37bf)
+2022-08-09T15:48:34.2796560+02:00 0HMJQ1NCNIO7D:00000001 [INF] End Request Id: a2cdd32d-4d48-44c8-918a-e7bd46ee60f1, request name: GetSpelerByIdQuery, requested by user: , total request time: 1246ms (80862a26)

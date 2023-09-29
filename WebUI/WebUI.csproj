@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <LangVersion>10.0</LangVersion>
+	
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+		<PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.2" />
+		<PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\audio\click_sound.mp3" />
+    <Content Remove="wwwroot\img\reversi.png" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\audio\click_sound.mp3" />
+    <EmbeddedResource Include="wwwroot\img\reversi.png" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <None Include="Views\Shared\Components\RegisterUE\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\audio\click_sound.mp3" />
+  </ItemGroup>
+
+  
+	
+</Project>

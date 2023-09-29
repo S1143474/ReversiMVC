@@ -1,0 +1,27 @@
+@use '../../../abstracts/colors' as clr;
+
+.manage__account__page {
+    > div {
+        margin: 1.33em;
+    }
+
+    .alert-warning {
+        color: clr.$red;
+
+        strong {
+            font-weight: 500;
+        }
+    }
+
+    #delete-user {
+        margin-top: 1.33em;
+        
+        > button {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            margin: 1.33em;
+        }
+    }
+}

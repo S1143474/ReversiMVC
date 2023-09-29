@@ -1,0 +1,133 @@
+﻿@page
+@model LoginWith2faModel
+@{
+    ViewData["Title"] = "Two-factor authentication";
+}
+
+@{
+    var isValid = "valid";
+    foreach (var item in @ModelState.Values)
+    {
+        var SOME = item.Errors;
+        if (SOME.Count > 0)
+            isValid = "Invalid";
+    }
+}
+
+<div id="twofa__login__container">
+    <form id="twofa__login__form" method="post" asp-route-returnUrl="@Model.ReturnUrl">
+        <h1>Two-Factor Authentication</h1>
+        <div id="twofa__login__form__pincode">
+            <label>Enter 6-digit code from your authenticator application</label>
+
+            <input 
+                type="tel"
+                class="auth_number @isValid"
+                asp-for="Input.Pincode1"
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="1"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                class="auth_number @isValid"
+                asp-for="Input.Pincode2"
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="2"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                class="auth_number @isValid"
+                asp-for="Input.Pincode3"
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="3"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                class="auth_number @isValid"
+                asp-for="Input.Pincode4"
+                maxlength="1"  
+                pattern="[\d]*"
+                tabindex="4"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                class="auth_number @isValid"
+                asp-for="Input.Pincode5"
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="5"
+                placeholder="."
+                autocomplete="off">
+
+            <input 
+                type="tel" 
+                class="auth_number @isValid" 
+                asp-for="Input.Pincode6"
+                maxlength="1"
+                pattern="[\d]*"
+                tabindex="6"
+                placeholder="."
+                autocomplete="off">
+        </div>
+        <div class="twofa__login__remember">
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMachine">
+                        <input asp-for="Input.RememberMachine" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMachine)
+                    </label>
+                </div>
+            </div>
+        <div id="twofa__login__form__buttons">
+            <button id="twofa__login" type="submit" class="btn outline-blue w30" >Log in</button>
+        </div>
+        
+        <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">Use a recovery code</a>
+    </form>
+</div>
+
+@* <h1>@ViewData["Title"]</h1>
+<hr />
+<p>Your login is protected with an authenticator app. Enter your authenticator code below.</p>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+            <input asp-for="RememberMe" type="hidden" />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.TwoFactorCode"></label>
+                <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="off" />
+                <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMachine">
+                        <input asp-for="Input.RememberMachine" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMachine)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
+        </form>
+    </div>
+</div>
+<p>
+    Don't have access to your authenticator device? You can
+    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
+</p> *@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

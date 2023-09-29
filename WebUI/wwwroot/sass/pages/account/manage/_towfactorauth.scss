@@ -1,0 +1,35 @@
+@use '../../../abstracts/colors' as clr;
+
+.manage__twofactorauth__content {
+    height: calc(100% - 44px - 2.66em - .8em);
+
+    // outline: 1px solid red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    > div {
+        display: flex;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        gap: 1em;
+
+        > form {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        > a {
+            text-align: center;
+        }
+
+        > h5 {
+            color: clr.$text;
+            font-weight: 300;
+        }
+    }
+}

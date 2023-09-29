@@ -1,0 +1,112 @@
+.toast {
+    position: fixed;
+    display: block;
+    bottom: 0;
+    right: 0%;
+
+    width: 25%;
+    // max-height: 14%;
+    margin: 0 2.4em 1.6em 0;
+    padding: .8rem;
+
+    background: var(--secondary-background);
+    user-select: none;
+    
+    &__border {
+        width: 100%;
+        height: .15rem;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+       
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 0px;
+            height: .15rem;
+            position: absolute;
+            /*border-bottom: .15rem solid var(--highlight-green);*/
+            animation: toast-progress 10s linear;
+
+            
+        }
+    }
+
+    &__content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    & > .material-icons {
+        width: 10%;
+    }
+
+    &-success {
+        color: var(--highlight-green);
+    }
+
+    &-warning {
+        color: var(--highlight-yellow);
+    }
+
+    &-danger {
+        color: var(--highlight-red);
+    }
+
+    &__message {
+        display: block;
+        margin-left: .8rem;
+        width: 80%;
+        max-lines: 3;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        bottom: 0;
+        max-height: calc(100% - .8rem);
+    }
+
+    &__close {
+        position: absolute;
+        display: flex; 
+        justify-content: right;
+        right: 0;
+
+        outline: 0;
+        padding: 0;
+        margin: 0 .8rem 0 0;
+        border: none;
+        background: transparent;
+        color: var(--disabled-color);
+
+        cursor: pointer;
+
+        & > .material-icons {
+            padding: 0;
+            margin: 0;   
+            width: inherit;
+            height: inherit;
+        }
+    }
+}  
+
+.toast-success .toast__border::before {
+    border-bottom: .15rem solid var(--highlight-green);
+}
+
+.toast-warning .toast__border::before {
+    border-bottom: .15rem solid var(--highlight-yellow);
+}
+
+.toast-danger .toast__border::before {
+    border-bottom: .15rem solid var(--highlight-red);
+}
+
+@keyframes toast-progress {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
