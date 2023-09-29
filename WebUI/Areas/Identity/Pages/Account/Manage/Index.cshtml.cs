@@ -122,7 +122,7 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            var emailAdress = await _userManager.GetEmailAsync(user);
+            /*var emailAdress = await _userManager.GetEmailAsync(user);
             if (emailAdress is not null)
             {
                 var callbackUrl = Url.Page(
@@ -139,7 +139,7 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
 
                 _emailService.Send("basschimmel@outlook.com", "Phone number updated",
                     $"Hi {user.UserName},<br/><br/> Your phone number has been updated.<br/> If this wasn't you consider <a href='{HtmlEncoder.Default.Encode(callbackUrlUpdatePass)}'>changing your password</a> as it may be breached and try to <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>update your phone number</a>.");
-            }
+            }*/
 
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();

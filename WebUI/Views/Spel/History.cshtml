@@ -1,6 +1,6 @@
 ﻿@using System.Security.Claims
 @using Microsoft.AspNetCore.Http
-@model List<Application.Common.Models.Requests.SpelFinishedDto>
+@model List<Application.Spellen.Commands.FinishedSpel.FinishedSpelResultsDTO>
 
 <div class="history__content">
 @if (Model != null && Model.Count() != 0)
@@ -44,7 +44,7 @@
                 <section>
                     <div class="history__list__item__details">
                         <span class="history__list__item__details__title">@listItemTitle</span>
-                        <span>18-12-2021</span>
+                        <span>@Model[i].GameFinishedAt</span>
                     </div>
                     <p>@Model[i].Description</p>
                     <div class="history__list__item__footer">
@@ -53,7 +53,7 @@
                             <span class="history__list__item__footer__label label-highscore">highscore</span>
                             <span class="history__list__item__footer__label label-fastest">fastest</span>
                         </div>*@
-                        <i>- Baas500</i>
+                        <i>Winner: @Model[i].WinnerToken VS Loser: @Model[i].LoserToken</i>
                     </div>
                 </section>
             </div>

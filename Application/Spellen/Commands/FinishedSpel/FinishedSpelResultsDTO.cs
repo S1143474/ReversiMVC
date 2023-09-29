@@ -34,5 +34,6 @@ namespace Application.Spellen.Commands.FinishedSpel
         public int AmountOfWitFichesTurned { get; set; }
         public int AmountOfZwartFichesTurned { get; set; }
         public int AmountOfGeenFichesTurned { get; set; }
+
     }
 }

@@ -284,7 +284,7 @@ namespace Infrastructure.Services
             return JsonSerializer.Deserialize<FinishedSpelResultsDTO>(result, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }); ;
         }
 
-        public async Task<List<SpelFinishedDto>> GetSpellenFinishedBySpelerTokenDescAsync(Guid spelerToken)
+        public async Task<List<FinishedSpelResultsDTO>> GetSpellenFinishedBySpelerTokenDescAsync(Guid spelerToken)
         {
             var response = await httpClient.GetAsync($"spel/finished?spelerToken={spelerToken}&OrderBy=finishedAt desc", HttpCompletionOption.ResponseHeadersRead);
 
@@ -299,7 +299,7 @@ namespace Infrastructure.Services
 
             var stream = await response.Content.ReadAsStreamAsync();
 
-            var spellenDto = await JsonSerializer.DeserializeAsync<List<SpelFinishedDto>>(stream, _options);
+            var spellenDto = await JsonSerializer.DeserializeAsync<List<FinishedSpelResultsDTO>>(stream, _options);
 
             return spellenDto;
         }

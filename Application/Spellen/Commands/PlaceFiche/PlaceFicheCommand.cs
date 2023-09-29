@@ -32,7 +32,8 @@ namespace Application.Spellen.Commands.PlaceFiche
 
         public async Task<ARO> Handle(PlaceFicheCommand request, CancellationToken cancellationToken)
         {
-            var placedFiche = await _spelService.PlaceFiche(request.HasPassed, request.X, request.Y, request.Token.ToString(),
+            var spel = await _spelService.RetrieveSpelOverSpelerToken(request.SpelerToken);
+            var placedFiche = await _spelService.PlaceFiche(request.HasPassed, request.X, request.Y, (spel == null) ? request.Token.ToString() : spel.Token.ToString(),
                 request.SpelerToken.ToString());
 
             var response = new ARO

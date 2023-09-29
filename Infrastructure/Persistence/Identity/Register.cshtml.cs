@@ -57,6 +57,9 @@ namespace WebUI.Areas.Identity.Pages.Account
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
+        [TempData]
+        public string ErrorMessage { get; set; }
+
         public class InputModel
         {
             [Required]
@@ -140,10 +143,12 @@ namespace WebUI.Areas.Identity.Pages.Account
                 var errors = result.Errors.Select(err => err.Description);
                 var errorMessage = string.Join(", ", errors);
                 _logger.LogError($"Something went wrong with creating a user: {errorMessage}");
-                foreach (var error in result.Errors)
-                { 
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                ErrorMessage = errorMessage;
+                
+                return Page();
+            } else
+            {
+
                 return Page();
             }
 

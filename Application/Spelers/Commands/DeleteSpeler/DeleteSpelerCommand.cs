@@ -42,23 +42,28 @@ namespace Application.Spelers.Commands.DeleteSpeler
             var spel = await _spelService.RetrieveSpelOverSpelerToken(request.UserIdToDelete);
 
             // Check if spel is already being played
-            if (spel.Speler2Token == null)
+            if (spel != null)
             {
-                var deleteResult = _spelService.DeleteSpelUnFinished(spel.Token);
-            } else
-            {
-                var surrenderSpelResult = await _spelService.SurrenderSpel(request.UserIdToDelete, spel.Token);
-
-                if (surrenderSpelResult && spel.Token != null)
+                if (spel.Speler2Token == null)
                 {
-                    var result = await _spelService.RetrieveFinishedSpelOverSpelerToken(request.UserIdToDelete);
+                    var deleteResult = _spelService.DeleteSpelUnFinished(spel.Token);
+                }
+                else
+                {
+                    var surrenderSpelResult = await _spelService.SurrenderSpel(request.UserIdToDelete, spel.Token);
 
-                    if (request.UserIdToDelete == result.Speler1Token)
+                    if (surrenderSpelResult && spel.Token != null)
                     {
-                        await _hub.Clients.User(result.Speler2Token.ToString()).Redirect($"spel/Result");
-                    } else
-                    {
-                        await _hub.Clients.User(result.Speler1Token.ToString()).Redirect($"spel/Result");
+                        var result = await _spelService.RetrieveFinishedSpelOverSpelerToken(request.UserIdToDelete);
+
+                        if (request.UserIdToDelete == result.Speler1Token)
+                        {
+                            await _hub.Clients.User(result.Speler2Token.ToString()).Redirect($"spel/Result");
+                        }
+                        else
+                        {
+                            await _hub.Clients.User(result.Speler1Token.ToString()).Redirect($"spel/Result");
+                        }
                     }
                 }
             }

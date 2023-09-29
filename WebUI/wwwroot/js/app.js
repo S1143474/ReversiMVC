@@ -414,6 +414,10 @@ var Game = (url => {
 })(API_URL);
 
 Game.API = (() => {
+  var configMap = {
+    imageCategories: ["nature", "city", "technology", "food", "still_life", "abstract", "wildlife"]
+  };
+
   var _privateInit = () => {
     console.log("API: Private Init");
   };
@@ -428,9 +432,26 @@ Game.API = (() => {
     };
   }();
 
+  var getRandomImage = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(function* (imageElement) {
+      var randomCategory = configMap.imageCategories[Math.floor(Math.random() * configMap.imageCategories.length)];
+      console.log(randomCategory);
+      var imageSrc = yield Game.Data.getImage("https://api.api-ninjas.com/v1/randomimage?category=".concat(randomCategory));
+      var base64regex = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+      var base64EncodedStr = imageSrc.toString('base64');
+      console.log(base64regex.test(imageSrc));
+      imageElement.src = "data:image/*;base64,".concat(base64EncodedStr);
+    });
+
+    return function getRandomImage(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
   return {
     init: _privateInit,
-    getRandomDadJoke
+    getRandomDadJoke,
+    getRandomImage
   };
 })();
 
@@ -572,6 +593,23 @@ Game.Data = (() => {
     }
   };
 
+  var getImage = url => {
+    return $.ajax({
+      url: url,
+      headers: {
+        'X-Api-Key': 'pXIbEgubhq8hsoBRXyfuRA==59cec1dOsdZ0R21p',
+        'Accept': 'image/jpg'
+      },
+      success: function success(result) {
+        console.log(result);
+        return result;
+      },
+      error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+      }
+    });
+  };
+
   var get = url => {
     return stateMap.environment == 'development' ? getMockData(url) : $.ajax({
       url: url,
@@ -643,6 +681,7 @@ Game.Data = (() => {
   return {
     init: privateInit,
     get: get,
+    getImage,
     listen: listen
   };
 })();
@@ -736,7 +775,7 @@ Game.Reversi = (() => {
   };
 
   var getRandomJokeTemplate = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(function* () {
+    var _ref5 = _asyncToGenerator(function* () {
       var jokeJson = yield Game.API.getRandomDadJoke();
       var dadjoke = jokeJson.joke;
       var jokeTemplate = Game.Template.parseTemplate("dadjoke.randomdadjoke", {
@@ -746,19 +785,19 @@ Game.Reversi = (() => {
     });
 
     return function getRandomJokeTemplate() {
-      return _ref4.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 
   var displayJoke = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator(function* () {
+    var _ref6 = _asyncToGenerator(function* () {
       var template = yield getRandomJokeTemplate();
       var dadJokeHtml = $("#current-dad-joke");
       dadJokeHtml.html(template);
     });
 
     return function displayJoke() {
-      return _ref5.apply(this, arguments);
+      return _ref6.apply(this, arguments);
     };
   }();
 

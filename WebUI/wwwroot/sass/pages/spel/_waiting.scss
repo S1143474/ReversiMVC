@@ -1,6 +1,25 @@
 @use '../../abstracts/colors' as clr;
 @import '../../abstracts/mixins';
 
+
+
+#spel-track > .image {
+    width: 40vmin;
+    height: 56vmin;
+    object-fit: cover;
+    object-position: 100% 50%;
+}
+
+#spel-track {
+    display: flex;
+    gap: 4vmin;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+
 .waiting__content {
     // position: relative;
     width: 100%;

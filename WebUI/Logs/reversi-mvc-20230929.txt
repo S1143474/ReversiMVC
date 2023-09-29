@@ -1,0 +1,31 @@
+2023-09-29T16:36:17.0503298+02:00  [FTL] Unable to start Kestrel. (fc6a528d)
+System.Net.Sockets.SocketException (10049): Het aangevraagde adres is niet geldig in de context van het adres.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer.<>c__DisplayClass21_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.ListenOptions.BindAsync(AddressBindContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(IServerAddressesFeature addresses, KestrelServerOptions serverOptions, ILogger logger, Func`2 createBinding)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.WebHost.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.WebHostExtensions.RunAsync(IWebHost host, CancellationToken token, String startupMessage)
+2023-09-29T16:44:52.0764714+02:00 0HMU0VAHHPFLR:00000001 [INF] Begin Request Id: 3e0e8b50-3f39-4b96-9fda-9e6072490fb1, request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery (393641e4)
+2023-09-29T16:44:52.5674322+02:00 0HMU0VAHHPFLR:00000001 [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-09-29T16:44:53.1804717+02:00 0HMU0VAHHPFLR:00000001 [INF] Executed DbCommand ("60"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]
+WHERE [s].[Guid] = @__request_UserId_0" (0723d8ff)
+2023-09-29T16:44:53.2116578+02:00 0HMU0VAHHPFLR:00000001 [WRN] Long Running Request: 'requestid', request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery, total request time: 1116ms (8e1b6402)
+2023-09-29T16:44:53.2131526+02:00 0HMU0VAHHPFLR:00000001 [INF] End Request Id: 3e0e8b50-3f39-4b96-9fda-9e6072490fb1, request name: GetSpelerByIdQuery, requested by user: , total request time: 1130ms (789e4977)
+2023-09-29T16:45:05.8719952+02:00 0HMU0VAHHPFLT:0000000F [INF] Begin Request Id: c7274723-a238-4a65-9b23-b6cc2a0610cc, request name: GetSpelerByIdQuery, requested by user: , request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery (4d7e78e3)
+2023-09-29T16:45:05.9002134+02:00 0HMU0VAHHPFLT:0000000F [INF] Entity Framework Core "3.1.15" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2023-09-29T16:45:05.9134007+02:00 0HMU0VAHHPFLT:0000000F [INF] Executed DbCommand ("5"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Spelers] AS [s]
+WHERE [s].[Guid] = @__request_UserId_0" (0723d8ff)
+2023-09-29T16:45:05.9155712+02:00 0HMU0VAHHPFLT:0000000F [INF] End Request Id: c7274723-a238-4a65-9b23-b6cc2a0610cc, request name: GetSpelerByIdQuery, requested by user: , total request time: 41ms (6c767a91)

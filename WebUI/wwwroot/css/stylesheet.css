@@ -1688,6 +1688,19 @@
   }
 }
 
+.option__card {
+  pointer-events: none;
+}
+.option__card a {
+  pointer-events: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .create__game__content {
   position: absolute;
   top: 45%;
@@ -2777,6 +2790,22 @@ ul li a {
     opacity: 1;
   }
 }
+#spel-track > .image {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% 50%;
+}
+
+#spel-track {
+  display: flex;
+  gap: 4vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
 .waiting__content {
   width: 100%;
   height: 100vh;

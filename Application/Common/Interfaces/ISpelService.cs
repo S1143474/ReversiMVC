@@ -32,7 +32,7 @@ namespace Application.Common.Interfaces
 
         Task<FinishedSpelResultsDTO> GetSpelFinishedResults(string spelToken);
 
-        Task<List<SpelFinishedDto>> GetSpellenFinishedBySpelerTokenDescAsync(Guid spelerToken);
+        Task<List<FinishedSpelResultsDTO>> GetSpellenFinishedBySpelerTokenDescAsync(Guid spelerToken);
         Task<bool> DeleteSpelUnFinished(Guid spelToken);
 
     }

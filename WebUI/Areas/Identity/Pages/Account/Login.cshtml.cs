@@ -128,6 +128,7 @@ namespace WebUI.Areas.Identity.Pages.Account
                 if (user == null)
                 {
                     _logger.LogInformation($"Username not found: {Input.UserName}", user);
+                    ErrorMessage = "Username or password is incorrect.";
                     return Page();
                 }
                 var result = await _signInManager.CheckPasswordSignInAsync(user, Input.Password, lockoutOnFailure: true);
@@ -162,7 +163,7 @@ namespace WebUI.Areas.Identity.Pages.Account
                 {
                     _logger.LogWarning($"User tried to login, but something went wrong");
 
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ErrorMessage = "Username or password is incorrect.";
                     return Page();
                 }
             }
