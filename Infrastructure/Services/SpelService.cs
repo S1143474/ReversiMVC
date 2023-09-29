@@ -13,7 +13,6 @@ using Application.Spellen.Commands.PlaceFiche;
 using Application.Spellen.Commands.StartSpel;
 using Application.Spellen.Queries.GetSpellen;
 using MediatR;
-using Microsoft.AspNetCore.Identity.UI.V3.Pages.Internal.Account;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Linq;

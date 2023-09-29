@@ -17,7 +17,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using static Microsoft.EntityFrameworkCore.Internal.AsyncLock;
 
 namespace WebUI.Controllers
 {
