@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HW1hyGzWrsxkpBsxEBgEg5TOVG6EZDIObOpy8HwE2PeWL5Aa7lY10gEBiltSP/jnrjQZbnFRpyOSn869b8cCcw==",
+  "dgSpecHash": "bO7fynAjsqgcBGyYNmk7GNjpVNCWhjTMVu8EgGv5twmGWJA6r/PYbi4mnrYcmdt7iYRGzefPX+KhChMfOQ6GpA==",
   "success": true,
   "projectFilePath": "C:\\Users\\bassc\\source\\repos\\ReversiMvcApp\\Domain\\Domain.csproj",
   "expectedPackageFiles": [

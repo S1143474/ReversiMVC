@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dOyNbYJ1SQj5FjIJwhNlmSx14UD/5HK2Q6asygpJMJEWcNzAZn2moSlw66kILaLEjeFpPqBuOWTwZJvxlJI3Jg==",
+  "dgSpecHash": "yvq6JNBHcAPzhjFiPsGNOf0XPWb/BUgRhYiF1aUDdXQOfZNfIFLJQqeFA1zDAlOjU4wm10lUiSb5O+Kh8Nvepg==",
   "success": true,
   "projectFilePath": "C:\\Users\\bassc\\source\\repos\\ReversiMvcApp\\WebUI\\WebUI.csproj",
   "expectedPackageFiles": [
@@ -13,8 +13,8 @@
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnet.signalr.systemweb\\2.4.2\\microsoft.aspnet.signalr.systemweb.2.4.2.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\1.0.6\\microsoft.aspnetcore.antiforgery.1.0.6.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.authorization\\1.0.5\\microsoft.aspnetcore.authorization.1.0.5.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.15\\microsoft.aspnetcore.cryptography.internal.3.1.15.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.15\\microsoft.aspnetcore.cryptography.keyderivation.3.1.15.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.0\\microsoft.aspnetcore.cryptography.internal.6.0.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.0\\microsoft.aspnetcore.cryptography.keyderivation.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\1.0.5\\microsoft.aspnetcore.dataprotection.1.0.5.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\1.0.5\\microsoft.aspnetcore.dataprotection.abstractions.1.0.5.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.abstractions\\1.0.5\\microsoft.aspnetcore.diagnostics.abstractions.1.0.5.nupkg.sha512",
@@ -26,7 +26,7 @@
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\1.0.4\\microsoft.aspnetcore.http.abstractions.1.0.4.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\1.0.4\\microsoft.aspnetcore.http.extensions.1.0.4.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.http.features\\1.0.4\\microsoft.aspnetcore.http.features.1.0.4.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.15\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.15.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.0\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\3.1.15\\microsoft.aspnetcore.identity.ui.3.1.15.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\1.0.0\\microsoft.aspnetcore.jsonpatch.1.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.localization\\1.0.5\\microsoft.aspnetcore.localization.1.0.5.nupkg.sha512",
@@ -40,21 +40,18 @@
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.routing\\1.0.5\\microsoft.aspnetcore.routing.1.0.5.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\1.0.5\\microsoft.aspnetcore.routing.abstractions.1.0.5.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\1.0.4\\microsoft.aspnetcore.webutilities.1.0.4.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.data.sqlclient\\1.1.3\\microsoft.data.sqlclient.1.1.3.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.dotnet.internalabstractions\\1.0.0\\microsoft.dotnet.internalabstractions.1.0.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.15\\microsoft.entityframeworkcore.3.1.15.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.15\\microsoft.entityframeworkcore.abstractions.3.1.15.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.15\\microsoft.entityframeworkcore.analyzers.3.1.15.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.15\\microsoft.entityframeworkcore.relational.3.1.15.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.0\\microsoft.entityframeworkcore.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.0\\microsoft.entityframeworkcore.analyzers.6.0.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.0\\microsoft.entityframeworkcore.relational.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.15\\microsoft.entityframeworkcore.sqlserver.3.1.15.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.15\\microsoft.extensions.caching.abstractions.3.1.15.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.15\\microsoft.extensions.caching.memory.3.1.15.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.22\\microsoft.extensions.configuration.3.1.22.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.0\\microsoft.extensions.caching.memory.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.22\\microsoft.extensions.configuration.binder.3.1.22.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.dependencymodel\\1.0.0\\microsoft.extensions.dependencymodel.1.0.0.nupkg.sha512",
@@ -63,8 +60,8 @@
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.globalization.cultureinfocache\\1.0.5\\microsoft.extensions.globalization.cultureinfocache.1.0.5.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.http\\6.0.0\\microsoft.extensions.http.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.http.polly\\6.0.1\\microsoft.extensions.http.polly.6.0.1.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.identity.core\\3.1.15\\microsoft.extensions.identity.core.3.1.15.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.identity.stores\\3.1.15\\microsoft.extensions.identity.stores.3.1.15.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.identity.core\\6.0.0\\microsoft.extensions.identity.core.6.0.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.identity.stores\\6.0.0\\microsoft.extensions.identity.stores.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.localization\\1.0.5\\microsoft.extensions.localization.1.0.5.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.localization.abstractions\\1.0.5\\microsoft.extensions.localization.abstractions.1.0.5.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",
@@ -81,7 +78,7 @@
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\5.5.0\\microsoft.identitymodel.protocols.openidconnect.5.5.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.identitymodel.tokens\\5.5.0\\microsoft.identitymodel.tokens.5.5.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.net.http.headers\\1.0.4\\microsoft.net.http.headers.1.0.4.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.owin\\2.1.0\\microsoft.owin.2.1.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\microsoft.owin.host.systemweb\\2.1.0\\microsoft.owin.host.systemweb.2.1.0.nupkg.sha512",
@@ -112,14 +109,14 @@
     "C:\\Users\\bassc\\.nuget\\packages\\serilog.sinks.file\\3.2.0\\serilog.sinks.file.3.2.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\serilog.sinks.rollingfile\\3.3.0\\serilog.sinks.rollingfile.3.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\system.buffers\\4.0.0\\system.buffers.4.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.collections.specialized\\4.3.0\\system.collections.specialized.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.componentmodel\\4.3.0\\system.componentmodel.4.3.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\system.componentmodel.annotations\\4.1.0\\system.componentmodel.annotations.4.1.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.componentmodel.primitives\\4.3.0\\system.componentmodel.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.componentmodel.typeconverter\\4.3.0\\system.componentmodel.typeconverter.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.configuration.configurationmanager\\4.5.0\\system.configuration.configurationmanager.4.5.0.nupkg.sha512",
@@ -130,6 +127,7 @@
     "C:\\Users\\bassc\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.dynamic.runtime\\4.0.11\\system.dynamic.runtime.4.0.11.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\system.formats.asn1\\6.0.0\\system.formats.asn1.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.globalization.calendars\\4.0.1\\system.globalization.calendars.4.0.1.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.globalization.extensions\\4.3.0\\system.globalization.extensions.4.3.0.nupkg.sha512",
@@ -141,7 +139,6 @@
     "C:\\Users\\bassc\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.linq.expressions\\4.1.1\\system.linq.expressions.4.1.1.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.net.http\\4.1.0\\system.net.http.4.1.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.net.nameresolution\\4.3.0\\system.net.nameresolution.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
@@ -172,11 +169,11 @@
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.accesscontrol\\4.5.0\\system.security.accesscontrol.4.5.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.claims\\4.0.1\\system.security.claims.4.0.1.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.algorithms\\4.2.1\\system.security.cryptography.algorithms.4.2.1.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.cng\\4.7.0\\system.security.cryptography.cng.4.7.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.csp\\4.0.0\\system.security.cryptography.csp.4.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.encoding\\4.0.0\\system.security.cryptography.encoding.4.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.openssl\\4.0.0\\system.security.cryptography.openssl.4.0.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.pkcs\\4.7.0\\system.security.cryptography.pkcs.4.7.0.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.pkcs\\6.0.0\\system.security.cryptography.pkcs.6.0.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.primitives\\4.3.0\\system.security.cryptography.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.5.0\\system.security.cryptography.protecteddata.4.5.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.cryptography.x509certificates\\4.1.2\\system.security.cryptography.x509certificates.4.1.2.nupkg.sha512",
@@ -185,7 +182,7 @@
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.principal.windows\\4.5.0\\system.security.principal.windows.4.5.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.security.securestring\\4.3.0\\system.security.securestring.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
-    "C:\\Users\\bassc\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
+    "C:\\Users\\bassc\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.text.encodings.web\\4.0.1\\system.text.encodings.web.4.0.1.nupkg.sha512",
     "C:\\Users\\bassc\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
@@ -204,60 +201,60 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.SignalR.Core 2.4.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'Microsoft.AspNet.SignalR.Core 2.4.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.SignalR.Core",
       "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
+        "net6.0"
       ]
     },
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.SignalR.SystemWeb 2.4.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'Microsoft.AspNet.SignalR.SystemWeb 2.4.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.SignalR.SystemWeb",
       "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
+        "net6.0"
       ]
     },
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.Owin 2.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'Microsoft.Owin 2.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Owin",
       "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
+        "net6.0"
       ]
     },
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.Owin.Host.SystemWeb 2.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'Microsoft.Owin.Host.SystemWeb 2.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Owin.Host.SystemWeb",
       "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
+        "net6.0"
       ]
     },
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.Owin.Security 2.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'Microsoft.Owin.Security 2.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Owin.Security",
       "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
+        "net6.0"
       ]
     },
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Owin 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'Owin 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Owin",
       "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
+        "net6.0"
       ]
     }
   ]
