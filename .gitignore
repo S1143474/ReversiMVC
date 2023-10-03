@@ -8,3 +8,7 @@
 /Domain/obj
 /Infrastructure/obj
 /WebUI/obj
+/WebUI/bin
+/Infrastructure/bin
+/Domain/bin
+/Application/bin
