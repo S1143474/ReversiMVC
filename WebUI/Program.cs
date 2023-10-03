@@ -3,6 +3,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using WebUI;
 
 namespace MyNamespace
 {
@@ -10,7 +11,7 @@ namespace MyNamespace
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Build().SeedData().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
