@@ -649,3 +649,57 @@ WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
 FROM [AspNetUserRoles] AS [a]
 INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
 WHERE [a].[UserId] = @__userId_0" (0723d8ff)
+2023-10-03T12:18:01.2895700+02:00 0HMU3V82L528P:00000001 [INF] Entity Framework Core "6.0.0" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "None" (d2805559)
+2023-10-03T12:18:01.8297622+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("95"ms) [Parameters=["@__p_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0" (0723d8ff)
+2023-10-03T12:18:02.1881116+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("29"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-10-03T12:18:02.2565429+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("24"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0" (0723d8ff)
+2023-10-03T12:18:02.2710502+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2023-10-03T12:18:02.2884825+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0" (0723d8ff)
+2023-10-03T12:18:02.2939119+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2023-10-03T12:18:02.2966721+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0" (0723d8ff)
+2023-10-03T12:18:02.2990155+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2023-10-03T12:18:02.3013523+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__role_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0" (0723d8ff)
+2023-10-03T12:18:02.3775957+02:00 0HMU3V82L528P:00000001 [INF] Begin Request Id: e9ed90d2-388b-4c1e-ae3f-f629f90cef29, request name: GetSpelerByIdQuery, requested by user: 202a4972-8b06-455d-8ea9-9337f58773e5, request: Application.Spelers.Queries.GetSpeler.GetSpelerByIdQuery (9cbe90cb)
+2023-10-03T12:18:02.4379355+02:00 0HMU3V82L528P:00000001 [INF] Entity Framework Core "6.0.0" initialized '"ReversiDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer":"6.0.0"' with options: "None" (d2805559)
+2023-10-03T12:18:02.4462610+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__request_UserId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [s].[Guid], [s].[AantalFicheFliped], [s].[AantalGelijk], [s].[AantalGewonnen], [s].[AantalVerloren], [s].[Naam]
+FROM [Speler] AS [s]
+WHERE [s].[Guid] = @__request_UserId_0" (0723d8ff)
+2023-10-03T12:18:02.4484149+02:00 0HMU3V82L528P:00000001 [INF] End Request Id: e9ed90d2-388b-4c1e-ae3f-f629f90cef29, request name: GetSpelerByIdQuery, requested by user: 202a4972-8b06-455d-8ea9-9337f58773e5, total request time: 69ms (7c43ff87)
+2023-10-03T12:18:02.5914903+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0" (0723d8ff)
+2023-10-03T12:18:02.5950238+02:00 0HMU3V82L528P:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0" (0723d8ff)
