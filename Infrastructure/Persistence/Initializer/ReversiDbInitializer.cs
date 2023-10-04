@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Infrastructure.Persistence.Seeder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Persistence
+namespace Infrastructure.Persistence.Initializer
 {
     public class ReversiDbInitializer
     {
         private readonly ReversiDbContext _context;
 
-        public ReversiDbInitializer(ReversiDbContext context) 
+        public ReversiDbInitializer(ReversiDbContext context)
         {
             _context = context;
         }

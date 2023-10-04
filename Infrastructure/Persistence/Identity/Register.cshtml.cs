@@ -146,14 +146,10 @@ namespace WebUI.Areas.Identity.Pages.Account
                 ErrorMessage = errorMessage;
                 
                 return Page();
-            } else
-            {
-
-                return Page();
-            }
+            } 
 
             var resultAsignRole = await _userManager.AddToRoleAsync(user, "Speler");
-            var spelerRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Speler"));
+           /* var spelerRoleResult = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Speler"));*/
 
             _logger.LogInformation($"Assigned 'speler' role to user: {user.Id}");
             _logger.LogInformation("User created a new account with password.");

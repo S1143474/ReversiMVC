@@ -132,8 +132,8 @@ namespace WebUI.Areas.Identity.Pages.Account
                     return Page();
                 }
                 var result = await _signInManager.CheckPasswordSignInAsync(user, Input.Password, lockoutOnFailure: true);
-
-                ClaimsIdentity identity = await CreateIdentity(user);
+                
+                    ClaimsIdentity identity = await CreateIdentity(user);
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
                
