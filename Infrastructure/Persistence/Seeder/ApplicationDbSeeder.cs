@@ -88,19 +88,22 @@ namespace Infrastructure.Persistence.Seeder
             new IdentityUser
             {
                 UserName = "admin",
-                Email = "admin@reversi.nl"
+                Email = "admin@reversi.nl",
+                EmailConfirmed = true,
             },
 
             new IdentityUser
             {
                 UserName = "moderator",
-                Email = "moderator@reversi.nl"
+                Email = "moderator@reversi.nl",
+                EmailConfirmed = true,
             },
 
             new IdentityUser
             {
                 UserName = "speler",
-                Email = "speler@reversi.nl"
+                Email = "speler@reversi.nl",
+                EmailConfirmed = true,
             }
         };
     }
