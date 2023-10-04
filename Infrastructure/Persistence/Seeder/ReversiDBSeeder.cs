@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Persistence
+namespace Infrastructure.Persistence.Seeder
 {
     public class ReversiDBSeeder
     {
@@ -14,7 +14,7 @@ namespace Infrastructure.Persistence
 
         public ReversiDBSeeder(ReversiDbContext dbContext)
         {
-            _dbContext = dbContext; 
+            _dbContext = dbContext;
         }
 
         public void Seed()

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,9 +10,10 @@ namespace MyNamespace
 {
     internal class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().SeedData().Run();
+            IWebHost host = await CreateWebHostBuilder(args).Build().SeedData().SeedIdentityData();
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
