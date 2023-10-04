@@ -75,9 +75,31 @@ internal class Startup
         app.UseMiddleware<ExceptionMiddleWare>();
 
         app.UseHttpsRedirection();
+
+        app.UseCsp(options => options
+            .DefaultSources(s => s.Self())
+            .FontSources(s => s.Self().CustomSources("fonts.googleapis.com", "fonts.gstatic.com"))
+            .StyleSources(s => s.Self().CustomSources("fonts.googleapis.com"))
+            .FrameSources(s => s
+                .Self()
+                .CustomSources("https://www.google.com")
+            )
+            .ConnectSources(s => s
+                .Self()
+                .CustomSources("https://icanhazdadjoke.com")
+            )
+            .ScriptSources(s => s
+                .Self()
+                .CustomSources(
+                    "https://www.google-analytics.com", 
+                    "https://www.google.com", 
+                    "https://cdnjs.cloudflare.com",
+                    "https://www.gstatic.com"
+                )
+                .UnsafeInline()
+            ));
         app.UseStaticFiles();
         app.UseCookiePolicy();
-
         app.UseSession();
 
         app.UseRouting();
