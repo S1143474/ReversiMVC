@@ -11,8 +11,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
 using WebUI;
-using WebUI.ExceptionMiddleWare;
 using WebUI.Filters;
+using WebUI.Middleware;
+using WebUI.Middleware.ExceptionMiddleWare;
 using WebUI.Services;
 
 internal class Startup
@@ -73,6 +74,7 @@ internal class Startup
         }*/
 
         app.UseMiddleware<ExceptionMiddleWare>();
+        app.UseMiddleware<HideHiddenFilesMiddleware>();
 
         app.UseHttpsRedirection();
 
