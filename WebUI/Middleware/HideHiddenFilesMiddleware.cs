@@ -7,7 +7,7 @@ namespace WebUI.Middleware
     public class HideHiddenFilesMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly string[] HiddenFileNames = { ".darcs", ".bzr", ".hg", "BitKeeper", ".bitkeeper", };
+        private readonly string[] HiddenFileNames = { ".darcs", ".bzr", ".hg", "BitKeeper", ".bitkeeper", "._darcs"};
 
         public HideHiddenFilesMiddleware(RequestDelegate next)
         {
