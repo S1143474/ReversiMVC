@@ -76,6 +76,12 @@ internal class Startup
 
         app.UseHttpsRedirection();
 
+        app.Use(async (context, next) =>
+        {
+            context.Response.Headers.Add("X-Frame-Options", "DENY");
+            await next();
+        });
+
         app.UseCsp(options => options
             .DefaultSources(s => s.Self())
             .FontSources(s => s.Self().CustomSources("fonts.googleapis.com", "fonts.gstatic.com"))
@@ -91,12 +97,11 @@ internal class Startup
             .ScriptSources(s => s
                 .Self()
                 .CustomSources(
-                    "https://www.google-analytics.com", 
-                    "https://www.google.com", 
+                    "https://www.google-analytics.com",
+                    "https://www.google.com",
                     "https://cdnjs.cloudflare.com",
                     "https://www.gstatic.com"
                 )
-                .UnsafeInline()
             ));
         app.UseStaticFiles();
         app.UseCookiePolicy();
