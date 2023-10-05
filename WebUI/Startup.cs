@@ -27,7 +27,7 @@ internal class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton<ICurrentUserService, CurrentUserService>();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddApplication();
         services.AddInfrastructure(Configuration);
         services.AddAutoMapper(typeof(Startup));
