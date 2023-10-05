@@ -44,7 +44,9 @@ namespace WebUI.Areas.Identity.Pages.Account
                     return LocalRedirect(returnUrl);
                 }
             }
-/*
+
+            return Redirect("");
+/*          
            
             if (returnUrl != null)
             {
