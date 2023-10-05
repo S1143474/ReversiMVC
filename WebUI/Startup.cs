@@ -97,13 +97,7 @@ internal class Startup
                 .CustomSources("https://icanhazdadjoke.com")
             )
             .ScriptSources(s => s
-                .Self()
-                .CustomSources(
-                    "https://www.google-analytics.com",
-                    "https://www.google.com",
-                    "https://cdnjs.cloudflare.com",
-                    "https://www.gstatic.com"
-                )
+                .Self().UnsafeInline().UnsafeEval().StrictDynamic()
             ));
         app.UseStaticFiles();
         app.UseCookiePolicy();
