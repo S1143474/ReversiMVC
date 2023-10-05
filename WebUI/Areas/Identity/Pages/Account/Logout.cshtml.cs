@@ -30,6 +30,22 @@ namespace WebUI.Areas.Identity.Pages.Account
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
+
+            if (!string.IsNullOrEmpty(returnUrl) && Uri.TryCreate(returnUrl, UriKind.RelativeOrAbsolute, out Uri validatedUri))
+            {
+                if (validatedUri.IsAbsoluteUri && validatedUri.Host == Request.Host.Host)
+                {
+                    // It's a valid absolute URL within the same host.
+                    return LocalRedirect(returnUrl);
+                }
+                else if (!validatedUri.IsAbsoluteUri)
+                {
+                    // It's a valid relative URL.
+                    return LocalRedirect(returnUrl);
+                }
+            }
+/*
+           
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);
@@ -37,7 +53,7 @@ namespace WebUI.Areas.Identity.Pages.Account
             else
             {
                 return RedirectToPage();
-            }
+            }*/
         }
     }
 }
