@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace WebUI.ExceptionMiddleWare
+namespace WebUI.Middleware.ExceptionMiddleWare
 {
     public class ExceptionMiddleWare
     {
@@ -43,7 +43,7 @@ namespace WebUI.ExceptionMiddleWare
             {
                 case HttpRequestException:
                     context.Response.Redirect($"/reqerror");
-                    
+
                     break;
                 default:
                     message = "Internal server error";
@@ -54,7 +54,7 @@ namespace WebUI.ExceptionMiddleWare
                     }.ToString());
                     break;
             }
-            
+
             /* exception switch
          {
              DefaultGuidException => "A token cannot be default.",

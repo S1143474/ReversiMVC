@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
-using WebUI.ExceptionMiddleWare;
+using WebUI.Middleware.ExceptionMiddleWare;
 
 namespace WebUI.Controllers
 {

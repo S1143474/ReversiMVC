@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace WebUI.ExceptionMiddleWare
+namespace WebUI.Middleware.ExceptionMiddleWare
 {
     public class ErrorDetails
     {
