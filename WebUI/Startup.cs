@@ -97,8 +97,11 @@ internal class Startup
                 .CustomSources("https://icanhazdadjoke.com")
             )
             .ScriptSources(s => s
-                .Self().StrictDynamic()
-            ));
+                .Self().UnsafeInline().CustomSources("https://cdnjs.cloudflare.com", "https://www.google-analytics.com", "https://www.google.com", "https://www.gstatic.com", "https://icanhazdadjoke.com/")
+            )
+            .FrameAncestors(s => s.Self())
+            .FormActions(s => s.Self())
+            );
         app.UseStaticFiles();
         app.UseCookiePolicy();
         app.UseSession();
