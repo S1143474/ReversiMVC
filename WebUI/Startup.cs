@@ -97,7 +97,7 @@ internal class Startup
                 .CustomSources("https://icanhazdadjoke.com")
             )
             .ScriptSources(s => s
-                .Self().UnsafeInline().UnsafeEval().StrictDynamic()
+                .Self().StrictDynamic()
             ));
         app.UseStaticFiles();
         app.UseCookiePolicy();
