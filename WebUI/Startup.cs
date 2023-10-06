@@ -81,7 +81,7 @@ internal class Startup
         app.Use(async (context, next) =>
         {
             context.Response.Headers.Add("X-Frame-Options", "DENY");
-            context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self'  https://cdnjs.cloudflare.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://icanhazdadjoke.com/; style-src 'self' fonts.googleapis.com; font-src 'self' fonts.googleapis.com fonts.gstatic.com; frame-src 'self'; connect-src 'self' https://www.google.com;");
+            context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self'  https://cdnjs.cloudflare.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://icanhazdadjoke.com/; style-src 'self' fonts.googleapis.com; font-src 'self' fonts.googleapis.com fonts.gstatic.com; frame-src 'self'; connect-src 'self' https://www.google.com; frame-ancestors 'self'; form-action 'self';");
             await next();
         });
 
