@@ -29,7 +29,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.60/inputmask/jquery.inputmask.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.60/inputmask/jquery.inputmask.js" nws-csp-add-nonce="true"></script>
 
     <link rel="Icon" href="~/img/reversi.png" type="image/x-icon"/>
     <link rel="stylesheet" href="~/css/site.css" type="text/css" />
@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="~/css/Spel.css" type="text/css" />
     <link rel="stylesheet" href="~/css/Account.css" type="text/css" />
     <link rel="stylesheet" href="~/css/stylesheet.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" nws-csp-add-nonce="true" />
 </head>
 <body>
 <header class="header__container">
@@ -125,7 +125,7 @@
 
     <main role="main">
         <script type="text/javascript" src="~/js/app.js"></script>
-        <script>
+        <script nonce="pvBvWoRJr7pDe5KIUI3LZ5xGkMkDEaVFtFOseFrk">
             $(() => {
                 const afterInit = () => {
                     console.log("after init");
@@ -159,7 +159,7 @@
     <script type="text/javascript" src="~/js/vendor.js"></script>
     <script type="text/javascript" src="~/js/templates.js"></script>
     @RenderSection("Scripts", required: false)
-    <script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey" nws-csp-add-nonce="true"></script>
     <script>
         function getCaptchaToken() {
             grecaptcha.ready(function() {
