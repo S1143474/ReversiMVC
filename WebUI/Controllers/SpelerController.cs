@@ -54,7 +54,8 @@ namespace WebUI.Controllers
             var users = new List<AssignRolesUserDTO>();
             foreach (var speler in spelers)
             {
-                var user = _userManager.Users.Where(x => x.Id == speler.Guid.ToString()).FirstOrDefault();
+                var user = _userManager.Users.Where(x => x.Id.Equals(speler.Guid.ToString())).FirstOrDefault();
+
                 var roles = await _userManager.GetRolesAsync(user);
                 var roleUser = new AssignRolesUserDTO
                 {

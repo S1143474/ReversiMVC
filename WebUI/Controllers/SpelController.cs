@@ -126,7 +126,6 @@ namespace WebUI.Controllers
 
             var spelInQueue = await Mediator.Send(command);
 
-            // TODO: Create Toast message when spel is not created.
             if (spelInQueue != null)
                 return RedirectToAction(nameof(Waiting), new { id = spelInQueue.Token });
 

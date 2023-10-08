@@ -12,8 +12,10 @@ namespace MyNamespace
     {
         public static async Task Main(string[] args)
         {
-            IWebHost host = await CreateWebHostBuilder(args).Build().SeedData().SeedIdentityData();
-            host.Run();
+            IWebHost host = CreateWebHostBuilder(args).Build();
+            IWebHost identitySeededHost = await host.SeedIdentityData();
+            IWebHost spelerSeededHost = identitySeededHost.SeedData();
+            spelerSeededHost.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
