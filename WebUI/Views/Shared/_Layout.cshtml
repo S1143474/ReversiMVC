@@ -1,10 +1,12 @@
 ﻿@using System.Security.Claims
 @using Application
+@using Application.Common.Interfaces;
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.Extensions.Options
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @inject IOptions<GoogleCaptchaConfig> GoogleCaptchaConfig
+@inject INonceGenerator NonceGenerator
 
 <!DOCTYPE html>
 <html>
@@ -125,7 +127,7 @@
 
     <main role="main">
         <script type="text/javascript" src="~/js/app.js"></script>
-        <script nonce="pvBvWoRJr7pDe5KIUI3LZ5xGkMkDEaVFtFOseFrk">
+        <script nonce="@NonceGenerator.GetNonce("Reversi")">
             $(() => {
                 const afterInit = () => {
                     console.log("after init");
@@ -160,7 +162,7 @@
     <script type="text/javascript" src="~/js/templates.js"></script>
     @RenderSection("Scripts", required: false)
     <script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey" nws-csp-add-nonce="true"></script>
-    <script>
+    <script nonce="@NonceGenerator.GetNonce("Recaptcha")">
         function getCaptchaToken() {
             grecaptcha.ready(function() {
                 window.onload = function() {
