@@ -83,15 +83,28 @@ internal class Startup
         app.Use(async (context, next) =>
         {
             context.Response.Headers.Add("X-Frame-Options", "DENY");
-            context.Response.Headers.Add("Content-Security-Policy", 
+            context.Response.Headers.Add("Content-Security-Policy",
                 "default-src 'self'; " +
-                $"script-src 'self' https://cdnjs.cloudflare.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://icanhazdadjoke.com/ 'nonce-{nonceGenerator.GetNonce("Reversi")}' 'nonce-{nonceGenerator.GetNonce("Recaptcha")}' 'nonce-{nonceGenerator.GetNonce("jqueryvalidate")}' 'nonce-{nonceGenerator.GetNonce("jqueryvalidateunobstructive")}' 'nonce-{nonceGenerator.GetNonce("jqueryvalidatemin")}' 'nonce-{nonceGenerator.GetNonce("jqueryvalidateunobstructivemin")}' 'nonce-{nonceGenerator.GetNonce("toast")}'; " +
+                $"script-src 'self' " +
+                $"https://cdnjs.cloudflare.com " +
+                $"https://www.google-analytics.com " +
+                $"https://www.google.com " +
+                $"https://www.gstatic.com https://icanhazdadjoke.com/ " +
+                $"'nonce-{nonceGenerator.GetNonce("Reversi")}' " +
+                $"'nonce-{nonceGenerator.GetNonce("Recaptcha")}' " +
+                $"'nonce-{nonceGenerator.GetNonce("jqueryvalidate")}' " +
+                $"'nonce-{nonceGenerator.GetNonce("jqueryvalidateunobstructive")}' " +
+                $"'nonce-{nonceGenerator.GetNonce("jqueryvalidatemin")}' " +
+                $"'nonce-{nonceGenerator.GetNonce("jqueryvalidateunobstructivemin")}' " +
+                $"'nonce-{nonceGenerator.GetNonce("toast")}'; " +
                 "style-src 'self' fonts.googleapis.com; " +
                 "font-src 'self' fonts.googleapis.com fonts.gstatic.com; " +
                 "frame-src 'self' https://www.google.com/; " +
                 "connect-src 'self' https://www.google.com; " +
                 "frame-ancestors 'self'; " +
-                "form-action 'self';"
+                "form-action 'self';" +
+                "base-uri 'self';" +
+                "object-src 'none';"
             );
             await next();
         });
