@@ -34,9 +34,11 @@ namespace WebUI.Controllers
         {
             if (err is "reqerror")
             {
+                _logger.LogInformation($"User with id: {UserId} tried to connect with the Reversi API but the API wouldn't react.");
                 ViewData["errormessage"] =
                     "Unable to play reversi because the target computer has actively refused the connection. Please try again later.";
             }
+
             var result = await Mediator.Send(new GetSpelerByIdQuery
             {
                 UserId = UserId,

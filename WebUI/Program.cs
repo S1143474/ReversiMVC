@@ -22,8 +22,8 @@ namespace MyNamespace
         {
             //"https://192.168.2.15:3000", 
             var builder = WebHost.CreateDefaultBuilder(args)
-                /*.UseUrls("https://192.168.68.131:3000")*/
-                .UseStartup<Startup>();
+/*                .UseUrls("https://192.168.2.30:3000")
+*/                .UseStartup<Startup>();
 
             builder.ConfigureLogging((Action<WebHostBuilderContext, ILoggingBuilder>)((hostingContext, logging) =>
             {
@@ -34,40 +34,5 @@ namespace MyNamespace
             }));
             return builder;
         }
-
-        /*public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });*/
     }
 }
-
-
-/*
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddRazorPages();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapRazorPages();
-
-app.Run();*/
