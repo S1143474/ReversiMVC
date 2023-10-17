@@ -115,7 +115,7 @@ namespace Infrastructure
             services.Configure<ApplicationSettings>(configuration.GetSection("AppSettings"));
             services.AddScoped<IEmailService, EmailService>();
 
-            
+            services.AddSingleton<INonceGenerator, NonceGenerator>();
 
             return services;
         }
