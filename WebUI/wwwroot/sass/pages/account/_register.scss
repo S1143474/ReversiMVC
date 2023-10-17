@@ -1,5 +1,13 @@
 @import '../../abstracts/mixins';
-
+.register-email {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #eee;
+    text-align: center;
+    font-size: 1.5em;
+}
 #register__container {
     position: absolute;
 
