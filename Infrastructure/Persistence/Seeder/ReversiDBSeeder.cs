@@ -19,19 +19,12 @@ namespace Infrastructure.Persistence.Seeder
 
         public void Seed()
         {
-            foreach (var speler in Spelers)
+            foreach (var speler in SpelerIdentity.Spelers)
             {
                 _dbContext.Spelers.Add(speler);
             }
 
             _dbContext.SaveChanges();
         }
-
-        private static List<Speler> Spelers = new List<Speler>
-        {
-            new Speler(Guid.NewGuid(), "TestAdmin"),
-            new Speler(Guid.NewGuid(), "TestModerator"),
-            new Speler(Guid.NewGuid(), "TestSpeler")
-        };
     }
 }

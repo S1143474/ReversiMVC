@@ -81,7 +81,7 @@
                }
            </table>
        </form>
-       
+        
    </div>
 <aside class="game__user__interaction">
         <div class="game__user__interaction__message__board">
@@ -118,7 +118,13 @@
             <span id="game-resign-button"><i class="material-icons">flag</i>resign</span>
         </div>
     </aside>
-    
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+@*    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+*@
+
 
    @* TODO: Create a proper error message popup.
        <div class="toast toast-danger" role="alert">
@@ -172,7 +178,32 @@
         </div>
     </aside>*@
 </section>
-    
+<script>
+    window.onload = () => {
+        console.log("LOADED THIS THIST")
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+   
+</script>
 
 @* <section>
     <!--class="container"-->

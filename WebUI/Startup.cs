@@ -81,28 +81,19 @@ internal class Startup
         app.Use(async (context, next) =>
         {
             context.Response.Headers.Add("X-Frame-Options", "DENY");
-            context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self'  https://cdnjs.cloudflare.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://icanhazdadjoke.com/; style-src 'self' fonts.googleapis.com; font-src 'self' fonts.googleapis.com fonts.gstatic.com; frame-src 'self'; connect-src 'self' https://www.google.com; frame-ancestors 'self'; form-action 'self';");
+            context.Response.Headers.Add("Content-Security-Policy", 
+                "default-src 'self'; " +
+                "script-src 'self'  https://cdnjs.cloudflare.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://icanhazdadjoke.com/; " +
+                "style-src 'self' fonts.googleapis.com; " +
+                "font-src 'self' fonts.googleapis.com fonts.gstatic.com; " +
+                "frame-src 'self'; " +
+                "connect-src 'self' https://www.google.com; " +
+                "frame-ancestors 'self'; " +
+                "form-action 'self';"
+            );
             await next();
         });
 
-       /* app.UseCsp(options => options
-            .DefaultSources(s => s.Self())
-            .FontSources(s => s.Self().CustomSources("fonts.googleapis.com", "fonts.gstatic.com"))
-            .StyleSources(s => s.Self().CustomSources("fonts.googleapis.com"))
-            .FrameSources(s => s
-                .Self()
-                .CustomSources("https://www.google.com")
-            )
-            .ConnectSources(s => s
-                .Self()
-                .CustomSources("https://icanhazdadjoke.com")
-            )
-            *//*"https://cdnjs.cloudflare.com", "https://www.google-analytics.com", "https://www.google.com", "https://www.gstatic.com",*//*
-            .ScriptSources(s => s
-                .Self().UnsafeInline().CustomSources("https://icanhazdadjoke.com/")            )
-            .FrameAncestors(s => s.Self())
-            .FormActions(s => s.Self())
-            );*/
         app.UseStaticFiles();
         app.UseCookiePolicy();
         app.UseSession();

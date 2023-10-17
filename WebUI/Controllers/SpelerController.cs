@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace WebUI.Controllers
@@ -27,14 +28,23 @@ namespace WebUI.Controllers
         private readonly ApplicationDbContext _applicationDbContext;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<SpelerController> _logger;
 
 
-        public SpelerController(IHttpContextAccessor httpContextAccessor, ReversiDbContext context, ApplicationDbContext applicationContext, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager) : base(httpContextAccessor)
+        public SpelerController(
+            IHttpContextAccessor httpContextAccessor,
+            ReversiDbContext context,
+            ApplicationDbContext applicationContext,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            ILogger<SpelerController> logger
+            ) : base(httpContextAccessor)
         { 
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
             _applicationDbContext = applicationContext;
+            _logger = logger;
         }
 
         // GET: Speler
@@ -48,13 +58,15 @@ namespace WebUI.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AsignRoles()
         {
+            _logger.LogInformation($"User [Admin] with id: {UserId} requested the assign roles page.");
             var spelers = await _context.Spelers.ToListAsync();
             
 
             var users = new List<AssignRolesUserDTO>();
             foreach (var speler in spelers)
             {
-                var user = _userManager.Users.Where(x => x.Id == speler.Guid.ToString()).FirstOrDefault();
+                var user = _userManager.Users.Where(x => x.Id.Equals(speler.Guid.ToString())).FirstOrDefault();
+
                 var roles = await _userManager.GetRolesAsync(user);
                 var roleUser = new AssignRolesUserDTO
                 {
@@ -75,6 +87,7 @@ namespace WebUI.Controllers
                 users.Add(roleUser);
             }
 
+            _logger.LogInformation($"User [Admin] with id: {UserId} found {spelers.Count} Users.");
             var result = new AssignRolesDTO()
             {
                 UserCount = spelers.Count,
@@ -91,6 +104,7 @@ namespace WebUI.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AsignRolesPost(string list)
         {
+            _logger.LogInformation($"User [Admin] with id: {UserId} requested to assign the following roles: {list}.");
             var userRoles = JsonConvert.DeserializeObject<List<AsignRolesDTO>>(list);
 
             foreach (var userRole in userRoles)
@@ -139,8 +153,8 @@ namespace WebUI.Controllers
 
                 await _userManager.UpdateSecurityStampAsync(user);
                 await _userManager.UpdateAsync(user);
-/*                await _signInManager.RefreshSignInAsync(user);
-*/            }
+            }
+
             return RedirectToAction(nameof(AsignRoles));
         }
 
@@ -148,8 +162,11 @@ namespace WebUI.Controllers
         [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> Monitoring()
         {
+            _logger.LogInformation($"User [Moderator] with id: {UserId} requested to monitor.");
+
             var spelers = await _context.Spelers.ToListAsync();
             var users = new List<AssignRolesUserDTO>();
+            _logger.LogInformation($"User [Moderator] with id: {UserId} retrieved {spelers.Count} spelers.");
 
             foreach (var speler in spelers)
             {
@@ -179,11 +196,20 @@ namespace WebUI.Controllers
         [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> MonitoringPost(Guid userId, string reason)
         {
+            _logger.LogInformation($"User [Moderator] with id: {UserId} requested to delete speler: {userId} for the reaseon: {reason}");
             var result = await Mediator.Send(new DeleteSpelerCommand
             {
                 UserIdToDelete = userId,
                 Reason = reason
             });
+
+            if (result)
+            {
+                _logger.LogInformation($"User [Moderator] with id: {UserId} sucessfully deleted user: {userId}");
+            } else
+            {
+                _logger.LogInformation($"User [Moderator] with id: {UserId} wasn't able to delete user: {userId}");
+            }
 
             return RedirectToAction(nameof(Monitoring));
         }
@@ -193,139 +219,7 @@ namespace WebUI.Controllers
         [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> MonitoringPlayer()
         {
-
             return View();
         }
-        /*     // GET: Speler/Details/5
-             public async Task<IActionResult> Details(string id)
-             {
-                 if (id == null)
-                 {
-                     return NotFound();
-                 }
-
-                 var spelerModel = await _context.Spelers
-                     .FirstOrDefaultAsync(m => m.Guid == id);
-                 if (spelerModel == null)
-                 {
-                     return NotFound();
-                 }
-
-                 return View(spelerModel);
-             }
-     */
-        // GET: Speler/Create
-        /*public async Task<IActionResult> Create(string ReturnUrl)
-        {
-            // TODO: Do something when result equals false.
-            var result = await Mediator.Send(new CreateSpelerCommand
-            {
-                UserId = UserId,
-                UserName = UserName
-            });
-
-            return LocalRedirect(ReturnUrl);
-        }*/
-
-        // POST: Speler/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Guid,Naam,AantalGewonnen,AantalVerloren,AantalGelijk")] Speler spelerModel)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(spelerModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(spelerModel);
-        }*/
-
-        // GET: Speler/Edit/5
-        /*public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var spelerModel = await _context.Spelers.FindAsync(id);
-            if (spelerModel == null)
-            {
-                return NotFound();
-            }
-           return View(spelerModel);
-        }*/
-
-        // POST: Speler/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        /*[HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Guid,Naam,AantalGewonnen,AantalVerloren,AantalGelijk")] Speler spelerModel)
-        {
-            if (id != spelerModel.Guid)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(spelerModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SpelerModelExists(spelerModel.Guid))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(spelerModel);
-        }*/
-
-        // GET: Speler/Delete/5
-        /*public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var spelerModel = await _context.Spelers
-                .FirstOrDefaultAsync(m => m.Guid == id);
-            if (spelerModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(spelerModel);
-        }*/
-
-        // POST: Speler/Delete/5
-        /*[HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            var spelerModel = await _context.Spelers.FindAsync(id);
-            _context.Spelers.Remove(spelerModel);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }*/
-
-        /*private bool SpelerModelExists(string id)
-        {
-            return _context.Spelers.Any(e => e.Guid == id);
-        }*/
     }
 }

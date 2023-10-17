@@ -133,7 +133,8 @@ var Game = (url => {
     Game.ComponentEvents.addClick("close__dialog", _closeDeleteUserDialog);
     Game.ComponentEvents.addClick("confirm__delete__user__dialog", _submitDeleteUserDialog);
     Game.ComponentEvents.addClick("close__deleted__user__dialog", _closeDeletedUserMessageDialog);
-    console.log(configMap.apiUrl); // _getCurrentGameState();
+    console.log(configMap.apiUrl);
+    Game.STATS.init(); // _getCurrentGameState();
 
     afterInit();
   }; // ------- DELETE USER DIALOG -------
@@ -338,6 +339,8 @@ var Game = (url => {
     var rightScoreOwner = document.querySelector(".game__ownedboardbalance__player-2");
     rightScoreOwner.classList.remove("big");
     leftScoreOwner.classList.add("big");
+    debugger;
+    Game.STATS.push(fichesToTurnAround, aanDeBeurt);
     Game.Reversi.displayJoke();
   };
 
@@ -360,6 +363,8 @@ var Game = (url => {
   var _disableMovePlacement = (fichesToTurnAround, aanDeBeurt) => {
     _turnFiches(fichesToTurnAround, aanDeBeurt);
 
+    debugger;
+    Game.STATS.push(fichesToTurnAround, aanDeBeurt);
     var buttons = document.querySelectorAll(".fiche");
     buttons.forEach(button => {
       button.disabled = true;
@@ -823,6 +828,86 @@ Game.Reversi = (() => {
   return {
     init: privateInit,
     displayJoke
+  };
+})();
+
+Game.STATS = (() => {
+  var configMap = {};
+  var chart;
+  var p1CapturedFiches = [];
+  var p2CapturedFiches = [];
+
+  var _privateInit = () => {
+    update();
+  };
+
+  var update = () => {
+    var context = $('#myChart'); // chart?.destory();
+
+    chart = new Chart(context, {
+      type: 'line',
+      data: {
+        labels: p1CapturedFiches.map((value, index) => index + 1),
+        datasets: [{
+          label: "Player 1",
+          data: p1CapturedFiches,
+          fill: false,
+          borderColor: "#01A2E9",
+          tension: 0.1
+        }, {
+          label: "Player 2",
+          data: p2CapturedFiches,
+          fill: false,
+          borderColor: "#DA3D2D",
+          tension: 0.1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+    console.log(context);
+  };
+
+  var pushData = (fiches, beurt) => {
+    var turnedFiches = fiches.length;
+    console.log(turnedFiches);
+    console.log(beurt);
+    console.log(p1CapturedFiches, p2CapturedFiches);
+
+    if (beurt == 1) {
+      p1CapturedFiches.push(turnedFiches);
+    }
+
+    if (beurt == 2) {
+      p2CapturedFiches.push(turnedFiches);
+    }
+
+    console.log(p1CapturedFiches, p2CapturedFiches);
+    chart.data.labels = p1CapturedFiches.map((value, index) => index + 1);
+    chart.data.datasets = [{
+      label: "Player 1",
+      data: p1CapturedFiches,
+      fill: false,
+      borderColor: "#01A2E9",
+      tension: 0.1
+    }, {
+      label: "Player 2",
+      data: p2CapturedFiches,
+      fill: false,
+      borderColor: "#DA3D2D",
+      tension: 0.1
+    }];
+    chart.update(); // update();
+  };
+
+  return {
+    init: _privateInit,
+    push: pushData
   };
 })();
 
