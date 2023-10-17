@@ -1,5 +1,5 @@
 ﻿@model Application.Spelers.Queries.GetSpeler.SpelerDTO
-
+@inject Application.Common.Interfaces.INonceGenerator NonceGenerator;
 @{
     ViewData["Title"] = "Home Page";
     string[,] letters = new string[7, 7] {
@@ -31,7 +31,7 @@
         </div>
         
         <span class="toast__border"></span>
-        <script type="text/javascript">
+        <script type="text/javascript" nonce="@NonceGenerator.GetNonce("toast")">
             window.onload = () => {
                 const animated = document.querySelector('.toast__border');
                 const closeToastBtn = document.querySelector('.toast__close');
