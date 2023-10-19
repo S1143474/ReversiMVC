@@ -100,7 +100,7 @@ internal class Startup
                 "style-src 'self' fonts.googleapis.com; " +
                 "font-src 'self' fonts.googleapis.com fonts.gstatic.com; " +
                 "frame-src 'self' https://www.google.com/; " +
-                "connect-src 'self' https://www.google.com; " +
+                "connect-src 'self' https://www.google https://icanhazdadjoke.com/; " +
                 "frame-ancestors 'self'; " +
                 "form-action 'self';" +
                 "base-uri 'self';" +
