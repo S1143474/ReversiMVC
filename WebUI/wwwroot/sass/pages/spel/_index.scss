@@ -21,3 +21,20 @@
     padding: 0 3%;
     overflow-y: scroll;
 }
+
+.speltable {
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -25%);
+}
+
+.speltable .table-cell a {
+    color: #eee;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}

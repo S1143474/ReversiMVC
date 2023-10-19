@@ -326,6 +326,7 @@ var Game = (url => {
   var _onMove = (fichesToTurnAround, aanDeBeurt) => {
     console.log("Movement");
     console.log("Turn", aanDeBeurt);
+    Game.STATS.push(fichesToTurnAround, aanDeBeurt);
 
     _turnFiches(fichesToTurnAround, aanDeBeurt);
 
@@ -339,8 +340,6 @@ var Game = (url => {
     var rightScoreOwner = document.querySelector(".game__ownedboardbalance__player-2");
     rightScoreOwner.classList.remove("big");
     leftScoreOwner.classList.add("big");
-    debugger;
-    Game.STATS.push(fichesToTurnAround, aanDeBeurt);
     Game.Reversi.displayJoke();
   };
 
@@ -361,10 +360,10 @@ var Game = (url => {
   }();
 
   var _disableMovePlacement = (fichesToTurnAround, aanDeBeurt) => {
+    Game.STATS.push(fichesToTurnAround, aanDeBeurt);
+
     _turnFiches(fichesToTurnAround, aanDeBeurt);
 
-    debugger;
-    Game.STATS.push(fichesToTurnAround, aanDeBeurt);
     var buttons = document.querySelectorAll(".fiche");
     buttons.forEach(button => {
       button.disabled = true;
@@ -782,6 +781,8 @@ Game.Reversi = (() => {
   var getRandomJokeTemplate = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator(function* () {
       var jokeJson = yield Game.API.getRandomDadJoke();
+      console.log(jokeJson);
+      if (jokeJson === undefined) return;
       var dadjoke = jokeJson.joke;
       var jokeTemplate = Game.Template.parseTemplate("dadjoke.randomdadjoke", {
         joke: dadjoke
@@ -834,6 +835,7 @@ Game.Reversi = (() => {
 Game.STATS = (() => {
   var configMap = {};
   var chart;
+  var prevBeurt;
   var p1CapturedFiches = [];
   var p2CapturedFiches = [];
 
@@ -874,20 +876,23 @@ Game.STATS = (() => {
   };
 
   var pushData = (fiches, beurt) => {
-    var turnedFiches = fiches.length;
-    console.log(turnedFiches);
-    console.log(beurt);
-    console.log(p1CapturedFiches, p2CapturedFiches);
+    var turnedFiches = fiches.length; // console.log(turnedFiches);
+    // console.log("Statsturn", beurt)
+    // console.log(p1CapturedFiches, p2CapturedFiches);
 
-    if (beurt == 1) {
+    console.log("Toggle");
+
+    if (beurt == 1 && prevBeurt != 1) {
+      prevBeurt = 1;
       p1CapturedFiches.push(turnedFiches);
     }
 
-    if (beurt == 2) {
+    if (beurt == 2 && prevBeurt != 2) {
+      prevBeurt = 2;
       p2CapturedFiches.push(turnedFiches);
-    }
+    } // console.log(p1CapturedFiches, p2CapturedFiches);
 
-    console.log(p1CapturedFiches, p2CapturedFiches);
+
     chart.data.labels = p1CapturedFiches.map((value, index) => index + 1);
     chart.data.datasets = [{
       label: "Player 1",
