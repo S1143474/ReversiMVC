@@ -1,4 +1,5 @@
 ﻿@model string
+@inject Application.Common.Interfaces.INonceGenerator NonceGenerator;
 
 @if (!String.IsNullOrEmpty(Model))
 {
@@ -17,7 +18,7 @@
         </div>
         
         <span class="toast__border"></span>
-        <script type="text/javascript">
+        <script type="text/javascript" nonce="@NonceGenerator.GetNonce("status")">
             window.onload = () => {
                 const animated = document.querySelector('.toast__border');
                 const closeToastBtn = document.querySelector('.toast__close');
@@ -38,3 +39,30 @@
 
   
 }
+
+@*<div class="toast toast-danger" role="alert">
+    <div class="toast__content">
+        <span class="material-icons">warning</span>
+        <p class="toast__message">@Model</p>
+        <button type="button" class="toast__close" data-dismiss="alert" aria-label="Close"><span class="material-icons">close</span></button>
+    </div>
+
+    <span class="toast__border"></span>
+    <script type="text/javascript" nonce="@NonceGenerator.GetNonce("status")">
+        window.onload = () => {
+            const animated = document.querySelector('.toast__border');
+            const closeToastBtn = document.querySelector('.toast__close');
+
+            animated.addEventListener('animationend', () => {
+                $(".toast").animate({ opactity: 0 }, 1, function () {
+                    $(this).hide();
+                });
+            });
+
+            closeToastBtn.addEventListener('click', () => {
+                $(".toast").hide();
+            });
+        }
+
+    </script>
+</div>*@
