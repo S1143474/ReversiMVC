@@ -9,7 +9,7 @@ namespace WebUI.Test
 
             // Act
 
-            //
+            // Assert
         }
     }
 }
