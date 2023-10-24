@@ -45,7 +45,7 @@ namespace Infrastructure
                     options.Password.RequireUppercase = true;
                     options.Password.RequiredLength = 12;
 
-                    options.SignIn.RequireConfirmedAccount = true;
+                    options.SignIn.RequireConfirmedAccount = false;
                     options.User.RequireUniqueEmail = true;
 
                     /* SET Rules for lockouts when entering a password to many times. (also preventing ddos attacks) */
