@@ -2159,6 +2159,21 @@
   margin-top: 2.556rem;
 }
 
+.privacy-statement {
+  margin: 80px 128px;
+  color: #eee;
+  height: 640px;
+  overflow-y: scroll;
+}
+
+.privacy-statement p {
+  margin-bottom: 5px;
+}
+
+.privacy-statement ul {
+  margin-left: 32px;
+}
+
 .home__stats {
   position: absolute;
   top: 0;
