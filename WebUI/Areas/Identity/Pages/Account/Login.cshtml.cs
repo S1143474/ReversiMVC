@@ -131,11 +131,11 @@ namespace WebUI.Areas.Identity.Pages.Account
                     ErrorMessage = "Username or password is incorrect.";
                     return Page();
                 }
-                var result = await _signInManager.CheckPasswordSignInAsync(user, Input.Password, lockoutOnFailure: true);
+                //var result = await _signInManager.CheckPasswordSignInAsync(user, Input.Password, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 
-                    ClaimsIdentity identity = await CreateIdentity(user);
+                ClaimsIdentity identity = await CreateIdentity(user);
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
                
                 if (result.Succeeded)
                 {

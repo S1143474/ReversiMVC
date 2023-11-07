@@ -1,5 +1,8 @@
 ﻿@page
 @model EnableAuthenticatorModel
+@using Application.Common.Interfaces;
+@inject INonceGenerator NonceGenerator
+
 @{
     ViewData["Title"] = "Configure authenticator app";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
@@ -72,7 +75,7 @@
     <partial name="_ValidationScriptsPartial" />
 
     <script type="text/javascript" src="~/lib/qrcode.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" nonce="@NonceGenerator.GetNonce("2faqr")">
         new QRCode(document.getElementById("qrCode"),
             {
                 text: "@Html.Raw(Model.AuthenticatorUri)",
