@@ -68,7 +68,7 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
             await _signInManager.ForgetTwoFactorClientAsync();
             _logger.LogInformation($"User with id: '{_userManager.GetUserId(User)}' has forgotten the current browser for 2FA.");
             StatusMessage = "The current browser has been forgotten. When you login again from this browser you will be prompted for your 2fa code.";
-            return RedirectToPage();
+            return Page();
         }
     }
 }

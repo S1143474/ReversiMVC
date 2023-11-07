@@ -6,7 +6,8 @@
 }
 
 <h4>@ViewData["Title"]</h4>
-<partial name="_StatusMessage" model="@Model.StatusMessage " />
+@*@await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+*@
 
 <form id="profile-form" class="account__form" method="post">
     <input type="hidden" id="LoginViewModelToken" asp-for="@Model.Input.RecaptchaToken"/>
@@ -41,5 +42,6 @@
 </form>
 
 @section Scripts {
+    <partial name="_StatusMessage" model="@Model.StatusMessage" />
     <partial name="_ValidationScriptsPartial" />
 }
