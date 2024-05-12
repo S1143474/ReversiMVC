@@ -22,7 +22,7 @@ namespace MyNamespace
         {
             //"https://192.168.2.15:3000", 
             var builder = WebHost.CreateDefaultBuilder(args)
-                .UseUrls("https://192.168.2.9:3000")
+                /*.UseUrls("https://192.168.2.9:3000")*/
                 .UseStartup<Startup>();
 
             builder.ConfigureLogging((Action<WebHostBuilderContext, ILoggingBuilder>)((hostingContext, logging) =>
