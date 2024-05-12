@@ -126,6 +126,8 @@ namespace WebUI.Areas.Identity.Pages.Account
             if (!ModelState.IsValid)
             {
                 _logger.LogError($"Something went wrong in the model: { ModelState.ErrorCount }");
+                
+                ErrorMessage = "Something went wrong. It could be that the passwords are not the same.";
                 return Page();
             }
 

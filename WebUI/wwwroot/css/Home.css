@@ -11,6 +11,7 @@
 /*    overflow: hidden;
 */}
 
+
 @media only screen and (min-width: 320px) {
     .home__board > div {
         position: relative;

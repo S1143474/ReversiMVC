@@ -37,8 +37,9 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
 
         public string Username { get; set; }
 
-        [TempData]
+        [BindProperty, TempData]
         public string StatusMessage { get; set; }
+
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -51,6 +52,7 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
 
             [Required]
             public string RecaptchaToken { get; set; }
+
         }
 
         private async Task LoadAsync(IdentityUser user)
@@ -115,7 +117,7 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
                     }
 
                     StatusMessage = "Unexpected error when trying to set phone number.";
-                    return RedirectToPage();
+                    return Page();
                 }
 
                 _logger.LogInformation($"Changed phone number for user with id: {user.Id}");
@@ -142,7 +144,7 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
             }*/
 
             StatusMessage = "Your profile has been updated";
-            return RedirectToPage();
+            return Page();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
 
         public bool IsEmailConfirmed { get; set; }
 
-        [TempData]
+        [BindProperty, TempData]
         public string StatusMessage { get; set; }
 
         [BindProperty]
@@ -130,11 +130,11 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
                     $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");*/
                 
                 StatusMessage = "Confirmation link to change email sent. Please check your email.";
-                return RedirectToPage();
+                return Page();
             }
 
-            StatusMessage = "Your email is unchanged.";
-            return RedirectToPage();
+            StatusMessage = "Error Your email is unchanged.";
+            return Page();
         }
 
         public async Task<IActionResult> OnPostSendVerificationEmailAsync()
@@ -172,7 +172,7 @@ namespace WebUI.Areas.Identity.Pages.Account.Manage
                 $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");*/
            
             StatusMessage = "Verification email sent. Please check your email.";
-            return RedirectToPage();
+            return Page();
         }
     }
 }

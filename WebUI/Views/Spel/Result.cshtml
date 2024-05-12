@@ -48,7 +48,7 @@
             <span class="result__content__name">@Model.LoserName</span>
             <span class="result__content__score__title">Loser</span>
             @{
-                var loserScore = (@Model.AmountOfWitFichesTurned > @Model.AmountOfWitFichesTurned) ? @Model.AmountOfZwartFichesTurned : @Model.AmountOfZwartFichesTurned;
+                var loserScore = (@Model.AmountOfWitFichesTurned > @Model.AmountOfZwartFichesTurned) ? @Model.AmountOfZwartFichesTurned : @Model.AmountOfWitFichesTurned;
             }
             <span class="result__content__score right">@loserScore</span>
         </div>

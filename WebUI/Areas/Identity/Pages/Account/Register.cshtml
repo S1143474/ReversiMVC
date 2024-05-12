@@ -1,5 +1,7 @@
 ﻿@page
 @model RegisterModel
+@inject Application.Common.Interfaces.INonceGenerator NonceGenerator;
+
 @{
     ViewData["Title"] = "Register";
 }
@@ -129,8 +131,7 @@
                             </ul>
                         </aside>
                         <p class="foot__note">
-                            <span></span>
-                            @* <span asp-validation-for="Input.Password" class="text-danger"></span> *@
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
                         </p>
                     </div>
 
@@ -215,7 +216,8 @@
                         
                         <button type="submit" class="btn blue w30">Register</button>
                     </div>
-                    
+                    <div asp-validation-for="All" class="text-danger"></div>
+
                 </form>
             </section>
         </div> 
@@ -224,13 +226,13 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    <script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey"></script>
-    <script>
+@*    <script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey"></script>
+    <script nonce="@NonceGenerator.GetNonce("Recaptcha")">
         function getCaptchaToken() {
             grecaptcha.ready(function() {
                 grecaptcha.execute('@GoogleCaptchaConfig.Value.SiteKey', {action: 'submit'}).then(function(token) {
                     // Add your logic to submit to your backend server here.
-                    @* console.log(token); *@
+                    @* console.log(token); 
                     document.getElementById("LoginViewModelToken").value = token;
                 });
             });
@@ -242,7 +244,7 @@
             getCaptchaToken();
         });
     </script>
-    <recaptcha-script/>
+    <recaptcha-script/>*@
     @*<script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@

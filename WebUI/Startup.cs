@@ -97,7 +97,8 @@ internal class Startup
                 $"'nonce-{nonceGenerator.GetNonce("jqueryvalidatemin")}' " +
                 $"'nonce-{nonceGenerator.GetNonce("jqueryvalidateunobstructivemin")}' " +
                 $"'nonce-{nonceGenerator.GetNonce("toast")}' " +
-                $"'nonce-{nonceGenerator.GetNonce("status")}'; " +
+                $"'nonce-{nonceGenerator.GetNonce("status")}' " +
+                $"'nonce-{nonceGenerator.GetNonce("2faqr")}';" + 
                 "style-src 'self' fonts.googleapis.com; " +
                 "font-src 'self' fonts.googleapis.com fonts.gstatic.com; " +
                 "frame-src 'self' https://www.google.com/; " +

@@ -6,6 +6,7 @@ using Infrastructure.Common;
 using Infrastructure.Persistence;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -116,6 +117,14 @@ namespace Infrastructure
             services.AddScoped<IEmailService, EmailService>();
 
             services.AddSingleton<INonceGenerator, NonceGenerator>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.Name = "__Host-Reversi";
+                options.Cookie.SameSite = SameSiteMode.Strict;
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            });
 
             return services;
         }
